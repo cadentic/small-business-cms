@@ -1,0 +1,203 @@
+/* ***Responsive media query*** */
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+     /* Service Request Option Start */
+    .service-request-options table.service-request-table {
+        width: 1150px;
+    }
+ }
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 1200px) and (max-width: 1500px) {
+    .single-searchbar:first-child input {
+        width: 85%;
+    }
+}
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px){
+    /* nav */
+
+}
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+      /* Service Request Option Start */
+    .service-request-options table.service-request-table {
+        width: 100%;
+    }
+    /* Personalization Form */
+    .personalization-form .single-input .input-title {
+        width: 34%;
+    }
+    .personalization-form .single-input .input {
+        width: 66%;
+    }
+
+    /* Setting Option CSS ENd */
+    /* certification */
+      .single-searchbar:first-child input {
+        width: 83%;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 991.98px) {
+    /* Service Request Option Start */
+   .service-request-options table.service-request-table {
+        width: 100%;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Service Request Option Start */
+    .service-request-options table.service-request-table {
+        width: 100%;
+    }
+     /* Personalization Form */
+    .personalization-form .single-input .input-title {
+        width: 46%;
+        margin-right: 10px;
+    }
+    .personalization-form .single-input .input {
+        width: 54%;
+    }
+    .personalization-form .single-input .input .edit-btn {
+        padding: 0;
+    }
+    /* Setting Option CSS ENd */
+    /* certification */
+    .single-searchbar:first-child input {
+        width: 82%;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+ /* Service Request Option Start */
+    .service-request-options table.service-request-table {
+        width: 100%;
+    }
+    .service-top-option-right form input {
+        width: 110px;
+    }
+    .service-title-area .service-title {
+        margin-bottom: 0px;
+    }
+    .service-title-area .service-title h4 {
+        font-size: 22px;
+        line-height: 20px;
+        margin-bottom: 0;
+        margin-top: 15px;
+    }
+    .service-view-option .view-option-btn {
+        border-right: none;
+    }
+    /* Service Request Option End */
+     /* Personalization Form */
+    .personalization-form .single-input {
+        margin-bottom: 22px;
+    }
+    .personalization-form .single-input .input-title {
+        text-align: left;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .personalization-form .single-input .input {
+        width: 100%;
+    }
+    /* Setting Option CSS End */
+.patch-submit {
+    top: 199%;
+}
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+/* Service Request Option Start */
+    .service-request-options table.service-request-table {
+        width: 100%;
+    }
+    .service-title-area .service-title {
+        margin-bottom: 0px;
+    }
+    .service-title-area .service-title h4 {
+        font-size: 20px;
+        line-height: 20px;
+        margin-bottom: 0;
+        margin-top: 15px;
+    }
+    .service-request-title h3 {
+        font-size: 14px;
+        padding: 8px 35px;
+        margin: 0px;
+    }
+    .service-top-option-right form input {
+        width: 110px;
+        background-color: transparent;
+        border: none;
+        font-size: 14px;
+    }
+    .service-top-options {
+        padding: 5px 5px;
+    }
+    .service-top-option-right form {
+         box-shadow: none;
+         border: none;
+    }
+    .service-top-option-right form select {
+        background-color: #fff;
+        border: 1px solid #808080;
+    }
+    .service-top-option-right form input {
+        width: 137px;
+        background-color: #fff;
+        border: 1px solid #808080;
+        border-right: none;
+    }
+    .service-top-option-right form button {
+        background-color: #fff;
+        border: 1px solid #808080;
+        margin-left: -5px;
+        padding-bottom: 1px;
+        border-left: none;
+    }
+    .service-view-option {
+        margin-bottom: 10px;
+    }
+    .service-view-option .view-option-btn {
+        border-right: none;
+    }
+    .service-request-contents .service-top-bar {
+        padding: 5px 5px;
+    }
+    .service-option-left {
+        width: 50%;
+    }
+    /* Service Request Option End */
+     /* Personalization Form */
+    .personalization-form .single-input {
+        margin-bottom: 20px;
+    }
+    .personalization-form .single-input .input-title {
+        text-align: left;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 7px;
+    }
+    .personalization-form .single-input .input {
+        width: 100%;
+    }
+    /* Setting Option CSS End */
+
+span.input-star {
+    left: 20px;
+}
+.question-circle1 {
+    position: absolute;
+    right: 28px;
+    top: 14px;
+}
+.patch-submit {
+    top: 123%;
+}
+}

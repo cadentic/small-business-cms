@@ -1,0 +1,70 @@
+/* nav header  */
+.dashboard-header-area {
+background: #EDF0F4;
+    box-shadow: 0px 1px 11px -6px grey;
+    border: 1px solid #dee2e6;
+}
+.nav-link {
+       padding: 4px 8px;
+    border-radius: 5px 10px 0px 0px;
+    font-size: 10px !important;
+    color: #000;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    margin-bottom: 10px;
+  background: linear-gradient(to top, #6c5ce78c, #f5f4f4);
+}
+.nav-link i.fa.fa-external-link {
+    color: #0364fb;
+}
+
+.nav-link.active {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  background: #fff;
+}
+
+.nav-right-icon {
+    margin-right: 10px;
+}
+.nav-icon-box {
+  width: 43px;
+  background: #F6F4F9;
+  border-radius: 5px;
+  padding: 0px 5px;
+}
+.nav-icon-box .fa-star {
+    color: #ECB112;
+    padding-top: 4px;
+}
+.dashboard-header-area .form-control {
+    height: 27px !important;
+    border: none;
+    }
+    .dashboard-header-area .form-control:focus {
+    color: #000;
+     background-color: none;
+    border-color: transparent;
+    outline: 0;
+     box-shadow: none;
+}
+
+.dashboard-header-area .input-group-prepend {
+    border: none;
+    margin-left: 3px;
+    background: #fff;
+}
+a.dropdown-toggle .fa-file-invoice {
+    margin-left: 5px;
+    margin-top: 5px;
+
+}
+.dashboard-header-area .input-group-append {
+    margin-left: -1px;
+    background: #fff;
+    padding-top: 3px;
+    padding-right: 5px;
+}
+
