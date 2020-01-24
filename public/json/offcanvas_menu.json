@@ -1,0 +1,10 @@
+[
+    {"title":"Products","sub_menu":[{"name":"First Menu","icon":"mdi-home","href":"/"},
+        {"name":"Whatsapp","icon":"mdi-home","href":"/whatsapp"},
+        {"name":"Invoice","icon":"mdi-home","href":"/invoice"},
+        {"name":"Enquiry","icon":"mdi-home","href":"/enquiry"}]},
+    {"title":"Another titla","sub_menu":[{"name":"First Menu","icon":"mdi-home","href":"/"},
+        {"name":"Whatsapp","icon":"mdi-home","href":"/whatsapp"},
+        {"name":"Invoice","icon":"mdi-home","href":"/invoice"},
+        {"name":"Enquiry","icon":"mdi-home","href":"/enquiry"}]}    
+]

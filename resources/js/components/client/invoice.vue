@@ -82,6 +82,8 @@
                     <v-text-field :rules="mainRule" label="Enter Shipping Address" v-model="invoice_detail.billing_detail.shipping_address"></v-text-field>
                     PLACE OF SUPPLY
                     <v-text-field :rules="mainRule" label="Enter place of supply" v-model="invoice_detail.billing_detail.place_of_supply"></v-text-field>
+                    TAX IN %
+                    <v-text-field label="Tax" v-model="invoice_detail.tax"></v-text-field>
                   </v-col>
                 </v-row>
                 <br>
@@ -219,6 +221,7 @@
         select : ['Pen','Book','Copy'],
         items : [],
         invoice_detail : {
+          tax : 0,
           invoice_no : '',
           description : '',
           billing_detail : {
@@ -286,7 +289,7 @@
         this.items.push({description:"",rate:0,quantity:1,total:0})
       },
       get_total(i){
-        return i.total = i.rate*i.quantity;
+        return i.total = (i.rate*i.quantity);
       },
       total_amount(){
         var total  = 0
@@ -294,7 +297,8 @@
             total += e.total
         });
         this.total = total
-        return total
+        this.total += this.total*this.invoice_detail.tax/100
+        return this.total
       },
       go(to){
         window.location.href  = to

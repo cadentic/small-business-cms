@@ -1,40 +1,34 @@
 <template>
   <v-app>
     <toolbar></toolbar>
-    <v-appbar>
+    <!-- <v-appbar>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-    </v-appbar>
+    </v-appbar> -->
+    <v-btn icon large @click="drawer = !drawer"><v-icon>mdi-menu</v-icon> </v-btn>
     <v-navigation-drawer
       v-model="drawer"
       absolute
       bottom
-      temporary>
-      <v-list
-        nav
-        dense
-      >
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-purple--text text--accent-4"
-        >
-        <h4>Offcanvas Menu</h4>
-          <v-list-item>
-            <v-list-item-title>Foo</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Bar</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Fizz</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Buzz</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
+      temporary
+      width="300">
+      <div class="text-right">
+        <v-btn icon @click="drawer = !drawer"><v-icon>mdi-close</v-icon></v-btn>
+      </div>
+      <div>
+        <v-list>
+          <v-list-item-group v-for="(a,index) in this.offcanvas" :key="index">
+            <h3>{{a.title}}</h3>
+            <v-list-item @click="go(b.href)" v-for="(b,index) in a.sub_menu" :key="index">
+              <v-list-item-action><v-icon>{{b.icon}}</v-icon></v-list-item-action>
+              <v-list-item-conten>
+                <v-list-item-title>
+                  {{b.name}}
+                </v-list-item-title>
+              </v-list-item-conten>
+            </v-list-item>
+          </v-list-item-group>>
+        </v-list>
+      </div>
     </v-navigation-drawer>
     <v-container>
         <v-row>
@@ -129,7 +123,8 @@ export default {
     topbarStyle: "background:#fff; padding:0px 130px; border-color:#fff;",
     init_data: {},
     error: {},
-    phone: ""
+    phone: "",
+    offcanvas : [],
   }),
   created() {
     axios.get('json/innerblank.json')
@@ -139,12 +134,71 @@ export default {
     .catch(e => {
       this.errors.push(e)
     });
+    axios.get('json/offcanvas_menu.json')
+    .then(res=>{
+      this.offcanvas = res.data
+    })
+    .catch(err=>{
+      // console.log(err)
+    })
   },
   methods: {
     // Trigger the input changed event
     phoneNumberChanged() {
       console.log(this.phone);
+    },
+    go(to){
+      window.location.href = to
     }
   }
 };
 </script>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
