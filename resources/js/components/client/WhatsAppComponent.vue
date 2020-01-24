@@ -1,7 +1,41 @@
 <template>
   <v-app>
     <toolbar></toolbar>
+    <v-appbar>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+    </v-appbar>
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      bottom
+      temporary>
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+        <h4>Offcanvas Menu</h4>
+          <v-list-item>
+            <v-list-item-title>Foo</v-list-item-title>
+          </v-list-item>
 
+          <v-list-item>
+            <v-list-item-title>Bar</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Fizz</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Buzz</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
     <v-container>
         <v-row>
            <v-col cols=6>
@@ -90,6 +124,7 @@ import ChatComponent from './components/ChatComponent.vue';
 export default {
   components: { toolbar, ChatComponent },
   data: () => ({
+    drawer : false,
     offsetTop: 0,
     topbarStyle: "background:#fff; padding:0px 130px; border-color:#fff;",
     init_data: {},
