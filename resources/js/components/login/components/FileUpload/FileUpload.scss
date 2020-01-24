@@ -1,0 +1,35 @@
+.upload-file-component {
+  margin-bottom: 24px;
+  input[type="file"] {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .button-component {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: 1px dotted rgba(0, 0, 0, 0.87);
+    padding: 12px;
+    border-radius: 3px;
+    label {
+      display: flex;
+    }
+
+    .upload-button {
+      border: 1px solid #000000;
+      border-radius: 3px;
+      margin-right: 12px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .text {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,218 @@
+/*
+  Theme Name: Name - Style video palyer 
+  Author: Md. Aalmin Islam
+  Support: alaminislam9172@gmail.com
+  facebook: www.facebook.com/alaminislam05;
+  Description: Creative  HTML5 template.
+  Version: 1.0
+  */
+
+video.video-player {
+  width: 100%;
+    height: 100%;
+}
+
+.video-area {
+    position: relative;
+     width: 570px;
+    left: 50%;
+    top: 40%;
+    font-size: 12px;
+    overflow: hidden;
+    -webkit-transform: translate(-50%,-50%);
+       -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+         -o-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            box-shadow: 0 7px 20px 11px rgba(0,0,0,0.44);
+            border-radius: 20px;
+}
+.video-control {
+    position: absolute;
+    left: 50%;
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+    bottom: -48px;
+    background: rgb(57,55,55,0.7);
+    width: 90%;
+    padding: 15px 0px;
+    border-radius: 7px;
+    margin: 0 auto;
+    transform: translate(-50%,0%);
+    color:#fff;
+    overflow: hidden;
+        visibility: hidden;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+.video-area:hover .video-control{
+    bottom:0px;
+    visibility: visible;
+}
+.video-area:hover .bottom-line{
+    display: none;
+}
+.play-push {
+    padding: 0px 15px;
+    position: relative;
+    cursor: pointer;
+}
+.play-push i.fa.fa-pause {
+    position: absolute;
+    top: 0px;
+    display: none;
+    font-size: 19px;
+    cursor: pointer;
+}
+.running-time{
+ margin-left: 5px;
+}
+.total-duration {
+    margin-right: 5px;
+}
+.play-push i.fa.fa-play {
+    position: absolute;
+    top: 0px;
+    font-size: 19px;
+    cursor: pointer;
+}
+.sound {
+        width: 10%;
+    height: 5px;
+    margin-top: 6px;
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: #ff7045;
+    border-radius: 5px;
+}
+.sound-icon {
+    margin-left: 10px;
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 15px;
+
+}
+.sound-icon i.fa.fa-volume-up {
+    width: 10px;
+}
+.sound-icon i.fa.fa-volume-off {
+    position: absolute;
+    width: 10px;
+    display: none;
+}
+span.sound-line {
+    width: 0px;
+    height: 5px;
+    display: inline-block;
+    background: #00bceb;
+    cursor: pointer;
+
+}
+
+.duration {
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+    align-items: center;
+    width: 45%;
+   background: #ff7045;
+    height: 5px;
+    border-radius: 5px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+.duration-line {
+    position: relative;
+    width: 0px;
+    height: 5px;
+    background: #00bceb;
+    cursor: pointer;
+}
+.duration-line::after{
+    position: absolute;
+    right: 0;
+    top: -2;
+    width: 10px;
+    height: 10px;
+    background: #00bceb;
+    content: "";
+    border-radius: 50%;
+    display: none;
+}
+.duration-line:hover:after .duration-line::after{
+    display: block;
+}
+.bottom-line{
+position: absolute;
+bottom: 0;
+width: 100% !important;
+}
+.timing{
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+       display: flex;
+    width: 10%;
+    margin-left: 15px;
+        margin-right: 35px;
+}
+.video-full-screen {
+    margin-left: 10px;
+    cursor: pointer;
+}
+.video-close-btn {
+    position: absolute;
+    right: 4px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    top: 5px;
+    z-index: 9999;
+    background: rgb(57,55,55,0.8);
+    border-radius: 50%;
+    width: 30px;
+    height: 31px;
+    line-height: 32px;
+    padding-left: 9px;
+}
+
+/* modal */
+.modal-content {
+   
+    top: 50% !important;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(34,33,34,0.9); /* Fallback color */
+      background: rgba(34,33,34,0.9); /* Black w/ opacity */
+}
+

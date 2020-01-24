@@ -1,0 +1,345 @@
+
+
+.full-slider{
+	height:680px;
+	overflow:hidden;
+	background:#e6f5ff;
+	padding-top:50px;
+	border-top:2px solid #bdc3c7;
+	border-bottom:2px solid #bdc3c7;
+	
+}
+
+
+
+
+
+.slide_section{
+	margin-top:50px;
+	position:relative;
+	padding:5px 80px;
+}
+
+.slide_section2 {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.img-container:hover{
+-webkit-box-shadow: 0px 0px 23px -2px rgba(56,55,56,1);
+-moz-box-shadow: 0px 0px 23px -2px rgba(56,55,56,1);
+box-shadow: 0px 0px 23px -2px rgba(56,55,56,1);
+transition:0.3s;
+	
+}
+
+
+
+
+
+
+
+.primery_slide {
+	margin-top:50px;
+	
+}
+
+
+.img-container{
+	height:430px;
+	margin-left:25px;
+	margin-right:20px;
+	margin-top:20px;
+	margin-bottom:20px;
+	cursor:pointer;
+	background:#fff;
+}
+
+.title-area{
+	padding:10px 20px;
+	width:100%;
+	height:90px;
+	background:#3D9140;
+	
+}
+
+
+.img-container img{
+	width:100%;
+	height:200px;
+}
+.img-container h4{
+	color:#fff;
+	line-height:24px;
+	font-size:17px;
+	float:left;
+	width:80%;
+	
+}
+
+.img-container p{
+	color:#555;
+	font-size:15px;
+	padding:20px 20px;
+
+	
+}
+
+.img-container i{
+	color:#fff;
+	font-size:25px;
+	margin-top:20px;
+	margin-left:20px;
+	display:inline-block;
+	
+}
+
+
+
+.prvtttss{
+	position:absolute;
+	top:170px;
+	left:30px;
+}
+
+.prvtttss i{
+	font-size:50px;
+	color:#555;
+	cursor:pointer;
+}
+
+
+
+.nxttttss{
+	
+	position:absolute;
+	top:170px;
+	right:30px;
+}
+
+.nxttttss i{
+	font-size:50px;
+	color:#555;
+	cursor:pointer;
+}
+
+.nxttss i{
+	font-size:50px;
+	color:#555;
+	cursor:pointer;
+}
+
+.prvtss i{
+	font-size:50px;
+	color:#555;
+	cursor:pointer;
+}
+
+
+.slide_section2 .prvtss{
+	position:absolute;
+	top:280px;
+	left:-20px;
+}
+
+.slide_section2 .nxttss{
+	position:absolute;
+	top:280px;
+	right:-20px;
+}
+
+
+
+
+
+.secondary_slide {
+	margin-top:100px;
+	height:500px;
+	
+}
+
+.blog-container{
+	position:relative;
+	height:500px;
+	
+	background:#000;
+}
+
+
+
+
+.blog-container .banner-bl-slide{
+	width:35% !important;
+	height:100%;
+	float:left;
+}
+
+
+.cont{
+	padding:30px 30px 0px 30px;
+	color:#fff;
+	width:35%;
+	float:left;
+}
+
+.banner{
+	width:25%;
+	float:left;
+	padding-top:150px;
+}
+
+.banner img{
+	width:100% !important;
+}
+
+
+.cont a{
+	text-decoration:none;
+	padding:5px 30px;
+	background:indigo;
+	color:#fff;
+	margin-right:10px;
+	margin-top:50px;
+	display:inline-block;
+	margin-bottom: 20px;
+}
+
+
+.cont a:hover{
+	background:#fff;
+	color:#555;
+}
+
+
+.fa-times{
+	color:#fff;
+	position:absolute;
+	top:0;
+	right:0;
+	margin-right:20px;
+	margin-top:10px;
+	cursor:pointer;
+
+}
+
+/* main page fixing */
+section.slide_section a {
+    display: block;
+}
+section.whats-new-area {
+min-height: 670px;
+background: #e6f5ff;
+border-bottom: 1px solid #a0a5a9;
+ 
+}
+.whats-new-area .item{
+	cursor: pointer;
+}
+.whats-new-area .item:hover{
+	-webkit-box-shadow: 0px 0px 23px -2px rgba(56,55,56,1);
+-moz-box-shadow: 0px 0px 23px -2px rgba(56,55,56,1);
+box-shadow: 0px 0px 23px -2px rgba(56,55,56,1);
+transition:0.3s;
+}
+.whats-slide-position{
+	   position: relative;
+	   padding-bottom: 120px;
+}
+.whats-content {
+    background: #fff;
+    padding-bottom: 15px;
+
+}
+.whats-new-title h2 {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 300;
+    color: #000;
+    padding: 50px 0px;
+}
+.whats-content h3 {
+       margin: 0px;
+    font-size: 18px;
+    line-height: 25px;
+    background: #3d9140;
+    padding: 11px 15px;
+}
+
+.whats-content p {
+	 padding: 10px 15px;
+    font-size: 15px;
+    line-height: 25px;
+
+}
+.whats-content h3 i {
+    font-size: 18px;
+    color: #fff;
+    margin-left: 15px;
+}
+
+.owl-nav {
+}
+
+.whats-new-area button.owl-prev {
+    position: absolute;
+    left: -50px;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
+
+.whats-new-area button.owl-prev span {
+    font-size: 80px;
+    color: gray;
+}
+
+
+.whats-new-area button.owl-next {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
+
+.whats-new-area button.owl-next span {
+    font-size: 80px;
+    color: gray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+[
+    {
+        "class": "itm itm1",
+        "sub_class": "h1pox",
+        "style": "position:absolute;left:100px;top:50px;color:#fff;",
+        "title": "Zero-downtime migration using golden gate",
+        "title_style": "margin-left:15px;",
+        "image": "assets/images/Untitled-1.png",
+        "button1": {
+            "text": "",
+            "style": "display:none;",
+            "link": ""
+        },
+        "button2": {
+            "text": "",
+            "style": "display:none;",
+            "link": ""
+        },
+        "image_style": ""
+    },
+    {
+        "class": "itm itm2",
+        "sub_class": "h1pox",
+        "style": "padding:10px 30px;position:absolute;left:100px;top:80px;color:#fff;",
+        "title": "On-premise to cloud migration",
+        "title_style": "margin-left:15px;",
+        "image": "",
+        "button1": {
+            "text": "More Info",
+            "style": "",
+            "link": "#"
+        },
+        "button2": {
+            "text": "See more",
+            "style": "",
+            "link": "#"
+        },
+        "image_style": ""
+    },
+    {
+        "class": "itm itm3",
+        "sub_class": "h1pox",
+        "style": "position:absolute;left:100px;top:50px;color:#fff;",
+        "title": "E-Business Suit database Administration",
+        "title_style": "text-align:center;",
+        "image": "",
+        "button1": {
+            "text": "More Info",
+            "style": "margin-left:65px; background:transparent;color:#22ADFE; border:2px solid #22ADFE; font-size:30px;",
+            "link": "#"
+        },
+        "button2": {
+            "text": "Learn More",
+            "style": "margin-left:65px; background:transparent;color:#22ADFE; border:2px solid #22ADFE; font-size:30px;",
+            "link": "#"
+        },
+        "image_style": ""
+    },
+    {
+        "class": "itm itm4",
+        "sub_class": "h1pox",
+        "style": "padding:10px 30px;position:absolute;right:100px;top:50px;color:#fff;",
+        "title": "Upgradstion and Migration of different database",
+        "title_style": "width:600px;",
+        "image": "",
+        "button1": {
+            "text": "See more",
+            "style": "background:#4893BB;color:#fff; border:2px solid #000; font-size:30px;",
+            "link": "#"
+        },
+        "button2": {
+            "text": "See more",
+            "style": "background:#4893BB;color:#fff; border:2px solid #000; font-size:30px;",
+            "link": "#"
+        },
+        "image_style": ""
+    },
+    {
+        "class": "itm itm5",
+        "sub_class": "h1pox",
+        "style": "padding:10px 30px;position:absolute;right:100px;top:50px;color:#fff;",
+        "title": "IBM business Partners AWS \n Architect Oracle Sliver Partners",
+        "title_style": "width:600px; font-size:34px; text-align:left; margin-top:0px; margin-left:15px;",
+        "image": "assets/images/Untitled-1.png",
+        "button1": {
+            "text": "",
+            "style": "display:none;",
+            "link": ""
+        },
+        "button2": {
+            "text": "",
+            "style": "display:none;",
+            "link": ""
+        },
+        "image_style": "width:70%; margin:auto;"
+    }
+]

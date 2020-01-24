@@ -1,0 +1,49 @@
+[
+    {
+        "key": 1,
+        "main_title": "Partner assistance",
+        "sub_menu": [
+            {
+                "key": 1,
+                "sub_menu_item_title": "Search Answers",
+                "pathname" : "/searchfaq"
+            },
+            {
+                "key": 2,
+                "sub_menu_item_title": "Whatsapp Opt in",
+                "pathname" : "/whatsapp"
+            },
+            {
+                "key": 3,
+                "sub_menu_item_title": "Contact history",
+                "pathname" : "/contact"
+            },
+            {
+                "key": 4,
+                "sub_menu_item_title": "Contact us",
+                "pathname" : "/contact-us"
+            },
+            {
+                "key": 5,
+                "sub_menu_item_title": "Download",
+                "pathname" : "/download"
+            },
+            {
+                "key": 6,
+                "sub_menu_item_title": "Enquiry",
+                "pathname" : "/enquiry"
+            },
+            {
+                "key": 7,
+                "sub_menu_item_title": "Invoice",
+                "pathname" : "/invoice"
+            }
+
+        ]
+    },
+    {
+        "key": 2,
+        "main_title": "Product support",
+        "sub_menu": []
+    }
+]

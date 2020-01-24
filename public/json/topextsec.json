@@ -1,0 +1,22 @@
+{
+    "id": "topextsec",
+    "title": "Would you like to change the default language?",
+    "image_banner": [
+        {
+            "class": "imgext1",
+            "src": "/assets/images/img1.png"
+        },
+        {
+            "class": "imgextt2",
+            "src": "/assets/images/img2.png"
+        }
+    ],
+    "button_wrap": [
+       {
+           "text": "Select Now"
+       },
+       {
+           "text": "No Thanks"
+       }
+    ]
+}

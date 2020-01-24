@@ -1,0 +1,118 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "dependencies": {
+        "@material-ui/core": "^4.7.0",
+        "@material-ui/icons": "^4.5.1",
+        "@material-ui/lab": "^4.0.0-alpha.30",
+        "core-js": "^2.6.5",
+        "express": "^4.17.1",
+        "firebase": "^7.5.0",
+        "font-awesome": "^4.7.0",
+        "fs": "0.0.1-security",
+        "jquery": "^3.4.1",
+        "lodash": "^4.17.15",
+        "material-design-icons-iconfont": "^5.0.1",
+        "material-ui-password-field": "^2.1.0",
+        "mdbvue": "^6.0.1",
+        "module": "^1.2.5",
+        "msg91": "0.0.6",
+        "node-sass": "^4.13.0",
+        "pug-plain-loader": "^1.0.0",
+        "react-pdf": "^4.1.0",
+        "react-router": "^5.1.2",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "^3.3.0",
+        "react-signature-canvas": "^1.0.3",
+        "vue": "^2.6.10",
+        "vue-awesome-swiper": "^3.1.3",
+        "vue-axios": "^2.1.5",
+        "vue-chartist": "^2.2.1",
+        "vue-ckeditor2": "^2.1.5",
+        "vue-click-outside": "^1.0.7",
+        "vue-custom-scrollbar": "^1.1.0",
+        "vue-easy-slider": "^5.3.2",
+        "vue-event-hub": "^1.0.2",
+        "vue-kanban": "^1.6.0-0",
+        "vue-loader": "^15.7.2",
+        "vue-picture-input": "^2.1.6",
+        "vue-plyr": "^5.1.3",
+        "vue-resizable": "^1.0.15",
+        "vue-router": "^3.1.3",
+        "vue-smooth-dnd": "^0.8.0",
+        "vue-split-panel": "^1.0.4",
+        "vue-template-compiler": "^2.6.10",
+        "vue-video": "^0.1.7",
+        "vueditor": "^0.3.1",
+        "vuescroll": "^4.14.4",
+        "vuetify-media-player": "^0.8.1",
+        "vuex": "^3.1.1",
+        "write-json-file": "^4.2.1"
+    },
+    "devDependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.7.4",
+        "@babel/preset-react": "^7.0.0",
+        "@fortawesome/fontawesome-free": "^5.11.2",
+        "@vue/cli-plugin-babel": "^3.11.0",
+        "@vue/cli-plugin-eslint": "^3.11.0",
+        "@vue/cli-service": "^3.11.0",
+        "axios": "^0.19.0",
+        "babel-eslint": "^10.0.1",
+        "cross-env": "^5.1",
+        "eslint": "^5.16.0",
+        "eslint-plugin-vue": "^5.0.0",
+        "laravel-mix": "^4.0.7",
+        "pug": "^2.0.4",
+        "pug-loader": "^2.4.0",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0",
+        "resolve-url-loader": "^2.3.1",
+        "sass": "^1.17.4",
+        "sass-loader": "^7.1.0",
+        "stylus": "^0.54.7",
+        "stylus-loader": "^3.0.2",
+        "vue-cli-plugin-vuetify": "^0.6.3",
+        "vuetify": "^2.1.10",
+        "vuetify-loader": "^1.3.0",
+        "webpack": "^4.41.2"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "rules": {
+            "no-mixed-spaces-and-tabs": 0,
+            "no-irregular-whitespace": 0
+        },
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": []
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ],
+    "description": "## Project setup ``` npm install ```",
+    "main": "babel.config.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

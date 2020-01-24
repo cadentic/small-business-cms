@@ -1,0 +1,168 @@
+{
+    "count":9,
+    "stages":[
+        "Database Administration",
+        "Cloud",
+        "Migration",
+        "Directors infos",
+        "Nature & Mode of work",
+        "Hardware and Networking component",
+        "Staffing",
+        "Corporate Training on Oracle",
+        "Corporate Training on Redhat"
+    ],
+    "init_stage": "Database Administration",
+    "stages_sub": [
+        "Cloud",
+        "Migration",
+        "Directors infos",
+        "Nature & Mode of work",
+        "Hardware and Networking component",
+        "Staffing",
+        "Corporate Training on Oracle",
+        "Corporate Training on Redhat"
+    ],
+    "blocks":[
+        {
+            "id":1,
+            "status":"Nature & Mode of work",
+            "title":"E-Business suit",
+            "url":"#"
+        },
+        {
+            "id":2,
+            "status":"Database Administration",
+            "title":"Single Sign in",
+            "url":"#"
+        },
+        {
+            "id":3,
+            "status":"Database Administration",
+            "title":"Golden Gate",
+            "url":"#"
+        },
+        {
+            "id":4,
+            "status":"Database Administration",
+            "title":"Open Source",
+            "url":"#"
+        },
+        {
+            "id":5,
+            "status":"Cloud",
+            "title":"Sub Tab 2 1",
+            "url":"#"
+        },
+        {
+            "id":6,
+            "status":"Cloud",
+            "title":"Sub Tab 2 2",
+            "url":"#"
+        },
+        {
+            "id":7,
+            "status":"Corporate Training on Redhat",
+            "title":"Sub Tab 2 3",
+            "url":"#"
+        },
+        {
+            "id":8,
+            "status":"Cloud",
+            "title":"Sub Tab 2 4",
+            "url":"#"
+        },
+        {
+            "id":9,
+            "status":"Staffing",
+            "title":"df",
+            "url":"dfd"
+        }
+    ],
+    "comments": {
+        "networking": {
+            "title": "NETWORKING",
+            "contents": [
+                {
+                    "link": "#",
+                    "text": "Network Architecture - Cisco DNA"
+                },
+                {
+                    "link": "#",
+                    "text": "SD-Access"
+                },
+                {
+                    "link": "#",
+                    "text": "SD-WAN"
+                },
+                {
+                    "link": "#",
+                    "text": "Switches"
+                },
+                {
+                    "link": "#",
+                    "text": "Wireless"
+                },
+                {
+                    "link": "#",
+                    "text": "Routers"
+                },
+                {
+                    "link": "#",
+                    "text": "Enterprise Network Security"
+                }
+            ]
+        },
+        "needto": {
+            "title": "I NEED TO...",
+            "contents": [
+                {
+                    "link": "#",
+                    "text": "Automate wired and wireless network policy"
+                },
+                {
+                    "link": "#",
+                    "text": "Simplify branch and WAN network operations"
+                },
+                {
+                    "link": "#",
+                    "text": "Address malware and cyberthreats"
+                },
+                {
+                    "link": "#",
+                    "text": "Assure network availability and performance"
+                }
+            ]
+        },
+        "topproducts": {
+            "title": "TOP PRODUCTS",
+            "contents": [
+                {
+                    "link": "#",
+                    "text": "Catalyst 9200 Series Switches"
+                },
+                {
+                    "link": "#",
+                    "text": "Catalyst 9800 Series Wireless Controllers"
+                },
+                {
+                    "link": "#",
+                    "text": "4000 Series Integrated Services Routers"
+                },
+                {
+                    "link": "#",
+                    "text": "Cisco DNA Center"
+                },
+                {
+                    "link": "#",
+                    "text": "Nexus 9000 Series Switches"
+                }
+            ]
+        }
+    },
+    "intent": {
+        "title": "INTENT-BASED NETWORKING",
+        "link": "#",
+        "text": "Simplify the way you manage, secure, and scale your network.",
+        "sub_text": "Learn How >"
+    }
+}

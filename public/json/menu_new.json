@@ -1,0 +1,75 @@
+{
+    "count":9,
+    "stages":[
+        "Database Administration",
+        "Cloud",
+        "Migration",
+        "Directors infos",
+        "Nature & Mode of work",
+        "Hardware and Networking component",
+        "Staffing",
+        "Corporate Training on Oracle",
+        "Corporate Training on Redhat"
+    ],
+    "init_stage": "Database Administration",
+    "stages_sub": [
+        "Cloud",
+        "Migration",
+        "Directors infos",
+        "Nature & Mode of work",
+        "Hardware and Networking component",
+        "Staffing",
+        "Corporate Training on Oracle",
+        "Corporate Training on Redhat"
+    ],
+    "init_tab1": "E-Business suit",
+    "tab1": [
+        "Single Sign in",
+        "Golden Gate",
+        "Open Source"
+    ],
+    "init_tab1_content": "Sub Tab Content 1",
+    "tab1_content": [
+        "Sub Tab Content 2",
+        "Sub Tab Content 3",
+        "Sub Tab Content 4"
+    ],
+    "init_tab2": "Sub Tab 2 1",
+    "tab2": [
+        "Sub Tab 2 2",
+        "Sub Tab 2 3",
+        "Sub Tab 2 4"
+    ],
+    "init_tab2_content": "Sub Tab Content 2 1",
+    "tab2_content": [
+        "Sub Tab Content 2 2",
+        "Sub Tab Content 2 3",
+        "Sub Tab Content 2 4"
+    ],
+    "init_tab3": "Sub Tab 3 1",
+    "tab3": [
+        "Sub Tab 3 2",
+        "Sub Tab 3 3",
+        "Sub Tab 3 4"
+    ],
+    "init_tab3_content": "Sub Tab Content 3 1",
+    "tab3_content": [
+        "Sub Tab Content 3 2",
+        "Sub Tab Content 3 3",
+        "Sub Tab Content 3 4"
+    ],
+    "init_tab4": "Sub Tab 4 1",
+    "tab4": [
+        "Sub Tab 4 2",
+        "Sub Tab 4 3",
+        "Sub Tab 4 4"
+    ],
+    "init_tab4_content": "Sub Tab Content 4 1",
+    "tab4_content": [
+        "Sub Tab Content 4 2",
+        "Sub Tab Content 4 3",
+        "Sub Tab Content 4 4"
+    ],
+    "search_label": "What are you looking for?",
+    "logo": "assets/images/logo.png"
+}
