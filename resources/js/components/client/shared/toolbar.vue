@@ -1,5 +1,31 @@
 <template>
   <div>
+      <v-navigation-drawer
+        v-model="drawer"
+        absolute
+        bottom
+        temporary
+        width="300">
+        <div class="text-right">
+          <v-btn icon @click="drawer = !drawer"><v-icon>mdi-close</v-icon></v-btn>
+        </div>
+        <div>
+          <v-list>
+            <v-list-item-group v-for="(a,index) in this.offcanvas" :key="index">
+              <h3 class="ml-5">{{a.title}}</h3>
+              <v-list-item @click="go(b.href)" v-for="(b,index) in a.sub_menu" :key="index">
+                <v-list-item-action><v-icon>{{b.icon}}</v-icon></v-list-item-action>
+                <v-list-item-conten>
+                  <v-list-item-title>
+                    {{b.name}}
+                  </v-list-item-title>
+                </v-list-item-conten>
+              </v-list-item>
+              <v-divider></v-divider>
+            </v-list-item-group>
+          </v-list>
+        </div>
+      </v-navigation-drawer>
     <div class="main-toolbar">
       <ul class="submenu-group">
         <li  v-for="(menu_item) in menu_items" 
@@ -16,6 +42,7 @@
             :key="menu_sub_item.key"
             :class="(menu_sub_item.key == current_menu_sub_item.key) ? 'active' : ''"><a :href="menu_sub_item.pathname">{{ menu_sub_item.sub_menu_item_title }}</a></li>
       </ul>
+      <v-btn icon large @click="drawer = !drawer"><v-icon>mdi-menu</v-icon> </v-btn>
     </div>
   </div>
 </template>
@@ -79,6 +106,8 @@
 export default {
   data() {
     return {
+      drawer : false,
+    offcanvas : [],
       errors: {},
       menu_items: [],
       app_url: "",
@@ -115,7 +144,19 @@ export default {
     .catch(err => {
       this.errors.push(err);
     })
+    axios.get('json/offcanvas_menu.json')
+    .then(res=>{
+      this.offcanvas = res.data
+    })
+    .catch(err=>{
+      // console.log(err)
+    })
 
+  },
+  methods:{
+    go(to){
+      window.location.href = to
+    }
   }
 }
 </script>

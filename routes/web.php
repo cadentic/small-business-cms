@@ -41,8 +41,7 @@ Route::get('/import_client_main', 'IndexController@import_client_main');
 
 # Additional menu
 Route::get('whatsapp', 'WhatsappNotificationsController@index');
-//added by Classic start
-Route::get('/invoice','InvoiceController@index');
+
 Route::get('/enquiry','EnquiryController@index');
 Route::post('/enquiry','EnquiryController@post');
 Route::get('/products/all','AdminController@getProducts');

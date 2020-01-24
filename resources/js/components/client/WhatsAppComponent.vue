@@ -1,35 +1,6 @@
 <template>
   <v-app>
     <toolbar></toolbar>
-    <!-- <v-appbar>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-    </v-appbar> -->
-    <v-btn icon large @click="drawer = !drawer"><v-icon>mdi-menu</v-icon> </v-btn>
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      bottom
-      temporary
-      width="300">
-      <div class="text-right">
-        <v-btn icon @click="drawer = !drawer"><v-icon>mdi-close</v-icon></v-btn>
-      </div>
-      <div>
-        <v-list>
-          <v-list-item-group v-for="(a,index) in this.offcanvas" :key="index">
-            <h3>{{a.title}}</h3>
-            <v-list-item @click="go(b.href)" v-for="(b,index) in a.sub_menu" :key="index">
-              <v-list-item-action><v-icon>{{b.icon}}</v-icon></v-list-item-action>
-              <v-list-item-conten>
-                <v-list-item-title>
-                  {{b.name}}
-                </v-list-item-title>
-              </v-list-item-conten>
-            </v-list-item>
-          </v-list-item-group>>
-        </v-list>
-      </div>
-    </v-navigation-drawer>
     <v-container>
         <v-row>
            <v-col cols=6>
@@ -118,13 +89,12 @@ import ChatComponent from './components/ChatComponent.vue';
 export default {
   components: { toolbar, ChatComponent },
   data: () => ({
-    drawer : false,
     offsetTop: 0,
     topbarStyle: "background:#fff; padding:0px 130px; border-color:#fff;",
     init_data: {},
     error: {},
     phone: "",
-    offcanvas : [],
+    
   }),
   created() {
     axios.get('json/innerblank.json')
@@ -134,22 +104,14 @@ export default {
     .catch(e => {
       this.errors.push(e)
     });
-    axios.get('json/offcanvas_menu.json')
-    .then(res=>{
-      this.offcanvas = res.data
-    })
-    .catch(err=>{
-      // console.log(err)
-    })
+    
   },
   methods: {
     // Trigger the input changed event
     phoneNumberChanged() {
       console.log(this.phone);
     },
-    go(to){
-      window.location.href = to
-    }
+    
   }
 };
 </script>

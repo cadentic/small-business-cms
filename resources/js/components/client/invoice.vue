@@ -2,7 +2,7 @@
   <v-app id="inspire" style="background-color:#f2f2f2 !important;">
     <v-content>
       <div>
-        <v-container>
+      <v-container>
         <div v-if="success">
           <v-alert type="success" outlined>
             Invoice created.

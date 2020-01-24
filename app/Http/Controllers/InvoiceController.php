@@ -7,9 +7,6 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 class InvoiceController extends Controller
 {
-    public function index(){
-        return view('invoice.index');
-    }
     public function invoiceCreate(Request $request){
         $data = $request->data;
         $path = 'json/invoice.json';

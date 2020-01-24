@@ -12,6 +12,7 @@ import Tab9 from './components/Tab9.vue'
 import Tab10 from './components/Tab10.vue'
 import Tab11 from './components/Tab11.vue'
 import Tab12 from './components/Tab12.vue'
+import Tab13 from './components/Tab13.vue'
 import PathsV1 from './themes/v1/router/paths'
 import PathsV2 from './themes/v2/router/routes'
 import PathsV3 from './themes/v3/router/routes'
@@ -129,6 +130,11 @@ export default new Router({
                     path: 'tab12',
                     name: 'Tab12',
                     component: Tab12,
+                },
+                {
+                    path: 'tab13',
+                    name: 'Tab13',
+                    component: Tab13,
                 },
             ]
         },
