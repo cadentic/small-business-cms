@@ -12,7 +12,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import './themes/v1/plugins'
 import VueSplit from 'vue-split-panel'
 
-Vue.use(VueSplit)
+Vue.use(VueSplit);
 
 // your config here
 let config = {
@@ -38,7 +38,7 @@ let config = {
 Vue.use(Vuex);
 Vue.use(Vueditor, config);
 Vue.prototype.$eventHub = new Vue();
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
     router,

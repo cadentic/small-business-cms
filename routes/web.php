@@ -18,6 +18,10 @@
 Route::get('/', 'IndexController@index');
 
 Route::get('/admin', 'IndexController@gotoAdmin');
+
+Route::get('/admin/{any}', 'IndexController@gotoAdmin')->where('any', '.*');
+
+
 Route::get('/login_one', 'IndexController@gotoLoginOne');
 Route::get('/login_two', 'IndexController@gotoLoginTwo');
 Route::get('/login_three', 'IndexController@gotoLoginThree');
@@ -56,3 +60,6 @@ Route::get('contact/{ticket_id}', 'ContactUsController@show');
 Route::get('forgot-password', 'PasswordController@renew');
 Route::get('download', 'DownloadResourcesController@index');
 Route::get('contact-us', 'ContactUsController@create');
+
+
+Route::get('transaction-history','TransactionHistoryController@getHistory');

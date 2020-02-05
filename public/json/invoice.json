@@ -1,1 +1,133 @@
-[{"invoice_detail":{"invoice_no":"10110","description":"First invoice","billing_detail":{"customer":"John Doe","issued_date":"2020-01-15","expiry_date":"2020-01-15","billing_address":"NYC","shipping_address":"USA","place_of_supply":"BLK"},"customer_notes":"Notes","terms_and_conditions":"Terms"},"items":[{"description":"asd","rate":"100","quantity":"100","total":10000},{"description":"Prouct enw","rate":"100","quantity":"100","total":10000}],"total_amount":20000,"date":"Fri Jan 24 2020 10:43:29 GMT+0545 (Nepal Time)"},{"invoice_detail":{"invoice_no":null,"description":null,"billing_detail":{"customer":null,"issued_date":null,"expiry_date":null,"billing_address":null,"shipping_address":null,"place_of_supply":null},"customer_notes":null,"terms_and_conditions":null},"items":[],"total_amount":0,"date":"Fri Jan 24 2020 13:24:14 GMT+0545 (Nepal Time)"},{"invoice_detail":{"billing_detail":[]},"items":[],"total_amount":0,"date":"Fri Jan 24 2020 13:24:28 GMT+0545 (Nepal Time)"},{"invoice_detail":{"tax":"13","invoice_no":"12981","description":"Checking with tax","billing_detail":{"customer":"SOMECUSTOMER","issued_date":"2020-01-12","expiry_date":"2020-01-16","billing_address":"INDIA","shipping_address":"INDIA","place_of_supply":"INDIA"},"customer_notes":"SOMENOTE","terms_and_conditions":"TERMSANDCONDITION"},"items":[{"description":"Prouct enw","rate":"100","quantity":1,"total":100},{"description":"Prouct enw","rate":"200","quantity":1,"total":200}],"total_amount":339,"date":"Fri Jan 24 2020 10:11:28 GMT+0545 (Nepal Time)"},{"invoice_detail":{"tax":"10","invoice_no":"12312","description":"testing from admin","billing_detail":{"customer":"someone","issued_date":"132","expiry_date":"132","billing_address":"why","shipping_address":"why","place_of_supply":"why"},"customer_notes":"thats awesome","terms_and_conditions":"noon"},"items":[{"description":null,"rate":0,"quantity":1,"total":0},{"description":null,"rate":0,"quantity":1,"total":0},{"description":null,"rate":0,"quantity":1,"total":0}],"total_amount":0,"date":"Fri Jan 24 2020 20:35:49 GMT+0545 (Nepal Time)"}]
+[
+  {
+    "invoice_detail": {
+      "invoice_no": "10110",
+      "description": "First invoice",
+      "billing_detail": {
+        "customer": "John Doe",
+        "issued_date": "2020-01-15",
+        "expiry_date": "2020-01-15",
+        "billing_address": "NYC",
+        "shipping_address": "USA",
+        "place_of_supply": "BLK"
+      },
+      "customer_notes": "Notes",
+      "terms_and_conditions": "Terms"
+    },
+    "items": [
+      {
+        "description": "asd",
+        "rate": "100",
+        "quantity": "100",
+        "total": 10000
+      },
+      {
+        "description": "Prouct enw",
+        "rate": "100",
+        "quantity": "100",
+        "total": 10000
+      }
+    ],
+    "total_amount": 20000,
+    "date": "Fri Jan 24 2020 10:43:29 GMT+0545 (Nepal Time)"
+  },
+  {
+    "invoice_detail": {
+      "invoice_no": null,
+      "description": null,
+      "billing_detail": {
+        "customer": null,
+        "issued_date": null,
+        "expiry_date": null,
+        "billing_address": null,
+        "shipping_address": null,
+        "place_of_supply": null
+      },
+      "customer_notes": null,
+      "terms_and_conditions": null
+    },
+    "items": [],
+    "total_amount": 0,
+    "date": "Fri Jan 24 2020 13:24:14 GMT+0545 (Nepal Time)"
+  },
+  {
+    "invoice_detail": {
+      "billing_detail": []
+    },
+    "items": [],
+    "total_amount": 0,
+    "date": "Fri Jan 24 2020 13:24:28 GMT+0545 (Nepal Time)"
+  },
+  {
+    "invoice_detail": {
+      "tax": "13",
+      "invoice_no": "12981",
+      "description": "Checking with tax",
+      "billing_detail": {
+        "customer": "SOMECUSTOMER",
+        "issued_date": "2020-01-12",
+        "expiry_date": "2020-01-16",
+        "billing_address": "INDIA",
+        "shipping_address": "INDIA",
+        "place_of_supply": "INDIA"
+      },
+      "customer_notes": "SOMENOTE",
+      "terms_and_conditions": "TERMSANDCONDITION"
+    },
+    "items": [
+      {
+        "description": "Prouct enw",
+        "rate": "100",
+        "quantity": 1,
+        "total": 100
+      },
+      {
+        "description": "Prouct enw",
+        "rate": "200",
+        "quantity": 1,
+        "total": 200
+      }
+    ],
+    "total_amount": 339,
+    "date": "Fri Jan 24 2020 10:11:28 GMT+0545 (Nepal Time)"
+  },
+  {
+    "invoice_detail": {
+      "tax": "10",
+      "invoice_no": "12312",
+      "description": "testing from admin",
+      "billing_detail": {
+        "customer": "someone",
+        "issued_date": "132",
+        "expiry_date": "132",
+        "billing_address": "why",
+        "shipping_address": "why",
+        "place_of_supply": "why"
+      },
+      "customer_notes": "thats awesome",
+      "terms_and_conditions": "noon"
+    },
+    "items": [
+      {
+        "description": null,
+        "rate": 0,
+        "quantity": 1,
+        "total": 0
+      },
+      {
+        "description": null,
+        "rate": 0,
+        "quantity": 1,
+        "total": 0
+      },
+      {
+        "description": null,
+        "rate": 0,
+        "quantity": 1,
+        "total": 0
+      }
+    ],
+    "total_amount": 0,
+    "date": "Fri Jan 24 2020 20:35:49 GMT+0545 (Nepal Time)"
+  }
+]

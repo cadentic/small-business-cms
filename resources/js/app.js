@@ -6,12 +6,12 @@ window.Vue = require('vue');
 import vuetify from './plugins/vuetify';
 import topextsec from './components/client/shared/topextsec.vue';
 import maincomponent from './components/client/Main.vue';
-import innercomponent from './components/client/inner.vue';
-import inner2component from './components/client/inner2.vue';
-import inner3component from './components/client/inner3.vue';
-import inner4component from './components/client/inner4.vue';
-import innerblankcomponent from './components/client/innerBlank.vue';
-import innerblankcomponent2 from './components/client/innerBlank2.vue';
+import innercomponent from './components/client/Inner.vue';
+import inner2component from './components/client/Inner2.vue';
+import inner3component from './components/client/Inner3.vue';
+import inner4component from './components/client/Inner4.vue';
+import innerblankcomponent from './components/client/InnerBlank.vue';
+import innerblankcomponent2 from './components/client/InnerBlank2.vue';
 
 // Additional component from remote work
 import whatsappcomponent from './components/client/WhatsAppComponent.vue';

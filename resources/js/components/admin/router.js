@@ -25,6 +25,10 @@ import TemplateV2 from './components/TemplateV2.vue'
 import TemplateV3 from './components/TemplateV3.vue'
 import TemplateV4 from './components/TemplateV4.vue'
 
+
+import TransactionHistory from "./components/transaction-history/TransactionHistory.vue";
+import ClientPayout from "./components/client-payout/ClientPayout.vue";
+
 Vue.use(Router)
 
 export default new Router({
@@ -71,6 +75,18 @@ export default new Router({
                     path: '',
                     redirect: 'tab1'
                 },
+                {
+                    path: 'transaction-history',
+                    name: 'TransactionHistory',
+                    component: TransactionHistory,
+                },
+
+                {
+                    path: 'client-payout',
+                    name: 'ClientPayout',
+                    component: ClientPayout,
+                },
+
                 {
                     path: 'tab1',
                     name: 'Tab1',
