@@ -27,7 +27,6 @@ import TemplateV4 from './components/TemplateV4.vue'
 
 
 import TransactionHistory from "./components/transaction-history/TransactionHistory.vue";
-import ClientPayout from "./components/client-payout/ClientPayout.vue";
 
 Vue.use(Router)
 
@@ -79,12 +78,6 @@ export default new Router({
                     path: 'transaction-history',
                     name: 'TransactionHistory',
                     component: TransactionHistory,
-                },
-
-                {
-                    path: 'client-payout',
-                    name: 'ClientPayout',
-                    component: ClientPayout,
                 },
 
                 {

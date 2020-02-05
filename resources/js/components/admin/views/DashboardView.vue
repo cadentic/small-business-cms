@@ -13,7 +13,6 @@
                     <v-tab to="/admin/manage/tab13"><span class="nav-link">Create Invoice</span></v-tab>
                     <v-tab to="/admin/manage/tab11"><span class="nav-link">All Invoices</span></v-tab>
                     <v-tab to="/admin/manage/transaction-history"><span class="nav-link">Transaction history</span></v-tab>
-                    <v-tab to="/admin/manage/client-payout"><span class="nav-link">Client payout</span></v-tab>
                     <v-tab to="/admin/manage/tab12"><span class="nav-link">Manage Product</span></v-tab>
                     <v-tab to="/admin/manage/tab2"><span class="nav-link">Knowledge</span></v-tab>
                     <v-tab to="/admin/manage/tab3"><span class="nav-link">Service Request</span></v-tab>

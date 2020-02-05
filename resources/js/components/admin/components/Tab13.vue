@@ -149,6 +149,12 @@
                     <v-btn tile block large>Change invoice label <v-icon>mdi-arrow-right</v-icon></v-btn>
                     </div>
                 </div>
+                <div>
+                    <h4>Customer payout :</h4>
+                    <div class="text-center">
+                        <v-btn tile block large>Customer payout</v-btn>
+                    </div>
+                </div>
             </v-col>
             </v-row>
         </v-container>
