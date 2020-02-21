@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class SaveFormDataController extends Controller
 {
     private $writableFiles = [
-        'personnalization'
+        'personnalization',
+        'tab12-search'
     ];
 
     public function save($file, Request $request)

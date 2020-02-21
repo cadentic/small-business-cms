@@ -141,6 +141,7 @@
                                                             <v-row>
                                                                 <v-col cols="12" sm="6" md="4">
                                                                     <v-text-field
+                                                                            v-model="product"
                                                                             label="Select a Product Or Product line"
                                                                             placeholder="start typing"
                                                                             append-icon="fa fa-question-circle"
@@ -150,6 +151,7 @@
                                                             <v-row>
                                                                 <v-col cols="12" sm="6" md="6">
                                                                     <v-text-field
+                                                                            v-model="item"
                                                                             label="Enter Search Item"
                                                                             placeholder="Enter Search Item"
                                                                             prepend-inner-icon="fa fa-file-text-o"
@@ -164,7 +166,7 @@
                                                             <v-col cols="10">
                                                             </v-col>
                                                             <v-col cols="2">
-                                                                <v-btn>
+                                                                <v-btn @click="handleSubmit">
                                                                     Search
                                                                 </v-btn>
                                                             </v-col>
@@ -364,6 +366,8 @@
         name: "Tab2",
         data () {
             return {
+                product: '',
+                item: '',
                 editorActive: false,
                 descriptionLong: true,
                 tab: null,
@@ -380,8 +384,19 @@
         methods:{
             showEditor(){
                 this.editorActive = !this.editorActive
+            },
+            async handleSubmit() {
+                const data = {
+                    product: this.product,
+                    item: this.item
+                };
+                try {
+                    await axios.post('/save-json/tab12-search', data);
+                    alert('Saved!');
+                } catch (error) {
+                    console.error(error);
+                }
             }
-
         }
     }
 </script>
