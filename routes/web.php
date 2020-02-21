@@ -63,3 +63,5 @@ Route::get('contact-us', 'ContactUsController@create');
 
 
 Route::get('transaction-history','TransactionHistoryController@getHistory');
+
+Route::post('save-json/{file}', 'SaveFormDataController@save');
