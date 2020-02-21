@@ -62,7 +62,7 @@
                                 <h4>Personalization</h4>
                             </div>
                             <!-- Personalization Form -->
-                            <form action="#" class="personalization-form">
+                            <form method="POST" action="/save-json/personnalization" class="personalization-form" @submit.prevent="handleSubmit">
                                 <!-- Single Input -->
                                 <div class="single-input d-block d-md-flex">
                                     <div class="input-title">
@@ -215,8 +215,23 @@
         methods:{
             showEditor(){
                 this.editorActive = !this.editorActive
+            },
+            async handleSubmit(event) {
+                const form = event.target;
+                const data = {};
+                for (let i = 0; i < form.length; i++) {
+                    const item = form[i];
+                    const name = item.name;
+                    const value = typeof item.value !== 'undefined' ? item.value : item.checked;
+                    if (name) data[name] = value;
+                }
+                try {
+                    await axios.post(form.action, data);
+                    alert("Saved!");
+                } catch (error) {
+                    console.error(error);
+                }
             }
-
         }
     }
 </script>
