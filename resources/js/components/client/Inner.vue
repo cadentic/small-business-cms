@@ -3,32 +3,32 @@
     <topBar></topBar>
     
     <section>
-
-<div :style="'background:' + init_data.section1.bgcolor + ';'" class="dmc-anchor-info dmr base-blowout clip-content no-border" data-config-metrics-group="Anchor, Info" data-config-metrics-title="Get network speed, security, and peace of mind">
-  <div class="row full" data-owner="ID">
-    <div class="col full " style='text-align: center; color: #54555E;'>
+       
+<div :style="'background:' + init_data.section1.bgcolor + ';'" class="dmc-anchor-info dmr base-blowout clip-content no-border" :data-config-metrics-group= init_data.section1.data-config-metrics-group :data-config-metrics-title=  init_data.section1.data-config-metrics-group>
+  <div class="row full" :data-owner= init_data.section1.data-owner>
+    <div class="col full " :style= init_data.section1.div1S>
   
-            <h1 id="fw-pagetitle" class="" data-owner="ID" style='font-size: 4vw;  text-align: left; margin-left: 5%; font-family: Cabrion light'>{{ init_data.section1.title }}</h1>
+            <h1 id="fw-pagetitle" class="":data-owner= init_data.section1.data-owner :style = init_data.section1.h11S>{{ init_data.section1.title }}</h1>
     
     </div>
   </div>
-    <div class="row halves" data-owner="ID" style='color: #54555E'>
+    <div class="row halves" :data-owner= init_data.section1.data-owner :style= init_data.section1.div2S>
         <div class="col-md-6 col-sm-12 half">
       
             <div class="info-image">
       
   
   <!--DM Image-->
-  <div class="dm-img init loaded" :src="init_data.section1.image_wrap" alt="Software-Defined Access" title="Software-Defined Access">
+  <div class="dm-img init loaded" :src="init_data.section1.image_wrap" :alt= init_data.section1.image_wrap_alt :title= init_data.section1.image_wrap_title>
     
-  <img :src="init_data.section1.image" alt="Software-Defined Access" title="Software-Defined Access"></div>
+  <img :src="init_data.section1.image" :alt= init_data.section1.image_wrap_alt :title= init_data.section1.image_wrap_title></div>
 
             </div>
         
         </div>
         <div class="col-md-6 col-sm-12 half">
             
-            <div class="info-content clip color_FFFFFF" data-more-text="Show more" style=""><div class="clip-wrap">
+            <div class="info-content clip color_FFFFFF" :data-more-text= init_data.section1.data-more-text style=""><div class="clip-wrap">
                 
                 <h2 :style="'font-size:' + init_data.section1.sub_title.font_size + ';' + 'color:' + init_data.section1.sub_title.color + ';' + 'font-family:' + init_data.section1.sub_title.font_family + ';'">    
                       {{ init_data.section1.sub_title.text }}</h2>
@@ -42,15 +42,12 @@
                 
             </div><div class="clip-over"><p><a href="javascript:void(0)">{{ init_data.section1.show_more.text }}</a></p></div></div>
               
-      <ul class="cta">
-                
-                
-                      
+      <ul class="cta">   
                 <li>
                         
-                    <div class="lightbox-link" data-lightbox-id="lightbox-sd-access">
+                    <div class="lightbox-link" :data-lightbox-id= init_data.section1.data-lightbox-id>
                                 
-                        <a class="dmc-button atlantic pal-1" :href="init_data.section1.button[0].link" data-config-metrics-item="Watch overview" style=''>
+                        <a class="dmc-button atlantic pal-1" :href="init_data.section1.button[0].link" :data-config-metrics-item= init_data.section1.data-config-metrics-item style=''>
                                 
                                     {{ init_data.section1.button[0].text }}
                                 
@@ -62,8 +59,8 @@
                       
                 <li>
                         
-                        <a style='background:#7DD14C ;color: #54555E' class="dmc-button atlantic pal-5" :href="init_data.section1.button[1].link" data-config-metrics-item="Read news blog">
-                                
+                        <a :style=  init_data.section1.a1S class="dmc-button atlantic pal-5" :href="init_data.section1.button[1].link" :data-config-metrics-item= init_data.section1.data-config-metrics-item>
+                            
                                     {{ init_data.section1.button[1].text }}
                                 
                         </a>
@@ -151,11 +148,11 @@
                       <div class="cardWrap"> 
                           <a class="card" :href="item.link">
                               <div class="front blue-p-blue">
-                                  <img class="img-responsive" :src="item.image" alt="Artificial Intelligence Data Scientist" title="Artificial Intelligence Data Scientist">
+                                  <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
                                   <p>{{ item.description }}</p>
                               </div>
                               <div class="back p-blue-d-gray">
-                                  <img class="img-responsive" :src="item.image" alt="Artificial Intelligence Data Scientist" title="Artificial Intelligence Data Scientist">
+                                  <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
                                   <div>
                                       <p>{{ item.description }}</p>
                                       <button class="button">{{ item.button_text }}</button>
@@ -173,11 +170,11 @@
                       <div class="cardWrap"> 
                           <a class="card" :href="item.link">
                               <div class="front blue-p-blue">
-                                  <img class="img-responsive" :src="item.image" alt="Artificial Intelligence Data Scientist" title="Artificial Intelligence Data Scientist">
+                                  <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
                                   <p>{{ item.description }}</p>
                               </div>
                               <div class="back p-blue-d-gray">
-                                  <img class="img-responsive" :src="item.image" alt="Artificial Intelligence Data Scientist" title="Artificial Intelligence Data Scientist">
+                                  <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
                                   <div>
                                       <p>{{ item.description }}</p>
                                       <button class="button">{{ item.button_text }}</button>
@@ -218,7 +215,7 @@
                                   </div>
                                   <div class="back text-center itemS" style="min-height: 618px;">
                                       <div class="back-logo center-block img-circle ">
-                                          <img :src="item.image" class="img-responsive" alt="img">
+                                          <img :src="item.image" class="img-responsive" :alt= init_data.section8.alt>
                                       </div>
                                       <span class="name" >{{ item.name }}</span>
                                       <p class="designation" :style="'font-size: ' + item.font_size">{{ item.title }}</p>
@@ -252,7 +249,7 @@
                               <v-col cols="sm" v-for="(item, id) in init_data.section9.container1" :key="id">
                                   <div class="hover-menu">
                                       <a :href="item.link" class="overlay-btn" :aria-label="item.description + ' in ' + item.title + ' Careers'"></a>
-                                      <img :src="item.image" alt="SOFTWARE" class="img-responsive"> <span></span>
+                                      <img :src="item.image" :alt= init_data.section9.alt class="img-responsive"> <span></span>
                                       <div class="profile">
                                           <h3>{{ item.title }}</h3>
                                           <button class="btn btn-success">{{ item.description }}</button>
@@ -267,7 +264,7 @@
                               <v-col cols="3" v-for="(item, id) in init_data.section9.container2" :key="id">
                                   <div class="hover-menu">
                                       <a :href="item.link" class="overlay-btn" :aria-label="item.description + ' in ' + item.title + ' Careers'"></a>
-                                      <img :src="item.image" alt="SOFTWARE" class="img-responsive"> <span></span>
+                                      <img :src="item.image" :alt=  init_data.section9.alt class="img-responsive"> <span></span>
                                       <div class="profile">
                                           <h3>{{ item.title }}</h3>
                                           <button class="btn btn-success">{{ item.description }}</button>
@@ -282,7 +279,7 @@
                               <v-col cols="sm" v-for="(item, id) in init_data.section9.container3" :key="id">
                                   <div class="hover-menu">
                                       <a :href="item.link" class="overlay-btn" :aria-label="item.description + ' in ' + item.title + ' Careers'"></a>
-                                      <img :src="item.image" alt="SOFTWARE" class="img-responsive"> <span></span>
+                                      <img :src="item.image" :alt=  init_data.section9.alt class="img-responsive"> <span></span>
                                       <div class="profile">
                                           <h3>{{ item.title }}</h3>
                                           <button class="btn btn-success">{{ item.description }}</button>
@@ -318,7 +315,7 @@
           </div>
           <div class="divide40"></div>
           <div class="socialico">
-              <a class="wow rollIn" data-wow-duration="2.5s" data-wow-delay=".2s" :href="item.link" :style="'background:' + item.bgcolor" v-for="(item, id) in init_data.footer.socialicon" :key="id"><i :class="item.class"></i></a>
+              <a class="wow rollIn" data-wow-duration= init_data.footer.data-wow-duration data-wow-delay= init_data.footer.data-wow-delay :href="item.link" :style="'background:' + item.bgcolor" v-for="(item, id) in init_data.footer.socialicon" :key="id"><i :class="item.class"></i></a>
           </div>
       </footer>
       <div class="copyright">

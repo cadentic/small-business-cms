@@ -30,7 +30,19 @@
                 "text": "Read news blog",
                 "link": "https://blogs.cisco.com/enterprise/extending-intent-based-networking-across-domains"
             }
-        ]
+        ],
+        "div1S":  "text-align: center; color: #54555E;",
+        "h11S":"font-size: 4vw;  text-align: left; margin-left: 5%; font-family: Cabrion light",
+        "div2S": "color: #54555E",
+        "a1S": "background:#7DD14C ;color: #54555E",
+        "data-config-metrics-group": "Anchor, Info", 
+        "data-config-metrics-title": "Get network speed, security, and peace of mind",
+        "data-owner": "ID",
+        "image_wrap_alt":  "Software-Defined Access",
+        "image_wrap_title": "Software-Defined Access",
+        "data-more-text": "Show more",
+        "data-lightbox-id": "lightbox-sd-access",
+        "data-config-metrics-item": "Watch overview"
     },
     "section2": {
         "nav": [
@@ -119,6 +131,8 @@
     },
     "section6": {
         "id": "study",
+        "alt": "Artificial Intelligence Data Scientist",
+        "title": "Artificial Intelligence Data Scientist",
         "container1": [
             {
                 "link": "/page/show/ai-jobs-data-science",
@@ -177,6 +191,7 @@
     },
     "section8": {
         "class": "job_like_mine",
+        "alt": "img",
         "style": {
             "bgcolor": "#E6F5FF",
             "margin_left": "5.8%",
@@ -214,6 +229,7 @@
     },
     "section9": {
         "id": "card-blocks",
+        "alt": "SOFTWARE",
         "style": {
             "padding_top": "90px",
             "width": "90%",
@@ -309,6 +325,8 @@
     },
     "footer": {
         "class": "secfooter",
+        "data-wow-duration": "2.5s", 
+        "data-wow-delay":".2s",
         "style": {
             "bgcolor": "#E6F5FF"
         },

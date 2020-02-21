@@ -24,7 +24,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="soft-define-img wow fadeIn">
-						<img :src="init_data.section1.image" alt="Softwar Define Access">
+						<img :src="init_data.section1.image" :alt= init_data.section1.alt>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -96,7 +96,7 @@
 		<div class="container">
 			<!-- section title -->
 			<div class="sd-access section-title">
-				<h2>init_data.section3.title</h2>
+				<h2>{{init_data.section3.title}}</h2>
 			</div>
 			<div class="row">
 				<!-- single sd-access start-->

@@ -77,7 +77,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../../node_
 
 
 // module
-exports.push([module.i, "\n#core-footer {\n  z-index: 0;\n}\n", ""]);
+exports.push([module.i, "\n#core-footer {\r\n  z-index: 0;\n}\r\n", ""]);
 
 // exports
 

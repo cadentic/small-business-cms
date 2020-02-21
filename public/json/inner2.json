@@ -29,6 +29,8 @@
         "description1": "Ease your network management worries. Cisco Software-Defined Access (SD-Access) gives you a single network fabric. You can set policy-based automation for users, devices, and things.",
         "description2": "Provide access to any application, without compromising on security. All while gaining awareness of what is hitting your network.",
         "description3": "And with automatic segmentation of users, devices, and applications, you can deploy and secure services faster.",
+        "alt": "Softwar Define Access",
+        "type": "video/mp4",
         "button1": {
             "text": "Watch video",
             "link": "#",
