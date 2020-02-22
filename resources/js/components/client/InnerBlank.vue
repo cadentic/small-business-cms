@@ -34,48 +34,35 @@
       <v-container>
         <v-row>
           <v-col>
-            <h3>NDEDGE INFORMATICS PRIVATE LIMITED COMPANY PROFILE</h3>
+            <h3>{{init_data.section1.h3_1}}</h3>
 
-            <ul type="disc" style="list-style-type: disc;">
-              <li style="font-size:20px; font-weight:bold;">INTRODUCTION</li>
+            <ul type="disc" :style= init_data.section1.style_1>
+              <li style="font-size:20px; font-weight:bold;">{{init_data.section1.li}}</li>
             </ul>
             <p>
-              Ndedge Informatics Private Limited is a leading global multi-skilled IT solution company with competent workforce and strong presence in India. With several years of expertise, quality delivery of service and quality integrated methodologies; Ndedge Informatics Private Limited have been able to carve out a niche for themselves as one of the most notable trailblazers in the IT Industry in India.
-              <br />Ndedge Informatics Private Limited uses an extremely competent global delivery method in providing quality-based solutions and professional services to its esteemed clients.
-              <br />Our strongest advantage is our excellent pool of our skilled workforce; our skilled resource is recruited from the finest the industry can boast of in India. We can boast of a vibrant skilled resource that provides a vibrant combination of technological skills and strategic IT consultancy services.
+              {{init_data.section1.li}}
             </p>
           </v-col>
         </v-row>
         <v-row>
           <v-col col="12">
-            <h3>Ndedge Informatics Private Limited offers</h3>
-            <ul type="disc" style="list-style-type: disc;">
-              <li>a full range of Oracle database administration configuration and support including or excluding real application cluster and dataguard.</li>
-              <li>Oracle cloud infrastructure configuration and support.</li>
-              <li>Virtual environment to cloud migration by Ravello.</li>
-              <li>BP for XaaS, DB2,laaS,Paas, and SaaS-enabled business environments ,</li>
-              <li>Setting up or implementing on-premise environments with Oracle data appliances,</li>
-              <li>zero downtime migration for Oracle databases,</li>
-              <li>licensing for different OS, like Oracle Solaris and Oracle Linux ,Easy to use architecture for Oracle E-business suite,</li>
-              <li>On-premise to cloud migration,</li>
-              <li>Providing server hardware and network components from different vendors, Oracle Partners Network.</li>
-              <li>Support and configuration oracle sign-on.</li>
+            <h3>{{init_data.section1.h3_2}}</h3>
+            <ul type="disc" v-for="item1 in init_data.section1.ul" :key="item1.id" :style= init_data.section1.style_1>
+              <li>{{item1}}</li>
             </ul>
 
             <h4
               style="margin-bottom:30px;"
-            >Ndedge Informatics Private Limited has a solid client base that spans across several industries; in our focus market segment we have accumulated an enviable list of clients because of our customer centric approach.</h4>
+            >{{init_data.section1.h4_1}}</h4>
           </v-col>
         </v-row>
         <v-row>
           <v-col col="12">
-            <h4>Ndedge Informatics Private Limited competitive advantage and source of value to our esteemed client stems not only from our expertise in rendering IT professional services, but from several aspect of our business model which consist of</h4>
+            <h4>{{init_data.section1.h4_2}}</h4>
 
-            <ul type="disc" style="list-style-type: disc;">
-              <li>technology and business competency centers,</li>
-              <li>rigorous programme and project management,</li>
-              <li>state of the art computing and communication infrastructure, client-centric approach account management,</li>
-              <li>Innovative offshore development approach and business continuity preparedness.We remain focus on our prime objective which is delivering high quality solutions to our clients</li>
+            <ul type="disc" v-for="item1 in init_data.section1.ul_2" :key="item1.id" style="list-style-type: disc;">
+              <li>{{item1}}</li>
+      
             </ul>
           </v-col>
         </v-row>
