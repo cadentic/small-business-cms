@@ -34,7 +34,18 @@
             "link": "#",
             "style": {
                 "color": "white"
-            }
+            },
+        "img1": "assets/images/img1.png",
+        "img2": "assets/images/img2.png",
+        "h2t": "Would you like to change the default language?",
+        "a1": "Select Now",
+        "a2": "No Thanks",
+        "li1": "Top Solution",
+        "li2": "Partners Info",
+        "li3": "Whats New",
+        "li4": "Happy Clients",
+        "li5": "Other Division",
+        "alt": "Softwar Define Access"
         },
         "button2": {
             "text": "Read news",
@@ -110,8 +121,11 @@
                 "font_size": "1.5vw",
                 "color": "#000",
                 "padding_bottom": "20px"
-            }
+            },
+        "style2": "list-style-type: disc;"
+        
         }
+        
     },
     "section4": {
         "class": "hg content",
@@ -185,7 +199,9 @@
                 "description": "Artificial Intelligence Residency",
                 "button_text": "I'm Interested"
             }
-        ]
+        ],
+        "alt":"Artificial Intelligence Data Scientist",
+        "title":"Artificial Intelligence Data Scientist"
     },
     "section7": {
         "id": "pb4",
@@ -326,7 +342,8 @@
                 "title": "Connectivity",
                 "description": "I'm interested"
             }
-        ]
+        ],
+        "alt": "SOFTWARE"
     },
     "footer": {
         "class": "secfooter",
@@ -395,6 +412,8 @@
                 "link": "#"
             }
         ],
-        "copyright": "2019 Copyright"
+        "copyright": "2019 Copyright",
+        "data-wow-duration": "2.5s", 
+        "data-wow-delay": ".2s"
     }
 }

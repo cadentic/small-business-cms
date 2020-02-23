@@ -7,10 +7,10 @@
 			<!-- sidebar -->
 	<div class="sidebar-menu">
 		<ul>
-			<li><a href="#"><i class="fa fa-users"></i> Service</a></li>
-			<li><a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> ROI Calculator</a></li>
-			<li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Upgrade Guide</a></li>
-			<li><a href="#"><i class="fa fa-desktop"></i> Software Demo</a></li>
+			<li><a href="#"><i class="fa fa-users"></i> {{init_data.sidebar[0].text}}</a></li>
+			<li><a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> {{init_data.sidebar[1].text}}</a></li>
+			<li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i> {{init_data.sidebar[2].text}}</a></li>
+			<li><a href="#"><i class="fa fa-desktop"></i> {{init_data.sidebar[3].text}}</a></li>
 		</ul>
 	</div>
 

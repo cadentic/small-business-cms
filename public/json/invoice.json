@@ -128,6 +128,32 @@
       }
     ],
     "total_amount": 0,
-    "date": "Fri Jan 24 2020 20:35:49 GMT+0545 (Nepal Time)"
+    "date": "Fri Jan 24 2020 20:35:49 GMT+0545 (Nepal Time)",
+    "div_1": "Invoice created.",
+    "div_2": " GSTIN : 1921928201382 <br> CIN : UUISYF9873IOUS308",
+    "div_3": "cadentic <br> Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "h2_1": "Cadentic",
+    "h1_1": "#Invoice",
+    "h3_1": "Total amount :",
+    "col_1": "BILLING TO",
+    "col_2": "ISSUED DATE",
+    "col_3": "EXPIRY DATE",
+    "col_4": " BILLING ADDRESS",
+    "text_1": "SHIPPING ADDRESS",
+    "text_2": "PLACE OF SUPPLY",
+    "text_3": "TAX IN %",
+    "thead": [
+      "DESCRIPTION",
+      "RATE/ITEM",
+      "QUANTITY",
+      "TOTAL"
+    ],
+    "btn_1": " <v-icon>mdi-check</v-icon> Finalize Issue",
+    "btn_2": "<v-icon>mdi-content-save</v-icon> Save invoice",
+    "btn_3": " <v-icon>mdi-close</v-icon> Delete Invoice",
+    "btn_4": "Enable partial payment <v-icon>mdi-radiobox-blank",
+    "btn_5": "Change invoice label <v-icon>mdi-arrow-right</v-icon>",
+    "ico_1": "<v-icon>mdi-delete</v-icon>",
+    "ico_2": "<v-icon>mdi-plus</v-icon> Add item"
   }
 ]

@@ -5,32 +5,30 @@
       <v-container>
         <div v-if="success">
           <v-alert type="success" outlined>
-            Invoice created.
+            {{init_data.div_1}}
           </v-alert>
         </div>
         <v-row>
           <v-col cols="12" sm="8">
             <v-card class="pa-5">
               <v-form ref="form" v-model="valid">
-                <h2>Cadentic</h2>
+                <h2>{{init_data.h2_1}}</h2>
                 <div>
-                  GSTIN : 1921928201382
-                  <br>
-                  CIN : UUISYF9873IOUS308
+                  {{init_data.div_2}}
                 </div>
                 <div>
-                  <h1 style="display:inline-block !important;">Invoice # <v-text-field :rules="mainRule" style="display:inline-block !important;" v-model="invoice_detail.invoice_no" label="Enter invoice number"></v-text-field></h1>
+                  <h1 style="display:inline-block !important;">{{init_data.h1_1}} <v-text-field :rules="mainRule" style="display:inline-block !important;" v-model="invoice_detail.invoice_no" label="Enter invoice number"></v-text-field></h1>
                 </div>
                 <div>
                   <v-textarea label="Enter a Brief Description or Summary" rows="2" :auto-grow="auto_grow" v-model="invoice_detail.description"></v-textarea>
                 </div>
                 <v-row>
                   <v-col cols="12" sm="6">
-                    BILLING TO
+                    {{init_data.col_1}}
                     <v-text-field :rules="mainRule" label="Select a customer" v-model="invoice_detail.billing_detail.customer"></v-text-field>
                     <v-row>
                       <v-col>
-                        ISSUED DATE
+                        {{init_data.col_2}}
                         <v-menu
                         ref="menu_issued"
                         v-model="menu_issued"
@@ -52,7 +50,7 @@
                       </v-menu>
                       </v-col>
                       <v-col>
-                        EXPIRY DATE
+                       {{init_data.col_3}}
                         <v-menu
                         ref="menu_expiry"
                         v-model="menu_expiry"
@@ -76,13 +74,13 @@
                     </v-row>
                   </v-col>
                   <v-col cols="12" sm="6">
-                    BILLING ADDRESS
+                    {{init_data.col_4}}
                     <v-text-field :rules="mainRule" label="Enter Billing Address" v-model="invoice_detail.billing_detail.billing_address"></v-text-field>
-                    SHIPPING ADDRESS
+                    {{init_data.text_1}}
                     <v-text-field :rules="mainRule" label="Enter Shipping Address" v-model="invoice_detail.billing_detail.shipping_address"></v-text-field>
-                    PLACE OF SUPPLY
+                   {{init_data.text_2}}
                     <v-text-field :rules="mainRule" label="Enter place of supply" v-model="invoice_detail.billing_detail.place_of_supply"></v-text-field>
-                    TAX IN %
+                    {{init_data.text_3}}
                     <v-text-field label="Tax" v-model="invoice_detail.tax"></v-text-field>
                   </v-col>
                 </v-row>
@@ -92,12 +90,8 @@
                 <div>
                   <v-simple-table>
                     <template v-slot:default>
-                      <thead>
-                        <th class="text-left">DESCRIPTION</th>
-                        <th class="text-left">RATE/ITEM</th>
-                        <th class="text-left">QUANTITY</th>
-                        <th class="text-left">TOTAL</th>
-                        <th></th>
+                      <thead v-for= "item_1 in init_data.thead" :key= "item_1.id">
+                        <th class="text-left">{{item_1}}</th>
                       </thead>
                       <tbody>
                         <tr v-for="(i,index) in items" :key="index">
@@ -106,13 +100,13 @@
                           <td><v-text-field type="number" v-model="i.rate"></v-text-field></td>
                           <td><v-text-field type="number" v-model="i.quantity"></v-text-field></td>
                           <td>{{get_total(i)}}</td>
-                          <td><v-btn @click="delete_item(index)" color="red" icon><v-icon>mdi-delete</v-icon></v-btn></td>
+                          <td><v-btn @click="delete_item(index)" color="red" icon>{{init_data.ico_1}}</v-btn></td>
                         </tr>
                       </tbody>
                     </template>
                   </v-simple-table>
-                  <v-btn text color="blue" @click="add_item"> <v-icon>mdi-plus</v-icon> Add item</v-btn>
-                  <h3 class="text-right">Total amount : {{total_amount()}}</h3>
+                  <v-btn text color="blue" @click="add_item">{{init_data.ico_2}}</v-btn>
+                  <h3 class="text-right">{{init_data.h3_1}} {{total_amount()}}</h3>
                 </div>
                 <div>
                   <br>
@@ -129,25 +123,23 @@
               </v-form>
               <br><br>
               <div class="text-center">
-                cadentic
-                <br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                {{init_data.div_3}} 
               </div>
             </v-card>
           </v-col>
           <v-col cols="12" sm="4">
               <div class="text-center">
-                <v-btn block tile large color="primary accent-4"> <v-icon>mdi-check</v-icon> Finalize Issue</v-btn>
+                <v-btn block tile large color="primary accent-4"> {{init_data.btn_1}}</v-btn>
                 <br>
-                <v-btn block  tile large @click="submit"> <v-icon>mdi-content-save</v-icon> Save invoice</v-btn>
-                <v-btn block large tile @click="clearform()"> <v-icon>mdi-close</v-icon> Delete Invoice</v-btn>
+                <v-btn block  tile large @click="submit">{{init_data.btn_2}}</v-btn>
+                <v-btn block large tile @click="clearform()"> {{init_data.btn_3}}</v-btn>
               </div>        
               <br>
               <div>
                 <h4>Settings :</h4>
                 <div class="text-center">
-                  <v-btn tile block large>Enable partial payment <v-icon>mdi-radiobox-blank</v-icon></v-btn>
-                  <v-btn tile block large>Change invoice label <v-icon>mdi-arrow-right</v-icon></v-btn>
+                  <v-btn tile block large>{{init_data.btn_4}}</v-btn>
+                  <v-btn tile block large>{{init_data.btn_5}}</v-btn>
                 </div>
               </div>
           </v-col>

@@ -14,17 +14,17 @@
         <section id="topextsec">
           <div class="leftext col-lg-4 col-md-4 col-sm-4">
             <div class="imgext1">
-              <img src="assets/images/img1.png" alt="" />
+              <img :src= init_data.img1 alt="" />
             </div>
             <div class="imgextt2">
-              <img src="assets/images/img2.png" alt="" />
+              <img :src= init_data.img2 alt="" />
             </div>
 
           </div>
           <div class="rightext col-lg-7 col-md-7 col-sm-7">
-            <h2>Would you like to change the default language?</h2>
-            <a href="">Select Now</a>
-            <a href="">No Thanks</a>
+            <h2>{{init_data.h2t}}</h2>
+            <a href="">{{init_data.a1}}</a>
+            <a href="">{{init_data.a2}}</a>
 
           </div>
           <div class="rightico col-lg-1 col-md-1 col-sm-1">
@@ -36,11 +36,11 @@
           <nav class="extnav">
 
             <ul>
-              <li><a href="#topsolu">Top Solution</a></li>
-              <li class="bdr"><a href="">Partners Info</a></li>
-              <li class="bdr"><a href="">Whats New</a></li>
-              <li class="bdr"><a href="">Happy Clients</a></li>
-              <li class="bdr"><a href="">Other Division</a></li>
+              <li><a href="#topsolu">{{init_data.li1}}</a></li>
+              <li class="bdr"><a href="">{{init_data.li2}}</a></li>
+              <li class="bdr"><a href="">{{init_data.li3}}</a></li>
+              <li class="bdr"><a href="">{{init_data.li4}}</a></li>
+              <li class="bdr"><a href="">{{init_data.li5}}</a></li>
 
             </ul>
           </nav>
@@ -59,7 +59,7 @@
               <div class="row">
                   <div class="col-md-6">
                       <div class="soft-define-img wow fadeIn">
-                          <img :src="init_data.section1.image" alt="Softwar Define Access">
+                          <img :src="init_data.section1.image" :alt= init_data.section1.alt>
                       </div>
                   </div>
                   <div class="col-md-6">
@@ -120,7 +120,7 @@
 
         <div :class="init_data.section3.class" :id="init_data.section3.id" :style="'height:' + init_data.section3.style.height + '; transition:' + init_data.section3.style.transition + '; background:' + init_data.section3.style.background + '; padding-top:' + init_data.section3.style.padding_top">
             <h3 :style="'font-size:' + init_data.section3.title.style.font_size + '; color:' + init_data.section3.title.style.color">{{ init_data.section3.title.text }}</h3>
-            <ul type="disc" style="list-style-type: disc;" >
+            <ul type="disc" :style= init_data.section3.style >
                 <li v-for="(item, id) in init_data.section3.contents" :key="id">{{ item }}</li>
             </ul>
             <h4 :style="'font-size:' + init_data.section3.title_sub.style.font_size + '; color:' + init_data.section3.title_sub.style.color + '; margin-bottom:' + init_data.section3.title_sub.style.margin_bottom + '; padding-bottom:' + init_data.section3.title_sub.style.padding_bottom">{{ init_data.section3.title_sub.text }}</h4>
@@ -128,7 +128,7 @@
         
         <div :class="init_data.section4.class" :id="init_data.section4.id" :style="'height:' + init_data.section4.style.height + '; transition:' + init_data.section4.style.transition + '; background:' + init_data.section4.style.background + '; padding-top:' + init_data.section4.style.padding_top + '; font-size:' + init_data.section4.style.font_size">
             <h3 :style="'font-size:' + init_data.section4.title.style.font_size + '; color:' + init_data.section4.title.style.color + '; padding-top:' + init_data.section4.title.style.padding_top">{{ init_data.section4.title.text }}</h3>
-            <ul type="disc" style="list-style-type: disc;" >
+            <ul type="disc" :style= init_data.section3.style2  >
                 <li v-for="(item, id) in init_data.section4.contents" :key="id">{{ item }}</li>
             </ul>
         </div>
@@ -140,11 +140,11 @@
                       <div class="cardWrap"> 
                           <a class="card" :href="item.link">
                               <div class="front blue-p-blue">
-                                  <img class="img-responsive" :src="item.image" alt="Artificial Intelligence Data Scientist" title="Artificial Intelligence Data Scientist">
+                                  <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
                                   <p>{{ item.description }}</p>
                               </div>
                               <div class="back p-blue-d-gray">
-                                  <img class="img-responsive" :src="item.image" alt="Artificial Intelligence Data Scientist" title="Artificial Intelligence Data Scientist">
+                                  <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
                                   <div>
                                       <p>{{ item.description }}</p>
                                       <button class="button">{{ item.button_text }}</button>
@@ -162,11 +162,11 @@
                       <div class="cardWrap"> 
                           <a class="card" :href="item.link">
                               <div class="front blue-p-blue">
-                                  <img class="img-responsive" :src="item.image" alt="Artificial Intelligence Data Scientist" title="Artificial Intelligence Data Scientist">
+                                  <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
                                   <p>{{ item.description }}</p>
                               </div>
                               <div class="back p-blue-d-gray">
-                                  <img class="img-responsive" :src="item.image" alt="Artificial Intelligence Data Scientist" title="Artificial Intelligence Data Scientist">
+                                  <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
                                   <div>
                                       <p>{{ item.description }}</p>
                                       <button class="button">{{ item.button_text }}</button>
@@ -256,7 +256,7 @@
                               <v-col cols="3" v-for="(item, id) in init_data.section9.container2" :key="id">
                                   <div class="hover-menu">
                                       <a :href="item.link" class="overlay-btn" :aria-label="item.description + ' in ' + item.title + ' Careers'"></a>
-                                      <img :src="item.image" alt="SOFTWARE" class="img-responsive"> <span></span>
+                                      <img :src="item.image" :alt= init_data.section9.alt class="img-responsive"> <span></span>
                                       <div class="profile">
                                           <h3>{{ item.title }}</h3>
                                           <button class="btn btn-success">{{ item.description }}</button>
@@ -271,7 +271,7 @@
                               <v-col cols="sm" v-for="(item, id) in init_data.section9.container3" :key="id">
                                   <div class="hover-menu">
                                       <a :href="item.link" class="overlay-btn" :aria-label="item.description + ' in ' + item.title + ' Careers'"></a>
-                                      <img :src="item.image" alt="SOFTWARE" class="img-responsive"> <span></span>
+                                      <img :src="item.image" :alt= init_data.section9.alt class="img-responsive"> <span></span>
                                       <div class="profile">
                                           <h3>{{ item.title }}</h3>
                                           <button class="btn btn-success">{{ item.description }}</button>
@@ -307,7 +307,7 @@
           </div>
           <div class="divide40"></div>
           <div class="socialico">
-              <a class="wow rollIn" data-wow-duration="2.5s" data-wow-delay=".2s" :href="item.link" :style="'background:' + item.bgcolor" v-for="(item, id) in init_data.footer.socialicon" :key="id"><i :class="item.class"></i></a>
+              <a class="wow rollIn" :data-wow-duration= init_data.footer.data-wow-duration :data-wow-delay= init_data.footer.data-wow-delay :href="item.link" :style="'background:' + item.bgcolor" v-for="(item, id) in init_data.footer.socialicon" :key="id"><i :class="item.class"></i></a>
           </div>
       </footer>
       <div class="copyright">
