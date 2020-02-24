@@ -1,0 +1,22 @@
+{
+    "title": "Opt in to WhatsApp notifications and stay connected with GoDaddy",
+    "items": [
+        "Renewed notices",
+        "Activation and how to messages",
+        "Product news and updates",
+        "Accounts informations and alerts",
+        "Connect with GoDaddy Guides"
+    ],
+    "paragraph": "To get started, opt in below.",
+    "subtitle": "You are currently opted in to receive Whatsapp communications",
+    "phone": {
+        "label": "Primary Phone(*)",
+        "placeholder": "+91 776027 16 107"
+    },
+    "button1": "Update",
+    "button2": "Opt Out",
+    "notes": [
+        "* Don't include spaces",
+        "** Change to this number will be reflected in your GoDaddy account"
+    ]
+}

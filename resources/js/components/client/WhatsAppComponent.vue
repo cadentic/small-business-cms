@@ -5,40 +5,35 @@
         <v-row>
            <v-col cols=6>
 
-             <v-layout row> 
+             <v-layout row>
               <v-flex>
-                <h1>Opt in to WhatsApp notifications and stay connected with GoDaddy</h1>
+                  <h1>{{ data.title }}</h1>
                 <ul>
-                  <v-list-item> <v-icon size="5">mdi-checkbox-blank-circle </v-icon> &nbsp; Renewed notices</v-list-item>
-                  <v-list-item> <v-icon size="5">mdi-checkbox-blank-circle </v-icon> &nbsp; Activation and how to messages</v-list-item>
-                  <v-list-item> <v-icon size="5">mdi-checkbox-blank-circle </v-icon> &nbsp; Product news and updates</v-list-item>
-                  <v-list-item> <v-icon size="5">mdi-checkbox-blank-circle </v-icon> &nbsp; Accounts informations and alerts</v-list-item>
-                  <v-list-item> <v-icon size="5">mdi-checkbox-blank-circle </v-icon> &nbsp; Connect with GoDaddy Guides</v-list-item>
+                    <v-list-item v-for="item in data.items" :key="item"> <v-icon size="5">mdi-checkbox-blank-circle </v-icon> &nbsp; {{ item }}</v-list-item>
                 </ul>
 
-                <p> To get started, opt in below. </p>
+                <p>{{ data.paragraph }}</p>
                 <hr>
-                <h4> You are currently opted in to receive Whatsapp communications</h4>
+                <h4>{{ data.subtitle }}</h4>
               </v-flex>
-             </v-layout> 
+             </v-layout>
 
-             <v-layout row> 
+             <v-layout row>
                <v-flex xs-12>
-                 <v-text-field v-model="phone" @change="phoneNumberChanged" label="Primary Phone(*)" placeholder="+91 776027 16 107"></v-text-field>
+                 <v-text-field v-model="phone" @change="phoneNumberChanged" :label="data.phone.label" :placeholder="data.phone.placeholder"></v-text-field>
                </v-flex>
                <v-flex p>
-                 <v-btn tile dark>Update</v-btn>
+                   <v-btn tile dark>{{ data.button1 }}</v-btn>
                </v-flex>
              </v-layout>
 
              <v-layout row>
-               <v-btn tile outlined>Opt Out</v-btn>
+                 <v-btn tile outlined>{{ data.button2 }}</v-btn>
              </v-layout>
 
              <v-layout row>
                 <ul style="padding-top: 20px;">
-                  <li><span>* Don't include spaces</span></li>
-                  <li><span>** Change to this number will be reflected in your GoDaddy account</span></li>
+                    <li v-for="(item, index) in data.notes" :key="index"><span>{{ item }}</span></li>
                 </ul>
              </v-layout>
 
@@ -48,8 +43,8 @@
                 <img style="display:block; height: 100vh;" src="./assets/Whatsapp/image_whasapp.png" alt="Opt in to whatsapp notification">
              </div>
            </v-col>
-        </v-row> 
-    </v-container>    
+        </v-row>
+    </v-container>
 
     <footer :class="init_data.footer.class" :style="'background:' + init_data.footer.style.bgcolor" >
         <div class="secpage">
@@ -92,11 +87,12 @@ export default {
     offsetTop: 0,
     topbarStyle: "background:#fff; padding:0px 130px; border-color:#fff;",
     init_data: {},
+    data: {},
     error: {},
     phone: "",
-    
+
   }),
-  created() {
+  mounted() {
     axios.get('json/innerblank.json')
     .then(response => {
       this.init_data = response.data;
@@ -104,14 +100,21 @@ export default {
     .catch(e => {
       this.errors.push(e)
     });
-    
+    axios.get('json/whatsapp.json')
+    .then(response => {
+      this.data = response.data;
+    })
+    .catch(e => {
+      this.errors.push(e)
+    });
+
   },
   methods: {
     // Trigger the input changed event
     phoneNumberChanged() {
       console.log(this.phone);
     },
-    
+
   }
 };
 </script>
