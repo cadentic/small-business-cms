@@ -3,29 +3,29 @@
         <toolbar></toolbar>
         <div>
             <v-container>
-                <h2 class="bold">Hi {{username}}, how can we help you ?</h2>
+                <h2 class="bold">{{ faq.title }}</h2>
                 <v-row class="nowrap-overflow">
-                    <v-col cols=11> 
-                        <v-text-field style="border-radius: 0 !important;" type="text" height="10" outlined clearable>
+                    <v-col cols=11>
+                        <v-text-field :style="faq.search.style" type="text" :height="faq.search.height" outlined clearable>
                             <template v-slot:append-outer>
-                                <v-btn large tile color="success" id="search-btn" elevation="0">
-                                    <v-icon >mdi-magnify</v-icon>
+                                <v-btn large tile :color="faq.button.color" id="search-btn" :elevation="faq.button.elevation">
+                                    <v-icon >{{ faq.button.icon }}</v-icon>
                                 </v-btn>
                             </template>
                         </v-text-field>
                     </v-col>
-                </v-row> 
+                </v-row>
                 <v-row class="nowrap-overflow">
-                    <v-col cols=8> 
-                        <h3>Popular questions</h3>
+                    <v-col cols=8>
+                        <h3>{{ popular_questions_list.title }}</h3>
                         <ul class="popular-question-list">
-                            <li v-for="(question, key) in popular_questions_list" :key="key">
+                            <li v-for="(question, key) in popular_questions_list.items" :key="key">
                                 <a :href="question.link">{{ question.content }}</a></li>
-                            
+
                         </ul>
                     </v-col>
                 </v-row>
-            </v-container>    
+            </v-container>
 
             <footer :class="init_data.footer.class" :style="'background:' + init_data.footer.style.bgcolor" >
                 <div class="secpage">
@@ -84,14 +84,21 @@ export default {
   data: () => ({
     offsetTop: 0,
     topbarStyle: "background:#fff; padding:0px 130px; border-color:#fff;",
-    username: "sayantan",
     init_data: {},
-    popular_questions_list: {}
+    popular_questions_list: {},
+    faq: {}
   }),
   created() {
     axios.get('json/innerblank.json')
     .then(response => {
       this.init_data = response.data;
+    })
+    .catch(e => {
+      this.errors.push(e)
+    });
+    axios.get('json/searchfaq.json')
+    .then(response => {
+      this.faq = response.data;
     })
     .catch(e => {
       this.errors.push(e)
@@ -107,7 +114,7 @@ export default {
     });
   },
   methods: {
-    
+
   }
 };
 </script>

@@ -1,0 +1,12 @@
+{
+    "title": "Hi sayantan, how can we help you ?",
+    "search": {
+        "style": "border-radius: 0 !important;",
+        "height": 10
+    },
+    "button": {
+        "color": "success",
+        "elevation": 0,
+        "icon": "mdi-magnify"
+    }
+}
