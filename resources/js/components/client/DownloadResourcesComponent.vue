@@ -6,10 +6,10 @@
         <v-container class="fill-height">
             <v-row>
               <v-col cols="12">
-                <h1>Download resources</h1>
+                  <h1>{{ download_resources.title }}</h1>
               </v-col>
               <v-col cols="8">
-                <p>Some download's page description</p>
+                  <p>{{ download_resources.description }}</p>
               </v-col>
             </v-row>
         </v-container>
@@ -20,15 +20,15 @@
         >
             <v-row>
               <v-col cols="12">
-                <h2 class="cards-wrapper-title">List of resources</h2>
+                  <h2 class="cards-wrapper-title">{{ download_resources.listTitle }}</h2>
               </v-col>
             </v-row>
 
             <v-row align="stretch" justify="start">
-              <v-col cols="4" xs="12" sm="6" md="4" v-for="(resource, index) in download_resources" :key="index">
-                <downloadcard  
-                              :title="resource.title" 
-                              :downloadlink="resource.link" 
+              <v-col cols="4" xs="12" sm="6" md="4" v-for="(resource, index) in download_resources.list" :key="index">
+                <downloadcard
+                              :title="resource.title"
+                              :downloadlink="resource.link"
                               :pdf="resource.type == 'pdf'"
                               :doc="resource.type == 'doc'"
                               :xls="resource.type == 'xls'"/>
@@ -91,7 +91,7 @@
   import ChatComponent from './components/ChatComponent.vue';
 
   export default {
-    components: { toolbar, downloadcard, ChatComponent }, 
+    components: { toolbar, downloadcard, ChatComponent },
     data() {
       return {
         errors: {},

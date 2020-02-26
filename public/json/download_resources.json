@@ -1,27 +1,32 @@
-[
-    {
-        "title": "Lorem ipsum dolor sit amet",
-        "link" : "https://insurance.kotak.com/assets/images/uploads/how_do_i/Joint_Life_Addendum_-_Kotak_Single_Invest_Plus_-_28042018_-_JLA.pdf",
-        "type": "pdf"
-    },
-    {
-        "title": "Sed ut perspiciatis unde omnis iste natus error",
-        "link" : "https://insurance.kotak.com/assets/images/uploads/how_do_i/Joint_Life_Addendum_-_Kotak_Single_Invest_Plus_-_28042018_-_JLA.pdf",
-        "type": "doc"
-    },
-    {
-        "title": "Ut enim ad minima veniam - quis nostrum",
-        "link" : "https://insurance.kotak.com/assets/images/uploads/how_do_i/Joint_Life_Addendum_-_Kotak_Single_Invest_Plus_-_28042018_-_JLA.pdf",
-        "type": "doc"
-    },
-    {
-        "title": "At vero eos et accusamus et iusto odio",
-        "link" : "https://insurance.kotak.com/assets/images/uploads/how_do_i/Joint_Life_Addendum_-_Kotak_Single_Invest_Plus_-_28042018_-_JLA.pdf",
-        "type": "xls"
-    },
-    {
-        "title": "At vero eos et accusamus et iusto odio",
-        "link" : "https://insurance.kotak.com/assets/images/uploads/how_do_i/Joint_Life_Addendum_-_Kotak_Single_Invest_Plus_-_28042018_-_JLA.pdf",
-        "type": "pdf"
-    }
-]
+{
+    "title": "Download resources",
+    "description": "Some download's page description",
+    "listTitle": "List of resources",
+    "list": [
+        {
+            "title": "Lorem ipsum dolor sit amet",
+            "link" : "https://insurance.kotak.com/assets/images/uploads/how_do_i/Joint_Life_Addendum_-_Kotak_Single_Invest_Plus_-_28042018_-_JLA.pdf",
+            "type": "pdf"
+        },
+        {
+            "title": "Sed ut perspiciatis unde omnis iste natus error",
+            "link" : "https://insurance.kotak.com/assets/images/uploads/how_do_i/Joint_Life_Addendum_-_Kotak_Single_Invest_Plus_-_28042018_-_JLA.pdf",
+            "type": "doc"
+        },
+        {
+            "title": "Ut enim ad minima veniam - quis nostrum",
+            "link" : "https://insurance.kotak.com/assets/images/uploads/how_do_i/Joint_Life_Addendum_-_Kotak_Single_Invest_Plus_-_28042018_-_JLA.pdf",
+            "type": "doc"
+        },
+        {
+            "title": "At vero eos et accusamus et iusto odio",
+            "link" : "https://insurance.kotak.com/assets/images/uploads/how_do_i/Joint_Life_Addendum_-_Kotak_Single_Invest_Plus_-_28042018_-_JLA.pdf",
+            "type": "xls"
+        },
+        {
+            "title": "At vero eos et accusamus et iusto odio",
+            "link" : "https://insurance.kotak.com/assets/images/uploads/how_do_i/Joint_Life_Addendum_-_Kotak_Single_Invest_Plus_-_28042018_-_JLA.pdf",
+            "type": "pdf"
+        }
+    ]
+}
