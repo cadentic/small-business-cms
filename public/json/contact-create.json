@@ -1,0 +1,83 @@
+{
+    "title": "New Ticket",
+    "content": {
+        "elevation": 10,
+        "title": "ADD A NEW TICKET",
+        "fields": [
+            {
+                "type": "textfield",
+                "label": "First name :",
+                "model": "firstname"
+            },
+            {
+                "type": "textfield",
+                "label": "Last name :",
+                "model": "lastname"
+            },
+            {
+                "type": "textfield",
+                "label": "Email :",
+                "model": "mail"
+            },
+            {
+                "type": "textfield",
+                "label": "Company (<span class=\"red--text\">*</span>) :",
+                "model": "company",
+                "required": true
+            },
+            {
+                "type": "textfield",
+                "label": "Subject (<span class=\"red--text\">*</span>) :",
+                "model": "subject",
+                "required": true,
+                "onChangeHandler": "subject"
+            },
+            {
+                "type": "textfield",
+                "label": "Additional Contacts <i>(Add additional contact emails here, separate multiple emails with a semi-colon o      r comma)</i>  :",
+                "model": "additional",
+                "required": true,
+                "onChangeHandler": "additionnal"
+            },
+            {
+                "type": "textarea",
+                "label": "Details (<span class=\"red--text\">*</span>)",
+                "model": "details",
+                "required": true,
+                "onChangeHandler": "details"
+            },
+            {
+                "type": "select",
+                "label": "Category (<span class=\"red--text\">*</span>)",
+                "model": "category",
+                "required": true,
+                "onChangeHandler": "category",
+                "items": []
+            },
+            {
+                "type": "select",
+                "label": "Country (<span class=\"red--text\">*</span>)",
+                "model": "country",
+                "required": true,
+                "onChangeHandler": "country",
+                "items": []
+            },
+            {
+                "type": "file",
+                "label": "<b>Attach document</b> (If you receive a large file error please Zip your attachment)",
+                "model": "files",
+                "counter": true,
+                "multiple": true,
+                "style": "z-index: 2000;",
+                "placeholder": "Select your files",
+                "showSize": "1000",
+                "icon": "mdi-file-upload"
+            }
+        ],
+        "paragraph": "By submitting this request you understand and agree to Oracle <span class=\"red--text\">Terms of Use</s      pan> and <span class=\"red--text\">Privacy Policy</span>",
+        "button": {
+            "label": "Submit",
+            "color": "success"
+        }
+    }
+}
