@@ -3,17 +3,16 @@
     <v-content>
       <div>
         <v-container>
-            <h1>Enquiry Us</h1>
+            <h1> {{ enquiry.title }}</h1>
             <div>
-              <v-alert v-if="success" type="success" outlined>
-                Your message has been sent.
-                <a href="/">Go to home</a>
+              <v-alert v-if="success" type="success" outlined v-html="enquiry.successAlert">
               </v-alert>
                 <v-form ref="form" v-model="valid">
-                    <v-text-field :rules="nameRule" v-model="form_data.name" label="Name" name="name" outlined></v-text-field>
-                    <v-text-field :rules="emailRule" v-model="form_data.email" type="email" label="Email" name="email" outlined></v-text-field>
-                    <v-textarea :rules="messageRule" v-model="form_data.message" label="Message" rows="5" outlined></v-textarea>
-                    <v-btn @click="submit"  :loading="loading" color="primary" outlined>Submit</v-btn>
+                  <template v-for="(item, index) in enquiry.fields">
+                    <v-text-field v-if="item.type === 'textfield'" :rules="rules[item.rule]" v-model="form_data[item.model]" :label="item.label" :name="item.name" outlined></v-text-field>
+                    <v-textarea v-else-if="item.type === 'textarea'" :rules="rules[item.rule]" v-model="form_data[item.model]" :label="item.label" :rows="item.rows" :name="item.name" outlined></v-textarea>
+                    </template>
+                    <v-btn @click="submit"  :loading="loading" color="enquiry.button.color" outlined>{{ enquiry.button.label }}</v-btn>
                 </v-form>
             </div>
         </v-container>
@@ -71,14 +70,13 @@
   import ChatComponent from './components/ChatComponent.vue';
   import axios from 'axios'
   export default {
-    components: {downloadcard, ChatComponent }, 
+    components: {downloadcard, ChatComponent },
     data() {
       return {
         errors: {},
         init_data: {},
         download_resources: {},
-        drawer : false,
-            menus : [{title:"Invoice",icon:"home",href:'/invoice'},{title:"Enquiry",icon:"person",href:'/enquiry'}],
+        enquiry: {},
             form_data : {
                 name : '',
                 email : '',
@@ -87,6 +85,7 @@
             loading : false,
             success : false,
             valid : true,
+          rules: {
             nameRule : [
               v => !!v || "Name is required",
               v => (v&&v.length <= 100) || "Name must be less than 100 characters"
@@ -100,12 +99,20 @@
               v => !!v || "Message is required",
               v => (v&&v.length <= 10000) || "Enter valid message"
             ]
+          }
       }
     },
     mounted() {
       axios.get('json/innerblank.json')
       .then(response => {
         this.init_data = response.data;
+      })
+      .catch(e => {
+        this.errors.push(e)
+      });
+      axios.get('json/enquiry-component.json')
+      .then(response => {
+        this.enquiry = response.data;
       })
       .catch(e => {
         this.errors.push(e)

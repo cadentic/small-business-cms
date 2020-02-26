@@ -1,0 +1,32 @@
+{
+    "title": "Enquiry Us",
+    "successAlert": "Your message has been sent.<a href=\"/\">Go to home</a>",
+    "fields": [
+        {
+            "type": "textfield",
+            "rule": "nameRule",
+            "model": "name",
+            "label": "Name",
+            "name": "name"
+        },
+        {
+            "type": "textfield",
+            "rule": "emailRule",
+            "model": "email",
+            "label": "Email",
+            "name": "email"
+        },
+        {
+            "type": "textarea",
+            "rule": "messageRule",
+            "model": "message",
+            "label": "Message",
+            "name": "message",
+            "rows": 5
+        }
+    ],
+    "button": {
+        "color": "primary",
+        "label": "Submit"
+    }
+}
