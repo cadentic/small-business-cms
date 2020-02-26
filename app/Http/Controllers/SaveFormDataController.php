@@ -11,7 +11,8 @@ class SaveFormDataController extends Controller
         'tab12-search',
         'theme-data',
         'theme-colors',
-        'main-topbar-search'
+        'main-topbar-search',
+        'login'
     ];
 
     public function save($file, Request $request)

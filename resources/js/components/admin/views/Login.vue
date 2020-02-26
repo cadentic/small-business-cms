@@ -8,7 +8,7 @@
                         <h4>Cadentic account sign in</h4>
                     </v-card-title>
                     <v-card-text class="pt-4">
-                        <v-form ref="form">
+                        <v-form ref="form" @submit.prevent="submit">
                             <v-text-field
                             label="Username"
                             v-model="email"
@@ -55,7 +55,9 @@ export default {
     }),
     methods: {
         submit () {
-
+            axios.post('/save-json/login', { email: this.email, password: this.password})
+                 .then(() => alert('Saved!'))
+                 .catch(error => console.error(error));
         },
         create () {
 
