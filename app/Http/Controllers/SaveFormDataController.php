@@ -8,7 +8,9 @@ class SaveFormDataController extends Controller
 {
     private $writableFiles = [
         'personnalization',
-        'tab12-search'
+        'tab12-search',
+        'theme-data',
+        'theme-colors'
     ];
 
     public function save($file, Request $request)

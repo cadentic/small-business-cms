@@ -3,7 +3,7 @@
     <vuescroll :ops="ops" >
     <core-app-bar />
 
-    <core-drawer />
+    <core-drawer @save-theme="saveTheme" ref="drawer" />
 
     <core-view />
     </vuescroll>
@@ -43,5 +43,16 @@
               }
           }
       },
+      methods: {
+          saveTheme() {
+              const themeData = this.$route.matched[1].instances.default.getData();
+              const colorsData = this.$refs.drawer.getData();
+              Promise.all([
+                  axios.post('/save-json/theme-data', themeData),
+                  axios.post('/save-json/theme-colors', colorsData),
+              ]).then(() => alert('Theme saved!'))
+                .catch(error => console.error(error));
+          }
+      }
   }
 </script>

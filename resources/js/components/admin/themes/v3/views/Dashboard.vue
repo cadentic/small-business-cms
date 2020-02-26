@@ -172,18 +172,19 @@
                     ],
                     height: 300
                 },
-                themeData: [
-                    {
-                        'html': '<h2 style="text-align: center">Newsletter Template</h2>',
-                        height: 130
-                    }
-                ],
+                themeData: [],
                 selected: -1,
                 minHeight: 100,
                 resizeHeight: window.innerHeight - 100,
                 minH: 130,
                 subMinH: 130
             }
+        },
+        mounted() {
+            axios.get('/json/theme-data.json')
+                 .then(({data}) => {
+                     this.themeData = data;
+                 });
         },
         methods: {
             onDrop(dropResult) {
@@ -260,6 +261,9 @@
                     this.minH =  document.getElementById('mainPane').offsetHeight;
                 }
             },
+            getData() {
+                return this.themeData;
+            }
         },
         watch: {
             uploading(val) {

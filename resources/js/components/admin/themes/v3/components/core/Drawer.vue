@@ -283,9 +283,9 @@
                     <span class="ml-1">Download HTML</span>
                 </v-btn>
 
-                <v-btn block color="grey dark-2" class="white--text">
+                <v-btn block color="grey dark-2" class="white--text" @click="$emit('save-theme')">
                     <v-icon>mdi-content-save</v-icon>
-                    <span class="ml-2">save draft</span>
+                    <span class="ml-2">save theme</span>
                 </v-btn>
             </div>
 
@@ -345,36 +345,7 @@
         data: () => ({
             logo: require('../../assets/img/logo.png'),
             mini: false,
-            colorData: [
-                {
-                    color: '#3e4958',
-                    text: 'Body text'
-                },
-                {
-                    color: '#616d7e',
-                    text: 'Heading #1'
-                },
-                {
-                    color: '#85909f',
-                    text: 'Heading #2'
-                },
-                {
-                    color: '#23d3b4',
-                    text: 'Buttons'
-                },
-                {
-                    color: '#e5eaf2',
-                    text: 'White text'
-                },
-                {
-                    color: '#439afc',
-                    text: 'Icons'
-                },
-                {
-                    color: '#3e4958',
-                    text: 'Pricing table titles'
-                },
-            ],
+            colorData: [],
             imageChanges: [
                 'Header Images',
                 'Backgrounds',
@@ -438,6 +409,9 @@
                 if (this.$refs.pictureInput.image) {
                     this.uploading = true
                 }
+            },
+            getData() {
+                return this.colorData;
             }
         },
         watch: {
@@ -454,6 +428,10 @@
 
                 }
             });
+            axios.get('/json/theme-colors.json')
+                 .then(({data}) => {
+                     this.colorData = data;
+                 });
         },
     }
 </script>
