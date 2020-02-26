@@ -4,24 +4,24 @@
             <toolbar></toolbar>
 
             <v-container>
-                <h2 class="bold">My tickets</h2>
+                <h2 class="bold">{{ contactUsHistory.title }}</h2>
                 <v-row class="nowrap-overflow">
-                    <v-col cols=12> 
+                    <v-col cols=12>
                         <v-card>
                             <v-card-title>
-                                List of tickets
+                                {{ contactUsHistory.listTitle }}
                                 <v-spacer></v-spacer>
                                 <v-text-field
                                     v-model="search"
-                                    append-icon="search"
-                                    label="Search"
+                                    :append-icon="contactUsHistory.textfield.icon"
+                                    :label="contactUsHistory.textfield.label"
                                     single-line
                                     hide-details
                                 ></v-text-field>
                             </v-card-title>
                             <v-data-table
-                                :headers="headers"
-                                :items="tickets"
+                                :headers="contactUsHistory.headers"
+                                :items="contactUsHistory.tickets"
                                 :search="search">
 
                                 <template v-slot:item.subject="{ item }">
@@ -31,7 +31,7 @@
                         </v-card>
                     </v-col>
                 </v-row>
-            </v-container>    
+            </v-container>
 
             <footer :class="init_data.footer.class" :style="'background:' + init_data.footer.style.bgcolor" >
                 <div class="secpage">
@@ -90,37 +90,8 @@ export default {
   data: () => ({
     offsetTop: 0,
     topbarStyle: "background:#fff; padding:0px 130px; border-color:#fff;",
+    contactUsHistory: {},
     search: '',
-        headers: [
-          { text: 'Ticket#', align: 'left', value: 'ticket_number'},
-          { text: 'Subject', value: 'subject' },
-          { text: 'Status', value: 'status' },
-          { text: 'Date created', value: 'created_date' },
-          { text: 'Date closed', value: 'closed_date' },
-        ],
-        tickets: [
-          {
-            ticket_number: '112035689',
-            subject: 'Which track is enabled now ?',
-            status: 'Customer updated',
-            created_date: '12/30/2019',
-            closed_date: ''
-          },
-          {
-            ticket_number: '174835689',
-            subject: 'We pay for partnership ?',
-            status: 'Closed',
-            created_date: '12/30/2019',
-            closed_date: '01/01/2020'
-          },
-          {
-            ticket_number: '1726456700',
-            subject: 'Membership renewal ?',
-            status: 'Customer updated',
-            created_date: '12/09/2019',
-            closed_date: ''
-          },
-        ],
     init_data: {},
     current_path: "",
     contact_history_list: {}
@@ -133,13 +104,20 @@ export default {
     .catch(e => {
       this.errors.push(e)
     });
+    axios.get('json/contact-us-history.json')
+    .then(response => {
+      this.contactUsHistory = response.data;
+    })
+    .catch(e => {
+      this.errors.push(e)
+    });
 
     // Get current path
     this.current_path = location.pathname + '/';
 
   },
   methods: {
-    
+
   }
 };
 </script>
