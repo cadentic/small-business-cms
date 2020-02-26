@@ -10,7 +10,8 @@ class SaveFormDataController extends Controller
         'personnalization',
         'tab12-search',
         'theme-data',
-        'theme-colors'
+        'theme-colors',
+        'main-topbar-search'
     ];
 
     public function save($file, Request $request)

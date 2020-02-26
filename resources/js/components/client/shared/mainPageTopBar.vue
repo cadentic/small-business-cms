@@ -269,10 +269,11 @@
           </div>
         </v-col>
         <v-col cols="6" class="vert-search">
-          <v-form>
+          <v-form @submit.prevent="submit">
             <v-text-field
               :label="init_data.search_box"
               prepend-inner-icon="mdi-magnify"
+              v-model="search"
               color="white"
               outlined
               rounded
@@ -314,7 +315,8 @@ export default {
       select_menu: [],
       animate: false,
       targetDigit: "1",
-      prevDigit: "1"
+      prevDigit: "1",
+      search: ''
     };
   },
   mounted() {
@@ -348,7 +350,7 @@ export default {
         children[i].classList.remove("tab__header--active");
       }
       children[id].classList.add("tab__header--active");
-      
+
       this.select_menu = this.get_submenu(id);
     },
     currentInnerTabHeader(id) {
@@ -361,6 +363,11 @@ export default {
     onClickHumberger() {
       this.animate=!this.animate;
       document.getElementById('id_lefttab').children[0].classList.add("tab__header--active");
+    },
+    submit() {
+        axios.post('/save-json/main-topbar-search', { search: this.search })
+             .then(() => alert('Saved!'))
+             .catch(error => console.error(error));
     }
   }
 };
