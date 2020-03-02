@@ -1,0 +1,10 @@
+{
+    "closeIcon": "mdi-close",
+    "menuIcon": "mdi-menu",
+    "props": {
+        "absolute": true,
+        "bottom": true,
+        "temporary": true,
+        "width": 300
+    }
+}
