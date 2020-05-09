@@ -63,10 +63,10 @@ const FormOne = () => {
 
   return (
     <>
-      <Header
-        title="Sign up Form"
-        content="Please fill the form below to process the signup"
-      />
+    <Header
+      title="Sign up Form"
+      content="Please fill the form below to process the signup"
+    />
       <Container className={classes.container} maxWidth="md">
         <Stepper activeStep={activeStep} orientation="vertical">
           <Step>
@@ -195,5 +195,5 @@ const FormOne = () => {
 export default FormOne;
 
 if (document.getElementById('formone')) {
-    ReactDOM.render( < FormOne /> , document.getElementById('formone'));
+    ReactDOM.render( <FormOne/> , document.getElementById('formone'));
 }

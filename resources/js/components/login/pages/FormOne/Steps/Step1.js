@@ -210,6 +210,6 @@ const StepOne = props => {
       </Grid>
     </Grid>
   );
-};
+}
 
 export default StepOne;
