@@ -183,7 +183,8 @@ const FormThree = () => {
                       'pin': steps[1].model.postalCode,
                       'businessName': steps[1].model.business,
                       'cinNumber': steps[1].model.cinNumber,
-                      'taxNumber': steps[1].model.taxNumber
+                      'taxNumber': steps[1].model.taxNumber,
+                      'signature': steps[3].model.signature
                     };
                     axios.post('/login_three', data).then(changeModel([
                       { model: {}, valid: false },

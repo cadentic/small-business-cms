@@ -36,7 +36,7 @@ const Step3 = props => {
             We sent you an SMS
           </Typography>
           <Typography component="p">
-            Please check yout phone and enter the SMS validation code
+            Please check your phone and enter the SMS validation code
           </Typography>
         </Paper>
       </Grid>

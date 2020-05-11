@@ -180,7 +180,8 @@ const FormOne = () => {
                       'mobile': steps[1].model.phoneNumber,
                       'street': steps[1].model.street,
                       'city': steps[1].model.city,
-                      'pin': steps[1].model.postalCode
+                      'pin': steps[1].model.postalCode,
+                      'signature': steps[3].model.signature
                     };
                     axios.post('/login_one', data).then(changeModel([
                       { model: {}, valid: false },
@@ -192,6 +193,7 @@ const FormOne = () => {
                   }}
                 >
                   Complete Signup
+                  {console.log(steps[3].model.signature)}
                 </Button>
               )}
             </StepContent>
