@@ -25,6 +25,7 @@ Route::get('/admin/{any}', 'IndexController@gotoAdmin')->where('any', '.*');
 Route::get('/login_one', 'IndexController@gotoLoginOne');
 Route::get('/login_two', 'IndexController@gotoLoginTwo');
 Route::get('/login_three', 'IndexController@gotoLoginThree');
+Route::post('/login_one', 'IndexController@postLoginOne');
 
 Route::get('/client_main', 'IndexController@gotoMain');
 Route::get('/client_inner', 'IndexController@gotoInner');
