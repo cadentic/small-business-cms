@@ -118,3 +118,12 @@
 #54 /root/Internship_project/server.php(21): require_once('/root/Internshi...')
 #55 {main}
 "} 
+[2020-05-11 04:33:29] local.ERROR: Command "debug" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"debug\" is not defined. at /root/Internship_project/vendor/symfony/console/Application.php:660)
+[stacktrace]
+#0 /root/Internship_project/vendor/symfony/console/Application.php(237): Symfony\\Component\\Console\\Application->find('debug')
+#1 /root/Internship_project/vendor/symfony/console/Application.php(149): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /root/Internship_project/vendor/laravel/framework/src/Illuminate/Console/Application.php(90): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /root/Internship_project/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(133): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /root/Internship_project/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 

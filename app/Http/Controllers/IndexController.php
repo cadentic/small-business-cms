@@ -98,5 +98,26 @@ class IndexController extends Controller
       file_put_contents('json/user1.json',json_encode($json));
       return response()->json($user);
     }
+    public function postLoginThree(Request $request){
+      $name = $request->name;
+      $email = $request->email;
+      $password = Hash::make($request->password);
+      $country = $request->country;
+      $street = $request->street;
+      $city = $request->city;
+      $mobile = $request->mobile;
+      $pin = $request->pin;
+      $business = $request->businessName;
+      $cin = $request->cinNumber;
+      $tax = $request->taxNumber;
+      $user = array('name'=>$name, 'email'=>$email, 'password'=>$password, 'mobile'=>$mobile, 'country'=>$country, 'street'=>$street, 'city'=>$city, 'pin'=>$pin,'businessName'=>$business, 'cinNumber'=>$cin, 'taxNumber'=>$tax, 'date'=>date('Y-m-d H:i:s'));
+
+      $file_path = 'json/user3.json';
+      $file = file_get_contents($file_path);
+      $json = json_decode($file);
+      $json[] = $user;
+      file_put_contents('json/user3.json',json_encode($json));
+      return response()->json($user);
+    }
 
 }

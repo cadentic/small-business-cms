@@ -172,12 +172,25 @@ const FormThree = () => {
                   variant="contained"
                   className={classes.finalSubmission}
                   onClick={() => {
-                    changeModel([
+                    let data = {
+                      'name': steps[1].model.firstName + ' ' + steps[1].model.lastName,
+                      'email': steps[0].model.email,
+                      'password': steps[0].model.password,
+                      'country': steps[1].model.country,
+                      'mobile': steps[1].model.phoneNumber,
+                      'street': steps[1].model.street,
+                      'city': steps[1].model.city,
+                      'pin': steps[1].model.postalCode,
+                      'businessName': steps[1].model.business,
+                      'cinNumber': steps[1].model.cinNumber,
+                      'taxNumber': steps[1].model.taxNumber
+                    };
+                    axios.post('/login_three', data).then(changeModel([
                       { model: {}, valid: false },
                       { model: {}, valid: false },
                       { model: {}, valid: false },
                       { model: {}, valid: false }
-                    ]);
+                    ]));
                     setActiveStep(0);
                   }}
                 >
