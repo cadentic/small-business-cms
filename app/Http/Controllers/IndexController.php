@@ -8,6 +8,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
+use RobinCSamuel\LaravelMsg91\Facades\LaravelMsg91;
 
 
 class IndexController extends Controller
@@ -143,5 +144,20 @@ class IndexController extends Controller
       $file_path = 'signatures/user2/'.$name.'.png';
       $image->save($file_path);
       return response()->json($user);
+    }
+    public function sendOtp(Request $request)
+    {
+      $num = rand(1000,9999);
+      $result = LaravelMsg91::sendOtp($request->mobile, $num, "Your otp for phone verification is ".$num);
+      return 'sent otp';
+    }
+    public function validateOtp(Request $request)
+    {
+      $result = LaravelMsg91::verifyOtp($request->mobile, $request->otp);
+      if($result)
+      {
+        return response()->json(array('validated'=>true));
+      }
+      return 'false';
     }
 }

@@ -43,7 +43,6 @@ const Step3 = props => {
       <Grid item xs={12}>
         <TextField
           required
-          // disabled={model.validationCode === "1234"}
           type="text"
           label="SMS Code"
           value={model.validationCode}
@@ -52,21 +51,9 @@ const Step3 = props => {
           variant="outlined"
           fullWidth
           inputProps={{ maxLength: 4 }}
-          error={
-            !model.validationCode &&
-            model.validationCode !== undefined &&
-            model.validationCode.length !== 4 &&
-            model.validationCode !== "1234"
-          }
-          helperText={
-            model.validationCode && model.validationCode !== "1234"
-              ? "Invalid Code"
-              : null
-          }
           onChange={e => {
             changeModel({
               validationCode: e.target.value,
-              verified: e.target.value === "1234" || false
             });
           }}
         />

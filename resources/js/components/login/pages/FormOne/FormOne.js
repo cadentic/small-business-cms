@@ -117,7 +117,12 @@ const FormOne = () => {
                 variant="contained"
                 disabled={!steps[activeStep].valid}
                 color="primary"
-                onClick={() => setActiveStep(2)}
+                onClick={() => {
+                  let data = {
+                    'mobile': steps[1].model.phoneNumber
+                  };
+                  axios.post('/sendotp', data).then(setActiveStep(2));
+                }}
                 className={classes.button}
               >
                 Next
@@ -141,10 +146,15 @@ const FormOne = () => {
                 Back
               </Button>
               <Button
-                disabled={!steps[activeStep].valid}
                 variant="contained"
                 color="primary"
-                onClick={() => setActiveStep(3)}
+                onClick={() => {
+                  let data = {
+                    'mobile': steps[1].model.phoneNumber,
+                    'otp': steps[2].model.validationCode
+                  };
+                  axios.post('/validateotp', data).then((res) => (res.data.validated)?setActiveStep(3):setActiveStep(2));
+                }}
                 className={classes.button}
               >
                 Next
