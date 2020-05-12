@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 
 class IndexController extends Controller
@@ -89,13 +90,16 @@ class IndexController extends Controller
       $city = $request->city;
       $mobile = $request->mobile;
       $pin = $request->pin;
-      $signature = $request->signature;
-      $user = array('name'=>$name, 'email'=>$email, 'password'=>$password, 'mobile'=>$mobile, 'country'=>$country, 'street'=>$street, 'city'=>$city, 'pin'=>$pin,'signature'=>$signature, 'date'=>date('Y-m-d H:i:s'));
+      $date = date('Y-m-d H:i:s');
+      $user = array('name'=>$name, 'email'=>$email, 'password'=>$password, 'mobile'=>$mobile, 'country'=>$country, 'street'=>$street, 'city'=>$city, 'pin'=>$pin, 'date'=>$date);
       $file_path = 'json/user1.json';
       $file = file_get_contents($file_path);
       $json = json_decode($file);
       $json[] = $user;
       file_put_contents('json/user1.json',json_encode($json));
+      $image = Image::make($request->get('signature'));
+      $file_path = 'signatures/user1/'.$name.'.png';
+      $image->save($file_path);
       return response()->json($user);
     }
     public function postLoginThree(Request $request){
@@ -110,13 +114,15 @@ class IndexController extends Controller
       $business = $request->businessName;
       $cin = $request->cinNumber;
       $tax = $request->taxNumber;
-      $signature = $request->signature;
-      $user = array('name'=>$name, 'email'=>$email, 'password'=>$password, 'mobile'=>$mobile, 'country'=>$country, 'street'=>$street, 'city'=>$city, 'pin'=>$pin,'businessName'=>$business, 'cinNumber'=>$cin, 'signature'=>$signature, 'taxNumber'=>$tax, 'date'=>date('Y-m-d H:i:s'));
+      $user = array('name'=>$name, 'email'=>$email, 'password'=>$password, 'mobile'=>$mobile, 'country'=>$country, 'street'=>$street, 'city'=>$city, 'pin'=>$pin,'businessName'=>$business, 'cinNumber'=>$cin, 'taxNumber'=>$tax, 'date'=>date('Y-m-d H:i:s'));
       $file_path = 'json/user3.json';
       $file = file_get_contents($file_path);
       $json = json_decode($file);
       $json[] = $user;
       file_put_contents('json/user3.json',json_encode($json));
+      $image = Image::make($request->get('signature'));
+      $file_path = 'signatures/user3/'.$name.'.png';
+      $image->save($file_path);
       return response()->json($user);
     }
     public function postLoginTwo(Request $request){
@@ -126,14 +132,16 @@ class IndexController extends Controller
       $minimumBudget = $request->minimumBudget;
       $maximumBudget = $request->maximumBudget;
       $pricePerHour = $request->pricePerHour;
-      $signature = $request->signature;
       $currency = $request->currency;
-      $user = array('name'=>$name, 'description'=>$description, 'currency'=>$currency, 'minimumBudget'=>$minimumBudget, 'maximumBudget'=>$maximumBudget, 'pricePerHour'=>$pricePerHour, 'signature'=>$signature, 'date'=>date('Y-m-d H:i:s'));
+      $user = array('name'=>$name, 'description'=>$description, 'currency'=>$currency, 'minimumBudget'=>$minimumBudget, 'maximumBudget'=>$maximumBudget, 'pricePerHour'=>$pricePerHour, 'date'=>date('Y-m-d H:i:s'));
       $file_path = 'json/user2.json';
       $file = file_get_contents($file_path);
       $json = json_decode($file);
       $json[] = $user;
       file_put_contents('json/user2.json',json_encode($json));
+      $image = Image::make($request->get('signature'));
+      $file_path = 'signatures/user2/'.$name.'.png';
+      $image->save($file_path);
       return response()->json($user);
     }
 }

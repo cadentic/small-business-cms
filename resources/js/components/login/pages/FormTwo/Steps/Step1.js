@@ -17,7 +17,7 @@ const Step1 = props => {
     });
     console.log("STEP 1 - Handle Change", model);
   };
-
+  
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>

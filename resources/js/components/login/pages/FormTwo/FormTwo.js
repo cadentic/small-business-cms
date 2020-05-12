@@ -169,6 +169,7 @@ const FormTwo = () => {
                   variant="contained"
                   className={classes.finalSubmission}
                   onClick={() => {
+                    console.log(steps[0].model.files);
                     let data = {
                       'name': steps[0].model.name,
                       'description': steps[0].model.description,
