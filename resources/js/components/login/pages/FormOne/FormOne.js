@@ -12,6 +12,8 @@ import StepOne from "./Steps/Step1";
 import StepTwo from "./Steps/Step2";
 import StepThree from "./Steps/Step3";
 import StepFour from "./Steps/Step4";
+import TextField from "@material-ui/core/TextField";
+
 import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
@@ -34,7 +36,7 @@ const FormOne = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [steps, changeModel] = React.useState([
-    { model: {}, valid: false },
+    { model: {}, valid: false, sentmail: false },
     { model: {}, valid: false },
     { model: {}, valid: false },
     { model: {}, valid: false }
@@ -90,7 +92,12 @@ const FormOne = () => {
                 disabled={!steps[activeStep].valid}
                 variant="contained"
                 color="primary"
-                onClick={() => setActiveStep(1)}
+                onClick={() => {
+                  let data = {
+                    'emailotp': steps[0].model.emailotp
+                  }
+                  axios.post('/validateemail', data).then((res) => (res.data.validated)?setActiveStep(1):setActiveStep(0));
+                }}
                 className={classes.button}
               >
                 Next

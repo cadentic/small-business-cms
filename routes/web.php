@@ -30,6 +30,8 @@ Route::post('/login_three', 'IndexController@postLoginThree');
 Route::post('/login_two', 'IndexController@postLoginTwo');
 Route::post('/sendotp', 'IndexController@sendOtp');
 Route::post('/validateotp', 'IndexController@validateOtp');
+Route::post('/sendemail', 'MailController@sendEmail');
+Route::post('/validateemail', 'MailController@validateEmail');
 
 
 Route::get('/client_main', 'IndexController@gotoMain');

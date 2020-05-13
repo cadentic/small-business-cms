@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import HiddenPassword from "@material-ui/icons/RemoveRedEye";
 import RemovePassword from "@material-ui/icons/RemoveRedEyeOutlined";
+import {Button} from '@material-ui/core';
 
 const styles = makeStyles({
   root: {},
@@ -207,6 +208,32 @@ const StepOne = props => {
             onClick={() => setConfirmedPassword(true)}
           />
         )}
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            let data = {
+              'email': model.email
+            }
+            axios.post('/sendemail', data)
+          }}
+          className={classes.button}
+        >
+          SendOTP
+        </Button>
+        <TextField
+          required
+          label="OTP"
+          value={model.emailotp}
+          margin="normal"
+          variant="outlined"
+          fullWidth
+          onChange={e => {
+            changeModel({
+              emailotp: e.target.value,
+            });
+          }}
+        />
       </Grid>
     </Grid>
   );
