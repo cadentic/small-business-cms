@@ -138,7 +138,7 @@
             this.$refs.form.reset()
             this.success = true
           })
-          .catch(err=>{
+          .catch(err=>{{{ enquiry.title }}
             this.loading = false
             // console.log("Something went wrong")
           })

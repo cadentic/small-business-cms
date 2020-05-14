@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    public function isValid(){
+
+    }
     public function index() {
         return redirect('/client_main');
     }
     public function gotoAdmin() {
         return view('admin');
     }
+
     public function gotoLoginOne() {
         return view('loginone');
     }

@@ -360,28 +360,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       logo: __webpack_require__(/*! ../../assets/img/logo.png */ "./resources/js/components/admin/themes/v3/assets/img/logo.png"),
       mini: false,
-      colorData: [{
-        color: '#3e4958',
-        text: 'Body text'
-      }, {
-        color: '#616d7e',
-        text: 'Heading #1'
-      }, {
-        color: '#85909f',
-        text: 'Heading #2'
-      }, {
-        color: '#23d3b4',
-        text: 'Buttons'
-      }, {
-        color: '#e5eaf2',
-        text: 'White text'
-      }, {
-        color: '#439afc',
-        text: 'Icons'
-      }, {
-        color: '#3e4958',
-        text: 'Pricing table titles'
-      }],
+      colorData: [],
       imageChanges: ['Header Images', 'Backgrounds', 'Gallery'],
       manageModules: ['Module1', 'Module2'],
       backgrounds: ['Background1', 'Background2'],
@@ -435,6 +414,9 @@ __webpack_require__.r(__webpack_exports__);
       if (this.$refs.pictureInput.image) {
         this.uploading = true;
       }
+    },
+    getData: function getData() {
+      return this.colorData;
     }
   },
   watch: {
@@ -454,6 +436,10 @@ __webpack_require__.r(__webpack_exports__);
       _this3.mini = !_this3.mini;
 
       if (_this3.mini) {}
+    });
+    axios.get('/json/theme-colors.json').then(function (_ref) {
+      var data = _ref.data;
+      _this3.colorData = data;
     });
   }
 });
@@ -1476,13 +1462,18 @@ var render = function() {
                         "v-btn",
                         {
                           staticClass: "white--text",
-                          attrs: { block: "", color: "grey dark-2" }
+                          attrs: { block: "", color: "grey dark-2" },
+                          on: {
+                            click: function($event) {
+                              return _vm.$emit("save-theme")
+                            }
+                          }
                         },
                         [
                           _c("v-icon", [_vm._v("mdi-content-save")]),
                           _vm._v(" "),
                           _c("span", { staticClass: "ml-2" }, [
-                            _vm._v("save draft")
+                            _vm._v("save theme")
                           ])
                         ],
                         1

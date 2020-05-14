@@ -12,7 +12,7 @@
         "banner1": {
             "id": 1,
             "bg_img": "assets/images/banner1.jpg",
-            "title": "Zero-downtime migration using golden gate",
+            "title": "Zero-downtime migration using golden gatels",
             "link": [
                 {
                     "id": 2,

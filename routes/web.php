@@ -18,7 +18,8 @@
 Route::get('/', 'IndexController@index');
 
 Route::get('/admin', 'IndexController@gotoAdmin');
-
+Route::get('/admin/formA','LandingPages@gotoFormA');
+Route::post('/admin/formA','LandingPages@formPost');
 Route::get('/admin/{any}', 'IndexController@gotoAdmin')->where('any', '.*');
 
 
@@ -51,7 +52,7 @@ Route::post('/enquiry','EnquiryController@post');
 Route::get('/products/all','AdminController@getProducts');
 Route::post('/product/add','AdminController@addProduct');
 Route::post('/invoice/create','InvoiceController@invoiceCreate');
-Route::get('/invoices/all','AdminController@getInvoices');
+Route::get('/invoices/all','admincontroller@getInvoices');
 //end
 
 Route::get('searchfaq', 'SearchQuestionsController@index');
