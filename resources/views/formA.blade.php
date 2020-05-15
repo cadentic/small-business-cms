@@ -27,8 +27,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
         <style>
-          * {
-              box-sizing: border-box;
+            html, body{
+              height: 100%;
+              padding: 0px;
+              margin: 0px;
             }
 
             input[type=text], select, textarea {
@@ -125,6 +127,34 @@
                 grid-template-columns: auto auto auto auto;
                 padding: 10px;
               }
+
+              .page-wrapper{
+                min-height: 27%;
+              }
+
+              .footer{
+                background: #303036;
+                color: #d3d3d3;
+                height: 300px;
+                position: relative;
+              }
+
+              .footer .footer-content{
+                border: 1px solid red;
+                height: 250px;
+              }
+              .footer .footer-bottom{
+                background: #343a40;
+                width: 100%;
+                color: #686868;
+                height: 50px;
+                text-align: center;
+                position: absolute;
+                bottom:0px;
+                left: 0px;
+                padding-top: 20px;
+              }
+
       </style>
     </head>
     <body>
@@ -174,6 +204,26 @@
             </form>
           </div>
         </div>
+        <!--Page Wrapper-->
+        <div class="page-wrapper">
+        </div>
+
+
+        <!-- Footer -->
+        <div class="footer">
+          <div class="footer-content">
+            <div class="footer-section about">
+              <center><img src = {{ asset('images/cadentic-logo.png') }}></center>
+            </div>
+            <div class="footer-section links"></div>
+            <div class="footer-section contact-form"></div>
+          </div>
+
+          <div class="footer-bottom">
+            &copy; cadentic
+          </div>
+        </div>
+
         <script src="https://unpkg.com/react@15/dist/react.js"></script>
         <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
     </body>
