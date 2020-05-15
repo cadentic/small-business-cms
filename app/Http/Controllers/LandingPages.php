@@ -73,6 +73,10 @@ class LandingPages extends Controller
       }
       return 'Draft Saved';
     }
-
   }
+
+  public function innerForm(){
+    return view('innerForm');
+  }
+
 }

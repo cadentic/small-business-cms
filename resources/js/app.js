@@ -46,7 +46,9 @@ import './components/admin/themes/v1/plugins';
 import VueSplit from 'vue-split-panel';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-    
+
+import iform from './components/admin/iform.vue';
+
 Vue.use(VueAxios, axios);
 Vue.use(VueSplit);
 
@@ -57,7 +59,7 @@ let config = {
         'bold', 'italic', 'underline', 'strikeThrough', 'links', 'divider', 'subscript', 'superscript',
         'divider', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', '|', 'indent', 'outdent',
         'insertOrderedList', 'insertUnorderedList', '|', 'picture', 'tables', '|', 'switchView'
-    ], 
+    ],
     fontName: [
         { val: 'arial black' },
         { val: 'times new roman' },
@@ -91,6 +93,8 @@ const app = new Vue({
         'innerblankcomponent2': innerblankcomponent2,
 
         'adminapp': adminapp,
+
+        'iform': iform,
 
         // Additional Pages
         'whatsappcomponent' : whatsappcomponent,
