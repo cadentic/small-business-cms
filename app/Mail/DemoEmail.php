@@ -35,6 +35,7 @@ class DemoEmail extends Mailable
      */
     public function build()
     {
-        return $this->text('mails.otp');
+        return $this->view('mails.otp')
+                    ->subject('OTP');
     }
 }

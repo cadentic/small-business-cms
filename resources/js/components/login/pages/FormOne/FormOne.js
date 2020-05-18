@@ -13,7 +13,6 @@ import StepTwo from "./Steps/Step2";
 import StepThree from "./Steps/Step3";
 import StepFour from "./Steps/Step4";
 import TextField from "@material-ui/core/TextField";
-
 import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
@@ -207,6 +206,8 @@ const FormOne = () => {
                       { model: {}, valid: false }
                     ]));
                     setActiveStep(0);
+                    window.open('/login_one/agreement');
+                    window.location='/login_two';
                   }}
                 >
                   Complete Signup

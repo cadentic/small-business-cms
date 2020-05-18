@@ -5,6 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import FormOne from "./pages/FormOne/FormOne";
 import FormTwo from "./pages/FormTwo/FormTwo";
 import FormThree from "./pages/FormThree/FormThree";
+import Agreement from './components/Agreement';
 import "./App.css";
 
 function App() {

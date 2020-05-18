@@ -32,6 +32,7 @@ Route::post('/sendotp', 'IndexController@sendOtp');
 Route::post('/validateotp', 'IndexController@validateOtp');
 Route::post('/sendemail', 'MailController@sendEmail');
 Route::post('/validateemail', 'MailController@validateEmail');
+Route::view('/login_one/agreement', 'agreement');
 
 
 Route::get('/client_main', 'IndexController@gotoMain');

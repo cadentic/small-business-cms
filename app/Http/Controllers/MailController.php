@@ -31,6 +31,6 @@ class MailController extends Controller
       {
         return response()->json(array('validated'=>true));
       }
-      return response()->json(array('validated'=>false);
+      return response()->json(array('validated'=>false));
     }
 }
