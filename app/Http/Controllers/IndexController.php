@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use RobinCSamuel\LaravelMsg91\Facades\LaravelMsg91;
+use App\Mail\DemoEmail;
+use Illuminate\Support\Facades\Mail;
 
 
 class IndexController extends Controller
@@ -24,6 +26,9 @@ class IndexController extends Controller
     }
     public function gotoLoginTwo() {
         return view('logintwo');
+    }
+    public function gotoLoginFour() {
+        return view('loginfour');
     }
     public function gotoLoginThree() {
         return view('loginthree');
@@ -83,7 +88,18 @@ class IndexController extends Controller
         return view('invoices');
     }
     public function postLoginOne(Request $request){
-      $name = $request->name;
+      $file_path = 'json/employeeregistration/user.json';
+      $file = file_get_contents($file_path);
+      $json = json_decode($file);
+      if(empty($json))
+      {
+        $id = 1;
+      }
+      else {
+        $id = end($json)['id'] + 1;
+        reset($json);
+      }
+      $name = $request->firstName.' '.$request->lastName;
       $email = $request->email;
       $password = Hash::make($request->password);
       $country = $request->country;
@@ -92,41 +108,60 @@ class IndexController extends Controller
       $mobile = $request->mobile;
       $pin = $request->pin;
       $date = date('Y-m-d H:i:s');
-      $user = array('name'=>$name, 'email'=>$email, 'password'=>$password, 'mobile'=>$mobile, 'country'=>$country, 'street'=>$street, 'city'=>$city, 'pin'=>$pin, 'date'=>$date);
-      $file_path = 'json/user1.json';
-      $file = file_get_contents($file_path);
-      $json = json_decode($file);
+      $user = array('id'=>$id, 'name'=>$name, 'email'=>$email, 'password'=>$password, 'mobile'=>$mobile, 'country'=>$country, 'street'=>$street, 'city'=>$city, 'pin'=>$pin, 'role'=>'employee', 'date'=>$date, 'validated'=>false);
       $json[] = $user;
-      file_put_contents('json/user1.json',json_encode($json));
+      file_put_contents($file_path,json_encode($json));
       $image = Image::make($request->get('signature'));
-      $file_path = 'signatures/user1/'.$name.'.png';
+      $file_path = 'json/employeeregistration/signatures/'.$id.'.png';
       $image->save($file_path);
       return response()->json($user);
     }
     public function postLoginThree(Request $request){
-      $name = $request->name;
+      $file_path = 'json/businessregistration/user.json';
+      $file = file_get_contents($file_path);
+      $json = json_decode($file);
+      if(empty($json))
+      {
+        $id = 1;
+      }
+      else
+      {
+        $obj = end($json);
+        $id = $obj->{'id'} + 1;
+        reset($json);
+      }
+      $name = $request->firstName.' '.$request->lastName;
       $email = $request->email;
       $password = Hash::make($request->password);
       $country = $request->country;
       $street = $request->street;
       $city = $request->city;
       $mobile = $request->mobile;
+      $date = date('Y-m-d H:i:s');
       $pin = $request->pin;
       $business = $request->businessName;
       $cin = $request->cinNumber;
       $tax = $request->taxNumber;
-      $user = array('name'=>$name, 'email'=>$email, 'password'=>$password, 'mobile'=>$mobile, 'country'=>$country, 'street'=>$street, 'city'=>$city, 'pin'=>$pin,'businessName'=>$business, 'cinNumber'=>$cin, 'taxNumber'=>$tax, 'date'=>date('Y-m-d H:i:s'));
-      $file_path = 'json/user3.json';
-      $file = file_get_contents($file_path);
-      $json = json_decode($file);
+      $user = array('id'=>$id, 'name'=>$name, 'email'=>$email, 'password'=>$password, 'mobile'=>$mobile, 'country'=>$country, 'street'=>$street, 'city'=>$city, 'pin'=>$pin,'businessName'=>$business, 'cinNumber'=>$cin, 'taxNumber'=>$tax, 'role'=>'business', 'date'=>$date, 'validated'=>false);
       $json[] = $user;
-      file_put_contents('json/user3.json',json_encode($json));
+      file_put_contents($file_path,json_encode($json));
       $image = Image::make($request->get('signature'));
-      $file_path = 'signatures/user3/'.$name.'.png';
+      $file_path = 'json/businessregistration/signatures/'.$id.'.png';
       $image->save($file_path);
       return response()->json($user);
     }
     public function postLoginTwo(Request $request){
+      $file_path = 'json/businessregistration/project.json';
+      $file = file_get_contents($file_path);
+      $json = json_decode($file);
+      if(empty($json))
+      {
+        $id = 1;
+      }
+      else {
+        $id = end($json)['id'] + 1;
+        reset($json);
+      }
       $name = $request->name;
       $description = $request->description;
       $skills = $request->skills;
@@ -134,27 +169,46 @@ class IndexController extends Controller
       $maximumBudget = $request->maximumBudget;
       $pricePerHour = $request->pricePerHour;
       $currency = $request->currency;
-      $user = array('name'=>$name, 'description'=>$description, 'currency'=>$currency, 'minimumBudget'=>$minimumBudget, 'maximumBudget'=>$maximumBudget, 'pricePerHour'=>$pricePerHour, 'date'=>date('Y-m-d H:i:s'));
-      $file_path = 'json/user2.json';
+      $user = array('id'=>$id, 'name'=>$name, 'description'=>$description, 'currency'=>$currency, 'minimumBudget'=>$minimumBudget, 'maximumBudget'=>$maximumBudget, 'pricePerHour'=>$pricePerHour, 'date'=>date('Y-m-d H:i:s'));
+      $json[] = $user;
+      file_put_contents($file_path,json_encode($json));
+      return response()->json($user);
+    }
+    public function postLoginFour(Request $request){
+      $file_path = 'json/employeeregistration/project.json';
       $file = file_get_contents($file_path);
       $json = json_decode($file);
+      if(empty($json))
+      {
+        $id = 1;
+      }
+      else {
+        $id = end($json)['id'] + 1;
+        reset($json);
+      }
+      $name = $request->name;
+      $description = $request->description;
+      $skills = $request->skills;
+      $minimumBudget = $request->minimumBudget;
+      $maximumBudget = $request->maximumBudget;
+      $pricePerHour = $request->pricePerHour;
+      $currency = $request->currency;
+      $user = array('id'=>$id, 'name'=>$name, 'description'=>$description, 'currency'=>$currency, 'minimumBudget'=>$minimumBudget, 'maximumBudget'=>$maximumBudget, 'pricePerHour'=>$pricePerHour, 'date'=>date('Y-m-d H:i:s'));
       $json[] = $user;
-      file_put_contents('json/user2.json',json_encode($json));
-      $image = Image::make($request->get('signature'));
-      $file_path = 'signatures/user2/'.$name.'.png';
-      $image->save($file_path);
+      file_put_contents($file_path, json_encode($json));
       return response()->json($user);
     }
     public function sendOtp(Request $request)
     {
       $num = rand(1000,9999);
-      $result = LaravelMsg91::sendOtp($request->mobile, $num, "Your otp for phone verification is ".$num);
+      //$result = LaravelMsg91::sendOtp($request->mobile, $num, "Your otp for phone verification is ".$num);
       return 'sent otp';
     }
     public function validateOtp(Request $request)
     {
-      $result = LaravelMsg91::verifyOtp($request->mobile, $request->otp);
-      if($result)
+      //$result = LaravelMsg91::verifyOtp($request->mobile, $request->otp);
+      //if($result)
+      if($request->otp==1729)
       {
         return response()->json(array('validated'=>true));
       }

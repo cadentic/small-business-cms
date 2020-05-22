@@ -174,13 +174,13 @@ const FormTwo = () => {
                       'name': steps[0].model.name,
                       'description': steps[0].model.description,
                       'skills': steps[1].model.skills,
-                      'currency': steps[2].model.currency,
+                      'currency': steps[2].model.currency.name,
                       'minimumBudget': steps[2].model.minimumBudget,
                       'maximumBudget': steps[2].model.maximumBudget,
                       'pricePerHour': steps[2].model.pricePerHour,
                       'signature': steps[3].model.signature
                     };
-                    axios.post('/login_two', data).then(changeModel([
+                    axios.post('/businessproject', data).then(changeModel([
                       { model: { skills: [] }, valid: false },
                       { model: { skills: [] }, valid: false },
                       { model: { skills: [] }, valid: false },

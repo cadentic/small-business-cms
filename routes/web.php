@@ -22,18 +22,19 @@ Route::get('/admin', 'IndexController@gotoAdmin');
 Route::get('/admin/{any}', 'IndexController@gotoAdmin')->where('any', '.*');
 
 
-Route::get('/login_one', 'IndexController@gotoLoginOne');
-Route::get('/login_two', 'IndexController@gotoLoginTwo');
-Route::get('/login_three', 'IndexController@gotoLoginThree');
-Route::post('/login_one', 'IndexController@postLoginOne');
-Route::post('/login_three', 'IndexController@postLoginThree');
-Route::post('/login_two', 'IndexController@postLoginTwo');
+Route::get('/employeeregistration', 'IndexController@gotoLoginOne');
+Route::get('/businessproject', 'IndexController@gotoLoginTwo');
+Route::get('/businessregistration', 'IndexController@gotoLoginThree');
+Route::post('/employeeregistration', 'IndexController@postLoginOne');
+Route::post('/businessregistration', 'IndexController@postLoginThree');
+Route::post('/businessproject', 'IndexController@postLoginTwo');
 Route::post('/sendotp', 'IndexController@sendOtp');
 Route::post('/validateotp', 'IndexController@validateOtp');
 Route::post('/sendemail', 'MailController@sendEmail');
 Route::post('/validateemail', 'MailController@validateEmail');
-Route::view('/login_one/agreement', 'agreement');
-
+Route::view('/agreement', 'agreement');
+Route::get('/employeeproject', 'IndexController@gotoLoginFour');
+Route::post('/employeeproject', 'IndexController@postLoginFour');
 
 Route::get('/client_main', 'IndexController@gotoMain');
 Route::get('/client_inner', 'IndexController@gotoInner');

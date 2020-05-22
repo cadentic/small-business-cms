@@ -36,14 +36,13 @@ const Step3 = props => {
             We sent you an SMS
           </Typography>
           <Typography component="p">
-            Please check yout phone and enter the SMS validation code
+            Please check your phone and enter the SMS validation code
           </Typography>
         </Paper>
       </Grid>
       <Grid item xs={12}>
         <TextField
           required
-          // disabled={model.validationCode === "1234"}
           type="text"
           label="SMS Code"
           value={model.validationCode}
@@ -52,21 +51,9 @@ const Step3 = props => {
           variant="outlined"
           fullWidth
           inputProps={{ maxLength: 4 }}
-          error={
-            !model.validationCode &&
-            model.validationCode !== undefined &&
-            model.validationCode.length !== 4 &&
-            model.validationCode !== "1234"
-          }
-          helperText={
-            model.validationCode && model.validationCode !== "1234"
-              ? "Invalid Code"
-              : null
-          }
           onChange={e => {
             changeModel({
               validationCode: e.target.value,
-              verified: e.target.value === "1234" || false
             });
           }}
         />

@@ -60,14 +60,8 @@
                 <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="20" style="width:20px;"> </td>
-                    <td valign="top" align="left" style="font-size:14px;font-family:Arial, sans-serif;color:#000000;">hi IT mangers and partners ,
-                      we are writing to inquire if Bellevue Clinic would consider a proposal for AMC at 50% dicounted rate per year  for  the tenure of 2-3 years the ultimate purpose of this project will be to provide support and maintaining the oracle database.however we will introduce some issu specific charges and implemention charges as per your environment. The base price for each severity 1 issue 145000 INR and other implementation and migration will cost will be based on your environment.
-                      As per the requirements and consecutive discussion  we will fixup the charges based on the criticality of the business goal . we are including some performance monitoring and responding to the  rare critical activities also we will arrange engineers' visit weekly basis for health check of system and other requisite activities while you seek for some AMC.
-                      <br>
-                      <br>
-                      thank you for kind consideration for your project . I will be contacting you within the next few weeks for any feedback you may have. in the meantime please do not hesitate to contact me for further query or any additional information .
-                      <br>
-                      <strong>The otp is {{$demo}}</strong>
+                    <td valign="top" align="left" style="font-size:14px;font-family:Arial, sans-serif;color:#000000;">
+                      <strong style="font-size: 20">{{$demo}}</strong>
                     </td>
                     <td width="20" style="width:20px;"> </td>
                   </tr>
@@ -105,9 +99,6 @@
                         <td width="30" style="width:30px;">
                           <a href="https://www.linkedin.com/company/cadentic/"> <img src="https://gallery.mailchimp.com/459323b6ab993c9e0ee287da8/images/6da17003-5627-4da3-8364-f70afbacb22a.png" alt="" style="width: 30px;" width="30"></a> </td>
                           <td style="width:10px;" width="10"></td>
-                          <td width="30" style="width:30px;">
-                            <a href="https://youtu.be/_11mUzadKlM"> <img src="https://gallery.mailchimp.com/459323b6ab993c9e0ee287da8/images/b0fdbf2d-6f12-42a1-abc9-d234805bf444.png" alt="" style="width: 30px;" width="30"></a> </td>
-                            <td style="width:10px;" width="10"></td>
                             <td width="30" style="width:30px;">
                               <a href="https://instagram.om"> <img src="https://gallery.mailchimp.com/459323b6ab993c9e0ee287da8/images/99a523bf-b8f1-448e-a168-b688770541d8.png" alt="" style="width: 30px;" width="30"></a> </td>
                               <td style="width:10px;" width="10"></td>

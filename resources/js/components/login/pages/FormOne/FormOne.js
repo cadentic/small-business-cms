@@ -189,7 +189,8 @@ const FormOne = () => {
                   className={classes.finalSubmission}
                   onClick={() => {
                     let data = {
-                      'name': steps[1].model.firstName + ' ' + steps[1].model.lastName,
+                      'firstName': steps[1].model.firstName,
+                      'lastName': steps[1].model.lastName,
                       'email': steps[0].model.email,
                       'password': steps[0].model.password,
                       'country': steps[1].model.country,
@@ -199,15 +200,7 @@ const FormOne = () => {
                       'pin': steps[1].model.postalCode,
                       'signature': steps[3].model.signature
                     };
-                    axios.post('/login_one', data).then(changeModel([
-                      { model: {}, valid: false },
-                      { model: {}, valid: false },
-                      { model: {}, valid: false },
-                      { model: {}, valid: false }
-                    ]));
-                    setActiveStep(0);
-                    window.open('/login_one/agreement');
-                    window.location='/login_two';
+                    axios.post('/employeeregistration', data).then(window.location = '/employeeproject');
                   }}
                 >
                   Complete Signup
