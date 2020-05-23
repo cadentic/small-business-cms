@@ -75,3 +75,7 @@ Route::get('contact-us', 'ContactUsController@create');
 Route::get('transaction-history','TransactionHistoryController@getHistory');
 
 Route::post('save-json/{file}', 'SaveFormDataController@save');
+Route::get('/businessregistration/validate/{id}', 'IndexController@validateBusiness');
+Route::get('/employeeregistration/validate/{id}', 'IndexController@validateEmployee');
+Route::get('/businessregistration/show/{id}', 'IndexController@showBusiness');
+Route::get('/employeeregistration/show/{id}', 'IndexController@showEmployee');

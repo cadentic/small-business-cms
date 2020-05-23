@@ -95,8 +95,10 @@ class IndexController extends Controller
       {
         $id = 1;
       }
-      else {
-        $id = end($json)['id'] + 1;
+      else
+      {
+        $obj = end($json);
+        $id = $obj->{'id'} + 1;
         reset($json);
       }
       $name = $request->firstName.' '.$request->lastName;
@@ -158,8 +160,10 @@ class IndexController extends Controller
       {
         $id = 1;
       }
-      else {
-        $id = end($json)['id'] + 1;
+      else
+      {
+        $obj = end($json);
+        $id = $obj->{'id'} + 1;
         reset($json);
       }
       $name = $request->name;
@@ -182,8 +186,10 @@ class IndexController extends Controller
       {
         $id = 1;
       }
-      else {
-        $id = end($json)['id'] + 1;
+      else
+      {
+        $obj = end($json);
+        $id = $obj->{'id'} + 1;
         reset($json);
       }
       $name = $request->name;
@@ -213,5 +219,81 @@ class IndexController extends Controller
         return response()->json(array('validated'=>true));
       }
       return 'false';
+    }
+    public function validateBusiness($id)
+    {
+      $file_path = 'json/businessregistration/user.json';
+      $file = file_get_contents($file_path);
+      $json = json_decode($file);
+      foreach ($json as $obj) {
+        if($obj->{'id'}==$id)
+        {
+          $obj->{'validated'} = true;
+        }
+      }
+      file_put_contents($file_path, json_encode($json));
+      return 'Business User Validated';
+    }
+    public function validateEmployee($id)
+    {
+      $file_path = 'json/employeeregistration/user.json';
+      $file = file_get_contents($file_path);
+      $json = json_decode($file);
+      foreach ($json as $obj) {
+        if($obj->{'id'}==$id)
+        {
+          $obj->{'validated'} = true;
+        }
+      }
+      file_put_contents($file_path, json_encode($json));
+      return 'Employee Validated';
+    }
+    public function showBusiness($id)
+    {
+      $file_path = 'json/businessregistration/user.json';
+      $file = file_get_contents($file_path);
+      $user = json_decode($file);
+      $file_path = 'json/businessregistration/project.json';
+      $file = file_get_contents($file_path);
+      $project = json_decode($file);
+      foreach ($user as $obj)
+      {
+        if($obj->{'id'}==$id)
+        {
+          $x = $obj;
+        }
+      }
+      foreach ($project as $obj)
+      {
+      if($obj->{'id'}==$id)
+        {
+          $x = (object)array_merge((array)$x, (array)$obj);
+        }
+      }
+      return response()->json($x);
+    }
+    public function showEmployee($id)
+    {
+      $file_path = 'json/employeeregistration/user.json';
+      $file = file_get_contents($file_path);
+      $user = json_decode($file);
+      $file_path = 'json/employeeregistration/project.json';
+      $file = file_get_contents($file_path);
+      $project = json_decode($file);
+      foreach ($user as $obj)
+      {
+        if($obj->{'id'}==$id)
+        {
+          $x = $obj;
+        }
+      }
+      foreach ($project as $obj)
+      {
+      if($obj->{'id'}==$id)
+        {
+          $x = (object)array_merge((array)$x, (array)$obj);
+        }
+      }
+      return response()->json($x);
     }
 }
