@@ -79,3 +79,6 @@ Route::get('/businessregistration/validate/{id}', 'IndexController@validateBusin
 Route::get('/employeeregistration/validate/{id}', 'IndexController@validateEmployee');
 Route::get('/businessregistration/show/{id}', 'IndexController@showBusiness');
 Route::get('/employeeregistration/show/{id}', 'IndexController@showEmployee');
+Route::view('/login', 'login');
+Route::post('/login', 'IndexController@login');
+Route::get('pdfview', 'IndexController@pdf');

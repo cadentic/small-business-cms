@@ -13,8 +13,7 @@ class MailController extends Controller
     public function sendEmail(Request $req)
     {
         $mail = $req->email;
-        //$this->otp = rand(1000, 9999);
-        $this->otp = 1729;
+        $this->otp = rand(1000, 9999);
         Mail::to($mail)->send(new DemoEmail('The OTP is '.$this->otp));
         $file_path = 'json/emailotp.json';
         $file = file_get_contents($file_path);

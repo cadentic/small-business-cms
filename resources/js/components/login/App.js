@@ -5,6 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import FormOne from "./pages/FormOne/FormOne";
 import FormTwo from "./pages/FormTwo/FormTwo";
 import FormThree from "./pages/FormThree/FormThree";
+import FormFour from './pages/FormFour/FormFour'
 import Agreement from './components/Agreement';
 import "./App.css";
 
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route path="/FormThree">
           <FormThree />
+        </Route>
+        <Route path="/FormFour">
+          <FormFour/>
         </Route>
       </Switch>
     </Router>

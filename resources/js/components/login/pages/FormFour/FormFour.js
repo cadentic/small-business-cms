@@ -200,8 +200,8 @@ const FormFour = () => {
   );
 };
 
-export default FormTwo;
+export default FormFour;
 
 if (document.getElementById('formfour')) {
-  ReactDOM.render( < FormFour /> , document.getElementById('formfour'));
+  ReactDOM.render( <FormFour/> , document.getElementById('formfour'));
 }

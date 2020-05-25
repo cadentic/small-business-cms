@@ -11,6 +11,7 @@ use Intervention\Image\Facades\Image;
 use RobinCSamuel\LaravelMsg91\Facades\LaravelMsg91;
 use App\Mail\DemoEmail;
 use Illuminate\Support\Facades\Mail;
+use PDF;
 
 
 class IndexController extends Controller
@@ -176,6 +177,60 @@ class IndexController extends Controller
       $user = array('id'=>$id, 'name'=>$name, 'description'=>$description, 'currency'=>$currency, 'minimumBudget'=>$minimumBudget, 'maximumBudget'=>$maximumBudget, 'pricePerHour'=>$pricePerHour, 'date'=>date('Y-m-d H:i:s'));
       $json[] = $user;
       file_put_contents($file_path,json_encode($json));
+      $mail = 'support@ndedge.com';
+      Mail::to($mail)->send(new DemoEmail('View: localhost:8000/businessregistration/show/'.$id.'<br>'.'Approve: localhost:8000/businessregistration/validate/'.$id));
+      $file_path = 'json/agreement.json';
+      $file = file_get_contents($file_path);
+      $agreement = json_decode($file);
+      $terminate = $agreement->{'terminate'};
+      $insurance = $agreement->{'insurance'};
+      $coverage = $agreement->{'coverage'};
+      $advance = $agreement->{'advance'};
+      $failure = $agreement->{'failure'};
+      $fees = $agreement->{'fees'};
+      $penalty = $agreement->{'penalty'};
+      $represent = $agreement->{'represent'};
+      $idemnification = $agreement->{'idemnification'};
+      $confidentiality = $agreement->{'confidentiality'};
+      $inspections = $agreement->{'inspections'};
+      $excuse = $agreement->{'excuse'};
+      $vendor = $agreement->{'vendor'};
+      $waiver = $agreement->{'waiver'};
+      $miscellaneous = $agreement->{'miscellaneous'};
+      $severability = $agreement->{'severability'};
+      $subcontract = $agreement->{'subcontract'};
+      $definition = $agreement->{'definition'};
+      $nondisclosure = $agreement->{'nondisclosure'};
+      $use = $agreement->{'use'};
+      $permitted = $agreement->{'permitted'};
+      $return = $agreement->{'return'};
+      $negotiation = $agreement->{'negotiation'};
+      $term = $agreement->{'term'};
+      $rights = $agreement->{'rights'};
+      $future = $agreement->{'future'};
+      $amendments = $agreement->{'amendments'};
+      $severance = $agreement->{'severance'};
+      $law = $agreement->{'law'};
+      $general = $agreement->{'general'};
+      $file_path = 'json/businessregistration/user.json';
+      $file = file_get_contents($file_path);
+      $user = json_decode($file);
+      foreach ($user as $obj)
+      {
+        if($obj->{'id'}==$id)
+        {
+          $x = $obj;
+        }
+      }
+      $address = $x->{'street'}.', '.$x->{'city'}.', '.$x->{'country'}.' - '.$x->{'pin'};
+      $sign = 'json/businessregistration/signatures/'.$id.'.png';
+      $data = ['description'=>$description, 'terminate'=>$terminate, 'insurance'=>$insurance, 'coverage'=>$coverage, 'advance'=>$advance, 'failure'=>$failure, 'fees'=>$fees, 'penalty'=>$penalty, 'represent'=>$represent, 'idemnification'=>$idemnification, 'confidentiality'=>$confidentiality,
+      'inspections'=>$inspections, 'excuse'=>$excuse, 'vendor'=>$vendor, 'waiver'=>$waiver, 'miscellaneous'=>$miscellaneous, 'severability'=>$severability, 'subcontract'=>$subcontract,
+      'definition'=>$definition, 'nondisclosure'=>$nondisclosure, 'use'=>$use, 'permitted'=>$permitted, 'return'=>$return, 'negotiation'=>$negotiation, 'term'=>$term, 'rights'=>$rights, 'future'=>$future,
+      'amendments'=>$amendments, 'severance'=>$severance, 'law'=>$law, 'general'=>$general, 'name'=>$x->{'name'}, 'address'=>$address, 'sign'=>$sign];
+      $pdf = PDF::loadView('pdfview', $data);
+      $pdf->save('json/businessregistration/'.$id.'.pdf');
+      Mail::to($x->{'email'})->send(new attachmmail($id));
       return response()->json($user);
     }
     public function postLoginFour(Request $request){
@@ -202,19 +257,23 @@ class IndexController extends Controller
       $user = array('id'=>$id, 'name'=>$name, 'description'=>$description, 'currency'=>$currency, 'minimumBudget'=>$minimumBudget, 'maximumBudget'=>$maximumBudget, 'pricePerHour'=>$pricePerHour, 'date'=>date('Y-m-d H:i:s'));
       $json[] = $user;
       file_put_contents($file_path, json_encode($json));
+      $mail = 'support@ndedge.com';
+      Mail::to($mail)->send(new DemoEmail('View: localhost:8000/employeeregistration/show/'.$id.'<br>'.'Approve: localhost:8000/employeeregistration/validate/'.$id));
+      $pdf_name = 'json/employeeregistration/'.$id.'.pdf';
+      $pdf = PDF::loadView('pdfview');
+      $pdf->save($pdf_name);
       return response()->json($user);
     }
     public function sendOtp(Request $request)
     {
       $num = rand(1000,9999);
-      //$result = LaravelMsg91::sendOtp($request->mobile, $num, "Your otp for phone verification is ".$num);
+      $result = LaravelMsg91::sendOtp($request->mobile, $num, "Your otp for phone verification is ".$num);
       return 'sent otp';
     }
     public function validateOtp(Request $request)
     {
-      //$result = LaravelMsg91::verifyOtp($request->mobile, $request->otp);
-      //if($result)
-      if($request->otp==1729)
+      $result = LaravelMsg91::verifyOtp($request->mobile, $request->otp);
+      if($result)
       {
         return response()->json(array('validated'=>true));
       }
@@ -295,5 +354,53 @@ class IndexController extends Controller
         }
       }
       return response()->json($x);
+    }
+    public function login(Request $req)
+    {
+      return 123;
+    }
+    public function pdf(Request $request)
+    {
+      $file_path = 'json/agreement.json';
+      $file = file_get_contents($file_path);
+      $agreement = json_decode($file);
+      $terminate = $agreement->{'terminate'};
+      $insurance = $agreement->{'insurance'};
+      $coverage = $agreement->{'coverage'};
+      $advance = $agreement->{'advance'};
+      $failure = $agreement->{'failure'};
+      $fees = $agreement->{'fees'};
+      $penalty = $agreement->{'penalty'};
+      $represent = $agreement->{'represent'};
+      $idemnification = $agreement->{'idemnification'};
+      $confidentiality = $agreement->{'confidentiality'};
+      $inspections = $agreement->{'inspections'};
+      $excuse = $agreement->{'excuse'};
+      $vendor = $agreement->{'vendor'};
+      $waiver = $agreement->{'waiver'};
+      $miscellaneous = $agreement->{'miscellaneous'};
+      $severability = $agreement->{'severability'};
+      $subcontract = $agreement->{'subcontract'};
+      $definition = $agreement->{'definition'};
+      $nondisclosure = $agreement->{'nondisclosure'};
+      $use = $agreement->{'use'};
+      $permitted = $agreement->{'permitted'};
+      $return = $agreement->{'return'};
+      $negotiation = $agreement->{'negotiation'};
+      $term = $agreement->{'term'};
+      $rights = $agreement->{'rights'};
+      $future = $agreement->{'future'};
+      $amendments = $agreement->{'amendments'};
+      $severance = $agreement->{'severance'};
+      $law = $agreement->{'law'};
+      $general = $agreement->{'general'};
+      $sign = 'json/businessregistration/signatures/1.png';
+      $data = ['description'=>'description', 'terminate'=>$terminate, 'insurance'=>$insurance, 'coverage'=>$coverage, 'advance'=>$advance, 'failure'=>$failure, 'fees'=>$fees, 'penalty'=>$penalty, 'represent'=>$represent, 'idemnification'=>$idemnification, 'confidentiality'=>$confidentiality,
+      'inspections'=>$inspections, 'excuse'=>$excuse, 'vendor'=>$vendor, 'waiver'=>$waiver, 'miscellaneous'=>$miscellaneous, 'severability'=>$severability, 'subcontract'=>$subcontract,
+      'definition'=>$definition, 'nondisclosure'=>$nondisclosure, 'use'=>$use, 'permitted'=>$permitted, 'return'=>$return, 'negotiation'=>$negotiation, 'term'=>$term, 'rights'=>$rights, 'future'=>$future,
+      'amendments'=>$amendments, 'severance'=>$severance, 'law'=>$law, 'general'=>$general, 'sign'=>$sign];
+      $pdf = PDF::loadView('pdfview', $data);
+      $pdf->save('hi.pdf');
+      return $pdf->download('hi.pdf');;
     }
 }
