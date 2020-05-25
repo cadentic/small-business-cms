@@ -79,4 +79,86 @@ class LandingPages extends Controller
     return view('innerForm');
   }
 
+  public function innerPost(Request $request){
+    if($request->submit == 'Submit'){
+      $this->validate($request,[
+        'title' => 'required',
+        'bg_img.*' => 'max:4096|image',
+        'description' => 'required'
+      ]);
+      $indexfile = file_get_contents('json/Numbers/numinner.json');
+      $index = json_decode($indexfile);
+      $index = $index + 1;
+      file_put_contents('json/Numbers/numinner.json',json_encode($index));
+      $img_nm = 'Image'.$index.'.jpeg';
+      $data = array('id'=>$index,'title'=>$request->title,'bgcolor'=>$request->bgcolor,'bg_img'=>$img_nm,'subtitle'=>$request->subtitle,'description'=>$request->description);
+      $file_path = 'json/inner_f1.json';
+      $file = file_get_contents($file_path);
+      $json = json_decode($file);
+      $json[] = $data;
+      file_put_contents($file_path,json_encode($json));
+      $image=$request->get('bg_img');
+      $name=time().'.'.explode('/',explode(':',substr($image,0,strpos($image,';')))[1])[1];
+      \Image::make($request->get('bg_img'))->save(public_path('banners/inner/').$name);
+      $image = new FileUpload();
+      $image->image_name = $name;
+      $image->save();
+      return 'Form Submitted Successfully!';
+    }
+    else if($request->submit=='Draft'){
+      $data = array('id'=>'1','title'=>$request->title,'bgcolor'=>$request->bgcolor,'bg_img'=>'Image1.jpeg','subtitle'=>$request->subtitle,'description'=>$request->description);
+      $file_path = 'json/draft_inner/draft_inner.json';
+      file_put_contents($file_path,json_encode($data));
+      if($request->get('bg_img')){
+        $image=$request->get('bg_img');
+        $name=time().'.'.explode('/',explode(':',substr($image,0,strpos($image,';')))[1])[1];
+        Image::make($request->get('bg_img'))->save(public_path('json/draft_inner/').$name);
+        $image = new FileUpload();
+        $image->image_name = $name;
+        $image->save();
+        return 'Form Saved as Draft';
+      }
+    }
+  }
+
+  public function innerForm2(){
+    return view('innerForm2');
+  }
+
+  public function innerPost2(Request $request){
+    return 123;
+  }
+
+  public function innerForm3(){
+    return view('innerForm3');
+  }
+
+  public function innerPost3(Request $request){
+    return 123;
+  }
+
+  public function innerForm4(){
+    return view('innerForm4');
+  }
+
+  public function innerPost4(Request $request){
+    return 123;
+  }
+
+  public function innerFormBlank(){
+    return view('innerFormBlank');
+  }
+
+  public function innerPostBlank(Request $request){
+    return 123;
+  }
+
+  public function innerFormBlank1(){
+    return view('innerFormBlank1');
+  }
+
+  public function innerPostBlank1(Request $request){
+    return 123;
+  }
+
 }

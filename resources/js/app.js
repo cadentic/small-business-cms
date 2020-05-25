@@ -48,6 +48,11 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 
 import iform from './components/admin/iform.vue';
+import iform2 from './components/admin/iform2.vue';
+import iform3 from './components/admin/iform3.vue';
+import iform4 from './components/admin/iform4.vue';
+import ibform from './components/admin/ibform.vue';
+import ibform1 from './components/admin/ibform1.vue';
 
 Vue.use(VueAxios, axios);
 Vue.use(VueSplit);
@@ -95,6 +100,11 @@ const app = new Vue({
         'adminapp': adminapp,
 
         'iform': iform,
+        'iform2': iform2,
+        'iform3': iform3,
+        'iform4': iform4,
+        'ibform': ibform,
+        'ibform1': ibform1,
 
         // Additional Pages
         'whatsappcomponent' : whatsappcomponent,

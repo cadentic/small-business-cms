@@ -30,7 +30,6 @@
         <div id="app">
           <iform></iform>
         </div>
-
         <script src="{{ mix('js/app.js') }}"></script>
         <script src="https://unpkg.com/react@15/dist/react.js"></script>
         <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>

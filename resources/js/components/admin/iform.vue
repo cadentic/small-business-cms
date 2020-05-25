@@ -85,25 +85,31 @@
     </v-overlay>
 
     <div class="shift-right">
+      <div class="topspace"></div>
       <div></div>
-      <div>
-        <h1>Contacts</h1>
-        <form action="#">
-          <div class="form-group">
-            <label>Name</label>
-            <input v-model="contact.name" type="text" name="name" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input v-model="contact.email" type="text" name="email" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Phone</label>
-            <input v-model="contact.phone" type="text" name="phone" class="form-control">
-          </div>
-          <div class="form-group">
-            <button v-show="!edit" type="submit" class="btn btn-primary">New Contact</button>
-            <button v-show="edit" type="submit" class="btn btn-primary">Update Contact</button>
+      <div class="ma">
+        <center><h1>Inner Form</h1></center>
+        <form v-on:submit.prevent>
+          <input type="hidden" name="_token" :value="csrf">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model="title"><br/>
+
+          <label for="bgcolor">Background-color</label>
+          <input type="color" id="bgcolor" name="bgcolor" value="#ff0000" v-model="bgcolor"><br/>
+
+          <label for="bg_img">Image</label>
+          <input type="file" id="bg_img" name="bg_img" v-on:change="onImageChange"><br/>
+
+          <label for="subtitle">SubTitle</label>
+          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle..." v-model="subtitle"><br/>
+
+          <label for="description">Description</label>
+          <input type="text" id="description" name="description" placeholder="Description..." v-model="description"><br/>
+
+          <div class="mygrid">
+            <div><button @click="innerPost" class="btn btn-primary">Submit</button></div>
+            <div><button @click="innerPost1" class="btn btn-primary">Edit</button></div>
+            <div><button @click="innerPost2" class="btn btn-primary">Save as Draft</button></div>
           </div>
         </form>
       </div>
@@ -112,6 +118,8 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     name: "iform",
     data: () => ({
@@ -347,7 +355,14 @@
           name:'',
           email:'',
           phone:''
-        }
+        },
+        submit:'',
+        title:'',
+        description:'',
+        subtitle:'',
+        bg_img:'',
+        bgcolor:'#ff0000',
+        csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
         source: String
@@ -356,13 +371,37 @@
       console.log('Contacts Component Loaded...');
     },
     methods: {
-        createContact: function(){
-          console.log('Creating contact...');
-          return;
+        onImageChange(e){
+          let files = e.target.files || e.dataTransfer.files;
+          if(!files.length){
+            return;
+          }
+          this.createImage(files[0]);
         },
-        updateContact: function(id){
-          console.log('Updating contact '+id+'...');
-          return;
+        createImage(file){
+          let reader = new FileReader();
+          let vm = this;
+          reader.onload = (e) =>{
+            vm.bg_img = e.target.result;
+          }
+          reader.readAsDataURL(file);
+        },
+
+        innerPost: function(){
+          alert('Submitted Form Successfully');
+          axios.post('/admin/innerForm',{submit:'Submit',title:this.title,bg_img:this.bg_img,subtitle:this.subtitle,description:this.description,bgcolor:this.bgcolor}).then(res=>{console.log(res)}).catch(error=>{console.log(error.response)});
+          window.location.href="/admin/innerForm";
+        },
+        innerPost1: function(){
+          alert('Previous Draft');
+          let data = axios.get('../json/draft_inner/draft_inner.json').then(res=>{console.log(res);this.title=res.data.title;this.bgcolor=res.data.bgcolor;this.subtitle=res.data.subtitle;this.description=res.data.description});
+
+
+        },
+        innerPost2: function(){
+          alert('Draft Saved');
+          axios.post('/admin/innerForm',{submit:'Draft',title:this.title,bg_img:this.bg_img,subtitle:this.subtitle,description:this.description,bgcolor:this.bgcolor}).then(res=>console.log(res)).catch(error=>{console.log(error.response)});
+          window.location.href="/admin/innerForm";
         },
         isItemSelected() {
             return this.itemSelected !== '' && this.itemSelected.text !== this.selectedText
@@ -506,7 +545,7 @@
     .v-menu__content {
         background: #1976d2 !important;
     }
-
+    html and css form
     .v-list {
         background: #1976d2 !important;
     }
@@ -566,7 +605,50 @@
 
     div.shift-right{
       display: grid;
-      grid-template-columns: 200px auto;
+      grid-template-columns: 180px auto;
     }
+
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+
+      .topspace{
+        height: 50px;
+        grid-column: 1/span 2;
+      }
+
+      div.ma {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+
+      .mygrid{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        padding: 10px;
+        grid-gap: 20px;
+      }
 
 </style>

@@ -18,9 +18,28 @@
 Route::get('/', 'IndexController@index');
 
 Route::get('/admin', 'IndexController@gotoAdmin');
+
 Route::get('/admin/formA','LandingPages@gotoFormA');
 Route::post('/admin/formA','LandingPages@formPost');
+
 Route::get('/admin/innerForm','LandingPages@innerForm');
+Route::post('/admin/innerForm','LandingPages@innerPost');
+
+Route::get('/admin/innerForm2','LandingPages@innerForm2');
+Route::post('/admin/innerForm2','LandingPages@innerPost2');
+
+Route::get('/admin/innerForm3','LandingPages@innerForm3');
+Route::post('/admin/innerForm3','LandingPages@innerPost3');
+
+Route::get('/admin/innerForm4','LandingPages@innerForm4');
+Route::post('/admin/innerForm4','LandingPages@innerPost4');
+
+Route::get('/admin/innerFormBlank','LandingPages@innerFormBlank');
+Route::post('/admin/innerFormBlank','LandingPages@innerPostBlank');
+
+Route::get('/admin/innerFormBlank1','LandingPages@innerFormBlank1');
+Route::post('/admin/innerFormBlank1','LandingPages@innerPostBlank1');
+
 Route::get('/admin/{any}', 'IndexController@gotoAdmin')->where('any', '.*');
 
 

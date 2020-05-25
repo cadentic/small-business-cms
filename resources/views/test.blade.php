@@ -4,7 +4,7 @@
   </head>
   <body>
     <div>
-      {{$title}}
+      Done
     </div>
   </body>
   </html>
