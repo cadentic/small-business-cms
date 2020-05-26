@@ -89,21 +89,22 @@
       <div></div>
       <div class="ma">
         <center><h1>Inner Form 3</h1></center>
-        <form v-on:submit.prevent="innerPost">
+        <form method="POST" action="innerForm3">
+          <input type="hidden" name="_token" :value="csrf">
           <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model="formData.title">
+          <input type="text" id="title" name="title" placeholder="Enter Title..">
 
           <label for="bgcolor">Background-color</label>
-          <input type="text" id="bgcolor" name="bgcolor" placeholder="BackGround color.." v-model="formData.bgcolor">
+          <input type="text" id="bgcolor" name="bgcolor" placeholder="BackGround color..">
 
           <label for="bg_img">Image</label>
-          <input type="file" id="bg_img" name="bg_img" placeholder="Image..." v-on:change="onImageChange">
+          <input type="file" id="bg_img" name="bg_img">
 
           <label for="subtitle">SubTitle</label>
-          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle..." v-model="formData.subtitle">
+          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle...">
 
           <label for="description">Description</label>
-          <input type="text" id="description" name="description" placeholder="Description..." v-model="formData.description">
+          <input type="text" id="description" name="description" placeholder="Description...">
 
           <div class="mygrid">
             <div><input type="submit" name="Submit" value="Submit"/></div>
@@ -355,13 +356,6 @@
           email:'',
           phone:''
         },
-        formData:{
-          title:'',
-          bgcolor:'',
-          bg_img:'',
-          subtitle:'',
-          description:''
-        }
     }),
     props: {
         source: String
@@ -374,9 +368,6 @@
           this.bg_img = e.target.files[0];
         },
 
-        innerPost: function(){
-            this.$http.post('/admin/innerForm',this.formData);
-        },
         isItemSelected() {
             return this.itemSelected !== '' && this.itemSelected.text !== this.selectedText
         },

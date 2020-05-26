@@ -10,7 +10,6 @@ class LandingPages extends Controller
     $title = null;
     return view('formA')->with('title',$title);
   }
-
   public function formPost(Request $request){
     if($request->submit == 'Submit'){
       $this->validate($request,[
@@ -78,7 +77,6 @@ class LandingPages extends Controller
   public function innerForm(){
     return view('innerForm');
   }
-
   public function innerPost(Request $request){
     if($request->submit == 'Submit'){
       $this->validate($request,[
@@ -90,15 +88,14 @@ class LandingPages extends Controller
       $index = json_decode($indexfile);
       $index = $index + 1;
       file_put_contents('json/Numbers/numinner.json',json_encode($index));
-      $img_nm = 'Image'.$index.'.jpeg';
-      $data = array('id'=>$index,'title'=>$request->title,'bgcolor'=>$request->bgcolor,'bg_img'=>$img_nm,'subtitle'=>$request->subtitle,'description'=>$request->description);
+      $image=$request->get('bg_img');
+      $name='Image'.$index.'.'.explode('/',explode(':',substr($image,0,strpos($image,';')))[1])[1];
+      $data = array('id'=>$index,'title'=>$request->title,'bgcolor'=>$request->bgcolor,'bg_img'=>$name,'subtitle'=>$request->subtitle,'description'=>$request->description);
       $file_path = 'json/inner_f1.json';
       $file = file_get_contents($file_path);
       $json = json_decode($file);
       $json[] = $data;
       file_put_contents($file_path,json_encode($json));
-      $image=$request->get('bg_img');
-      $name=time().'.'.explode('/',explode(':',substr($image,0,strpos($image,';')))[1])[1];
       \Image::make($request->get('bg_img'))->save(public_path('banners/inner/').$name);
       $image = new FileUpload();
       $image->image_name = $name;
@@ -124,9 +121,44 @@ class LandingPages extends Controller
   public function innerForm2(){
     return view('innerForm2');
   }
-
   public function innerPost2(Request $request){
-    return 123;
+    if($request->Submit == 'Submit'){
+      $video = $request['video'];
+      $videoname = $video->getClientOriginalName();
+      $path = 'banners/inner2';
+      $video->move($path,$videoname);
+      $indexfile = file_get_contents('json/Numbers/numinner2.json');
+      $index = json_decode($indexfile);
+      $index = $index + 1;
+      file_put_contents('json/Numbers/numinner2.json',json_encode($index));
+      $filepath = 'json/inner_f2.json';
+      $data = file_get_contents($filepath);
+      $json = json_decode($data);
+      $array = array('id'=>$index,'title'=>$request->title,'video'=>$videoname,'subtitle'=>$request->subtitle,'description'=>$request->description);
+      $json[] = $array;
+      file_put_contents($filepath,json_encode($json));
+      return $request->all();
+
+    }
+    else if($request->Submit=='Save as Draft'){
+      if($request->hasFile('video')){
+        $video = $request['video'];
+        $videoname = $video->getClientOriginalName();
+        $path = 'json/draft_inner2';
+        $video->move($path,$videoname);
+      }
+      else{
+        $videoname='null';
+      }
+      $indexfile = file_get_contents('json/Numbers/numinner2.json');
+      $index = json_decode($indexfile);
+      $index = $index + 1;
+      file_put_contents('json/Numbers/numinner2.json',json_encode($index));
+      $filepath = 'json/draft_inner2/draft_inner2.json';
+      $array = array('id'=>$index,'title'=>$request->title,'video'=>$videoname,'subtitle'=>$request->subtitle,'description'=>$request->description);
+      file_put_contents($filepath,json_encode($array));
+      return $request->all();
+    }
   }
 
   public function innerForm3(){
@@ -134,7 +166,7 @@ class LandingPages extends Controller
   }
 
   public function innerPost3(Request $request){
-    return 123;
+    echo '123';
   }
 
   public function innerForm4(){

@@ -89,26 +89,24 @@
       <div></div>
       <div class="ma">
         <center><h1>Inner Form 2</h1></center>
-        <form v-on:submit.prevent="innerPost">
-          <label for="id">Id</label>
-          <input type="text" id="id" name="id" placeholder="Enter Id..." v-model="formData.id">
-
+        <form method="post" action="innerForm2" enctype="multipart/form-data">
+          <input type="hidden" name="_token" :value="csrf">
           <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model="formData.title">
+          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model='title'><br/>
 
-          <label for="bg_img">Image</label>
-          <input type="file" id="bg_img" name="bg_img" placeholder="Image..." v-on:change="onImageChange">
+          <label for="video">Video</label>
+          <input type="file" id="video" name="video"><br/>
 
           <label for="subtitle">SubTitle</label>
-          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle..." v-model="formData.subtitle">
+          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle..." v-model='subtitle'><br/>
 
           <label for="description">Description</label>
-          <input type="text" id="description" name="description" placeholder="Description..." v-model="formData.description">
+          <input type="text" id="description" name="description" placeholder="Description..." v-model='description'><br/>
 
           <div class="mygrid">
             <div><input type="submit" name="Submit" value="Submit"/></div>
-            <div><input type="submit" name="Edit" value="Edit"/></div>
-            <div><input type="submit" name="Save as Draft" value="Save as Draft"></div>
+            <div><input type="submit" @click="Edit" value="Edit"/></div>
+            <div><input type="submit" name="Submit" value="Save as Draft"></div>
           </div>
         </form>
       </div>
@@ -355,13 +353,12 @@
           email:'',
           phone:''
         },
-        formData:{
-          title:'',
-          bgcolor:'',
-          bg_img:'',
-          subtitle:'',
-          description:''
-        }
+        submit:'',
+        title:'',
+        description:'',
+        subtitle:'',
+        video:'',
+        csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
         source: String
@@ -370,12 +367,10 @@
       console.log('Contacts Component Loaded...');
     },
     methods: {
-        onImageChange(e){
-          this.bg_img = e.target.files[0];
-        },
-
-        innerPost: function(){
-            this.$http.post('/admin/innerForm',this.formData);
+        Edit: function(e){
+          alert('Previous Draft');
+          let data = axios.get('../json/draft_inner2/draft_inner2.json').then(res=>{console.log(res);this.title=res.data.title;this.subtitle=res.data.subtitle;this.description=res.data.description});
+          e.preventDefault();
         },
         isItemSelected() {
             return this.itemSelected !== '' && this.itemSelected.text !== this.selectedText

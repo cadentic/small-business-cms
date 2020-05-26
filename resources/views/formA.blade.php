@@ -185,7 +185,7 @@
                   <label for="lname">Image</label>
                 </div>
                 <div class="col-75">
-                  <input type="file" id="bg_img" name="bg_img[]" placeholder="Add Image..." multiple>
+                  <input type="file" id="bg_img" name="bg_img[]" multiple>
                 </div>
               </div>
               <div class="row">
