@@ -61,7 +61,7 @@
                   <tr>
                     <td width="20" style="width:20px;"> </td>
                     <td valign="top" align="left" style="font-size:14px;font-family:Arial, sans-serif;color:#000000;">
-                      <strong style="font-size: 20">{{$demo}}</strong>
+                      <strong style="font-size: 20">{!! $demo !!}</strong>
                     </td>
                     <td width="20" style="width:20px;"> </td>
                   </tr>

@@ -37,7 +37,7 @@ class attachmail extends Mailable
     {
         return $this->view('mails.agreement')
                     ->subject('Aggrement')
-                    ->attach(public_path('/json/businessregistration/').$demo.'.pdf', [
+                    ->attach(public_path('/json/businessregistration/'.$this->demo.'.pdf'), [
                               'as' => 'agreement.pdf',
                       ]);
     }

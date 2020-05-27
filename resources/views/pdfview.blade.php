@@ -11,8 +11,8 @@
       }
       .image
       {
-        width: 90%;
-        height: 100px;
+        width: 100%;
+        height: 130px;
       }
       .container
       {
@@ -94,23 +94,18 @@
     <hr>
     <div class="container">
       <h3>Insurance</h3>
-      <br>
       {{$insurance}}
       <br><br>
       <h3>Failure to Maintain Coverage</h3>
-      <br>
       {{$coverage}}
       <br><br>
       <h3>Advance Payment</h3>
-      <br>
       {{$advance}}
       <br><br>
       <h3>Failure to make Payment</h3>
-      <br>
       {{$failure}}
       <br><br>
       <h2 style="text-align: center; text-decoration: underline">FEES</h2>
-      <br>
       {{$fees}}
       <br><br>
     </div>

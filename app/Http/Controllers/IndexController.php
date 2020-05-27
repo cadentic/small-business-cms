@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use RobinCSamuel\LaravelMsg91\Facades\LaravelMsg91;
 use App\Mail\DemoEmail;
+use App\Mail\attachmail;
 use Illuminate\Support\Facades\Mail;
 use PDF;
+use Illuminate\Http\RedirectResponse;
 
 
 class IndexController extends Controller
@@ -177,7 +179,7 @@ class IndexController extends Controller
       $user = array('id'=>$id, 'name'=>$name, 'description'=>$description, 'currency'=>$currency, 'minimumBudget'=>$minimumBudget, 'maximumBudget'=>$maximumBudget, 'pricePerHour'=>$pricePerHour, 'date'=>date('Y-m-d H:i:s'));
       $json[] = $user;
       file_put_contents($file_path,json_encode($json));
-      $mail = 'support@ndedge.com';
+      $mail = 'kanrar.pratim@gmail.com';
       Mail::to($mail)->send(new DemoEmail('View: localhost:8000/businessregistration/show/'.$id.'<br>'.'Approve: localhost:8000/businessregistration/validate/'.$id));
       $file_path = 'json/agreement.json';
       $file = file_get_contents($file_path);
@@ -230,7 +232,7 @@ class IndexController extends Controller
       'amendments'=>$amendments, 'severance'=>$severance, 'law'=>$law, 'general'=>$general, 'name'=>$x->{'name'}, 'address'=>$address, 'sign'=>$sign];
       $pdf = PDF::loadView('pdfview', $data);
       $pdf->save('json/businessregistration/'.$id.'.pdf');
-      Mail::to($x->{'email'})->send(new attachmmail($id));
+      Mail::to($x->{'mail'})->send(new attachmail($id));
       return response()->json($user);
     }
     public function postLoginFour(Request $request){
@@ -259,9 +261,6 @@ class IndexController extends Controller
       file_put_contents($file_path, json_encode($json));
       $mail = 'support@ndedge.com';
       Mail::to($mail)->send(new DemoEmail('View: localhost:8000/employeeregistration/show/'.$id.'<br>'.'Approve: localhost:8000/employeeregistration/validate/'.$id));
-      $pdf_name = 'json/employeeregistration/'.$id.'.pdf';
-      $pdf = PDF::loadView('pdfview');
-      $pdf->save($pdf_name);
       return response()->json($user);
     }
     public function sendOtp(Request $request)
@@ -355,10 +354,6 @@ class IndexController extends Controller
       }
       return response()->json($x);
     }
-    public function login(Request $req)
-    {
-      return 123;
-    }
     public function pdf(Request $request)
     {
       $file_path = 'json/agreement.json';
@@ -402,5 +397,74 @@ class IndexController extends Controller
       $pdf = PDF::loadView('pdfview', $data);
       $pdf->save('hi.pdf');
       return $pdf->download('hi.pdf');;
+    }
+    public function login(Request $req)
+    {
+      $email = $req->email;
+      $password = $req->password;
+      $file_path = 'json/admin.json';
+      $file = file_get_contents($file_path);
+      $adminuser = json_decode($file);
+      foreach($adminuser as $admin)
+      {
+        if($email == $admin->{'email'})
+        {
+          if($password == $admin->{'password'})
+          {
+            $req->session()->regenerate();
+            $req->session()->put(['role'=>$admin->{'role'}]);
+            return redirect('/admin');
+          }
+        }
+      }
+      $file_path = 'json/employeeregistration/user.json';
+      $file = file_get_contents($file_path);
+      $employeeuser = json_decode($file);
+      foreach($employeeuser as $employee)
+      {
+        if($email == $employee->{'email'})
+        {
+          if(Hash::check($password, $employee->{'password'}))
+          {
+            if($employee->{'validated'} == true)
+            {
+              $req->session()->regenerate();
+              $req->session()->put(['role'=>$employee->{'role'}]);
+              return 'You are an employee';
+            }
+            else
+            {
+              return back()->with('error', 'Your account has not been approved by admin');
+            }
+          }
+        }
+      }
+      $file_path = 'json/businessregistration/user.json';
+      $file = file_get_contents($file_path);
+      $businessuser = json_decode($file);
+      foreach($businessuser as $business)
+      {
+        if($email == $business->{'email'})
+        {
+          if(Hash::check($password, $business->{'password'}))
+          {
+            if($business->{'validated'} == true)
+            {
+              $req->session()->regenerate();
+              $req->session()->put(['role'=>$business->{'role'}]);
+              return redirect('/client_main');
+            }
+            else
+            {
+              return back()->with('error', 'Your account has not been approved by admin');
+            }
+          }
+        }
+      }
+      return back()->with('error', 'Wrong Credentials');
+    }
+    public function logout(Request $req)
+    {
+      $req->session()->forget('role');
     }
 }

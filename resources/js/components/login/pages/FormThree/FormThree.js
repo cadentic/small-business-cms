@@ -203,7 +203,7 @@ const FormThree = () => {
                       'taxNumber': steps[1].model.taxNumber,
                       'signature': steps[3].model.signature
                     };
-                    axios.post('/businessregistration', data).then((res)=>console.log(res));
+                    axios.post('/businessregistration', data).then(window.location = '/businessproject');
                   }}
                 >
                   Complete Signup

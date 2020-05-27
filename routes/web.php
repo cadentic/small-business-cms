@@ -32,7 +32,7 @@ Route::post('/sendotp', 'IndexController@sendOtp');
 Route::post('/validateotp', 'IndexController@validateOtp');
 Route::post('/sendemail', 'MailController@sendEmail');
 Route::post('/validateemail', 'MailController@validateEmail');
-Route::view('/agreement', 'agreement');
+//Route::view('/agreement', 'agreement');
 Route::get('/employeeproject', 'IndexController@gotoLoginFour');
 Route::post('/employeeproject', 'IndexController@postLoginFour');
 
@@ -81,4 +81,5 @@ Route::get('/businessregistration/show/{id}', 'IndexController@showBusiness');
 Route::get('/employeeregistration/show/{id}', 'IndexController@showEmployee');
 Route::view('/login', 'login');
 Route::post('/login', 'IndexController@login');
-Route::get('pdfview', 'IndexController@pdf');
+//Route::get('pdfview', 'IndexController@pdf');
+Route::get('/logout', 'IndexController@logout');
