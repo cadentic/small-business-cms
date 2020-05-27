@@ -166,7 +166,55 @@ class LandingPages extends Controller
   }
 
   public function innerPost3(Request $request){
-    echo '123';
+    if($request->Submit == 'Submit'){
+      $video = $request['video'];
+      $videoname = $video->getClientOriginalName();
+      $path = 'banners/inner3';
+      $video->move($path,$videoname);
+      $image = $request['image'];
+      $imagename = $image->getClientOriginalName();
+      $image->move($path,$imagename);
+      $indexfile = file_get_contents('json/Numbers/numinner3.json');
+      $index = json_decode($indexfile);
+      $index = $index + 1;
+      file_put_contents('json/Numbers/numinner3.json',json_encode($index));
+      $filepath = 'json/inner_f3.json';
+      $data = file_get_contents($filepath);
+      $json = json_decode($data);
+      $array = array('id'=>$index,'title'=>$request->title,'video'=>$videoname,'image'=>$imagename,'subtitle'=>$request->subtitle,'description'=>$request->description);
+      $json[] = $array;
+      file_put_contents($filepath,json_encode($json));
+      return $request->all();
+
+    }
+    else if($request->Submit=='Save as Draft'){
+      if($request->hasFile('video')){
+        $video = $request['video'];
+        $videoname = $video->getClientOriginalName();
+        $path = 'json/draft_inner3';
+        $video->move($path,$videoname);
+      }
+      else{
+        $videoname='null';
+      }
+      if($request->hasFile('image')){
+        $image = $request['image'];
+        $imagename = $image->getClientOriginalName();
+        $path = 'json/draft_inner3';
+        $image->move($path,$imagename);
+      }
+      else{
+        $imagename='null';
+      }
+      $indexfile = file_get_contents('json/Numbers/numinner3.json');
+      $index = json_decode($indexfile);
+      $index = $index + 1;
+      file_put_contents('json/Numbers/numinner3.json',json_encode($index));
+      $filepath = 'json/draft_inner2/draft_inner3.json';
+      $array = array('id'=>$index,'title'=>$request->title,'video'=>$videoname,'image'=>$imagename,'subtitle'=>$request->subtitle,'description'=>$request->description);
+      file_put_contents($filepath,json_encode($array));
+      return $request->all();
+    }
   }
 
   public function innerForm4(){
