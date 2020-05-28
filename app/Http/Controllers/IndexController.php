@@ -430,7 +430,7 @@ class IndexController extends Controller
             {
               $req->session()->regenerate();
               $req->session()->put(['role'=>$employee->{'role'}]);
-              return 'You are an employee';
+              return redirect('/employee');
             }
             else
             {

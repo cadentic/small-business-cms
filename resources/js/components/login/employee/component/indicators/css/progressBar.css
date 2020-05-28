@@ -1,0 +1,24 @@
+.c-indicator .progressbar-progress{
+    position: relative;
+    z-index: 3 !important;
+    height: 100% !important;
+}
+
+/* .progressbar-progress::after{
+    content: '';
+    position: absolute;
+    right: -6px;
+    border: 12px solid lime;
+    border-radius: 50%;
+    top: -7px;
+    z-index: 2;
+}
+*/
+.p-indicator::after{
+    content: '';
+    position: absolute;
+    right: 8px;
+    border: 7px solid;
+    border-radius: 50%;
+    top:8px;
+} 

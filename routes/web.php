@@ -83,3 +83,4 @@ Route::view('/login', 'login');
 Route::post('/login', 'IndexController@login');
 //Route::get('pdfview', 'IndexController@pdf');
 Route::get('/logout', 'IndexController@logout');
+Route::view('/employee', 'employee');

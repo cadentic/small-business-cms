@@ -7,6 +7,7 @@ import FormTwo from "./pages/FormTwo/FormTwo";
 import FormThree from "./pages/FormThree/FormThree";
 import FormFour from './pages/FormFour/FormFour'
 import Agreement from './components/Agreement';
+import Employee from './employee/Employee';
 import "./App.css";
 
 function App() {

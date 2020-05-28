@@ -1,0 +1,35 @@
+[
+    {
+        "strokeColor": "#f4c575", 
+        "cPercentage": "27",
+        "lPercentage": "51",
+        "title": "LOREM IPSUM DOLOR",
+        "detail": "Lorem ipsum doror sit amet. Consecteteur adipisicing elit, sed",
+        "legend": "Lorem ipsum sil"
+    },
+    {
+        "strokeColor": "#60244a", 
+        "cPercentage": "47",
+        "lPercentage": "83",
+        "title": "LOREM IPSUM DOLOR",
+        "detail": "Lorem ipsum doror sit amet. Consecteteur adipisicing elit, sed",
+        "legend": "Lorem ipsum sil"
+    },
+    {
+        "strokeColor": "#f16832", 
+        "cPercentage": "64",
+        "lPercentage": "38",
+        "title": "LOREM IPSUM DOLOR",
+        "detail": "Lorem ipsum doror sit amet. Consecteteur adipisicing elit, sed",
+        "legend": "Lorem ipsum sil"
+    }
+    ,
+    {
+        "strokeColor": "#f16832", 
+        "cPercentage": "22",
+        "lPercentage": "91",
+        "title": "LOREM IPSUM DOLOR",
+        "detail": "Lorem ipsum doror sit amet. Consecteteur adipisicing elit, sed",
+        "legend": "Lorem ipsum sil"
+    }
+]
