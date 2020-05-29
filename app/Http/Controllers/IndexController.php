@@ -21,8 +21,12 @@ class IndexController extends Controller
     public function index() {
         return redirect('/client_main');
     }
-    public function gotoAdmin() {
+    public function gotoAdmin(Request $req) {
+      if($req->session()->get('role')=='admin')
+      {
         return view('admin');
+      }
+      return back();
     }
     public function gotoLoginOne() {
         return view('loginone');
@@ -466,5 +470,6 @@ class IndexController extends Controller
     public function logout(Request $req)
     {
       $req->session()->forget('role');
+      return redirect('/client_main');
     }
 }
