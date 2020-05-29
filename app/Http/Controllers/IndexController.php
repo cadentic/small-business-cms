@@ -28,6 +28,14 @@ class IndexController extends Controller
       }
       return back();
     }
+    public function gotoEmployee(Request $req)
+    {
+      if($req->session()->get('role')=='admin' || $req->session()->get('role')=='employee')
+      {
+        return view('employee');
+      }
+      return back();
+    }
     public function gotoLoginOne() {
         return view('loginone');
     }
@@ -416,7 +424,7 @@ class IndexController extends Controller
           if($password == $admin->{'password'})
           {
             $req->session()->regenerate();
-            $req->session()->put(['role'=>$admin->{'role'}]);
+            $req->session()->put(['role'=>$admin->{'role'}, 'name'=>$admin->{'name'}, 'email'=>$admin->{'email'}]);
             return redirect('/admin');
           }
         }
@@ -433,7 +441,7 @@ class IndexController extends Controller
             if($employee->{'validated'} == true)
             {
               $req->session()->regenerate();
-              $req->session()->put(['role'=>$employee->{'role'}]);
+              $req->session()->put(['role'=>$employee->{'role'}, 'name'=>$employee->{'name'}, 'email'=>$employee->{'email'}, 'mobile'=>$employee->{'mobile'}]);
               return redirect('/employee');
             }
             else
@@ -455,7 +463,7 @@ class IndexController extends Controller
             if($business->{'validated'} == true)
             {
               $req->session()->regenerate();
-              $req->session()->put(['role'=>$business->{'role'}]);
+              $req->session()->put(['role'=>$business->{'role'}, 'name'=>$business->{'name'}, 'email'=>$business->{'email'}, 'mobile'=>$business->{'mobile'}]);
               return redirect('/client_main');
             }
             else
