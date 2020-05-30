@@ -26,6 +26,16 @@ import downloadresourcescomponent from './components/client/DownloadResourcesCom
 import invoice from './components/client/invoice.vue'
 import enquiry from './components/client/enquiry.vue'
 import toolbar from './components/client/shared/toolbar.vue'
+
+import mainform from './components/admin/mainform.vue';
+import iform from './components/admin/iform.vue';
+import iform2 from './components/admin/iform2.vue';
+import iform3 from './components/admin/iform3.vue';
+import iform4 from './components/admin/iform4.vue';
+import ibform from './components/admin/ibform.vue';
+import ibform1 from './components/admin/ibform1.vue';
+
+
 // login
 require('./components/Example');
 require('./components/login/App');
@@ -89,6 +99,14 @@ const app = new Vue({
         'inner4component': inner4component,
         'innerblankcomponent': innerblankcomponent,
         'innerblankcomponent2': innerblankcomponent2,
+
+        'iform': iform,
+        'iform2': iform2,
+        'iform3': iform3,
+        'iform4': iform4,
+        'ibform': ibform,
+        'ibform1': ibform1,
+        'mainform': mainform,
 
         'adminapp': adminapp,
 
