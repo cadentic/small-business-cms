@@ -6,7 +6,7 @@ import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 375
+    height: 250
   },
   container: {
     marginTop: 24,

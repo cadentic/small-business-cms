@@ -19,12 +19,43 @@ Route::get('/', 'IndexController@index');
 
 Route::get('/admin', 'IndexController@gotoAdmin');
 
+Route::get('/admin/formA','LandingPages@gotoFormA');
+Route::post('/admin/formA','LandingPages@formPost');
+
+Route::get('/admin/innerForm','LandingPages@innerForm');
+Route::post('/admin/innerForm','LandingPages@innerPost');
+
+Route::get('/admin/innerForm2','LandingPages@innerForm2');
+Route::post('/admin/innerForm2','LandingPages@innerPost2');
+
+Route::get('/admin/innerForm3','LandingPages@innerForm3');
+Route::post('/admin/innerForm3','LandingPages@innerPost3');
+
+Route::get('/admin/innerForm4','LandingPages@innerForm4');
+Route::post('/admin/innerForm4','LandingPages@innerPost4');
+
+Route::get('/admin/innerFormBlank','LandingPages@innerFormBlank');
+Route::post('/admin/innerFormBlank','LandingPages@innerPostBlank');
+
+Route::get('/admin/innerFormBlank1','LandingPages@innerFormBlank1');
+Route::post('/admin/innerFormBlank1','LandingPages@innerPostBlank1');
+
 Route::get('/admin/{any}', 'IndexController@gotoAdmin')->where('any', '.*');
 
 
-Route::get('/login_one', 'IndexController@gotoLoginOne');
-Route::get('/login_two', 'IndexController@gotoLoginTwo');
-Route::get('/login_three', 'IndexController@gotoLoginThree');
+Route::get('/employeeregistration', 'IndexController@gotoLoginOne');
+Route::get('/businessproject', 'IndexController@gotoLoginTwo');
+Route::get('/businessregistration', 'IndexController@gotoLoginThree');
+Route::post('/employeeregistration', 'IndexController@postLoginOne');
+Route::post('/businessregistration', 'IndexController@postLoginThree');
+Route::post('/businessproject', 'IndexController@postLoginTwo');
+Route::post('/sendotp', 'IndexController@sendOtp');
+Route::post('/validateotp', 'IndexController@validateOtp');
+Route::post('/sendemail', 'MailController@sendEmail');
+Route::post('/validateemail', 'MailController@validateEmail');
+//Route::view('/agreement', 'agreement');
+Route::get('/employeeproject', 'IndexController@gotoLoginFour');
+Route::post('/employeeproject', 'IndexController@postLoginFour');
 
 Route::get('/client_main', 'IndexController@gotoMain');
 Route::get('/client_inner', 'IndexController@gotoInner');
@@ -65,3 +96,12 @@ Route::get('contact-us', 'ContactUsController@create');
 Route::get('transaction-history','TransactionHistoryController@getHistory');
 
 Route::post('save-json/{file}', 'SaveFormDataController@save');
+Route::get('/businessregistration/validate/{id}', 'IndexController@validateBusiness');
+Route::get('/employeeregistration/validate/{id}', 'IndexController@validateEmployee');
+Route::get('/businessregistration/show/{id}', 'IndexController@showBusiness');
+Route::get('/employeeregistration/show/{id}', 'IndexController@showEmployee');
+Route::view('/login', 'login');
+Route::post('/login', 'IndexController@login');
+//Route::get('pdfview', 'IndexController@pdf');
+Route::get('/logout', 'IndexController@logout');
+Route::get('/employee', 'IndexController@gotoEmployee');

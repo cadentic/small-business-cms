@@ -199,16 +199,21 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         }, '/'],
         height: 300
       },
-      themeData: [{
-        'html': '<h2 style="text-align: center">Newsletter Template</h2>',
-        height: 130
-      }],
+      themeData: [],
       selected: -1,
       minHeight: 100,
       resizeHeight: window.innerHeight - 100,
       minH: 130,
       subMinH: 130
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/json/theme-data.json').then(function (_ref) {
+      var data = _ref.data;
+      _this.themeData = data;
+    });
   },
   methods: {
     onDrop: function onDrop(dropResult) {
@@ -254,7 +259,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       this.selected = -1;
     },
     duplicate: function duplicate() {
-      var _this = this;
+      var _this2 = this;
 
       if (this.selected != -1) {
         var newData = Object();
@@ -269,8 +274,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       setTimeout(function () {
         var dndHeight = document.getElementById('dnd-container').offsetHeight;
 
-        if (_this.resizeHeight < dndHeight) {
-          _this.resizeHeight = dndHeight;
+        if (_this2.resizeHeight < dndHeight) {
+          _this2.resizeHeight = dndHeight;
         }
       }, 100);
       this.minH = document.getElementById('dnd-container').offsetHeight;
@@ -293,15 +298,18 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       if (data.height == 130) {
         this.minH = document.getElementById('mainPane').offsetHeight;
       }
+    },
+    getData: function getData() {
+      return this.themeData;
     }
   },
   watch: {
     uploading: function uploading(val) {
-      var _this2 = this;
+      var _this3 = this;
 
       if (!val) return;
       setTimeout(function () {
-        return _this2.uploading = false;
+        return _this3.uploading = false;
       }, 3000);
     }
   }

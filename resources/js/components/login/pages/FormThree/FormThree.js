@@ -12,6 +12,7 @@ import StepOne from "./Steps/Step1";
 import StepTwo from "./Steps/Step2";
 import StepThree from "./Steps/Step3";
 import StepFour from "./Steps/Step4";
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -90,7 +91,12 @@ const FormThree = () => {
                 disabled={!steps[activeStep].valid}
                 variant="contained"
                 color="primary"
-                onClick={() => setActiveStep(1)}
+                onClick={() => {
+                  let data = {
+                    'emailotp': steps[0].model.emailotp
+                  }
+                  axios.post('/validateemail', data).then((res) => (res.data.validated)?setActiveStep(1):setActiveStep(0));
+                }}
                 className={classes.button}
               >
                 Next
@@ -117,7 +123,12 @@ const FormThree = () => {
                 variant="contained"
                 disabled={!steps[activeStep].valid}
                 color="primary"
-                onClick={() => setActiveStep(2)}
+                onClick={() => {
+                  let data = {
+                    'mobile': steps[1].model.phoneNumber
+                  };
+                  axios.post('/sendotp', data).then(setActiveStep(2));
+                }}
                 className={classes.button}
               >
                 Next
@@ -141,10 +152,15 @@ const FormThree = () => {
                 Back
               </Button>
               <Button
-                disabled={!steps[activeStep].valid}
                 variant="contained"
                 color="primary"
-                onClick={() => setActiveStep(3)}
+                onClick={() => {
+                  let data = {
+                    'mobile': steps[1].model.phoneNumber,
+                    'otp': steps[2].model.validationCode
+                  };
+                  axios.post('/validateotp', data).then((res) => (res.data.validated)?setActiveStep(3):setActiveStep(2));
+                }}
                 className={classes.button}
               >
                 Next
@@ -172,13 +188,22 @@ const FormThree = () => {
                   variant="contained"
                   className={classes.finalSubmission}
                   onClick={() => {
-                    changeModel([
-                      { model: {}, valid: false },
-                      { model: {}, valid: false },
-                      { model: {}, valid: false },
-                      { model: {}, valid: false }
-                    ]);
-                    setActiveStep(0);
+                    let data = {
+                      'firstName': steps[1].model.firstName,
+                      'lastName': steps[1].model.lastName,
+                      'email': steps[0].model.email,
+                      'password': steps[0].model.password,
+                      'country': steps[1].model.country,
+                      'mobile': steps[1].model.phoneNumber,
+                      'street': steps[1].model.street,
+                      'city': steps[1].model.city,
+                      'pin': steps[1].model.postalCode,
+                      'businessName': steps[1].model.business,
+                      'cinNumber': steps[1].model.cinNumber,
+                      'taxNumber': steps[1].model.taxNumber,
+                      'signature': steps[3].model.signature
+                    };
+                    axios.post('/businessregistration', data).then(window.location = '/businessproject');
                   }}
                 >
                   Complete Signup

@@ -1,4 +1,0 @@
-[2020-01-15 12:00:06] local.ERROR: Out of memory (allocated 6291456) (tried to allocate 65536 bytes) {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Out of memory (allocated 6291456) (tried to allocate 65536 bytes) at C:\\wamp\\www\\vuetify-sayanta-project\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php:86)
-[stacktrace]
-#0 {main}
-"} 

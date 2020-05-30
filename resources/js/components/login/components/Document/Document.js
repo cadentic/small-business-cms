@@ -24,10 +24,7 @@ const Document = props => {
     <Paper
       className={classes.root}
       onScroll={e => {
-        console.log(e.currentTarget.scrollTop);
-        if (e.currentTarget.scrollTop === 2388) {
           props.scrollEnd();
-        }
       }}
     >
       <Typography variant="h6">
