@@ -47,6 +47,7 @@ import VueSplit from 'vue-split-panel';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
+import mainform from './components/admin/mainform.vue';
 import iform from './components/admin/iform.vue';
 import iform2 from './components/admin/iform2.vue';
 import iform3 from './components/admin/iform3.vue';
@@ -105,6 +106,7 @@ const app = new Vue({
         'iform4': iform4,
         'ibform': ibform,
         'ibform1': ibform1,
+        'mainform': mainform,
 
         // Additional Pages
         'whatsappcomponent' : whatsappcomponent,
