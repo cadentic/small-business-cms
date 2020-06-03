@@ -12,47 +12,143 @@ class LandingPages extends Controller
     }
     return back();
   }
+  public function sendData(){
+    $path1 = 'client_main_content.json';
+    $path2 = 'json/FormData/client_main1.json';
+    $datae = file_get_contents($path1);
+    $data = json_decode($datae);
+    $modi = file_get_contents($path2);
+    $mod = json_decode($modi);
+    $data->banner->banner1->bg_img = $mod->image1 ==null ? $data->banner->banner1->bg_img : 'banners/main/'.$mod->image1;
+    $data->banner->banner1->title = $mod->b1_t == null ? $data->banner->banner1->title : $mod->b1_t;
+    $data->banner->banner1->link[0]->text = $mod->b1_l1 == null ? $data->banner->banner1->link[0]->text : $mod->b1_l1;
+    $data->banner->banner1->link[1]->text = $mod->b1_l2 == null ? $data->banner->banner1->link[1]->text : $mod->b1_l2;
+    $data->banner->banner1->link[2]->text = $mod->b1_l3 == null ? $data->banner->banner1->link[2]->text : $mod->b1_l3;
+    $data->banner->banner1->link[3]->text = $mod->b1_l4 == null ? $data->banner->banner1->link[3]->text : $mod->b1_l4;
+    $data->banner->banner1->link[4]->text = $mod->b1_l5 == null ? $data->banner->banner1->link[4]->text : $mod->b1_l5;
+    $data->banner->banner2->bg_img = $mod->image2==null? $data->banner->banner2->bg_img: 'banners/main/'.$mod->image2;
+    $data->banner->banner2->title = $mod->b2_t == null ? $data->banner->banner2->title:$mod->b2_t;
+    $data->banner->banner2->link[0]->text = $mod->b2_l1 == null ? $data->banner->banner2->link[0]->text : $mod->b2_l1;
+    $data->banner->banner2->link[1]->text = $mod->b2_l2 == null ? $data->banner->banner2->link[1]->text : $mod->b2_l2;
+    $data->banner->banner3->bg_img[0] = $mod->image3==null? $data->banner->banner3->bg_img[0] : 'url(banners/main/'.$mod->image3.')';
+    $data->banner->banner3->bg_img[1] = $mod->image4==null? $data->banner->banner3->bg_img[1] : 'url(banners/main/'.$mod->image4.')';
+    $data->banner->banner3->bg_img[2] = $mod->image5==null? $data->banner->banner3->bg_img[2] : 'url(banners/main/'.$mod->image5.')';
+    $data->banner->banner3->bg_img[3] = $mod->image6==null? $data->banner->banner3->bg_img[3] : 'url(banners/main/'.$mod->image6.')';
+    $data->banner->banner3->title = $mod->b3_t == null? $data->banner->banner3->title : $mod->b3_t;
+    $data->banner->banner3->content = $mod->b3_c == null? $data->banner->banner3->content : $mod->b3_c;
+    $data->banner->banner3->link[0]->text = $mod->b3_l1 == null ? $data->banner->banner3->link[0]->text : $mod->b3_l1;
+    $data->banner->banner3->link[1]->text = $mod->b3_l2 == null ? $data->banner->banner3->link[1]->text : $mod->b3_l2;
+    $data->video->player->src = $mod->video == null ? $data->video->player->src : 'banners/main/'.$mod->video;
+    $data->video->detail->title = $mod->b4_t == null ? $data->video->detail->title : $mod->b4_t;
+    $data->video->detail->content = $mod->b4_c==null ? $data->video->detail->content : $mod->b4_c;
+    file_put_contents($path1,json_encode($data));
+  }
   public function formPost(Request $request){
     if($request->session()->get('role')!='admin'){
       return back();
     }
     if($request->Submit == 'Submit'){
-      $this->validate($request,[
-        'title' => 'required',
-        'bg_img.*' => 'max:4096|image'
-      ]);
-      $indexfile = file_get_contents('json/Numbers/nummain.json');
-      $index = json_decode($indexfile);
-      $index = $index + 1;
-      file_put_contents('json/Numbers/nummain.json',json_encode($index));
-      $image = $request['bg_img'];
-      $imagename = $image->getClientOriginalName();
-      $path = 'banners/main';
-      $image->move($path,$imagename);
-      $banner = array('id'=>$index, 'title'=>$request->title , 'bg_img'=>$imagename, 'link'=>$request->link);
-      $file_path = 'json/FormData/client_main1.json';
-      $file = file_get_contents($file_path);
-      $json = json_decode($file);
-      $json[] = $banner;
-      file_put_contents('json/FormData/client_main1.json',json_encode($json));
+      $path = 'json/FormData/client_main1.json';
+      $imagename1=null;$imagename2=null;$imagename3=null;$imagename4=null;$imagename5=null;$imagename6=null;$videoname=null;
+      if($request->hasFile('image1')){
+        $image = $request['image1'];
+        $imagename1=$image->getClientOriginalName();
+        $path1 = 'banners/main';
+        $image->move($path1,$imagename1);
+      }
+      if($request->hasFile('image2')){
+        $image = $request['image2'];
+        $imagename2=$image->getClientOriginalName();
+        $path1 = 'banners/main';
+        $image->move($path1,$imagename2);
+      }
+      if($request->hasFile('image3')){
+        $image = $request['image3'];
+        $imagename3=$image->getClientOriginalName();
+        $path1 = 'banners/main';
+        $image->move($path1,$imagename3);
+      }
+      if($request->hasFile('image4')){
+        $image = $request['image4'];
+        $imagename4=$image->getClientOriginalName();
+        $path1 = 'banners/main';
+        $image->move($path1,$imagename4);
+      }
+      if($request->hasFile('image5')){
+        $image = $request['image5'];
+        $imagename5=$image->getClientOriginalName();
+        $path1 = 'banners/main';
+        $image->move($path1,$imagename5);
+      }
+      if($request->hasFile('image6')){
+        $image = $request['image6'];
+        $imagename6=$image->getClientOriginalName();
+        $path1 = 'banners/main';
+        $image->move($path1,$imagename6);
+      }
+      if($request->hasFile('video')){
+        $image = $request['video'];
+        $videoname=$image->getClientOriginalName();
+        $path1 = 'banners/main';
+        $image->move($path1,$videoname);
+      }
+      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_l1'=>$request->b1_l1,'b1_l2'=>$request->b1_l2,
+                'b1_l3'=>$request->b1_l3,'b1_l4'=>$request->b1_l4,'b1_l5'=>$request->b1_l5,'b2_t'=>$request->b2_t,
+                'b2_l1'=>$request->b2_l1,'b2_l2'=>$request->b2_l2,'b3_t'=>$request->b3_t,'b3_c'=>$request->b3_c,
+                'b3_l1'=>$request->b3_l1,'b3_l2'=>$request->b3_l2,'b4_c'=>$request->b4_c,'b4_t'=>$request->b4_t,'image1'=>$imagename1,
+                'image2'=>$imagename2,'image3'=>$imagename3,'image4'=>$imagename4,'image5'=>$imagename5,
+                'image6'=>$imagename6,'video'=>$videoname);
+      file_put_contents($path,json_encode($data));
+      $this->sendData();
       return 'Form Submitted Successfully';
     }
     else if($request->Submit == 'Save as Draft'){
-      $this->validate($request,[
-        'title' => 'required',
-        'bg_img' => 'nullable',
-        'bg_img.*' => 'max:4096|image'
-      ]);
-      if($request->hasFile('bg_img')){
-        $image = $request['bg_img'];
-        $imagename = $image->getClientOriginalName();
-        $path = 'json/draft_main';
-        $image->move($path,$imagename);
+      $path = 'json/draft_main/draft_main.json';
+      $path1 = 'json/draft_main';
+      $imagename1=null;$imagename2=null;$imagename3=null;$imagename4=null;$imagename5=null;$imagename6=null;$videoname=null;
+      if($request->hasFile('image1')){
+        $image = $request['image1'];
+        $imagename1=$image->getClientOriginalName();
+        $image->move($path1,$imagename1);
       }
-      $banner = array('id'=>'1','title'=>$request->title,'bg_img'=>$imagename,'link'=>$request->link);
-      $file_path = 'json/draft_main/draft_main.json';
-      file_put_contents($file_path,json_encode($banner));
-      return 'Draft Saved';
+      if($request->hasFile('image2')){
+        $image = $request['image2'];
+        $imagename2=$image->getClientOriginalName();
+        $image->move($path1,$imagename2);
+      }
+      if($request->hasFile('image3')){
+        $image = $request['image3'];
+        $imagename3=$image->getClientOriginalName();
+        $image->move($path1,$imagename3);
+      }
+      if($request->hasFile('image4')){
+        $image = $request['image4'];
+        $imagename4=$image->getClientOriginalName();
+        $image->move($path1,$imagename4);
+      }
+      if($request->hasFile('image5')){
+        $image = $request['image5'];
+        $imagename5=$image->getClientOriginalName();
+        $image->move($path1,$imagename5);
+      }
+      if($request->hasFile('image6')){
+        $image = $request['image6'];
+        $imagename6=$image->getClientOriginalName();
+        $image->move($path1,$imagename6);
+      }
+      if($request->hasFile('video')){
+        $image = $request['video'];
+        $videoname=$image->getClientOriginalName();
+        $image->move($path1,$videoname);
+      }
+      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_l1'=>$request->b1_l1,'b1_l2'=>$request->b1_l2,
+                'b1_l3'=>$request->b1_l3,'b1_l4'=>$request->b1_l4,'b1_l5'=>$request->b1_l5,'b2_t'=>$request->b2_t,
+                'b2_l1'=>$request->b2_l1,'b2_l2'=>$request->b2_l2,'b3_t'=>$request->b3_t,'b3_c'=>$request->b3_c,
+                'b3_l1'=>$request->b3_l1,'b3_l2'=>$request->b3_l2,'b4_c'=>$request->b4_c,'b4_t'=>$request->b4_t,'image1'=>$imagename1,
+                'image2'=>$imagename2,'image3'=>$imagename3,'image4'=>$imagename4,'image5'=>$imagename5,
+                'image6'=>$imagename6,'video'=>$videoname);
+      file_put_contents($path,json_encode($data));
+      return 'Form Saved as Draft';
     }
   }
 

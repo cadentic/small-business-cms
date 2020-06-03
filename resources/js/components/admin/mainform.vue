@@ -88,17 +88,80 @@
       <div class="topspace"></div>
       <div></div>
       <div class="ma">
-        <center><h1>Inner Form 2</h1></center>
+        <center><h1>Main Form</h1></center>
         <form method="post" action="formA" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
+
+          <center><h2>Banner 1</h2></center>
+          <label for="b1_t">Title</label>
+          <input type="text" id="b1_t" name="b1_t" placeholder="Enter Title.." v-model='b1_t'><br/>
+
+          <label for="image1">Image</label>
+          <input type="file" id="image1" name="image1"><br/>
+
+          <label for="link">Link 1</label>
+          <input type="text" id="b1_l1" name="b1_l1" placeholder="Add Link..." v-model='b1_l1'><br/>
+
+          <label for="link">Link 2</label>
+          <input type="text" id="b1_l2" name="b1_l2" placeholder="Add Link..." v-model='b1_l2'><br/>
+
+          <label for="link">Link 3</label>
+          <input type="text" id="b1_l3" name="b1_l3" placeholder="Add Link..." v-model='b1_l3'><br/>
+
+          <label for="link">Link 4</label>
+          <input type="text" id="b1_l4" name="b1_l4" placeholder="Add Link..." v-model='b1_l4'><br/>
+
+          <label for="link">Link 5</label>
+          <input type="text" id="b1_l5" name="b1_l5" placeholder="Add Link..." v-model='b1_l5'><br/>
+
+          <center><h2>Banner 2</h2></center>
+          <label for="b2_t">Title</label>
+          <input type="text" id="b2_t" name="b2_t" placeholder="Enter Title.." v-model='b2_t'><br/>
+
+          <label for="image2">Image</label>
+          <input type="file" id="image2" name="image2"><br/>
+
+          <label for="link">Link 1</label>
+          <input type="text" id="b2_l1" name="b2_l1" placeholder="Add Link..." v-model='b2_l1'><br/>
+
+          <label for="link">Link 2</label>
+          <input type="text" id="b2_l2" name="b2_l2" placeholder="Add Link..." v-model='b2_l2'><br/>
+
+          <center><h2>Banner 3</h2></center>
+          <label for="b3_t">Title</label>
+          <input type="text" id="b3_t" name="b3_t" placeholder="Enter Title.." v-model='b3_t'><br/>
+
+          <label for="b3_c">Content</label>
+          <input type="text" id="b3_c" name="b3_c" placeholder="Enter Content..." v-model='b3_c'><br/>
+
+          <label for="link">Link 1</label>
+          <input type="text" id="b3_l1" name="b3_l1" placeholder="Add Link..." v-model='b3_l1'><br/>
+
+          <label for="link">Link 2</label>
+          <input type="text" id="b3_l2" name="b3_l2" placeholder="Add Link..." v-model='b3_l2'><br/>
+
+          <label for="image3">Image 1</label>
+          <input type="file" id="image3" name="image3"><br/>
+
+          <label for="image4">Image 2</label>
+          <input type="file" id="image4" name="image4"><br/>
+
+          <label for="image5">Image 3</label>
+          <input type="file" id="image5" name="image5"><br/>
+
+          <label for="image6">Image 4</label>
+          <input type="file" id="image6" name="image6"><br/>
+
+          <center><h2>Banner 4</h2></center>
+          <label for="file">Video</label>
+          <input type="file" id="video" name="video"><br/>
+
           <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model='title'><br/>
+          <input type="text" id="b4_t" name="b4_t" placeholder="Add Title..." v-model='b4_t'><br/>
 
-          <label for="bg_img">Image</label>
-          <input type="file" id="bg_img" name="bg_img"><br/>
+          <label for="text">Content</label>
+          <input type="text" id="b4_c" name='b4_c' placeholder="Enter content..." v-model='b4_c'><br/>
 
-          <label for="link">Link</label>
-          <input type="text" id="link" name="link" placeholder="Add Links..." v-model='link'><br/>
 
           <div class="mygrid">
             <div><input type="submit" name="Submit" value="Submit"/></div>
@@ -115,7 +178,7 @@
   import axios from 'axios'
 
   export default {
-    name: "iform",
+    name: "mainForm",
     data: () => ({
         drawer: null,
         items: [
@@ -351,9 +414,21 @@
           phone:''
         },
         submit:'',
-        title:'',
-        bg_img:'',
-        link:'',
+        b1_t:'',
+        b1_l1:'',
+        b1_l2:'',
+        b1_l3:'',
+        b1_l4:'',
+        b1_l5:'',
+        b2_t:'',
+        b2_l1:'',
+        b2_l2:'',
+        b3_t:'',
+        b3_c:'',
+        b3_l1:'',
+        b3_l2:'',
+        b4_c:'',
+        b4_t:'',
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
@@ -365,7 +440,23 @@
     methods: {
         Edit: function(e){
           alert('Previous Draft');
-          let data = axios.get('../json/draft_main/draft_main.json').then(res=>{console.log(res);this.title=res.data.title;this.link = res.data.link});
+          let data = axios.get('../json/draft_main/draft_main.json').then(res=>{console.log(res);
+            this.b1_t=res.data.b1_t;
+            this.b1_l1 = res.data.b1_l1;
+            this.b1_l2 = res.data.b1_l2;
+            this.b1_l3 = res.data.b1_l3;
+            this.b1_l4 = res.data.b1_l4;
+            this.b1_l5 = res.data.b1_l5;
+            this.b2_t = res.data.b2_t;
+            this.b2_l1 = res.data.b2_l1;
+            this.b2_l2 = res.data.b2_l2;
+            this.b3_t = res.data.b3_t;
+            this.b3_c = res.data.b3_c;
+            this.b3_l1 = res.data.b3_l1;
+            this.b3_l2 = res.data.b3_l2;
+            this.b4_c = res.data.b4_c;
+            this.b4_t = res.data.b4_t;
+          });
           e.preventDefault();
         },
         isItemSelected() {
