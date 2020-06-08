@@ -91,21 +91,28 @@
         <center><h1>Inner Form 4</h1></center>
         <form method="post" action="innerForm4" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model='title'><br/>
-
+          <center><h2>Banner 1</h2></center>
           <label for="video">Video</label>
-          <input type="file" id="video" name="video"><br/>
+          <input type="file" name="video1" id="video1"/>
 
-          <label for="image">Image</label>
-          <input type="file" id="image" name="image"><br/>
+          <label for="text">Title</label>
+          <input type="text" name="b1_t" id="b1_t" placeholderr="Enter Title..."/>
 
-          <label for="subtitle">SubTitle</label>
-          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle..." v-model='subtitle'><br/>
+          <center><h2>Banner 2</h2></center>
+          <label for="text">Title</label>
+          <input type="text" id="b2_t" name="b2_t" placeholder="Enter Title..."/>
 
-          <label for="description">Description</label>
-          <input type="text" id="description" name="description" placeholder="Description..." v-model='description'><br/>
+          <label for="link">Link</label>
+          <input type="text" id="b2_l" name="b2_l" placeholder="Enter Link..."/>
 
+          <label for="text">Description</label>
+          <div v-for="(input,k) in b2_d" :key="k">
+            <input type="text" placeholder="Enter Description..." v-model="input.name">
+            <span>
+              <i @click="remove(k)" v-show="k || (!k && b2_d.length > 1)">Remove</i>
+              <i @click="add(k)" v-show="k == b2_d.length-1">Add</i><br/>
+            </span>
+          </div>
           <div class="mygrid">
             <div><input type="submit" name="Submit" value="Submit"/></div>
             <div><input type="submit" @click="Edit" value="Edit"/></div>
@@ -356,12 +363,17 @@
           email:'',
           phone:''
         },
+        counter: 1,
+        limit: 5,
         submit:'',
-        title:'',
-        description:'',
-        subtitle:'',
-        video:'',
-        image:'',
+        b1_t:'',
+        b2_t:'',
+        b2_l:'',
+        b2_d: [
+          {
+            desc: ''
+          },
+        ],
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
@@ -375,6 +387,12 @@
           alert('Previous Draft');
           let data = axios.get('../json/draft_inner4/draft_inner4.json').then(res=>{console.log(res);this.title=res.data.title;this.subtitle=res.data.subtitle;this.description=res.data.description});
           e.preventDefault();
+        },
+        add(index){
+          this.b2_d.push({desc:''});
+        },
+        remove(index,e){
+          this.b2_d.splice(index,1);
         },
         isItemSelected() {
             return this.itemSelected !== '' && this.itemSelected.text !== this.selectedText

@@ -91,17 +91,111 @@
         <center><h1>Inner Form 2</h1></center>
         <form method="post" action="innerForm2" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
+          <center><h2>Banner 1</h2></center>
           <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model='title'><br/>
+          <input type="text" id="b1_t" name="b1_t" placeholder="Enter Title.." v-model='b1_t'><br/>
 
           <label for="video">Video</label>
-          <input type="file" id="video" name="video"><br/>
+          <input type="file" id="video1" name="video1"><br/>
+
+          <label for="image">Image</label>
+          <input type="file" name="image" id="image"><br/>
 
           <label for="subtitle">SubTitle</label>
-          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle..." v-model='subtitle'><br/>
+          <input type="text" id="b1_s" name="b1_s" placeholder="SubTitle..." v-model='b1_s'><br/>
 
           <label for="description">Description</label>
-          <input type="text" id="description" name="description" placeholder="Description..." v-model='description'><br/>
+          <input type="text" id="b1_d" name="b1_d" placeholder="Description..." v-model='b1_d'><br/>
+
+          <label for="link">Link</label>
+          <input type="text" id="b1_l" name="b1_l" placeholder="Enter Link..." v-model='b1_l'><br/>
+
+          <center><h2>Banner 2</h2></center>
+          <label for="title">Title</label>
+          <input type="text" id="b2_t" name="b2_t" placeholder="Enter Title..." v-model='b2_t'><br/>
+
+          <label for="number">Icon Number</label>
+          <input type="text" id="b2_n" name="b2_n" placeholder="Enter Number..." v-model='b2_n'><br/>
+
+          <label for="image">Image</label>
+          <input type="file" name="image1" id="image1"><br/>
+
+          <label for="subtitle">SubTitle</label>
+          <input type="text" id="b2_s" name="b2_s" placeholder="Enter Subtitle..." v-model='b2_s'><br/>
+
+          <label for="description">Description</label>
+          <input type="text" id="b2_d" name="b2_d" placeholder="Enter Description..." v-model='b2_d'><br/>
+
+          <center><h2> Banner 3</h2></center>
+          <label for="title">Title</label>
+          <input type="text" id="b3_t" name="b3_t" placeholder="Enter Title..." v-model='b3_t'><br/>
+
+          <label for="description">Description</label>
+          <input type="text" id="b3_d" name="b3_d" placeholder="Enter Description..." v-model="b3_d"><br/>
+
+          <label for="link">Link</label>
+          <input type="text" id="b3_l" name="b3_l" placeholder="Enter Label..." v-model="b3_l"><br/>
+
+          <center><h2>Banner 4</h2></center>
+          <label for="title">Title</label>
+          <input type="text" id="b4_t" name="b4_t" placeholder="Enter Title..." v-model='b4_t'><br/>
+
+          <label for="number">Number</label>
+          <input type="text" id="b4_n" name="b4_n" placeholder="Icon Number..." v-model='b4_n'><br/>
+
+          <label for="subtitle">Subtitle</label>
+          <input type="text" id="b4_s" name="b4_s" placeholder="Enter Subtitle..." v-model='b4_s'><br/>
+
+          <label for="subtitle">Description</label>
+          <input type="text" id="b4_d" name="b4_d" placeholder="Enter Description..." v-model='b4_d'><br/>
+
+          <label for="link">Link</label>
+          <input type="text" id="b4_l" name="b4_l" placeholder="Enter Link..." v-model='b4_l'><br/>
+
+          <center><h2>Banner 5</h2></center>
+          <label for="title">Title</label>
+          <input type="text" id="b5_t" name="b5_t" placeholder="Enter Title..." v-model='b5_t'><br/>
+
+          <label for="description">Description</label>
+          <input type="text" id="b5_d" name="b5_d" placeholder="Enter Description..." v-model='b5_d'><br/>
+
+          <label for="link">Link 1</label>
+          <input type="text" id="b5_l1" name="b5_l1" placeholder="Enter Link..." v-model='b5_l1'><br/>
+
+          <label for="link">Link 2</label>
+          <input type="text" id="b5_l2" name="b5_l2" placeholder="Enter Link..." v-model='b5_l2'><br/>
+
+          <center><h2>Banner 6</h2></center>
+          <label for="index">Icon Number</label>
+          <input type="text" id="b6_n" name="b6_n" placeholder="Icon Number..." v-model='b6_n'><br/>
+
+          <label for="title">Title</label>
+          <input type="text" id="b6_t" name="b6_t" placeholder="Enter Title..." v-model='b6_t'><br/>
+
+          <label for="description">Description</label>
+          <input type="text" id="b6_d" name="b6_d" placeholder="Enter Description..." v-model='b6_d'><br/>
+
+          <label for="image">Image</label>
+          <input type="file" id="image2" name="image2"><br/>
+
+          <label for="video">Video</label>
+          <input type="file" id="video2" name="video2"><br/>
+
+          <center><h2>Banner 7</h2></center>
+          <label for="index">Icon Number</label>
+          <input type="text" id="b7_n" name="b7_n" placeholder="Icon Number..." v-model='b7_n'><br/>
+
+          <label for="title">Title</label>
+          <input type="text" id="b7_t" name="b7_t" placeholder="Enter Title..." v-model='b7_t'><br/>
+
+          <label for="description">Description</label>
+          <input type="text" id="b7_d" name="b7_d" placeholder="Enter Description..." v-model='b7_d'><br/>
+
+          <label for="image">Image</label>
+          <input type="file" id="image3" name="image3"><br/>
+
+          <label for="video">Video</label>
+          <input type="file" id="video3" name="video3"><br/>
 
           <div class="mygrid">
             <div><input type="submit" name="Submit" value="Submit"/></div>
@@ -118,7 +212,7 @@
   import axios from 'axios'
 
   export default {
-    name: "iform",
+    name: "iform2",
     data: () => ({
         drawer: null,
         items: [
@@ -354,10 +448,8 @@
           phone:''
         },
         submit:'',
-        title:'',
-        description:'',
-        subtitle:'',
-        video:'',
+        b1_t:'',b1_s:'',b1_d:'',b1_l:'',b2_t:'',b2_n:'',b2_s:'',b2_d:'',b3_t:'',b3_d:'',b3_l:'',b4_t:'',b4_n:'',b4_s:'',b4_l:'',b4_d:'',b5_t:'',
+        b5_d:'',b5_l1:'',b5_l2:'',b6_n:'',b6_t:'',b6_d:'',b7_n:'',b7_t:'',b7_d:'',
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
@@ -369,7 +461,15 @@
     methods: {
         Edit: function(e){
           alert('Previous Draft');
-          let data = axios.get('../json/draft_inner2/draft_inner2.json').then(res=>{console.log(res);this.title=res.data.title;this.subtitle=res.data.subtitle;this.description=res.data.description});
+          let data = axios.get('../json/draft_inner2/draft_inner2.json').then(res=>{console.log(res);
+            this.b1_t = res.data.b1_t;this.b1_s=res.data.b1_s;this.b1_d=res.data.b1_d;this.b1_l=res.data.b1_l;
+            this.b2_t=res.data.b2_t;this.b2_n=res.data.b2_n;this.b2_s=res.data.b2_s;this.b2_d=res.data.b2_d;
+            this.b3_t=res.data.b3_t;this.b3_d=res.data.b3_d;this.b3_l=res.data.b3_l;
+            this.b4_t=res.data.b4_t;this.b4_n=res.data.b4_n;this.b4_s=res.data.b4_s;this.b4_d=res.data.b4_d;this.b4_l=res.data.b4_l;
+            this.b5_t=res.data.b5_t;this.b5_d=res.data.b5_d;this.b5_l1=res.data.b5_l1;this.b5_l2=res.data.b5_l2;
+            this.b6_n=res.data.b6_n;this.b6_t=res.data.b6_t;this.b6_d=res.data.b6_d;
+            this.b7_n=res.data.b7_n;this.b7_t=res.data.b7_t;this.b7_d=res.data.b7_d;
+          });
           e.preventDefault();
         },
         isItemSelected() {

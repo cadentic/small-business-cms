@@ -158,156 +158,418 @@ class LandingPages extends Controller
     }
     return back();
   }
+  public function sendDataInner(){
+    $path1 = 'json/FormData/inner_f1.json';
+    $path2 = 'json/inner.json';
+    $file = file_get_contents($path2);
+    $data = json_decode($file);
+    $file1= file_get_contents($path1);
+    $mod = json_decode($file1);
+    $data->section1->title = $mod->b1_t==null? $data->section1->title: $mod->b1_t;
+    $data->section1->image = $mod->image1==null? $data->section1->image : 'banners/inner/'.$mod->image1;
+    $data->section1->image_wrap = $data->section1->image;
+    $data->section1->sub_title->text = $mod->b1_s==null?$data->section1->sub_title->text: $mod->b1_s;
+    $data->section1->description->text1 = $mod->b1_d == null?$data->section1->description->text1: $mod->b1_d;
+    $data->section1->description->text2 = $mod->b1_d == null?$data->section1->description->text2: null;
+    $data->section1->description->text3 = $mod->b1_d == null?$data->section1->description->text3: null;
+    if($mod->b2_n!=null){
+      $num = $mod->b2_n;
+      $num = $num % 7;
+      if($num>3){
+        $num = $num % 4;
+        $data->section6->container2[$num]->link = $mod->b2_l;
+        $data->section6->container2[$num]->description = $mod->b2_d;
+        $data->section6->container2[$num]->image = 'banners/inner/'.$mod->image2;
+      }
+      else{
+        $data->section6->container1[$num]->link = $mod->b2_l;
+        $data->section6->container1[$num]->description = $mod->b2_d;
+        $data->section6->container1[$num]->image = 'banners/inner/'.$mod->image2;
+      }
+    }
+    if(($mod->b3_n!=null)){
+      $num = $mod->b3_n;
+      $num = $num % 3;
+      $data->section8->container[$num]->background = 'banners/inner/'.$mod->image3;
+      $data->section8->container[$num]->image = 'banners/inner/'.$mod->image3;
+      $data->section8->container[$num]->title = $mod->b3_t;
+      $data->section8->container[$num]->name = $mod->b3_c;
+      $data->section8->container[$num]->description = $mod->b3_d;
+    }
+    file_put_contents($path2,json_encode($data));
+
+  }
   public function innerPost(Request $request){
     if($request->session()->get('role')!='admin'){
       return back();
     }
-    if($request->submit == 'Submit'){
-      $this->validate($request,[
-        'title' => 'required',
-        'bg_img.*' => 'max:4096|image',
-        'description' => 'required'
-      ]);
-      $indexfile = file_get_contents('json/Numbers/numinner.json');
-      $index = json_decode($indexfile);
-      $index = $index + 1;
-      file_put_contents('json/Numbers/numinner.json',json_encode($index));
-      $image=$request->get('bg_img');
-      $name='Image'.$index.'.'.explode('/',explode(':',substr($image,0,strpos($image,';')))[1])[1];
-      $data = array('id'=>$index,'title'=>$request->title,'bgcolor'=>$request->bgcolor,'bg_img'=>$name,'subtitle'=>$request->subtitle,'description'=>$request->description);
-      $file_path = 'json/FormData/inner_f1.json';
-      $file = file_get_contents($file_path);
-      $json = json_decode($file);
-      $json[] = $data;
-      file_put_contents($file_path,json_encode($json));
-      \Image::make($request->get('bg_img'))->save(public_path('banners/inner/').$name);
-      $image = new FileUpload();
-      $image->image_name = $name;
-      $image->save();
-      return 'Form Submitted Successfully!';
-    }
-    else if($request->submit=='Draft'){
-      $data = array('id'=>'1','title'=>$request->title,'bgcolor'=>$request->bgcolor,'bg_img'=>'Image1.jpeg','subtitle'=>$request->subtitle,'description'=>$request->description);
-      $file_path = 'json/draft_inner/draft_inner.json';
-      file_put_contents($file_path,json_encode($data));
-      if($request->get('bg_img')){
-        $image=$request->get('bg_img');
-        $name=time().'.'.explode('/',explode(':',substr($image,0,strpos($image,';')))[1])[1];
-        Image::make($request->get('bg_img'))->save(public_path('json/draft_inner/').$name);
-        $image = new FileUpload();
-        $image->image_name = $name;
-        $image->save();
-        return 'Form Saved as Draft';
+    if($request->Submit == 'Submit'){
+      $path = 'json/FormData/inner_f1.json';
+      $path1 = 'banners/inner';
+      $imagename1=null;$imagename2=null;$imagename3=null;
+      if($request->hasFile('image1')){
+        $image = $request['image1'];
+        $imagename1 = $image->getClientOriginalName();
+        $image->move($path1,$imagename1);
       }
+      if($request->hasFile('image2')){
+        $image = $request['image2'];
+        $imagename2 = $image->getClientOriginalName();
+        $image->move($path1,$imagename2);
+      }
+      if($request->hasFile('image3')){
+        $image = $request['image3'];
+        $imagename3 = $image->getClientOriginalName();
+        $image->move($path1,$imagename3);
+      }
+      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_s'=>$request->b1_s,'b1_d'=>$request->b1_d,
+              'b2_n'=>$request->b2_n,'b2_l'=>$request->b2_l,'b2_d'=>$request->b2_d,
+              'b3_n'=>$request->b3_n,'b3_c'=>$request->b3_c,'b3_d'=>$request->b3_d,'b3_t'=>$request->b3_t,
+              'image1'=>$imagename1,'image2'=>$imagename2,'image3'=>$imagename3);
+      file_put_contents($path,json_encode($data));
+      $this->sendDataInner();
+      return 'Form Submitted Successfully';
+
+    }
+    else if($request->Submit=='Save as Draft'){
+      $path = 'json/draft_inner/draft_inner.json';
+      $path1 = 'json/draft_inner';
+      $imagename1=null;$imagename2=null;$imagename3=null;
+      if($request->hasFile('image1')){
+        $image = $request['image1'];
+        $imagename1 = $image->getClientOriginalName();
+        $image->move($path1,$imagename1);
+      }
+      if($request->hasFile('image2')){
+        $image = $request['image2'];
+        $imagename2 = $image->getClientOriginalName();
+        $image->move($path1,$imagename2);
+      }
+      if($request->hasFile('image3')){
+        $image = $request['image3'];
+        $imagename3 = $image->getClientOriginalName();
+        $image->move($path1,$imagename3);
+      }
+      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_s'=>$request->b1_s,'b1_d'=>$request->b1_d,
+              'b2_n'=>$request->b2_n,'b2_l'=>$request->b2_l,'b2_d'=>$request->b2_d,
+              'b3_n'=>$request->b3_n,'b3_c'=>$request->b3_c,'b3_d'=>$request->b3_d,'b3_t'=>$request->b3_t,
+              'image1'=>$imagename1,'image2'=>$imagename2,'image3'=>$imagename3);
+      file_put_contents($path,json_encode($data));
+      return 'Form Saved as Draft';
     }
   }
 
-  public function innerForm2(){
+  public function innerForm2(Request $request){
     if($request->session()->get('role')=='admin'){
       return view('adminForms/innerForm2');
     }
     return back();
+  }
+  public function sendDataInner2(){
+    $path1 = 'json/inner2.json';
+    $path2 = 'json/FormData/inner_f2.json';
+    $data1 = file_get_contents($path1);
+    $mod1 = file_get_contents($path2);
+    $data = json_decode($data1);
+    $mod = json_decode($mod1);
+    $data->section1->title = $mod->b1_t==null?$data->section1->title:$mod->b1_t;
+    $data->section1->image = $mod->image==null?$data->section1->image:'banners/inner2/'.$mod->image;
+    $data->section1->title_sub = $mod->b1_s==null?$data->section1->title_sub:$mod->b1_s;
+    $data->section1->description1 = $mod->b1_d==null?$data->section1->description1:$mod->b1_d;
+    $data->section1->description2 = $mod->b1_d==null?$data->section1->description2:null;
+    $data->section1->description3 = $mod->b1_d==null?$data->section1->description3:null;
+    $data->section1->video->src = $mod->video1==null?$data->section1->video->src:'banners/inner2/'.$mod->video1;
+    $data->section1->button2->link = $mod->b1_l==null?$data->section1->button2->link:$mod->b1_l;
+    $data->section3->title = $mod->b2_t==null?$data->section3->title:$mod->b2_t;
+    if($mod->b2_n!=null){
+      $num = $mod->b2_n;
+      $num = $num%4;
+      $data->section3->content[$num]->image = 'banners/inner2/'.$mod->image1;
+      $data->section3->content[$num]->title=$mod->b2_s;
+      $data->section3->content[$num]->description=$mod->b2_d;
+    }
+    $data->section4->title = $mod->b3_t==null?$data->section4->title:$mod->b3_t;
+    $data->section4->description=$mod->b3_d==null?$data->section4->description:$mod->b3_d;
+    $data->section4->button->link = $mod->b3_l==null?$data->section4->button->link:$mod->b3_l;
+    $data->section5->section5_sub->title = $mod->b4_t==null?$data->section5->section5_sub->title:$mod->b4_t;
+    if($mod->b4_n!=null){
+      $num = $mod->b4_n % 8;
+      $data->section5->section5_sub->contents[$num]->link = $b4_l;
+      $data->section5->section5_sub->contents[$num]->text = $b4_s;
+      $data->section5->section5_sub->contents[$num]->description=$b4_d;
+    }
+    $data->section5->section5_sub1->title = $mod->b5_t==null?$data->section5->section5_sub1->title:$mod->b5_t;
+    $data->section5->section5_sub1->description1 = $mod->b5_d==null?$data->section5->section5_sub1->description1:$mod->b5_d;
+    $data->section5->section5_sub1->description2 = $mod->b5_d==null?$data->section5->section5_sub1->description2:null;
+    $data->section5->section5_sub1->button_wrap->buttons[0]->link = $mod->b5_l1==null?$data->section5->section5_sub1->button_wrap->buttons[0]->link:$mod->b5_l1;
+    $data->section5->section5_sub1->button_wrap->buttons[1]->link = $mod->b5_l2==null?$data->section5->section5_sub1->button_wrap->buttons[1]->link:$mod->b5_l2;
+    if($mod->b6_n!=null){
+      $num = $mod->b6_n%2;
+      $data->section6->contents[$num]->image = 'banners/inner2/'.$mod->image2;
+      $data->section6->contents[$num]->button->link = 'banners/inner2/'.$mod->video2;
+      $data->section6->contents[$num]->title = $mod->b6_t;
+      $data->section6->contents[$num]->description = $mod->b6_d;
+    }
+    if($mod->b7_n!=null){
+      $num = $mod->b7_n%3;
+      $data->section7->contents[$num]->image = 'banners/inner2/'.$mod->image3;
+      $data->section7->contents[$num]->button->link = 'banners/inner2/'.$mod->video3;
+      $data->section7->contents[$num]->title = $mod->b7_t;
+      $data->section7->contents[$num]->description = $mod->b7_d;
+    }
+    file_put_contents($path1,json_encode($data));
+
   }
   public function innerPost2(Request $request){
     if($request->session()->get('role')!='admin'){
       return back();
     }
     if($request->Submit == 'Submit'){
-      $video = $request['video'];
-      $videoname = $video->getClientOriginalName();
-      $path = 'banners/inner2';
-      $video->move($path,$videoname);
-      $indexfile = file_get_contents('json/Numbers/numinner2.json');
-      $index = json_decode($indexfile);
-      $index = $index + 1;
-      file_put_contents('json/Numbers/numinner2.json',json_encode($index));
-      $filepath = 'json/FormData/inner_f2.json';
-      $data = file_get_contents($filepath);
-      $json = json_decode($data);
-      $array = array('id'=>$index,'title'=>$request->title,'video'=>$videoname,'subtitle'=>$request->subtitle,'description'=>$request->description);
-      $json[] = $array;
-      file_put_contents($filepath,json_encode($json));
-      return 'Form Submitted Successfully';
-
+      $path = 'json/FormData/inner_f2.json';
+      $path1 = 'banners/inner2';
+      $imagename=null;$imagename1 = null;$imagename2= null;$imagename3 = null;$videoname1 = null;$videoname2 = null;$videoname3=null;
+      if($request->hasFile('image')){
+        $image = $request['image'];
+        $imagename = $image->getClientOriginalName();
+        $image->move($path1,$imagename);
+      }
+      if($request->hasFile('image1')){
+        $image = $request['image1'];
+        $imagename1 = $image->getClientOriginalName();
+        $image->move($path1,$imagename1);
+      }
+      if($request->hasFile('image2')){
+        $image = $request['image2'];
+        $imagename2 = $image->getClientOriginalName();
+        $image->move($path1,$imagename2);
+      }
+      if($request->hasFile('image3')){
+        $image = $request['image3'];
+        $imagename3 = $image->getClientOriginalName();
+        $image->move($path1,$imagename3);
+      }
+      if($request->hasFile('video1')){
+        $video = $request['video1'];
+        $videoname1 = $video->getClientOriginalName();
+        $video->move($path1,$videoname1);
+      }
+      if($request->hasFile('video2')){
+        $video = $request['video2'];
+        $videoname2 = $video->getClientOriginalName();
+        $video->move($path1,$videoname2);
+      }
+      if($request->hasFile('video3')){
+        $video = $request['video3'];
+        $videoname3 = $video->getClientOriginalName();
+        $video->move($path1,$videoname3);
+      }
+      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_s'=>$request->b1_s,'b1_d'=>$request->b1_d,'b1_l'=>$request->b1_l,
+            'b2_t'=>$request->b2_t,'b2_n'=>$request->b2_n,'b2_s'=>$request->b2_s,'b2_d'=>$request->b2_d,'b3_t'=>$request->b3_t,
+            'b3_d'=>$request->b3_d,'b3_l'=>$request->b3_l,'b4_t'=>$request->b4_t,'b4_n'=>$request->b4_n,'b4_s'=>$request->b4_s,
+            'b4_d'=>$request->b4_d,'b4_l'=>$request->b4_l,'b5_t'=>$request->b5_t,'b5_d'=>$request->b5_d,'b5_l1'=>$request->b5_l1,
+            'b5_l2'=>$request->b5_l2,'b6_t'=>$request->b6_t,'b6_n'=>$request->b6_n,'b6_d'=>$request->b6_d,'b7_t'=>$request->b7_t,
+            'b7_n'=>$request->b7_n,'b7_d'=>$request->b7_d,'image1'=>$imagename1,'image2'=>$imagename2,'image3'=>$imagename3,
+            'video1'=>$videoname1,'video2'=>$videoname2,'video3'=>$videoname3,'image'=>$imagename);
+      file_put_contents($path,json_encode($data));
+      $this->sendDataInner2();
+      return 'Form Saved Successfully';
     }
     else if($request->Submit=='Save as Draft'){
-      if($request->hasFile('video')){
-        $video = $request['video'];
-        $videoname = $video->getClientOriginalName();
-        $path = 'json/draft_inner2';
-        $video->move($path,$videoname);
+      $path = 'json/draft_inner2/draft_inner2.json';
+      $path1 = 'json/draft_inner2';
+      $imagename=null;$imagename1 = null;$imagename2= null;$imagename3 = null;$videoname1 = null;$videoname2 = null;$videoname3=null;
+      if($request->hasFile('image')){
+        $image = $request['image'];
+        $imagename = $image->getClientOriginalName();
+        $image->move($path1,$imagename);
       }
-      else{
-        $videoname='null';
+      if($request->hasFile('image1')){
+        $image = $request['image1'];
+        $imagename1 = $image->getClientOriginalName();
+        $image->move($path1,$imagename1);
       }
-      $indexfile = file_get_contents('json/Numbers/numinner2.json');
-      $index = json_decode($indexfile);
-      $index = $index + 1;
-      file_put_contents('json/Numbers/numinner2.json',json_encode($index));
-      $filepath = 'json/draft_inner2/draft_inner2.json';
-      $array = array('id'=>$index,'title'=>$request->title,'video'=>$videoname,'subtitle'=>$request->subtitle,'description'=>$request->description);
-      file_put_contents($filepath,json_encode($array));
-      return 'Form Saved as Draft';
+      if($request->hasFile('image2')){
+        $image = $request['image2'];
+        $imagename2 = $image->getClientOriginalName();
+        $image->move($path1,$imagename2);
+      }
+      if($request->hasFile('image3')){
+        $image = $request['image3'];
+        $imagename3 = $image->getClientOriginalName();
+        $image->move($path1,$imagename3);
+      }
+      if($request->hasFile('video1')){
+        $video = $request['video1'];
+        $videoname1 = $video->getClientOriginalName();
+        $video->move($path1,$videoname1);
+      }
+      if($request->hasFile('video2')){
+        $video = $request['video2'];
+        $videoname2 = $video->getClientOriginalName();
+        $video->move($path1,$videoname2);
+      }
+      if($request->hasFile('video3')){
+        $video = $request['video3'];
+        $videoname3 = $video->getClientOriginalName();
+        $video->move($path1,$videoname3);
+      }
+      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_s'=>$request->b1_s,'b1_d'=>$request->b1_d,'b1_l'=>$request->b1_l,
+            'b2_t'=>$request->b2_t,'b2_n'=>$request->b2_n,'b2_s'=>$request->b2_s,'b2_d'=>$request->b2_d,'b3_t'=>$request->b3_t,
+            'b3_d'=>$request->b3_d,'b3_l'=>$request->b3_l,'b4_t'=>$request->b4_t,'b4_n'=>$request->b4_n,'b4_s'=>$request->b4_s,
+            'b4_d'=>$request->b4_d,'b4_l'=>$request->b4_l,'b5_t'=>$request->b5_t,'b5_d'=>$request->b5_d,'b5_l1'=>$request->b5_l1,
+            'b5_l2'=>$request->b5_l2,'b6_t'=>$request->b6_t,'b6_n'=>$request->b6_n,'b6_d'=>$request->b6_d,'b7_t'=>$request->b7_t,
+            'b7_n'=>$request->b7_n,'b7_d'=>$request->b7_d,'image1'=>$imagename1,'image2'=>$imagename2,'image3'=>$imagename3,
+            'video1'=>$videoname1,'video2'=>$videoname2,'video3'=>$videoname3,'image'=>$imagename);
+      file_put_contents($path,json_encode($data));
+      return 'Form Saved As Draft';
     }
   }
 
-  public function innerForm3(){
+  public function innerForm3(Request $request){
     if($request->session()->get('role')=='admin'){
       return view('adminForms/innerForm3');
     }
     return back();
+  }
+  public function sendDataInner3(){
+    $path1 = 'json/inner3.json';
+    $path2 = 'json/FormData/inner_f3.json';
+    $data1 = file_get_contents($path1);
+    $mod1 = file_get_contents($path2);
+    $data = json_decode($data1);
+    $mod = json_decode($mod1);
+    $data->section1->title = $mod->b1_t==null? $data->section1->title: $mod->b1_t;
+    $data->section1->image = $mod->image1==null? $data->section1->image : 'banners/inner3/'.$mod->image1;
+    $data->section1->image_wrap = $data->section1->image;
+    $data->section1->video->src = $mod->video1==null?$data->section1->video->src:'banners/inner3/'.$mod->video1;
+    $data->section1->button2->link=$mod->b1_l==null?$data->section1->button2->link:$mod->b1_l;
+    $data->section1->title_sub = $mod->b1_s==null?$data->section1->title_sub: $mod->b1_s;
+    $data->section1->description1 = $mod->b1_d == null?$data->section1->description1: $mod->b1_d;
+    $data->section1->description2 = $mod->b1_d == null?$data->section1->description2: null;
+    $data->section1->description3 = $mod->b1_d == null?$data->section1->description3: null;
+    if($mod->b2_n!=null){
+      $num = $mod->b2_n;
+      $num = $num % 7;
+      if($num>3){
+        $num = $num % 4;
+        $data->section6->container2[$num]->link = $mod->b2_l;
+        $data->section6->container2[$num]->description = $mod->b2_d;
+        $data->section6->container2[$num]->image = 'banners/inner3/'.$mod->image2;
+      }
+      else{
+        $data->section6->container1[$num]->link = $mod->b2_l;
+        $data->section6->container1[$num]->description = $mod->b2_d;
+        $data->section6->container1[$num]->image = 'banners/inner3/'.$mod->image2;
+      }
+    }
+    if(($mod->b3_n!=null)){
+      $num = $mod->b3_n;
+      $num = $num % 3;
+      $data->section8->container[$num]->background = 'banners/inner3/'.$mod->image3;
+      $data->section8->container[$num]->image = 'banners/inner3/'.$mod->image3;
+      $data->section8->container[$num]->title = $mod->b3_t;
+      $data->section8->container[$num]->name = $mod->b3_c;
+      $data->section8->container[$num]->description = $mod->b3_d;
+    }
+    if(($mod->b4_n!=null)){
+      $num = $mod->b4_n % 11;
+      if($num < 4){
+        $data->section9->container1[$num]->link = $mod->b4_l;
+        $data->section9->container1[$num]->image = 'banners/inner3/'.$mod->image4;
+        $data->section9->container1[$num]->title = $mod->b4_t;
+      }
+      else if($num<7){
+        $num = $num - 4;
+        $data->section9->container2[$num]->link = $mod->b4_l;
+        $data->section9->container2[$num]->image = 'banners/inner3/'.$mod->image4;
+        $data->section9->container2[$num]->title = $mod->b4_t;
+      }
+      else{
+        $num = $num - 7;
+        $data->section9->container3[$num]->link = $mod->b4_l;
+        $data->section9->container3[$num]->image = 'banners/inner3/'.$mod->image4;
+        $data->section9->container3[$num]->title = $mod->b4_t;
+      }
+    }
+    file_put_contents($path1,json_encode($data));
   }
   public function innerPost3(Request $request){
     if($request->session()->get('role')!='admin'){
       return back();
     }
     if($request->Submit == 'Submit'){
-      $video = $request['video'];
-      $videoname = $video->getClientOriginalName();
-      $path = 'banners/inner3';
-      $video->move($path,$videoname);
-      $image = $request['image'];
-      $imagename = $image->getClientOriginalName();
-      $image->move($path,$imagename);
-      $indexfile = file_get_contents('json/Numbers/numinner3.json');
-      $index = json_decode($indexfile);
-      $index = $index + 1;
-      file_put_contents('json/Numbers/numinner3.json',json_encode($index));
-      $filepath = 'json/FormData/inner_f3.json';
-      $data = file_get_contents($filepath);
-      $json = json_decode($data);
-      $array = array('id'=>$index,'title'=>$request->title,'video'=>$videoname,'image'=>$imagename,'subtitle'=>$request->subtitle,'description'=>$request->description);
-      $json[] = $array;
-      file_put_contents($filepath,json_encode($json));
-      return 'Form Submitted Successfully';
-
+        $path = 'json/FormData/inner_f3.json';
+        $path1 = 'banners/inner3';
+        $imagename1=null;$imagename2=null;$imagename3=null;$videoname1=null;$imagename4=null;
+        if($request->hasFile('video1')){
+          $video = $request['video1'];
+          $videoname1 = $video->getClientOriginalName();
+          $video->move($path1,$videoname1);
+        }
+        if($request->hasFile('image1')){
+          $image = $request['image1'];
+          $imagename1 = $image->getClientOriginalName();
+          $image->move($path1,$imagename1);
+        }
+        if($request->hasFile('image2')){
+          $image = $request['image2'];
+          $imagename2 = $image->getClientOriginalName();
+          $image->move($path1,$imagename2);
+        }
+        if($request->hasFile('image3')){
+          $image = $request['image3'];
+          $imagename3 = $image->getClientOriginalName();
+          $image->move($path1,$imagename3);
+        }
+        if($request->hasFile('image4')){
+          $image = $request['image4'];
+          $imagename4 = $image->getClientOriginalName();
+          $image->move($path1,$imagename4);
+        }
+        $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_l'=>$request->b1_l,'b1_s'=>$request->b1_s,'b1_d'=>$request->b1_d,
+                'b2_n'=>$request->b2_n,'b2_l'=>$request->b2_l,'b2_d'=>$request->b2_d,
+                'b3_n'=>$request->b3_n,'b3_c'=>$request->b3_c,'b3_d'=>$request->b3_d,'b3_t'=>$request->b3_t,
+                'b4_t'=>$request->b4_t,'b4_n'=>$request->b4_n,'b4_l'=>$request->b4_l,
+                'image1'=>$imagename1,'image2'=>$imagename2,'image3'=>$imagename3,'video1'=>$videoname1,'image4'=>$imagename4);
+        file_put_contents($path,json_encode($data));
+        $this->sendDataInner3();
+        return 'Form Submitted Successfully';
     }
     else if($request->Submit=='Save as Draft'){
-      if($request->hasFile('video')){
-        $video = $request['video'];
-        $videoname = $video->getClientOriginalName();
-        $path = 'json/draft_inner3';
-        $video->move($path,$videoname);
+      $path = 'json/draft_inner3/draft_inner3.json';
+      $path1 = 'json/draft_inner3';
+      $imagename1=null;$imagename2=null;$imagename3=null;$videoname1=null;$imagename4=null;
+      if($request->hasFile('video1')){
+        $video = $request['video1'];
+        $videoname1 = $video->getClientOriginalName();
+        $video->move($path1,$videoname1);
       }
-      else{
-        $videoname='null';
+      if($request->hasFile('image1')){
+        $image = $request['image1'];
+        $imagename1 = $image->getClientOriginalName();
+        $image->move($path1,$imagename1);
       }
-      if($request->hasFile('image')){
-        $image = $request['image'];
-        $imagename = $image->getClientOriginalName();
-        $path = 'json/draft_inner3';
-        $image->move($path,$imagename);
+      if($request->hasFile('image2')){
+        $image = $request['image2'];
+        $imagename2 = $image->getClientOriginalName();
+        $image->move($path1,$imagename2);
       }
-      else{
-        $imagename='null';
+      if($request->hasFile('image3')){
+        $image = $request['image3'];
+        $imagename3 = $image->getClientOriginalName();
+        $image->move($path1,$imagename3);
       }
-      $indexfile = file_get_contents('json/Numbers/numinner3.json');
-      $index = json_decode($indexfile);
-      $index = $index + 1;
-      file_put_contents('json/Numbers/numinner3.json',json_encode($index));
-      $filepath = 'json/draft_inner3/draft_inner3.json';
-      $array = array('id'=>$index,'title'=>$request->title,'video'=>$videoname,'image'=>$imagename,'subtitle'=>$request->subtitle,'description'=>$request->description);
-      file_put_contents($filepath,json_encode($array));
+      if($request->hasFile('image4')){
+        $image = $request['image4'];
+        $imagename4 = $image->getClientOriginalName();
+        $image->move($path1,$imagename4);
+      }
+      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_l'=>$request->b1_l,'b1_s'=>$request->b1_s,'b1_d'=>$request->b1_d,
+              'b2_n'=>$request->b2_n,'b2_l'=>$request->b2_l,'b2_d'=>$request->b2_d,
+              'b3_n'=>$request->b3_n,'b3_c'=>$request->b3_c,'b3_d'=>$request->b3_d,'b3_t'=>$request->b3_t,
+              'b4_t'=>$request->b4_t,'b4_n'=>$request->b4_n,'b4_l'=>$request->b4_l,
+              'image1'=>$imagename1,'image2'=>$imagename2,'image3'=>$imagename3,'video1'=>$videoname1,'image4'=>$imagename4);
+      file_put_contents($path,json_encode($data));
       return 'Form Saved as Draft';
     }
   }
@@ -323,57 +585,13 @@ class LandingPages extends Controller
       return back();
     }
     if($request->Submit == 'Submit'){
-      $video = $request['video'];
-      $videoname = $video->getClientOriginalName();
-      $path = 'banners/inner4';
-      $video->move($path,$videoname);
-      $image = $request['image'];
-      $imagename = $image->getClientOriginalName();
-      $image->move($path,$imagename);
-      $indexfile = file_get_contents('json/Numbers/numinner4.json');
-      $index = json_decode($indexfile);
-      $index = $index + 1;
-      file_put_contents('json/Numbers/numinner3.json',json_encode($index));
-      $filepath = 'json/FormData/inner_f4.json';
-      $data = file_get_contents($filepath);
-      $json = json_decode($data);
-      $array = array('id'=>$index,'title'=>$request->title,'video'=>$videoname,'image'=>$imagename,'subtitle'=>$request->subtitle,'description'=>$request->description);
-      $json[] = $array;
-      file_put_contents($filepath,json_encode($json));
-      return 'Form Submitted Successfully';
-
     }
     else if($request->Submit=='Save as Draft'){
-      if($request->hasFile('video')){
-        $video = $request['video'];
-        $videoname = $video->getClientOriginalName();
-        $path = 'json/draft_inner4';
-        $video->move($path,$videoname);
-      }
-      else{
-        $videoname='null';
-      }
-      if($request->hasFile('image')){
-        $image = $request['image'];
-        $imagename = $image->getClientOriginalName();
-        $path = 'json/draft_inner4';
-        $image->move($path,$imagename);
-      }
-      else{
-        $imagename='null';
-      }
-      $indexfile = file_get_contents('json/Numbers/numinner4.json');
-      $index = json_decode($indexfile);
-      $index = $index + 1;
-      file_put_contents('json/Numbers/numinner4.json',json_encode($index));
-      $filepath = 'json/draft_inner4/draft_inner4.json';
-      $array = array('id'=>$index,'title'=>$request->title,'video'=>$videoname,'image'=>$imagename,'subtitle'=>$request->subtitle,'description'=>$request->description);
-      file_put_contents($filepath,json_encode($array));
-      return 'Form Saved as Draft';
+
     }
   }
 
-  public function innerFormBlank(){
+  public function innerFormBlank(Request $request){
     if($request->session()->get('role')=='admin'){
       return view('adminForms/innerFormBlank');
     }
@@ -434,7 +652,7 @@ class LandingPages extends Controller
     }
   }
 
-  public function innerFormBlank1(){
+  public function innerFormBlank1(Request $request){
     if($request->session()->get('role')=='admin'){
       return view('adminForms/innerFormBlank1');
     }
