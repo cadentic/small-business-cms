@@ -580,14 +580,193 @@ class LandingPages extends Controller
     }
     return back();
   }
+  public function sendDataInner4(){
+    $path1 = 'json/inner4.json';
+    $path2 = 'json/FormData/inner_f4.json';
+    $data = json_decode(file_get_contents($path1));
+    $mod = json_decode(file_get_contents($path2));
+    $data->video_banner->src = $mod->video1==null?$data->video_banner->src: 'banners/inner4/'.$mod->video1;
+    $data->video_banner->text->p = $mod->b1_t==null?$data->video_banner->text->p: $mod->b1_t;
+    $data->innovation->sub_title = $mod->b2_t==null?$data->innovation->sub_title:$mod->b2_t;
+    $data->innovation->descriptions = $mod->b2_d==null?$data->innovation->descriptions:$mod->b2_d;
+    $data->innovation->button->link = $mod->b2_l==null?$data->innovation->button->link:$mod->b2_l;
+    if($mod->b3_t[0]!=null){
+      $data->carousel->items = array();
+      for($i=0;$i<count($mod->b3_t);$i++){
+        $object = new \stdClass();
+        $object->image='banners/inner4/'.$mod->videos[$i];
+        $object->title=$mod->b3_t[$i];
+        $object->iframe=$mod->b3_l[$i];
+        $data->carousel->items[] = $object;
+      }
+    }
+    if($mod->b4_t[0]!=null){
+      $data->testimonial->carousel = array();
+      for($i=0;$i<count($mod->b4_t);$i++){
+        $object = new \stdClass();
+        $object->image = 'banners/inner4/'.$mod->images[$i];
+        $object->title = $mod->b4_t[$i];
+        $object->description=$mod->b4_d[$i];
+        $object->buttons = [];
+        $data->testimonial->carousel[] = $object;
+      }
+    }
+    if($mod->b5_t[0]!=null){
+      $data->about->tabs = array();
+      $data->about->tabcontents=array();
+      $data->about->current_tabcontent->id='tab-1';
+      $data->about->current_tabcontent->title=$mod->b5_s[0];
+      $data->about->current_tabcontent->description1=$mod->b5_d[0];
+      $data->about->current_tabcontent->description2=null;
+      $data->about->current_tabcontent->description3=null;
+      $data->about->current_tabcontent->button->link=$mod->b5_l[0];
+      for($i=1;$i<=count($mod->b5_t);$i++){
+        $texto = new \stdClass();
+        $texto->text = $mod->b5_t[$i-1];
+        $data->about->tabs[] =$texto;
+        if($i-1 == 0){
+          continue;
+        }
+        $object = new \stdClass();
+        $object->id = 'tab-'.$i;
+        $object->title=$mod->b5_s[$i-1];
+        $object->description1=$mod->b5_d[$i-1];
+        $object->description2=null;
+        $object->description3=null;
+        $object->button = new \stdClass();
+        $object->button->text = 'LEARN MORE';
+        $object->button->link = $mod->b5_l[$i-1];
+        $data->about->tabcontents[] = $object;
+      }
+    }
+    if($mod->b6_t[0]!=null){
+      $data->offerings->contents = array();
+      $data->offerings->description = $mod->heading;
+      for($i=0;$i<count($mod->b6_t);$i++){
+        $object = new \stdClass();
+        $object->title=$mod->b6_t[$i];
+        $name = 'banners/inner4/'.$mod->b6_i[$i];
+        $object->image =$name;
+        $object->description = $mod->b6_d[$i];
+        $data->offerings->contents[] = $object;
+      }
+    }
+    if($mod->b7_t[0]!=null){
+      $data->partners->contents = array();
+      for($i=0;$i<count($mod->b7_t);$i++){
+        $object = new \stdClass();
+        $object->title=$mod->b7_t[$i];
+        $object->image ='banners/inner4/'.$mod->b7_i[$i];
+        $object->description = $mod->b7_d[$i];
+        $data->partners->contents[] = $object;
+      }
+    }
+    if($mod->b8_t[0]!=null){
+      $data->work->contents = array();
+      for($i=0;$i<count($mod->b8_t);$i++){
+        $object = new \stdClass();
+        $object->tag = $mod->b8_t[$i];
+        $object->title = $mod->b8_d[$i];
+        $object->button = 'View';
+        $data->work->contents[] = $object;
+      }
+    }
+    file_put_contents($path1,json_encode($data));
+  }
   public function innerPost4(Request $request){
     if($request->session()->get('role')!='admin'){
       return back();
     }
     if($request->Submit == 'Submit'){
+      $path = 'json/FormData/inner_f4.json';
+      $path1 = 'banners/inner4';
+      $videoname1 = null;$videoname2=null;
+      $images[]=null;$videos = array();$images2 = array();$b7_i=array();
+      if($request->b7_t[0]!=null){
+        foreach($request->b7_i as $image){
+          $b7_i[] = $image->getClientOriginalName();
+          $image->move($path1,$image->getClientOriginalName());
+        }
+      }
+      if($request->b6_t[0]!=null){
+        foreach($request->b6_i as $image){
+          $images2[] = $image->getClientOriginalName();
+          $image->move($path1,$image->getClientOriginalName());
+        }
+      }
+      if($request->b4_i!=null){
+        foreach($request->b4_i as $image){
+          $images[] = $image->getClientOriginalName();
+          $image->move($path1,$image->getClientOriginalName());
+        }
+      }
+      if($request->b3_v!=null){
+        foreach($request->b3_v as $video){
+          $videos[] = $video->getClientOriginalName();
+          $video->move($path1,$video->getClientOriginalName());
+        }
+      }
+      array_splice($images,0,1);
+      if($request->hasFile('video1')){
+        $video = $request['video1'];
+        $videoname1 = $video->getClientOriginalName();
+        $video->move($path1,$videoname1);
+      }
+      $array = array('id'=>'1','b1_t'=>$request->b1_t,'b2_t'=>$request->b2_t,'b2_l'=>$request->b2_l,
+              'b2_d'=>$request->b2_d,'b3_t'=>$request->b3_t,'b3_l'=>$request->b3_l,'video1'=>$videoname1,
+              'images'=>$images,'b4_t'=>$request->b4_t,'b4_d'=>$request->b4_d,'videos'=>$videos,
+              'b5_t'=>$request->b5_t,'b5_d'=>$request->b5_d,'b5_l'=>$request->b5_l,'b5_s'=>$request->b5_s,
+              'b6_t'=>$request->b6_t,'b6_d'=>$request->b6_d,'b6_i'=>$images2,'heading'=>$request->heading,
+              'b7_t'=>$request->b7_t,'b7_d'=>$request->b7_d,'b7_i'=>$b7_i,'b8_t'=>$request->b8_t,
+              'b8_d'=>$request->b8_d);
+      file_put_contents($path,json_encode($array));
+      $this->sendDataInner4();
+      return 'Form Saved Successfully';
     }
     else if($request->Submit=='Save as Draft'){
-
+      $path = 'json/draft_inner4/draft_inner4.json';
+      $path1 = 'json/draft_inner4';
+      $videoname1 = null;$videoname2=null;
+      $images[]=null;$videos = array();$images2 = array();$b7_i=array();
+      if($request->b7_t[0]!=null){
+        foreach($request->b7_i as $image){
+          $b7_i[] = $image->getClientOriginalName();
+          $image->move($path1,$image->getClientOriginalName());
+        }
+      }
+      if($request->b6_t[0]!=null){
+        foreach($request->b6_i as $image){
+          $images2[] = $image->getClientOriginalName();
+          $image->move($path1,$image->getClientOriginalName());
+        }
+      }
+      if($request->b4_i!=null){
+        foreach($request->b4_i as $image){
+          $images[] = $image->getClientOriginalName();
+          $image->move($path1,$image->getClientOriginalName());
+        }
+      }
+      if($request->b3_v!=null){
+        foreach($request->b3_v as $video){
+          $videos[] = $video->getClientOriginalName();
+          $video->move($path1,$video->getClientOriginalName());
+        }
+      }
+      array_splice($images,0,1);
+      if($request->hasFile('video1')){
+        $video = $request['video1'];
+        $videoname1 = $video->getClientOriginalName();
+        $video->move($path1,$videoname1);
+      }
+      $array = array('id'=>'1','b1_t'=>$request->b1_t,'b2_t'=>$request->b2_t,'b2_l'=>$request->b2_l,
+              'b2_d'=>$request->b2_d,'b3_t'=>$request->b3_t,'b3_l'=>$request->b3_l,'video1'=>$videoname1,
+              'images'=>$images,'b4_t'=>$request->b4_t,'b4_d'=>$request->b4_d,'videos'=>$videos,
+              'b5_t'=>$request->b5_t,'b5_d'=>$request->b5_d,'b5_l'=>$request->b5_l,'b5_s'=>$request->b5_s,
+              'b6_t'=>$request->b6_t,'b6_d'=>$request->b6_d,'b6_i'=>$images2,'heading'=>$request->heading,
+              'b7_t'=>$request->b7_t,'b7_d'=>$request->b7_d,'b7_i'=>$b7_i,'b8_t'=>$request->b8_t,
+              'b8_d'=>$request->b8_d);
+      file_put_contents($path,json_encode($array));
+      return 'Form Saved as Draft';
     }
   }
 
