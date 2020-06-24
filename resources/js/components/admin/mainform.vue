@@ -99,20 +99,19 @@
           <label for="image1">Image</label>
           <input type="file" id="image1" name="image1"><br/>
 
-          <label for="link">Link 1</label>
-          <input type="text" id="b1_l1" name="b1_l1" placeholder="Add Link..." v-model='b1_l1'><br/>
-
-          <label for="link">Link 2</label>
-          <input type="text" id="b1_l2" name="b1_l2" placeholder="Add Link..." v-model='b1_l2'><br/>
-
-          <label for="link">Link 3</label>
-          <input type="text" id="b1_l3" name="b1_l3" placeholder="Add Link..." v-model='b1_l3'><br/>
-
-          <label for="link">Link 4</label>
-          <input type="text" id="b1_l4" name="b1_l4" placeholder="Add Link..." v-model='b1_l4'><br/>
-
-          <label for="link">Link 5</label>
-          <input type="text" id="b1_l5" name="b1_l5" placeholder="Add Link..." v-model='b1_l5'><br/>
+          <label for="link">Link</label>
+          <div class="myDiv1" v-for="(input,k) in b1_l" :key="k">
+            <div>
+              <input type="text" placeholder="Enter Link Name..." name="b1_l[]" v-model="input.link"><br/>
+              <input type="text" placeholder="Enter URL..." name="b1_u[]" v-model="input.url"><br/>
+            </div>
+            <div id="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove(k)" v-show="k || (!k && b1_l.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add(k)" v-show="k == b1_l.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
 
           <center><h2>Banner 2</h2></center>
           <label for="b2_t">Title</label>
@@ -121,11 +120,19 @@
           <label for="image2">Image</label>
           <input type="file" id="image2" name="image2"><br/>
 
-          <label for="link">Link 1</label>
-          <input type="text" id="b2_l1" name="b2_l1" placeholder="Add Link..." v-model='b2_l1'><br/>
-
-          <label for="link">Link 2</label>
-          <input type="text" id="b2_l2" name="b2_l2" placeholder="Add Link..." v-model='b2_l2'><br/>
+          <label for="link">Link</label>
+          <div class="myDiv1" v-for="(input,k) in b2_l" :key="k">
+            <div>
+              <input type="text" placeholder="Enter Link Name..." name="b2_l[]" v-model="input.link"><br/>
+              <input type="text" placeholder="Enter URL..." name="b2_u[]" v-model="input.url"><br/>
+            </div>
+            <div id="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove2(k)" v-show="k || (!k && b2_l.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add2(k)" v-show="k == b2_l.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
 
           <center><h2>Banner 3</h2></center>
           <label for="b3_t">Title</label>
@@ -140,17 +147,18 @@
           <label for="link">Link 2</label>
           <input type="text" id="b3_l2" name="b3_l2" placeholder="Add Link..." v-model='b3_l2'><br/>
 
-          <label for="image3">Image 1</label>
-          <input type="file" id="image3" name="image3"><br/>
-
-          <label for="image4">Image 2</label>
-          <input type="file" id="image4" name="image4"><br/>
-
-          <label for="image5">Image 3</label>
-          <input type="file" id="image5" name="image5"><br/>
-
-          <label for="image6">Image 4</label>
-          <input type="file" id="image6" name="image6"><br/>
+          <label for="link">Images</label>
+          <div class="myDiv1" v-for="(input,k) in b3_i" :key="k">
+            <div>
+              <input type="file" name="b3_i[]"><br/>
+            </div>
+            <div id="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove3(k)" v-show="k || (!k && b3_i.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add3(k)" v-show="k == b3_i.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
 
           <center><h2>Banner 4</h2></center>
           <label for="file">Video</label>
@@ -162,6 +170,21 @@
           <label for="text">Content</label>
           <input type="text" id="b4_c" name='b4_c' placeholder="Enter content..." v-model='b4_c'><br/>
 
+          <center><h2>Icons</h2></center>
+          <div class="myDiv1" v-for="(input,k) in b5_a" :key="k">
+            <div>
+              <label for="image">Icon Image</label>
+              <input type="file" name="b5_i[]"><br/>
+              <label for="link">Link</label>
+              <input type="text" name="b5_l[]" v-model="input.link" placeholder="Enter Link..."/>
+            </div>
+            <div id="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove4(k)" v-show="k || (!k && b5_a.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add4(k)" v-show="k == b5_a.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
 
           <div class="mygrid">
             <div><input type="submit" name="Submit" value="Submit"/></div>
@@ -415,20 +438,35 @@
         },
         submit:'',
         b1_t:'',
-        b1_l1:'',
-        b1_l2:'',
-        b1_l3:'',
-        b1_l4:'',
-        b1_l5:'',
+        b1_l:[
+            {
+              link:'',
+              url:''
+            },
+        ],
         b2_t:'',
-        b2_l1:'',
-        b2_l2:'',
+        b2_l:[
+            {
+              link:'',
+              url:''
+            },
+        ],
         b3_t:'',
         b3_c:'',
         b3_l1:'',
         b3_l2:'',
+        b3_i:[
+          {
+            images:'',
+          }
+        ],
         b4_c:'',
         b4_t:'',
+        b5_a:[
+          {
+            link: '',
+          }
+        ],
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
@@ -442,14 +480,16 @@
           alert('Previous Draft');
           let data = axios.get('../json/draft_main/draft_main.json').then(res=>{console.log(res);
             this.b1_t=res.data.b1_t;
-            this.b1_l1 = res.data.b1_l1;
-            this.b1_l2 = res.data.b1_l2;
-            this.b1_l3 = res.data.b1_l3;
-            this.b1_l4 = res.data.b1_l4;
-            this.b1_l5 = res.data.b1_l5;
+            var _this = this;
+            for(var i=0;i<res.data.b1_l.length;i++){
+              _this.b1_l.push({link:res.data.b1_l[i],url:res.data.b1_u[i]});
+            }
+            _this.b1_l.splice(0,1);
+            for(var i=0;i<res.data.b2_l.length;i++){
+              _this.b2_l.push({link:res.data.b2_l[i],url:res.data.b2_u[i]});
+            }
+            _this.b2_l.splice(0,1);
             this.b2_t = res.data.b2_t;
-            this.b2_l1 = res.data.b2_l1;
-            this.b2_l2 = res.data.b2_l2;
             this.b3_t = res.data.b3_t;
             this.b3_c = res.data.b3_c;
             this.b3_l1 = res.data.b3_l1;
@@ -458,6 +498,30 @@
             this.b4_t = res.data.b4_t;
           });
           e.preventDefault();
+        },
+        add(index){
+          this.b1_l.push({link:'',desc:''});
+        },
+        remove(index,e){
+          this.b1_l.splice(index,1);
+        },
+        add2(index){
+          this.b2_l.push({link:'',desc:''});
+        },
+        remove2(index,e){
+          this.b2_l.splice(index,1);
+        },
+        add3(index){
+          this.b3_i.push({images:''});
+        },
+        remove3(index,e){
+          this.b3_i.splice(index,1);
+        },
+        add4(index){
+          this.b5_a.push({link:''});
+        },
+        remove4(index,e){
+          this.b5_a.splice(index,1);
         },
         isItemSelected() {
             return this.itemSelected !== '' && this.itemSelected.text !== this.selectedText
@@ -705,6 +769,15 @@
         grid-template-columns: auto auto auto;
         padding: 10px;
         grid-gap: 20px;
+      }
+
+      .myDiv1{
+        display:grid;
+        grid-template-columns: auto 40px;
+      }
+
+      #myDivp{
+        padding-top: 12px;
       }
 
 </style>

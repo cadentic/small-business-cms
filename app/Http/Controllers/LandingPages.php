@@ -21,19 +21,35 @@ class LandingPages extends Controller
     $mod = json_decode($modi);
     $data->banner->banner1->bg_img = $mod->image1 ==null ? $data->banner->banner1->bg_img : 'banners/main/'.$mod->image1;
     $data->banner->banner1->title = $mod->b1_t == null ? $data->banner->banner1->title : $mod->b1_t;
-    $data->banner->banner1->link[0]->text = $mod->b1_l1 == null ? $data->banner->banner1->link[0]->text : $mod->b1_l1;
-    $data->banner->banner1->link[1]->text = $mod->b1_l2 == null ? $data->banner->banner1->link[1]->text : $mod->b1_l2;
-    $data->banner->banner1->link[2]->text = $mod->b1_l3 == null ? $data->banner->banner1->link[2]->text : $mod->b1_l3;
-    $data->banner->banner1->link[3]->text = $mod->b1_l4 == null ? $data->banner->banner1->link[3]->text : $mod->b1_l4;
-    $data->banner->banner1->link[4]->text = $mod->b1_l5 == null ? $data->banner->banner1->link[4]->text : $mod->b1_l5;
+    if($mod->b1_l[0]!=null){
+      $data->banner->banner1->link = array();
+      for($i=0;$i<count($mod->b1_l);$i++){
+        $object = new \stdclass();
+        $object->id=$i;
+        $object->text = $mod->b1_l[$i];
+        $object->url = $mod->b1_u[$i];
+        $data->banner->banner1->link[] = $object;
+      }
+    }
     $data->banner->banner2->bg_img = $mod->image2==null? $data->banner->banner2->bg_img: 'banners/main/'.$mod->image2;
     $data->banner->banner2->title = $mod->b2_t == null ? $data->banner->banner2->title:$mod->b2_t;
-    $data->banner->banner2->link[0]->text = $mod->b2_l1 == null ? $data->banner->banner2->link[0]->text : $mod->b2_l1;
-    $data->banner->banner2->link[1]->text = $mod->b2_l2 == null ? $data->banner->banner2->link[1]->text : $mod->b2_l2;
-    $data->banner->banner3->bg_img[0] = $mod->image3==null? $data->banner->banner3->bg_img[0] : 'url(banners/main/'.$mod->image3.')';
-    $data->banner->banner3->bg_img[1] = $mod->image4==null? $data->banner->banner3->bg_img[1] : 'url(banners/main/'.$mod->image4.')';
-    $data->banner->banner3->bg_img[2] = $mod->image5==null? $data->banner->banner3->bg_img[2] : 'url(banners/main/'.$mod->image5.')';
-    $data->banner->banner3->bg_img[3] = $mod->image6==null? $data->banner->banner3->bg_img[3] : 'url(banners/main/'.$mod->image6.')';
+    if($mod->b2_l[0]!=null){
+      $data->banner->banner2->link = array();
+      for($i=0;$i<count($mod->b2_l);$i++){
+        $object = new \stdclass();
+        $object->id=$i;
+        $object->text = $mod->b2_l[$i];
+        $object->url = $mod->b2_u[$i];
+        $data->banner->banner2->link[] = $object;
+      }
+    }
+    if($mod->images!=null){
+      $data->banner->banner3->bg_img=array();
+      for($i=0;$i<count($mod->images);$i++){
+        $string = 'url(banners/main/'.$mod->images[$i].')';
+        $data->banner->banner3->bg_img[] = $string;
+      }
+    }
     $data->banner->banner3->title = $mod->b3_t == null? $data->banner->banner3->title : $mod->b3_t;
     $data->banner->banner3->content = $mod->b3_c == null? $data->banner->banner3->content : $mod->b3_c;
     $data->banner->banner3->link[0]->text = $mod->b3_l1 == null ? $data->banner->banner3->link[0]->text : $mod->b3_l1;
@@ -49,7 +65,8 @@ class LandingPages extends Controller
     }
     if($request->Submit == 'Submit'){
       $path = 'json/FormData/client_main1.json';
-      $imagename1=null;$imagename2=null;$imagename3=null;$imagename4=null;$imagename5=null;$imagename6=null;$videoname=null;
+      $imagename1=null;$imagename2=null;$videoname=null;
+      $images = array();
       if($request->hasFile('image1')){
         $image = $request['image1'];
         $imagename1=$image->getClientOriginalName();
@@ -62,29 +79,11 @@ class LandingPages extends Controller
         $path1 = 'banners/main';
         $image->move($path1,$imagename2);
       }
-      if($request->hasFile('image3')){
-        $image = $request['image3'];
-        $imagename3=$image->getClientOriginalName();
-        $path1 = 'banners/main';
-        $image->move($path1,$imagename3);
-      }
-      if($request->hasFile('image4')){
-        $image = $request['image4'];
-        $imagename4=$image->getClientOriginalName();
-        $path1 = 'banners/main';
-        $image->move($path1,$imagename4);
-      }
-      if($request->hasFile('image5')){
-        $image = $request['image5'];
-        $imagename5=$image->getClientOriginalName();
-        $path1 = 'banners/main';
-        $image->move($path1,$imagename5);
-      }
-      if($request->hasFile('image6')){
-        $image = $request['image6'];
-        $imagename6=$image->getClientOriginalName();
-        $path1 = 'banners/main';
-        $image->move($path1,$imagename6);
+      if($request->b3_i!=null){
+        foreach($request->b3_i as $image){
+          $images[] = $image->getClientOriginalName();
+          $image->move('banners/main',$image->getClientOriginalName());
+        }
       }
       if($request->hasFile('video')){
         $image = $request['video'];
@@ -92,12 +91,10 @@ class LandingPages extends Controller
         $path1 = 'banners/main';
         $image->move($path1,$videoname);
       }
-      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_l1'=>$request->b1_l1,'b1_l2'=>$request->b1_l2,
-                'b1_l3'=>$request->b1_l3,'b1_l4'=>$request->b1_l4,'b1_l5'=>$request->b1_l5,'b2_t'=>$request->b2_t,
-                'b2_l1'=>$request->b2_l1,'b2_l2'=>$request->b2_l2,'b3_t'=>$request->b3_t,'b3_c'=>$request->b3_c,
+      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_l'=>$request->b1_l,'b1_u'=>$request->b1_u,'b2_t'=>$request->b2_t,
+                'b2_l'=>$request->b2_l,'b2_u'=>$request->b2_u,'b3_t'=>$request->b3_t,'b3_c'=>$request->b3_c,
                 'b3_l1'=>$request->b3_l1,'b3_l2'=>$request->b3_l2,'b4_c'=>$request->b4_c,'b4_t'=>$request->b4_t,'image1'=>$imagename1,
-                'image2'=>$imagename2,'image3'=>$imagename3,'image4'=>$imagename4,'image5'=>$imagename5,
-                'image6'=>$imagename6,'video'=>$videoname);
+                'image2'=>$imagename2,'images'=>$images,'video'=>$videoname);
       file_put_contents($path,json_encode($data));
       $this->sendData();
       return 'Form Submitted Successfully';
@@ -105,7 +102,14 @@ class LandingPages extends Controller
     else if($request->Submit == 'Save as Draft'){
       $path = 'json/draft_main/draft_main.json';
       $path1 = 'json/draft_main';
-      $imagename1=null;$imagename2=null;$imagename3=null;$imagename4=null;$imagename5=null;$imagename6=null;$videoname=null;
+      $imagename1=null;$imagename2=null;$videoname=null;
+      $images = array();
+      if($request->b3_i!=null){
+        foreach($reqeust->b3_i as $image){
+          $images[] = $image->getClientOriginalName();
+          $image->move($path1,$image->getClientOriginalName());
+        }
+      }
       if($request->hasFile('image1')){
         $image = $request['image1'];
         $imagename1=$image->getClientOriginalName();
@@ -116,37 +120,15 @@ class LandingPages extends Controller
         $imagename2=$image->getClientOriginalName();
         $image->move($path1,$imagename2);
       }
-      if($request->hasFile('image3')){
-        $image = $request['image3'];
-        $imagename3=$image->getClientOriginalName();
-        $image->move($path1,$imagename3);
-      }
-      if($request->hasFile('image4')){
-        $image = $request['image4'];
-        $imagename4=$image->getClientOriginalName();
-        $image->move($path1,$imagename4);
-      }
-      if($request->hasFile('image5')){
-        $image = $request['image5'];
-        $imagename5=$image->getClientOriginalName();
-        $image->move($path1,$imagename5);
-      }
-      if($request->hasFile('image6')){
-        $image = $request['image6'];
-        $imagename6=$image->getClientOriginalName();
-        $image->move($path1,$imagename6);
-      }
       if($request->hasFile('video')){
         $image = $request['video'];
         $videoname=$image->getClientOriginalName();
         $image->move($path1,$videoname);
       }
-      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_l1'=>$request->b1_l1,'b1_l2'=>$request->b1_l2,
-                'b1_l3'=>$request->b1_l3,'b1_l4'=>$request->b1_l4,'b1_l5'=>$request->b1_l5,'b2_t'=>$request->b2_t,
-                'b2_l1'=>$request->b2_l1,'b2_l2'=>$request->b2_l2,'b3_t'=>$request->b3_t,'b3_c'=>$request->b3_c,
+      $data = array('id'=>'1','b1_t'=>$request->b1_t,'b1_l'=>$reqeust->b1_l,'b1_u'=>$request->b1_u,'b2_t'=>$request->b2_t,
+                'b2_l'=>$request->b2_l,'b2_u'=>$request->b2_u,'b3_t'=>$request->b3_t,'b3_c'=>$request->b3_c,
                 'b3_l1'=>$request->b3_l1,'b3_l2'=>$request->b3_l2,'b4_c'=>$request->b4_c,'b4_t'=>$request->b4_t,'image1'=>$imagename1,
-                'image2'=>$imagename2,'image3'=>$imagename3,'image4'=>$imagename4,'image5'=>$imagename5,
-                'image6'=>$imagename6,'video'=>$videoname);
+                'image2'=>$imagename2,'images'=>$images,'video'=>$videoname);
       file_put_contents($path,json_encode($data));
       return 'Form Saved as Draft';
     }
