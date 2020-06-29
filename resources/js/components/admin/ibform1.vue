@@ -1,4 +1,4 @@
-<<template>
+<template>
   <v-app>
     <template v-if="itemSelected.text != selectedText">
         <v-toolbar>
@@ -91,20 +91,96 @@
         <center><h1>Inner Form Blank 1</h1></center>
         <form method="post" action="innerFormBlank1" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model='title'><br/>
+          <center><h2>Left Sliding Banner</h2></center>
+          <div class="myDiv1" v-for="(input,k) in b1l" :key="k">
+            <div>
+              <h3>Carousel</h3>
+              <label for="title">Title</label>
+              <input type="text" placeholder="Enter Title..." name="b1l_t[]" v-model="input.title"/><br/>
 
-          <label for="video">Video</label>
-          <input type="file" id="video" name="video"><br/>
+              <label for="description">Description</label>
+              <input type="text" placeholder="Enter Description..." name="b1l_d[]" v-model="input.desc"/><br/>
+
+              <label for="link">Link</label>
+              <input type="text" placeholder="Enter Link..." name="b1l_l[]" v-model="input.link"/><br/>
+            </div>
+            <div class="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove(k)" v-show="k || (!k && b1l.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add(k)" v-show="k == b1l.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
+
+          <center><h2>Right Sliding Banner</h2></center>
+          <div class="myDiv1" v-for="(input,k) in b1r" :key="k">
+            <div>
+              <h3>Carousel</h3>
+              <label for="title">Title</label>
+              <input type="text" placeholder="Enter Title..." name="b1r_t[]" v-model="input.title"/>
+
+              <label for="description">Description</label>
+              <input type="text" placeholder="Enter Description..." name="b1r_d[]" v-model="input.desc"/>
+
+              <label for="link">Link</label>
+              <input type="text" placeholder="Enter Link..." name="b1r_l[]" v-model="input.link"/>
+            </div>
+            <div class="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove1(k)" v-show="k || (!k && b1r.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add1(k)" v-show="k == b1r.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
+
+          <center><h2>Left Banner</h2></center>
+          <label for="title">Title</label>
+          <input type="text" placeholder="Enter Title..." name="b2_t" v-model="b2_t"/>
 
           <label for="image">Image</label>
-          <input type="file" id="image" name="image"><br/>
+          <input type="file" name="image1"/>
 
-          <label for="subtitle">SubTitle</label>
-          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle..." v-model='subtitle'><br/>
+          <center><h2>Right Banners Top Row</h2></center>
+          <div class="myDiv1" v-for="(input,k) in b2t" :key="k">
+            <div>
+              <h3>Item</h3>
+              <label for="title">Title</label>
+              <input type="text" placeholder="Enter Title..." name="b2t_t[]" v-model="input.title"/>
 
-          <label for="description">Description</label>
-          <input type="text" id="description" name="description" placeholder="Description..." v-model='description'><br/>
+              <label for="description">Description</label>
+              <input type="text" placeholder="Enter Description..." name="b2t_d[]" v-model="input.desc"/>
+
+              <label for="link">Link</label>
+              <input type="text" placeholder="Enter Link..." name="b2t_l[]" v-model="input.link"/>
+            </div>
+            <div class="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove2(k)" v-show="k || (!k && b2t.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add2(k)" v-show="k == b2t.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
+
+          <center><h2>Right Banners Bottom Row</h2></center>
+          <div class="myDiv1" v-for="(input,k) in b2b" :key="k">
+            <div>
+              <h3>Item</h3>
+              <label for="title">Title</label>
+              <input type="text" placeholder="Enter Title..." name="b2b_t[]" v-model="input.title"/>
+
+              <label for="description">Description</label>
+              <input type="text" placeholder="Enter Description..." name="b2b_d[]" v-model="input.desc"/>
+
+              <label for="link">Link</label>
+              <input type="text" placeholder="Enter Link..." name="b2b_l[]" v-model="input.link"/>
+            </div>
+            <div class="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove3(k)" v-show="k || (!k && b2b.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add3(k)" v-show="k == b2b.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
 
           <div class="mygrid">
             <div><input type="submit" name="Submit" value="Submit"/></div>
@@ -357,11 +433,41 @@
           phone:''
         },
         submit:'',
-        title:'',
-        description:'',
-        subtitle:'',
-        video:'',
-        image:'',
+        b1l:[
+          {
+            title:'',
+            desc:'',
+            link:'',
+          },
+        ],
+        b1r:[
+          {
+            title:'',
+            desc:'',
+            link:'',
+          },
+        ],
+        b2_t:'',
+        b2t:[
+          {
+            title:'',
+            desc:'',
+            link:'',
+          }
+        ],  b2t:[
+          {
+            title:'',
+            desc:'',
+            link:'',
+          }
+        ],
+        b2b:[
+          {
+            title:'',
+            desc:'',
+            link:'',
+          }
+        ],
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
@@ -375,6 +481,30 @@
           alert('Previous Draft');
           let data = axios.get('../json/draft_blank2/draft_blank2.json').then(res=>{console.log(res);this.title=res.data.title;this.subtitle=res.data.subtitle;this.description=res.data.description});
           e.preventDefault();
+        },
+        add(index){
+          this.b1l.push({title:'',desc:'',link:''});
+        },
+        remove(index,e){
+          this.b1l.splice(index,1);
+        },
+        add1(index){
+          this.b1r.push({title:'',desc:'',link:''});
+        },
+        remove1(index,e){
+          this.b1r.splice(index,1);
+        },
+        add2(index){
+          this.b2t.push({title:'',desc:'',link:''});
+        },
+        remove2(index,e){
+          this.b2t.splice(index,1);
+        },
+        add3(index){
+          this.b2b.push({title:'',desc:'',link:''});
+        },
+        remove3(index,e){
+          this.b2b.splice(index,1);
         },
         isItemSelected() {
             return this.itemSelected !== '' && this.itemSelected.text !== this.selectedText
@@ -622,6 +752,15 @@
         grid-template-columns: auto auto auto;
         padding: 10px;
         grid-gap: 20px;
+      }
+
+      .myDiv1{
+        display:grid;
+        grid-template-columns: auto 40px;
+      }
+
+      #myDivp{
+        padding-top: 12px;
       }
 
 </style>

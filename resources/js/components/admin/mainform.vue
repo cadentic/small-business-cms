@@ -480,15 +480,6 @@
           alert('Previous Draft');
           let data = axios.get('../json/draft_main/draft_main.json').then(res=>{console.log(res);
             this.b1_t=res.data.b1_t;
-            var _this = this;
-            for(var i=0;i<res.data.b1_l.length;i++){
-              _this.b1_l.push({link:res.data.b1_l[i],url:res.data.b1_u[i]});
-            }
-            _this.b1_l.splice(0,1);
-            for(var i=0;i<res.data.b2_l.length;i++){
-              _this.b2_l.push({link:res.data.b2_l[i],url:res.data.b2_u[i]});
-            }
-            _this.b2_l.splice(0,1);
             this.b2_t = res.data.b2_t;
             this.b3_t = res.data.b3_t;
             this.b3_c = res.data.b3_c;
@@ -496,6 +487,19 @@
             this.b3_l2 = res.data.b3_l2;
             this.b4_c = res.data.b4_c;
             this.b4_t = res.data.b4_t;
+            var _this = this;
+            for(var i=0;i<res.data.b1_l.length;i++){
+              _this.b1_l.push({link:res.data.b1_l[i],url:res.data.b1_u[i]});
+            }
+            this.b1_l.splice(0,1);
+            for(var i=0;i<res.data.b2_l.length;i++){
+              _this.b2_l.push({link:res.data.b2_l[i],url:res.data.b2_u[i]});
+            }
+            this.b2_l.splice(0,1);
+            for(var i=0;i<res.data.b5_l.length;i++){
+              _this.b5_a.push({link:res.data.b5_l[i]});
+            }
+            this.b5_a.splice(0,1);
           });
           e.preventDefault();
         },

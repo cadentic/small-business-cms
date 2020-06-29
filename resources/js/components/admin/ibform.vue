@@ -91,20 +91,60 @@
         <center><h1>Inner Form Blank</h1></center>
         <form method="post" action="innerFormBlank" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model='title'><br/>
+          <center><h2>Navigation Bar</h2></center>
+          <div class="myDiv1" v-for="(input,k) in nav_pages" :key="k">
+            <div>
+              <label for="url">Link</label>
+              <input type="text" placeholder="Enter Link..." name="b1_l[]" v-model="input.link"><br/>
+              <label for="title">Text</label>
+              <input type="text" placeholder="Enter Text..." name="b1_t[]" v-model="input.title"><br/>
+            </div>
+            <div id="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove(k)" v-show="k || (!k && nav_pages.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add(k)" v-show="k == nav_pages.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
 
-          <label for="video">Video</label>
-          <input type="file" id="video" name="video"><br/>
+          <center><h2>Information</h2></center>
+          <label for="topic">Topic</label>
+          <input type="text" name="topic" placeholder="Enter Title..." v-model="topic"/><br/>
 
-          <label for="image">Image</label>
-          <input type="file" id="image" name="image"><br/>
+          <label for="title">Paragraph Heading 1</label>
+          <input type="text" name="subtitle1" placeholder="Enter Heading..." v-model="subtitle1"/><br/>
 
-          <label for="subtitle">SubTitle</label>
-          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle..." v-model='subtitle'><br/>
+          <div class="myDiv1" v-for="(input,k) in points1" :key="k">
+            <div>
+              <label for="title">Text</label>
+              <input type="text" placeholder="Enter Text..." name="points1[]" v-model="input.text"><br/>
+            </div>
+            <div id="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove1(k)" v-show="k || (!k && points1.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add1(k)" v-show="k == points1.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
 
-          <label for="description">Description</label>
-          <input type="text" id="description" name="description" placeholder="Description..." v-model='description'><br/>
+          <label for="title">Paragraph Heading 2</label>
+          <input type="text" name="subtitle2" placeholder="Enter Heading..." v-model="subtitle2"/><br/>
+
+          <label for="title">Paragraph Heading 3</label>
+          <input type="text" name="subtitle3" placeholder="Enter Heading..." v-model="subtitle3"/><br/>
+
+          <div class="myDiv1" v-for="(input,k) in points2" :key="k">
+            <div>
+              <label for="title">Text</label>
+              <input type="text" placeholder="Enter Text..." name="points2[]" v-model="input.text"><br/>
+            </div>
+            <div id="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove2(k)" v-show="k || (!k && points2.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add2(k)" v-show="k == points2.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
 
           <div class="mygrid">
             <div><input type="submit" name="Submit" value="Submit"/></div>
@@ -357,11 +397,26 @@
           phone:''
         },
         submit:'',
-        title:'',
-        description:'',
-        subtitle:'',
-        video:'',
-        image:'',
+        nav_pages:[
+          {
+            link:'',
+            title:'',
+          }
+        ],
+        topic:'',
+        subtitle1:'',
+        subtitle2:'',
+        subtitle3:'',
+        points1:[
+          {
+            text:'',
+          }
+        ],
+        points2:[
+          {
+            text:'',
+          }
+        ],
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
@@ -373,11 +428,47 @@
     methods: {
         Edit: function(e){
           alert('Previous Draft');
-          let data = axios.get('../json/draft_blank/draft_blank.json').then(res=>{console.log(res);this.title=res.data.title;this.subtitle=res.data.subtitle;this.description=res.data.description});
+          let data = axios.get('../json/draft_blank/draft_blank.json').then(res=>{
+            var _this = this;
+            this.topic = res.data.topic;
+            this.subtitle1=res.data.subtitle1;
+            this.subtitle2=res.data.subtitle2;
+            this.subtitle3=res.data.subtitle3;
+            for(var i=0;i<res.data.b1_l.length;i++){
+              _this.nav_pages.push({link:res.data.b1_l[i],title:res.data.b1_t[i]});
+            }
+            this.nav_pages.splice(0,1);
+            for(var i=0;i<res.data.points1.length;i++){
+              _this.points1.push({text:res.data.points1[i]});
+            }
+            this.points1.splice(0,1);
+            for(var i=0;i<res.data.points2.length;i++){
+              _this.points2.push({text:res.data.points2[i]});
+            }
+            this.points2.splice(0,1);
+          });
           e.preventDefault();
         },
         isItemSelected() {
             return this.itemSelected !== '' && this.itemSelected.text !== this.selectedText
+        },
+        add(index){
+          this.nav_pages.push({link:'',title:''});
+        },
+        remove(index,e){
+          this.nav_pages.splice(index,1);
+        },
+        add1(index){
+          this.points1.push({text:'',});
+        },
+        remove1(index,e){
+          this.points1.splice(index,1);
+        },
+        add2(index){
+          this.points2.push({text:'',});
+        },
+        remove2(index,e){
+          this.points2.splice(index,1);
         },
         show(item) {
             if (item.text === this.itemSelected.text) {
@@ -624,4 +715,12 @@
         grid-gap: 20px;
       }
 
+      .myDiv1{
+        display:grid;
+        grid-template-columns: auto 40px;
+      }
+
+      #myDivp{
+        padding-top: 12px;
+      }
 </style>
