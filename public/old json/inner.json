@@ -1,0 +1,397 @@
+{
+    "section1": {
+        "bgcolor": "#E6F5FF",
+        "title": "Software-Defined Access",
+        "image_wrap": "/c/en_in/solutions/enterprise-networks/software-defined-access/index/_jcr_content/Grid/subcategory_atl_9f74/layout-subcategory-atl/anchor_info_9cf7/image.img.jpg/1557229607849.jpg",
+        "image": "assets/CraftedImages/1557229607849.jpg",
+        "sub_title": {
+            "text": "Get network speed, security, and peace of mind",
+            "font_size": "2.7vw",
+            "color": "#54555E",
+            "font_family": "Motiva Sans Thin"
+        },
+        "description": {
+            "text1": "Ease your network management worries. Cisco Software-Defined Access (SD-Access) gives you a single network fabric, from the edge to the cloud. You can set policy-based automation for users, devices, and things.",
+            "text2": "Provide access to any application, without compromising on security. All while gaining awareness of what is hitting your network.",
+            "text3": "And with automatic segmentation of users, devices, and applications, you can deploy and secure services faster.",
+            "font_size": "0.8vw",
+            "color": "#54555E",
+            "font_family": "Hua Extralight"
+        },
+        "show_more": {
+            "text": "Show more"
+        },
+        "button": [
+            {
+                "text": "Watch overview",
+                "link": "javascript:void(0);"
+            },
+            {
+                "text": "Read news blog",
+                "link": "https://blogs.cisco.com/enterprise/extending-intent-based-networking-across-domains"
+            }
+        ],
+        "div1S":  "text-align: center; color: #54555E;",
+        "h11S":"font-size: 4vw;  text-align: left; margin-left: 5%; font-family: Cabrion light",
+        "div2S": "color: #54555E",
+        "a1S": "background:#7DD14C ;color: #54555E",
+        "data-config-metrics-group": "Anchor, Info", 
+        "data-config-metrics-title": "Get network speed, security, and peace of mind",
+        "data-owner": "ID",
+        "image_wrap_alt":  "Software-Defined Access",
+        "image_wrap_title": "Software-Defined Access",
+        "data-more-text": "Show more",
+        "data-lightbox-id": "lightbox-sd-access",
+        "data-config-metrics-item": "Watch overview"
+    },
+    "section2": {
+        "nav": [
+            {
+                "link": "#home",
+                "text": "Home"
+            },
+            {
+                "link": "#pg2",
+                "text": "Page 2"
+            },
+            {
+                "link": "#study",
+                "text": "Studies"
+            },
+            {
+                "link": "#job",
+                "text": "Job"
+            }
+        ]
+    },
+    "section3": {
+        "id": "home",
+        "bgcolor": "#E6F5FF",
+        "title": {
+            "text": "NDEDGE INFORMATICS PRIVATE LIMITED COMPANY PROFILE",
+            "font_size": "2.2vw",
+            "color": "#000",
+            "font_family": "Motiva Sans Thin"
+        },
+        "sub_title": {
+            "text": "INTRODUCTION",
+            "font_size": "2vw",
+            "color": "#000",
+            "font_weight": "normal"
+        },
+        "description": {
+            "text": "Ndedge Informatics Private Limited is a leading global multi-skilled IT solution company with competent workforce and strong presence in India. With several years of expertise, quality delivery of service and quality integrated methodologies; Ndedge Informatics Private Limited have been able to carve out a niche for themselves as one of the most notable trailblazers in the IT Industry in India. Ndedge Informatics Private Limited uses an extremely competent global delivery method in providing quality-based solutions and professional services to its esteemed clients. Our strongest advantage is our excellent pool of our skilled workforce; our skilled resource is recruited from the finest the industry can boast of in India. We can boast of a vibrant skilled resource that provides a vibrant combination of technological skills and strategic IT consultancy services.",
+            "font_size": "1.5vw",
+            "color": "#54555E"
+        }
+    },
+    "section4": {
+        "id": "pg1",
+        "style": "height:500px; transition:2s; background:#E6F5FF;",
+        "title": {
+            "style": "font-size: 2vw; color: #000;",
+            "text": "Ndedge Informatics Private Limited offers"
+        },
+        "description": {
+            "style": "list-style-type: disc;",
+            "text": [
+                "a full range of Oracle database administration configuration and support including or excluding real application cluster and dataguard.",
+                "Oracle cloud infrastructure configuration and support.",
+                "Virtual environment to cloud migration by Ravello. ",
+                "BP for XaaS, DB2,laaS,Paas, and SaaS-enabled business environments , ",
+                "Setting up or implementing on-premise environments with Oracle data appliances,",
+                "zero downtime migration for Oracle databases,",
+                "licensing for different OS, like Oracle Solaris and Oracle Linux ,Easy to use architecture for Oracle E-business suite,",
+                "On-premise to cloud migration,",
+                "Providing server hardware and network components from different vendors, Oracle Partners Network.",
+                "Support and configuration oracle sign-on."
+            ]
+        },
+        "sub_title": {
+            "style": "margin-bottom:30px;font-size: 1.5vw; padding-bottom: 20px; color: #000;",
+            "text": "Ndedge Informatics Private Limited has a solid client base that spans across several industries; in our focus market segment we have accumulated an enviable list of clients because of our customer centric approach."
+        }
+    },
+    "section5": {
+        "id": "pg2",
+        "style": "padding-top: 100px; height:500px; transition:2s; font-size:2vw;background:#E6F5FF;",
+        "title": {
+            "style": "font-size: 1.5vw; padding-top: 50px; color: #000;",
+            "text": "Ndedge Informatics Private Limited competitive advantage and source of value to our esteemed client stems not only from our expertise in rendering IT professional services, but from several aspect of our business model which consist of "
+        },
+        "description": {
+            "style": "list-style-type: disc;",
+            "text": [
+                "technology and business competency centers,",
+                "rigorous programme and project management,",
+                "state of the art computing and communication infrastructure, client-centric approach account management,",
+                "Innovative offshore development approach and business continuity preparedness.We remain focus on our prime objective which is delivering high quality solutions to our clients"
+            ]
+        }
+    },
+    "section6": {
+        "id": "study",
+        "alt": "Artificial Intelligence Data Scientist",
+        "title": "Artificial Intelligence Data Scientist",
+        "container1": [
+            {
+                "link": "/page/show/ai-jobs-data-science",
+                "image": "assets/CraftedImages/data-science-500x500.png",
+                "description": "Data Science",
+                "button_text": "I'm Interested"
+            },
+            {
+                "link": "/page/show/ai-jobs-ai-software",
+                "image": "assets/CraftedImages/01-new-systems-engineer-ai-500.png",
+                "description": "Artificial Intelligence Software",
+                "button_text": "I'm Interested"
+            },
+            {
+                "link": "/page/show/ai-jobs-ai-hardware",
+                "image": "assets/CraftedImages/new-ai-hardware-thum-500x500.png",
+                "description": "Artificial Intelligence Hardware",
+                "button_text": "I'm Interested"
+            },
+            {
+                "link": "/page/show/ai-jobs-ai-business",
+                "image": "assets/CraftedImages/ai-business-500x500.png",
+                "description": "Artificial Intelligence Business",
+                "button_text": "I'm Interested"
+            }
+        ],
+        "container2": [
+            {
+                "link": "/page/show/ai-jobs-ai-research",
+                "image": "assets/CraftedImages/ai-research-500x500.png",
+                "description": "Artificial Intelligence Research",
+                "button_text": "I'm Interested"
+            },
+            {
+                "link": "/page/show/ai-jobs-ai-internships",
+                "image": "assets/CraftedImages/new-ai-internship-new-thum-500x500.png",
+                "description": "Artificial Intelligence Internships",
+                "button_text": "I'm Interested"
+            },
+            {
+                "link": "/page/show/ai-jobs-ai-residency",
+                "image": "assets/CraftedImages/01-new-ai-residency-sm-ai-500.png",
+                "description": "Artificial Intelligence Residency",
+                "button_text": "I'm Interested"
+            }
+        ]
+    },
+    "section7": {
+        "id": "job",
+        "style": {
+            "bgcolor": "#503c91",
+            "margin_left": "5%",
+            "margin_right": "7%"
+        },
+        "text": "A Job Like Mine"
+    },
+    "section8": {
+        "class": "job_like_mine",
+        "alt": "img",
+        "style": {
+            "bgcolor": "#E6F5FF",
+            "margin_left": "5.8%",
+            "margin_right": "7.8%"
+        },
+        "container": [
+            {
+                "background": "assets/CraftedImages/hongi-job-like-mine-md.jpg",
+                "background_minheight": "618px",
+                "font_size": "1.2vw",
+                "name": "Hong",
+                "title": "Artificial Intelligence Director",
+                "image": "assets/CraftedImages/hong-job-like-mine-sm.jpg",
+                "description": "I am working in a very exciting and innovative area. My team is working on research that might one day bring robot technology to life and help achieve greater human freedom."
+            },
+            {
+                "background": "assets/CraftedImages/jiong-job-like-mine-md.jpg",
+                "background_minheight": "618px",
+                "font_size": "1.2vw",
+                "name": "Jiong",
+                "title": "Artificial Intelligence Software Architect",
+                "image": "assets/CraftedImages/jiong-job-like-mine-sm.jpg",
+                "description": "Right now I am working on the most exciting Artificial Intelligence-related software at Intel. This is a really complex area but having the chance to work on cutting-edge technologies that are relevant to everyday life keeps me passionate about my work."
+            },
+            {
+                "background": "assets/CraftedImages/gadi-job-like-mine-md.jpg",
+                "background_minheight": "618px",
+                "font_size": "0.95vw",
+                "name": "Gadi",
+                "title": "Vice President and Architecture General Manager",
+                "image": "assets/CraftedImages/gadi-job-like-mine-sm.jpg",
+                "description": "Artificial Intelligence is changing the world. It defines the next age of computing, it transforms almost every sector of the economy, and it redefined the interaction between people and the digital world. The next wave of innovation is expected to bring human-like intelligence to our interactions with everything around us – with cars, our phone or PC, the medical environment and more. Intel is in a unique position in the industry and having tight interactions between data scientists, Artificial Intelligence algorithm ninjas and computer architects is key for highly effective and efficient solutions. There are very few places in the world where this happens and Intel is one of them."
+            }
+        ]
+    },
+    "section9": {
+        "id": "card-blocks",
+        "alt": "SOFTWARE",
+        "style": {
+            "padding_top": "90px",
+            "width": "90%",
+            "bgcolor": "#E6F5FF"
+        },
+        "title": {
+            "text": "Explore Your Career Tracks",
+            "style": {
+                "font_size": "4vw",
+                "color": "#000"
+            }
+        },
+        "description": {
+            "text": "Discover your next career. Select your field and share your information with us, and we'll connect you to the opportunity that's right for you.",
+            "style": {
+                "font_size": "1.7vw",
+                "color": "#54555E",
+                "font_family": "Hua Extralight"
+            }
+        },
+        "container1": [
+            {
+                "link": "https://jobs.intel.com/page/show/software-jobs",
+                "image": "assets/CraftedImages/rf-desig.jpg",
+                "title": "Software",
+                "description": "I'm interested"
+            },
+            {
+                "link": "https://jobs.intel.com/page/show/ai-jobs",
+                "image": "assets/CraftedImages/hardware-research-developmen.jpg",
+                "title": "Artificial Intelligence",
+                "description": "I'm interested"
+            },
+            {
+                "link": "https://jobs.intel.com/page/show/it-jobs-career",
+                "image": "assets/CraftedImages/org-design.jpg",
+                "title": "Information Technology",
+                "description": "I'm interested"
+            },
+            {
+                "link": "https://jobs.intel.com/page/show/manufacturing-facilities-jobs",
+                "image": "assets/CraftedImages/research-development-internships.jpg",
+                "title": "Manufacturing and Facilities",
+                "description": "I'm interested"
+            }
+        ],
+        "container2": [
+            {
+                "link": "https://jobs.intel.com/page/show/soc-design-jobs",
+                "image": "assets/CraftedImages/ai-business.jpg",
+                "title": "SoC Design",
+                "description": "I'm interested"
+            },
+            {
+                "link": "https://jobs.intel.com/page/show/smg-jobs",
+                "image": "assets/CraftedImages/laser-engineer.jpg",
+                "title": "Sales and Marketing",
+                "description": "I'm interested"
+            },
+            {
+                "link": "https://jobs.intel.com/page/show/business-jobs",
+                "image": "assets/CraftedImages/graphics-software.jpg",
+                "title": "Business",
+                "description": "I'm interested"
+            }
+        ],
+        "container3": [
+            {
+                "link": "https://jobs.intel.com/page/show/graphics-jobs",
+                "image": "assets/CraftedImages/digital-design.jpg",
+                "title": "Graphics",
+                "description": "I'm interested"
+            },
+            {
+                "link": "https://jobs.intel.com/page/show/silicon-photonics-jobs",
+                "image": "assets/CraftedImages/business-talent.jpg",
+                "title": "Silicon Photonics",
+                "description": "I'm interested"
+            },
+            {
+                "link": "https://jobs.intel.com/page/show/hardware-jobs",
+                "image": "assets/CraftedImages/manufacturing-process-enginee.jpg",
+                "title": "Hardware",
+                "description": "I'm interested"
+            },
+            {
+                "link": "https://jobs.intel.com/page/show/connectivity-jobs",
+                "image": "assets/CraftedImages/data-analyst.jpg",
+                "title": "Connectivity",
+                "description": "I'm interested"
+            }
+        ]
+    },
+    "footer": {
+        "class": "secfooter",
+        "data-wow-duration": "2.5s", 
+        "data-wow-delay":".2s",
+        "style": {
+            "bgcolor": "#E6F5FF"
+        },
+        "container1": [
+            {
+                "link": "#",
+                "text": "TERMS & CONDITION"
+            },
+            {
+                "link": "#",
+                "text": "ABOUT US"
+            }
+        ],
+        "container2": [
+            {
+                "link": "#",
+                "text": "CONTACT US"
+            },
+            {
+                "link": "#",
+                "text": "DIRECTORS"
+            }
+        ],
+        "container3": [
+            {
+                "link": "#",
+                "text": "DEVELOPERS"
+            },
+            {
+                "link": "#",
+                "text": "OUR CLIENTS"
+            }
+        ],
+        "container4": [
+            {
+                "link": "#",
+                "text": "CORPORATE ACTION"
+            },
+            {
+                "link": "#",
+                "text": "NATURE & MODE OF WORK"
+            }
+        ],
+        "socialicon": [
+            {
+                "class": "fa fa-twitter",
+                "bgcolor": "#26a6d1",
+                "link": "#"
+            },
+            {
+                "class": "fa fa-facebook",
+                "bgcolor": "#3b5998",
+                "link": "#"
+            },
+            {
+                "class": "fa fa-linkedin",
+                "bgcolor": "#007ab9",
+                "link": "#"
+            },
+            {
+                "class": "fa fa-instagram",
+                "bgcolor": "#b81a7e",
+                "link": "#"
+            }
+        ],
+        "copyright": "2019 Copyright"
+    }
+}

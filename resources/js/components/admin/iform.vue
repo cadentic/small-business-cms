@@ -89,27 +89,55 @@
       <div></div>
       <div class="ma">
         <center><h1>Inner Form</h1></center>
-        <form v-on:submit.prevent>
+        <form method="post" action="innerForm" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
+          <center><h2>Banner 1</h2></center>
           <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model="title"><br/>
+          <input type="text" id="b1_t" name="b1_t" placeholder="Enter Title..." v-model="b1_t"><br/>
 
-          <label for="bgcolor">Background-color</label>
-          <input type="color" id="bgcolor" name="bgcolor" value="#ff0000" v-model="bgcolor"><br/>
+          <label for="image">Image</label>
+          <input type="file" id="image1" name="image1" placeholder="Enter Image..."><br/>
 
-          <label for="bg_img">Image</label>
-          <input type="file" id="bg_img" name="bg_img" v-on:change="onImageChange"><br/>
-
-          <label for="subtitle">SubTitle</label>
-          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle..." v-model="subtitle"><br/>
+          <label for="subtitle">Subtitle</label>
+          <input type="text" id="b1_s" name="b1_s" placeholder="Enter Subtitle..." v-model="b1_s"><br/>
 
           <label for="description">Description</label>
-          <input type="text" id="description" name="description" placeholder="Description..." v-model="description"><br/>
+          <input type="text" name="b1_d" id="b1_d" placeholder="Enter Details..." v-model="b1_d"/><br/>
+
+          <center><h2>Banner 2</h2></center>
+          <label for="title">Icon Number</label>
+          <input type="text" id="b2_n" name="b2_n" placeholder="Enter icon Number..." v-model="b2_n"><br/>
+
+          <label for="link">Link</label>
+          <input type="text" id="b2_l" name="b2_l" placeholder="Enter link..." v-model="b2_l"><br/>
+
+          <label for="image">Image</label>
+          <input type="file" id="image2" name="image2"><vr/>
+
+          <label for="text">Description</label>
+          <input type="text" id="b2_d" name="b2_d" placeholder="Enter Description..." v-model="b2_d"><br/>
+
+          <center><h2>Banner 3</h2></center>
+          <label for="number">Icon Number</label>
+          <input type="text" id="b3_n" name="b3_n" placeholder="Enter Number..." v-model="b3_n"><br/>
+
+          <label for="image">Image</label>
+          <input type="file" id="image3" name="image3"><br/>
+
+          <label for="name">Name</label>
+          <input type="text" id="b3_c" name="b3_c" placeholder="Enter Name..." v-model="b3_c"><br/>
+
+          <label for="title">Title</label>
+          <input type="text" id="b3_t" name="b3_t" placeholder="Enter Title..." v-model="b3_t"><br/>
+
+          <label for="desc">Description</label>
+          <input type="text" id="b3_d" name="b3_d" placeholder="Enter Description..." v-model="b3_d"><br/>
+
 
           <div class="mygrid">
-            <div><button @click="innerPost" class="btn btn-primary">Submit</button></div>
-            <div><button @click="innerPost1" class="btn btn-primary">Edit</button></div>
-            <div><button @click="innerPost2" class="btn btn-primary">Save as Draft</button></div>
+            <div><input type="submit" name="Submit" value="Submit"/></div>
+            <div><input type="submit" @click="Edit" value="Edit"/></div>
+            <div><input type="submit" name="Submit" value="Save as Draft"></div>
           </div>
         </form>
       </div>
@@ -357,11 +385,16 @@
           phone:''
         },
         submit:'',
-        title:'',
-        description:'',
-        subtitle:'',
-        bg_img:'',
-        bgcolor:'#ff0000',
+        b1_t:'',
+        b1_s:'',
+        b1_d:'',
+        b2_n:'',
+        b2_d:'',
+        b2_l:'',
+        b3_n:'',
+        b3_c:'',
+        b3_d:'',
+        b3_t:'',
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
@@ -371,37 +404,22 @@
       console.log('Contacts Component Loaded...');
     },
     methods: {
-        onImageChange(e){
-          let files = e.target.files || e.dataTransfer.files;
-          if(!files.length){
-            return;
-          }
-          this.createImage(files[0]);
-        },
-        createImage(file){
-          let reader = new FileReader();
-          let vm = this;
-          reader.onload = (e) =>{
-            vm.bg_img = e.target.result;
-          }
-          reader.readAsDataURL(file);
-        },
-
-        innerPost: function(){
-          alert('Submitted Form Successfully');
-          axios.post('/admin/innerForm',{submit:'Submit',title:this.title,bg_img:this.bg_img,subtitle:this.subtitle,description:this.description,bgcolor:this.bgcolor}).then(res=>{console.log(res)}).catch(error=>{console.log(error.response)});
-          window.location.href="/admin/innerForm";
-        },
-        innerPost1: function(){
+        Edit: function(e){
           alert('Previous Draft');
-          let data = axios.get('../json/draft_inner/draft_inner.json').then(res=>{console.log(res);this.title=res.data.title;this.bgcolor=res.data.bgcolor;this.subtitle=res.data.subtitle;this.description=res.data.description});
-
-
-        },
-        innerPost2: function(){
-          alert('Draft Saved');
-          axios.post('/admin/innerForm',{submit:'Draft',title:this.title,bg_img:this.bg_img,subtitle:this.subtitle,description:this.description,bgcolor:this.bgcolor}).then(res=>console.log(res)).catch(error=>{console.log(error.response)});
-          window.location.href="/admin/innerForm";
+          let data = axios.get('../json/draft_inner/draft_inner.json').then(res=>{
+            console.log(res);
+            this.b1_t = res.data.b1_t;
+            this.b1_s = res.data.b1_s;
+            this.b1_d = res.data.b1_d;
+            this.b2_n = res.data.b2_n;
+            this.b2_l = res.data.b2_l;
+            this.b2_d = res.data.b2_d;
+            this.b3_n = res.data.b3_n;
+            this.b3_c = res.data.b3_c;
+            this.b3_t = res.data.b3_t;
+            this.b3_d = res.data.b3_d;
+              });
+          e.preventDefault();
         },
         isItemSelected() {
             return this.itemSelected !== '' && this.itemSelected.text !== this.selectedText
@@ -650,5 +668,4 @@
         padding: 10px;
         grid-gap: 20px;
       }
-
 </style>

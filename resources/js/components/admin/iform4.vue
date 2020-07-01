@@ -91,20 +91,148 @@
         <center><h1>Inner Form 4</h1></center>
         <form method="post" action="innerForm4" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="Enter Title.." v-model='title'><br/>
-
+          <center><h2>Banner 1</h2></center>
           <label for="video">Video</label>
-          <input type="file" id="video" name="video"><br/>
+          <input type="file" name="video1" id="video1"/>
 
-          <label for="image">Image</label>
-          <input type="file" id="image" name="image"><br/>
+          <label for="text">Title</label>
+          <input type="text" name="b1_t" id="b1_t" placeholderr="Enter Title..."/>
 
-          <label for="subtitle">SubTitle</label>
-          <input type="text" id="subtitle" name="subtitle" placeholder="SubTitle..." v-model='subtitle'><br/>
+          <center><h2>Banner 2</h2></center>
+          <label for="text">Title</label>
+          <input type="text" id="b2_t" name="b2_t" placeholder="Enter Title..."/>
 
-          <label for="description">Description</label>
-          <input type="text" id="description" name="description" placeholder="Description..." v-model='description'><br/>
+          <label for="link">Link</label>
+          <input type="text" id="b2_l" name="b2_l" placeholder="Enter Link..."/>
+
+          <label for="text">Description</label>
+          <div class="myDiv1" v-for="(input,k) in b2_d" :key="k">
+            <div>
+              <input type="text" placeholder="Enter Description..." name="b2_d[]" v-model="input.desc">
+            </div>
+            <div id="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove(k)" v-show="k || (!k && b2_d.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add(k)" v-show="k == b2_d.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
+
+          <center><h2>Banner 3</h2></center>
+          <div class="myDiv1" v-for="(input,k) in b3_a" :key="k">
+            <div>
+              <label for="Item">Item</label><br/>
+              <label for="video">Image</label>
+              <input type="file" name="b3_v[]"/><br/>
+              <label for="text">Title</label><br/>
+              <input type="text" name="b3_t[]" placeholder="Enter Title..." v-model="input.title"/>
+              <label for="link">Link</label><br/>
+              <input type="text" name="b3_l[]" placeholder="Enter Link..." v-model="input.link"/>
+            </div>
+            <div class="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove3(k)" v-show="k || (!k && b3_a.length>1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add3(k)" v-show="k == b3_a.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
+
+          <center><h2>Banner 4</h2></center>
+          <div class="myDiv1" v-for="(input,k) in b4_a" :key="k">
+            <div>
+              <label for="Item">Item</label><br/>
+              <label for="image">Image</label>
+              <input type="file" name="b4_i[]"/><br/>
+              <label for="text">Title</label>
+              <input type="text" name="b4_t[]" placeholder="Enter Title..." v-model="input.title"/><br/>
+              <label for="text">Description</label>
+              <input type="text" name="b4_d[]" placeholder="Enter Description..." v-model="input.desc"/><br/>
+            </div>
+            <div class="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove2(k)" v-show="k || (!k && b4_a.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add2(k)" v-show="k == b4_a.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
+
+          <center><h2>Banner 5</h2></center>
+          <div class="myDiv1" v-for="(input,k) in b5_a" :key="k">
+            <div>
+              <label for="Item">Item</label><br/>
+              <label for="tab">Tab</label>
+              <input type="text" name="b5_t[]" placeholder="Enter Tab..." v-model="input.tab"/><br/>
+              <label for="title">Title</label>
+              <input type="text" name="b5_s[]" placeholder="Enter Title..." v-model="input.title"/><br/>
+              <label for="description">Description</label>
+              <input type="text" name="b5_d[]" placeholder="Enter Description" v-model="input.desc"/><br/>
+              <label for="link">Link</label>
+              <input type="text" name="b5_l[]" placeholder="Enter Link..." v-model="input.link"/><br/>
+            </div>
+            <div class="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove4(k)" v-show="k || (!k && b5_a.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add4(k)" v-show="k == b5_a.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
+
+          <center><h2>Banner 6</h2></center>
+          <label for="banner">Heading</label>
+          <input type="text" name="heading" placeholder="Enter heading..."/>
+          <div class="myDiv1" v-for="(input,k) in b6_a" :key="k">
+            <div>
+              <label for="Item">Item</label><br/>
+              <label for="image">Image</label>
+              <input type="file" name="b6_i[]" /><br/>
+              <label for="title">Title</label>
+              <input type="text" name="b6_t[]" placeholder="Enter Title..." v-model="input.title"/><br/>
+              <label for="description">Description</label>
+              <input type="text" name="b6_d[]" placeholder="Enter Description...." v-model="input.desc"/><br/>
+            </div>
+            <div class="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove5(k)" v-show="k || (!k && b6_a.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add5(k)" v-show="k == b6_a.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
+
+          <center><h2>Banner 7</h2></center>
+          <div class="myDiv1" v-for="(input,k) in b7_a" :key="k">
+            <div>
+              <label for="Item">Item</label><br/>
+              <label for="image">Image</label>
+              <input type="file" name="b7_i[]" /><br/>
+              <label for="title">Title</label>
+              <input type="text" name="b7_t[]" placeholder="Enter Title..." v-model="input.title"/><br/>
+              <label for="description">Description</label>
+              <input type="text" name="b7_d[]" placeholder="Enter Description...." v-model="input.desc"/><br/>
+            </div>
+            <div class="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove6(k)" v-show="k || (!k && b7_a.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add6(k)" v-show="k == b7_a.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
+
+          <center><h2>Banner 8</h2></center>
+          <div class="myDiv1" v-for="(input,k) in b8_a" :key="k">
+            <div>
+              <label for="Item">Item</label><br/>
+              <label for="title">Title</label>
+              <input type="text" name="b8_t[]" placeholder="Enter Title..." v-model="input.title"/><br/>
+              <label for="description">Description</label>
+              <input type="text" name="b8_d[]" placeholder="Enter Description...." v-model="input.desc"/><br/>
+            </div>
+            <div class="myDivp">
+              <span>
+                <i class="fa fa-minus-circle" @click="remove7(k)" v-show="k || (!k && b8_a.length > 1)">Remove</i>
+                <i class="fa fa-plus-circle" @click="add7(k)" v-show="k == b8_a.length-1">Add</i><br/>
+              </span>
+            </div>
+          </div>
 
           <div class="mygrid">
             <div><input type="submit" name="Submit" value="Submit"/></div>
@@ -356,12 +484,56 @@
           email:'',
           phone:''
         },
+        counter: 1,
+        limit: 5,
         submit:'',
-        title:'',
-        description:'',
-        subtitle:'',
-        video:'',
-        image:'',
+        b1_t:'',
+        b2_t:'',
+        b2_l:'',
+        b2_d: [
+          {
+            desc:''
+          },
+        ],
+        b3_a:[
+          {
+            title:'',
+            link:'',
+          },
+        ],
+        b4_a: [
+          {
+            title:'',
+            desc:'',
+          },
+        ],
+        b5_a:[
+          {
+            tab:'',
+            link:'',
+            desc:'',
+            title:'',
+          },
+        ],
+        heading:'',
+        b6_a:[
+          {
+            title:'',
+            desc:'',
+          },
+        ],
+        b7_a:[
+          {
+            title:'',
+            desc:'',
+          },
+        ],
+        b8_a:[
+          {
+            title:'',
+            desc:'',
+          },
+        ],
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
@@ -373,8 +545,86 @@
     methods: {
         Edit: function(e){
           alert('Previous Draft');
-          let data = axios.get('../json/draft_inner4/draft_inner4.json').then(res=>{console.log(res);this.title=res.data.title;this.subtitle=res.data.subtitle;this.description=res.data.description});
+          let data = axios.get('../json/draft_inner4/draft_inner4.json').then(res=>{
+            console.log(res);
+            const array = res.data.b2_d;
+            var _this = this;
+            this.b1_t = res.data.b1_t;
+            this.b2_t = res.data.b2_t;
+            this.b2_l = res.data.b2_l;
+            array.map(function(value,key){
+              _this.b2_d.push({desc:value});
+            });
+            this.b2_d.splice(0,1);
+            for(var i=0;i<res.data.b8_t.length;i++){
+              _this.b8_a.push({title:res.data.b8_t[i],desc: res.data.b8_d[i]});
+            }
+            this.b8_a.splice(0,1);
+            for(var i=0;i<res.data.b7_t.length;i++){
+              _this.b7_a.push({title:res.data.b7_t[i],desc: res.data.b7_d[i]});
+            }
+            this.b7_a.splice(0,1);
+            this.heading = res.data.heading;
+            for(var i=0;i<res.data.b6_t.length;i++){
+              _this.b6_a.push({title:res.data.b6_t[i],desc:res.data.b6_d[i]});
+            }
+            this.b6_a.splice(0,1);
+            for(var i=0;i<res.data.b5_t.length;i++){
+              _this.b5_a.push({tab: res.data.b5_t[i],title: res.data.b5_s[i],link: res.data.b5_l[i],desc: res.data.b5_d[i]});
+            }
+            this.b5_a.splice(0,1);
+            for(var i=0;i<res.data.b4_t.length;i++){
+              _this.b4_a.push({title:res.data.b4_t[i],desc:res.data.b4_d});
+            }
+            this.b4_a.splice(0,1);
+            for(var i=0;i<res.data.b3_t.length;i++){
+              _this.b3_a.push({title:res.data.b3_t[i],link:res.data.b3_l[i]});
+            }
+            this.b3_a.splice(0,1);
+          });
           e.preventDefault();
+        },
+        add(index){
+          this.b2_d.push({desc:''});
+        },
+        add2(index){
+          this.b4_a.push({title:'',desc:''});
+        },
+        add3(index){
+          this.b3_a.push({title:'',link:''});
+        },
+        add4(index){
+          this.b5_a.push({title:'',link:'',desc:'',tab:''});
+        },
+        add5(index){
+          this.b6_a.push({title:'',desc:''});
+        },
+        add6(index){
+          this.b7_a.push({title:'',desc:''});
+        },
+        add7(index){
+          this.b8_a.push({title:'',desc:''});
+        },
+        remove(index,e){
+          this.b2_d.splice(index,1);
+        },
+        remove2(index,e){
+          this.b4_a.splice(index,1);
+        },
+        remove3(index,e){
+          this.b3_a.splice(index,1);
+        },
+        remove4(index,e){
+          this.b5_a.splice(index,1);
+        },
+        remove5(index,e){
+          this.b6_a.splice(index,1);
+        },
+        remove6(index,e){
+          this.b7_a.splice(index,1);
+        },
+        remove7(index,e){
+          this.b8_a.splice(index,1);
         },
         isItemSelected() {
             return this.itemSelected !== '' && this.itemSelected.text !== this.selectedText
@@ -622,6 +872,15 @@
         grid-template-columns: auto auto auto;
         padding: 10px;
         grid-gap: 20px;
+      }
+
+      .myDiv1{
+        display:grid;
+        grid-template-columns: auto 40px;
+      }
+
+      #myDivp{
+        padding-top: 12px;
       }
 
 </style>
