@@ -60,7 +60,7 @@
                 "model": "country",
                 "required": true,
                 "onChangeHandler": "country",
-                "items": []
+                "items": ["India"]
             },
             {
                 "type": "file",
@@ -70,7 +70,7 @@
                 "multiple": true,
                 "style": "z-index: 2000;",
                 "placeholder": "Select your files",
-                "showSize": "1000",
+                "showSize": 1000,
                 "icon": "mdi-file-upload"
             }
         ],

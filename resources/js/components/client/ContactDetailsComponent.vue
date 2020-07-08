@@ -6,7 +6,7 @@
             <v-container>
                 <h2 class=" mt-5">Ticket communication history <span class="overline">Ticket {{ ticket }}</span></h2>
                 <v-row class="nowrap-overflow">
-                    <v-col cols=12> 
+                    <v-col cols=12>
                         <v-expansion-panels model="panel" focusable multiple hover>
                             <v-expansion-panel v-for="(contact, index) in contact_history_list" :key="index">
                                 <v-expansion-panel-header><b>{{contact.author + ' via channel \'' + contact.channel + '\' ' + contact.date}}</b></v-expansion-panel-header>
@@ -17,7 +17,7 @@
                         </v-expansion-panels>
                     </v-col>
                 </v-row>
-            </v-container> 
+            </v-container>
 
             <v-container>
                 <h1 class="ticket-subject mb-5">Which track is enabled now ?</h1>
@@ -99,7 +99,7 @@
                         </v-card>
                     </v-col>
                 </v-row>
-            </v-container>   
+            </v-container>
 
             <footer :class="init_data.footer.class" :style="'background:' + init_data.footer.style.bgcolor" >
                 <div class="secpage">
@@ -201,6 +201,8 @@ export default {
 
         // Send the form with axios
         // axios.post('', this.ticket_form_data);
+        let id = window.location.href.substring(window.location.href.lastIndexOf('/')+1);
+        axios.post('/contact/'+id, this.ticket_update_form_data).then((res)=>{console.log(res);}).catch((e)=>{console.log(e);});
     },
     handleOnChangeEvent(value) {
         // this.ticket_form_data is dynamically updated so you can use it for whatever you wamnt

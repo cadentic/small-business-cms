@@ -191,7 +191,7 @@ class IndexController extends Controller
       $user = array('id'=>$id, 'name'=>$name, 'description'=>$description, 'currency'=>$currency, 'minimumBudget'=>$minimumBudget, 'maximumBudget'=>$maximumBudget, 'pricePerHour'=>$pricePerHour, 'date'=>date('Y-m-d H:i:s'));
       $json[] = $user;
       file_put_contents($file_path,json_encode($json));
-      $mail = 'kanrar.pratim@gmail.com';
+      $mail = 'support@ndedges.com';
       Mail::to($mail)->send(new DemoEmail('View: localhost:8000/businessregistration/show/'.$id.'<br>'.'Approve: localhost:8000/businessregistration/validate/'.$id));
       $file_path = 'json/agreement.json';
       $file = file_get_contents($file_path);

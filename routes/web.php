@@ -75,7 +75,7 @@ Route::get('/import_client_main', 'IndexController@import_client_main');
 
 
 # Additional menu
-Route::get('whatsapp', 'WhatsappNotificationsController@index');
+Route::get('/whatsapp', 'WhatsappNotificationsController@index');
 
 Route::get('/enquiry','EnquiryController@index');
 Route::post('/enquiry','EnquiryController@post');
@@ -88,9 +88,12 @@ Route::get('/invoices/all','AdminController@getInvoices');
 Route::get('searchfaq', 'SearchQuestionsController@index');
 Route::get('contact', 'ContactUsController@index');
 Route::get('contact/{ticket_id}', 'ContactUsController@show');
+Route::post('contact/{ticket_id}', 'ContactUsController@update');
 Route::get('forgot-password', 'PasswordController@renew');
 Route::get('download', 'DownloadResourcesController@index');
 Route::get('contact-us', 'ContactUsController@create');
+Route::post('contact-us', 'ContactUsController@createPost');
+Route::post('save-to-json', 'ContactUsController@save_to_json');
 
 
 Route::get('transaction-history','TransactionHistoryController@getHistory');
