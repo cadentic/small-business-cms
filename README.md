@@ -1,6 +1,8 @@
 <strong>Deployment on local server</strong>
-<p>git clone https://github.com/cadentic/business_landing_v1.git</p>
-<p>cd business_landing_v1</p>
-<p>composer install</p>
-<p>npm install</p>
-<p>php artisan serve</p>
+<ul>
+  <li>git clone https://github.com/cadentic/business_landing_v1.git</li>
+  <li>cd business_landing_v1</li>
+  <li>composer install</li>
+  <li>npm install</li>
+  <li>php artisan serve</li>
+</ul>
