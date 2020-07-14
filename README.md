@@ -1,6 +1,6 @@
 ## INSTALLATION AND DEPLOYMENT STEPS LOCALLY
 
-### 1. COMPOSER INSTALLTION
+### 1. COMPOSER INSTALLATION
 
 *Source:*
 
@@ -84,7 +84,7 @@
       The `[home]` line refers to the default value of `$COMPOSER_HOME`.
 
 
-### 2. LARAVEL INSTALLTION   
+### 2. LARAVEL INSTALLATION   
 
 *Source:*
 
@@ -104,8 +104,9 @@
 
    **NOTE:** 
    
-   a. The `global` parameter allows running commands in the global composer dir `($COMPOSER_HOME)`.
-   b. The following error message may come up on executing `composer global require laravel/installer`
+   - The `global` parameter allows running commands in the global composer dir `($COMPOSER_HOME)`.
+   
+   - The following error message may come up on executing `composer global require laravel/installer`
 
     "https://repo.packagist.org/packages.json" file could not be downloaded: failed to open stream: Connection refused
 
@@ -119,7 +120,7 @@
    
    
    
-   ### 3. Node.js® INSTALLTION  
+   ### 3. Node.js® INSTALLATION  
      
    *Source:*
 
@@ -140,7 +141,7 @@
       
 
 
-### 4. npm INSTALLTION
+### 4. npm INSTALLATION
      
 *Source:*
 
