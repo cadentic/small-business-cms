@@ -26,24 +26,24 @@
           </v-list>
         </div>
       </v-navigation-drawer>
-    <div class="main-toolbar">
-      <ul class="submenu-group">
-        <li  v-for="(menu_item) in menu_items"
-        :id="'menu-item-'+ menu_item.key"
-        :key="menu_item.key"
-        :class="(menu_item.key == current_menu_item.key) ? 'active' : ''"><a>{{ menu_item.main_title }}</a></li>
-      </ul>
-    </div>
-    <div class="sub-toolbar">
-      <ul v-for="(menu_item) in menu_items" class="submenu-group"
-          :data-main-toolbar="'menu-item-'+ menu_item.key"
-          :key="menu_item.key">
-        <li v-for="(menu_sub_item) in menu_item.sub_menu"
-            :key="menu_sub_item.key"
-            :class="(menu_sub_item.key == current_menu_sub_item.key) ? 'active' : ''"><a :href="menu_sub_item.pathname">{{ menu_sub_item.sub_menu_item_title }}</a></li>
-      </ul>
-      <v-btn icon large @click="drawer = !drawer"><v-icon>{{ navigation.menuIcon }}</v-icon> </v-btn>
-    </div>
+      <div class="main-toolbar">
+        <ul class="submenu-group">
+          <li  v-for="(menu_item) in menu_items"
+          :id="'menu-item-'+ menu_item.key"
+          :key="menu_item.key"
+          :class="(menu_item.key == current_menu_item.key) ? 'active' : ''"><a>{{ menu_item.main_title }}</a></li>
+        </ul>
+      </div>
+      <div class="sub-toolbar">
+        <ul v-for="(menu_item) in menu_items" class="submenu-group"
+            :data-main-toolbar="'menu-item-'+ menu_item.key"
+            :key="menu_item.key">
+          <li v-for="(menu_sub_item) in menu_item.sub_menu"
+              :key="menu_sub_item.key"
+              :class="(menu_sub_item.key == current_menu_sub_item.key) ? 'active' : ''"><a :href="menu_sub_item.pathname">{{ menu_sub_item.sub_menu_item_title }}</a></li>
+        </ul>
+        <v-btn icon large @click="drawer = !drawer"><v-icon>{{ navigation.menuIcon }}</v-icon> </v-btn>
+      </div>
   </div>
 </template>
 

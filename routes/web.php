@@ -108,3 +108,5 @@ Route::post('/login', 'IndexController@login');
 //Route::get('pdfview', 'IndexController@pdf');
 Route::get('/logout', 'IndexController@logout');
 Route::get('/employee', 'IndexController@gotoEmployee');
+Route::get('/createinvoice', 'InvoiceController@create');
+Route::get('/allinvoices', 'InvoiceController@showAll');

@@ -32,6 +32,16 @@
                 "key": 6,
                 "sub_menu_item_title": "Enquiry",
                 "pathname" : "/enquiry"
+            },
+            {
+                "key": 7,
+                "sub_menu_item_title": "Invoice",
+                "pathname" : "/createinvoice"
+            },
+            {
+                "key": 8,
+                "sub_menu_item_title": "All Invoices",
+                "pathname" : "/allinvoices"
             }
         ]
     },

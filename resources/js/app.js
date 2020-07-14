@@ -21,6 +21,9 @@ import contacthistorycomponent from './components/client/ContactUsHistoryCompone
 import contactdetailscomponent from './components/client/ContactDetailsComponent.vue';
 import forgotpasswordcomponent from './components/client/ForgotPasswordComponent.vue';
 import downloadresourcescomponent from './components/client/DownloadResourcesComponent.vue';
+import invoicecreate from './components/client/InvoiceCreate.vue';
+import invoiceall from './components/client/InvoiceAll.vue';
+
 
 //added by classic
 import invoice from './components/client/invoice.vue'
@@ -118,6 +121,8 @@ const app = new Vue({
         'contactdetailscomponent' : contactdetailscomponent,
         'forgotpasswordcomponent' : forgotpasswordcomponent,
         'downloadresourcescomponent' : downloadresourcescomponent,
+        'invoicecreate': invoicecreate,
+        'invoiceall': invoiceall,
         //added by classic
         'invoice' : invoice,
         'enquiry' : enquiry,

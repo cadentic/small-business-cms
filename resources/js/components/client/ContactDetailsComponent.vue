@@ -18,7 +18,14 @@
                     </v-col>
                 </v-row>
             </v-container>
-
+            <v-container>
+              <strong>Subject:</strong> {{this.subject}}
+            </v-container>
+            <v-container>
+              <v-row>
+                <strong>Admin replied:</strong> <div v-html="this.reply"></div>
+              </v-row>
+            </v-container>
             <v-container>
                 <h1 class="ticket-subject mb-5">Which track is enabled now ?</h1>
                 <v-row>
@@ -173,8 +180,11 @@ export default {
         assistance: "",
         documents: "",
         contacts: ""
-    }
+    },
+    reply: '',
+    subject: ''
   }),
+  props: ['ticket'],
   created() {
     axios.get('/json/innerblank.json')
     .then(response => {
@@ -188,6 +198,15 @@ export default {
     axios.get('/json/contact_history.json')
     .then(response => {
       this.contact_history_list = response.data;
+    })
+    .catch(e => {
+      this.errors.push(e)
+    });
+    let id = window.location.href.substring(window.location.href.lastIndexOf('/')+1);
+    axios.get('/json/tickets/'+this.ticket+'.json')
+    .then(response => {
+      this.reply = response.data[response.data.length-1].reply;
+      this.subject = response.data[0].subject;
     })
     .catch(e => {
       this.errors.push(e)
