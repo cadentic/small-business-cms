@@ -1,4 +1,4 @@
-## INSTALLATION AND DEPLOYMENT STEPS LOCALLY
+## APPLICATION DEPLOYMENT STEPS ON LOCAL DEVELOPMENT SERVER
 
 ### 1. COMPOSER INSTALLATION
 
@@ -167,62 +167,51 @@
 
 **COMMANNDS TO RUN:** 
 
-  1. `composer install`
+ 1. `git clone https://github.com/cadentic/business_landing_v1.git`
+
+ > Clone this repository locally on an appropriate path. 
+  
+
+
+ 2. `composer install`
   
   > Installs the project dependencies from the `composer.lock` file if present, or falls back on the `composer.json`.
 
   
   
-  2. `npm install`
+ 3. `npm install`
   
   > npm install downloads a package and it's dependencies. When run without arguments,npm install  downloads dependencies 
   > defined in a package(a folder containing a program described by a `package.json` file)
 
   
   
-  3. `php artisan route:clear`
+ 4. `php artisan route:clear`
   
   > To clear route cache of the Laravel application. This will display : `Route cache cleared!`
   
   
   
-  4. `php artisan config:clear`
+ 5. `php artisan config:clear`
   
   > To clear config cache of the Laravel application. This will display : `Configuration cache cleared!`
   
   
   
-  5. `php artisan cache:clear`
+ 6. `php artisan cache:clear`
   
   > To clear application cache of Laravel application. This will display : `Application cache cleared!`
   
   
   
-  6. `npm run watch`
+ 7. `npm run watch`
   
  > Combines all Vue components and other JavaScript files into a browser-friendly combined file.
  > Then it stays active and "watches" for updates to all .vue and .js files. If it detects a
  > change, it'll re-build the browser-friendly file so you can just refresh the page.
 
 
- 7. `php artisan serve`
+ 8. `php artisan serve`
  
  To run this application on the development server.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
