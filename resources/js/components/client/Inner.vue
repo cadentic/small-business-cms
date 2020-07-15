@@ -1,74 +1,74 @@
 <template>
   <div>
     <topBar></topBar>
-    
+
     <section>
-       
+
 <div :style="'background:' + init_data.section1.bgcolor + ';'" class="dmc-anchor-info dmr base-blowout clip-content no-border" :data-config-metrics-group= init_data.section1.data-config-metrics-group :data-config-metrics-title=  init_data.section1.data-config-metrics-group>
   <div class="row full" :data-owner= init_data.section1.data-owner>
     <div class="col full " :style= init_data.section1.div1S>
-  
+
             <h1 id="fw-pagetitle" class="":data-owner= init_data.section1.data-owner :style = init_data.section1.h11S>{{ init_data.section1.title }}</h1>
-    
+
     </div>
   </div>
     <div class="row halves" :data-owner= init_data.section1.data-owner :style= init_data.section1.div2S>
         <div class="col-md-6 col-sm-12 half">
-      
+
             <div class="info-image">
-      
-  
+
+
   <!--DM Image-->
   <div class="dm-img init loaded" :src="init_data.section1.image_wrap" :alt= init_data.section1.image_wrap_alt :title= init_data.section1.image_wrap_title>
-    
+
   <img :src="init_data.section1.image" :alt= init_data.section1.image_wrap_alt :title= init_data.section1.image_wrap_title></div>
 
             </div>
-        
+
         </div>
         <div class="col-md-6 col-sm-12 half">
-            
+
             <div class="info-content clip color_FFFFFF" :data-more-text= init_data.section1.data-more-text style=""><div class="clip-wrap">
-                
-                <h2 :style="'font-size:' + init_data.section1.sub_title.font_size + ';' + 'color:' + init_data.section1.sub_title.color + ';' + 'font-family:' + init_data.section1.sub_title.font_family + ';'">    
+
+                <h2 :style="'font-size:' + init_data.section1.sub_title.font_size + ';' + 'color:' + init_data.section1.sub_title.color + ';' + 'font-family:' + init_data.section1.sub_title.font_family + ';'">
                       {{ init_data.section1.sub_title.text }}</h2>
-                
+
                 <div class="info-description" :style="'font-size:' + init_data.section1.description.font_size + ';' + 'color:' + init_data.section1.description.color + ';' + 'font-family:' + init_data.section1.description.font_family + ';'">
                     <p>{{ init_data.section1.description.text1 }}</p>
                     <p>{{ init_data.section1.description.text2 }}</p>
                     <p>{{ init_data.section1.description.text3 }}</p>
 
                 </div>
-                
+
             </div><div class="clip-over"><p><a href="javascript:void(0)">{{ init_data.section1.show_more.text }}</a></p></div></div>
-              
-      <ul class="cta">   
+
+      <ul class="cta">
                 <li>
-                        
+
                     <div class="lightbox-link" :data-lightbox-id= init_data.section1.data-lightbox-id>
-                                
+
                         <a class="dmc-button atlantic pal-1" :href="init_data.section1.button[0].link" :data-config-metrics-item= init_data.section1.data-config-metrics-item style=''>
-                                
+
                                     {{ init_data.section1.button[0].text }}
-                                
+
                         </a>
-                                
+
                     </div>
-                          
+
                 </li>
-                      
+
                 <li>
-                        
+
                         <a :style=  init_data.section1.a1S class="dmc-button atlantic pal-5" :href="init_data.section1.button[1].link" :data-config-metrics-item= init_data.section1.data-config-metrics-item>
-                            
+
                                     {{ init_data.section1.button[1].text }}
-                                
+
                         </a>
-                                
+
                 </li>
-                      
+
             </ul>
-              
+
         </div>
     </div>
 </div>
@@ -93,7 +93,7 @@
           <span class="caret"></span>
         </v-btn>
       </template>
-      <v-list>          
+      <v-list>
           <v-list-item-title>Call Now</v-list-item-title>
           <v-list-item-title>Page 1-2</v-list-item-title>
           <v-list-item-title>Page 1-3</v-list-item-title>
@@ -108,44 +108,44 @@
 
           <h4 :style="'font-size:' + init_data.section3.sub_title.font_size + ';' + 'color:' + init_data.section3.sub_title.color + ';' + 'font-weight:' + init_data.section3.sub_title.font_weight + ';'">{{ init_data.section3.sub_title.text }}</h4>
           <p :style="'font-size:' + init_data.section3.description.font_size + ';' + 'color:' + init_data.section3.description.color + ';'">{{ init_data.section3.description.text }}</p>
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         </section>
-        
+
         <div class="hg content" :id="init_data.section4.id" :style="init_data.section4.style">
         <h3 :style='init_data.section4.title.style'>{{ init_data.section4.title.text }}</h3>
           <ul type="disc" :style="init_data.section4.description.style">
-            <li v-for="(text_item, id) in init_data.section4.description.text" :key="id">{{ text_item }}</li>            
+            <li v-for="(text_item, id) in init_data.section4.description.text" :key="id">{{ text_item }}</li>
           </ul>
-          
+
           <h4 :style="init_data.section4.sub_title.style">{{ init_data.section4.sub_title.text }}</h4>
-        
-        
+
+
         </div>
         <div class="hg content" :id="init_data.section5.id" :style="init_data.section5.style">
-        
-          
-          
+
+
+
           <h4 :style='init_data.section5.title.style'>{{ init_data.section5.title.text }}</h4>
-          
-          
+
+
           <ul type="disc" :style="init_data.section5.description.style">
             <li v-for="(text_item, id) in init_data.section5.description.text" :key="id">{{ text_item }}</li>
           </ul>
-          
-        
-        
+
+
+
         </div>
 
       <section :id="init_data.section6.id">
           <v-container>
               <v-row>
                   <v-col cols="sm" v-for="(item, id) in init_data.section6.container1" :key="id">
-                      <div class="cardWrap"> 
+                      <div class="cardWrap">
                           <a class="card" :href="item.link">
                               <div class="front blue-p-blue">
                                   <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
@@ -163,11 +163,11 @@
                   </v-col>
               </v-row>
           </v-container>
-          
+
           <v-container>
               <v-row>
                   <v-col cols="sm" v-for="(item, id) in init_data.section6.container2" :key="id">
-                      <div class="cardWrap"> 
+                      <div class="cardWrap">
                           <a class="card" :href="item.link">
                               <div class="front blue-p-blue">
                                   <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
@@ -204,7 +204,7 @@
           <div class="">
               <v-container>
                   <v-row no-gutters>
-                      <v-col cols="sm" v-for="(item, id) in init_data.section8.container" :key="id">        
+                      <v-col cols="sm" v-for="(item, id) in init_data.section8.container" :key="id">
                           <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
                               <div class="flipper property-items">
                                   <div class="front center-block text-center itemS" :style="'min-height:' + item.background_minheight + '; background: url(' + item.background + ') center top / cover no-repeat;'">
@@ -330,11 +330,12 @@
     import topBar from './shared/topBar.vue'
 
     export default {
+      props:['filename'],
       components: {  topBar },
       data: () => ({
         offsetTop: 0,
         topbarStyle: 'background:#4d41b3;  border-bottom:1px solid #fff;',
-        init_data: {}
+        init_data: {},
       }),
       methods: {
         onScroll (){
@@ -347,7 +348,8 @@
         }
       },
       created() {
-        axios.get('json/inner.json')
+        console.log(this.filename);
+        axios.get('../json/inner/'+this.filename+'.json')
         .then(response => {
           this.init_data = response.data;
         })

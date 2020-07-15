@@ -89,7 +89,7 @@
       <div></div>
       <div class="ma">
         <center><h1>Main Form</h1></center>
-        <form method="post" action="formA" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
 
           <center><h2>Banner 1</h2></center>
@@ -470,7 +470,8 @@
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
-        source: String
+        source: String,
+        filename: String
     },
     mounted: function(){
       console.log('Contacts Component Loaded...');
@@ -478,7 +479,7 @@
     methods: {
         Edit: function(e){
           alert('Previous Draft');
-          let data = axios.get('../json/draft_main/draft_main.json').then(res=>{console.log(res);
+          let data = axios.get('../json/draft_main/'+this.filename+'.json').then(res=>{console.log(res);
             this.b1_t=res.data.b1_t;
             this.b2_t = res.data.b2_t;
             this.b3_t = res.data.b3_t;

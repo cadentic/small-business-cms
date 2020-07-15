@@ -28,7 +28,7 @@
     </head>
     <body>
         <div id="app">
-          <mainform></mainform>
+          <mainform filename={{$fileName}}></mainform>
         </div>
 
         <script src="{{ mix('js/app.js') }}"></script>

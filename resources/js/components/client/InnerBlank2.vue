@@ -16,9 +16,9 @@
       <v-toolbar-items class="hidden-sm-and-down">
 		<v-btn text v-for="(item, id) in init_data.appbar" :key="id"><a :href="item.link">{{ item.text }}</a></v-btn>
       </v-toolbar-items>
-      <v-spacer></v-spacer> 
+      <v-spacer></v-spacer>
     </v-app-bar>
-	
+
 	<span  id="anchor5"></span>
 
     	<section :class="init_data.section1.class" :style="init_data.section1.style">
@@ -61,7 +61,7 @@
 					</v-col>
 				</v-row>
 			</v-container>
-	
+
 		</section>
 		<span  id="anchor4"></span>
 
@@ -102,7 +102,7 @@
         </v-row>
       </v-container>
     </section>
-	
+
 	<span  ref="whatsNew"   id="anchor3"></span>
     <section :id="init_data.section3.id" :style="init_data.section3.style" :class="init_data.section3.class">
 		<div class="container">
@@ -110,35 +110,35 @@
 		<!-- section title -->
 		<div class="whats-new-title">
 			<h2 class="wow bounceInDown">{{init_data.section3.title}}</h2>
-		</div>   
+		</div>
 
 		<!-- swiper -->
 		<swiper :options="swiperOptionh" v-if="showBehindWhatsNew">
-			<swiper-slide v-for="(swiperside, id) in init_data.section3.swipersides" :key="id"> 
-				<div class="blog-container" data-hash="first"> 
-					<i class="fa  fa-times" @click="revealBehind"></i> 
-					<div class="banner-bl-slide"> <div id="myCarousel5" class="carousel slide" data-ride="carousel"> 
-						<swiper :options="swiperOptionInner"> 
+			<swiper-slide v-for="(swiperside, id) in init_data.section3.swipersides" :key="id">
+				<div class="blog-container" data-hash="first">
+					<i class="fa  fa-times" @click="revealBehind"></i>
+					<div class="banner-bl-slide"> <div id="myCarousel5" class="carousel slide" data-ride="carousel">
+						<swiper :options="swiperOptionInner">
 							<swiper-slide v-for="(swiperside_slide, id) in swiperside.swiper" :key="id">
-								<div class="item "> 
+								<div class="item ">
 									<img :src="swiperside_slide">
 								</div>
 							</swiper-slide>
 							<div class="swiper-pagination" slot="pagination"></div>
-						</swiper> 
+						</swiper>
 					</div>
 				</div>
-				<div class="cont"> 
-					<h2>{{ swiperside.title }}</h2> 
+				<div class="cont">
+					<h2>{{ swiperside.title }}</h2>
 					<p>{{ swiperside.description }}</p>
 					<a :href="swiperside.button1.link">{{ swiperside.button1.text }}</a>
 					<a :href="swiperside.button2.link">{{ swiperside.button2.text }}</a>
 				</div>
-				<div class="banner"> 
-					<img :src="swiperside.banner" alt=""/> 
+				<div class="banner">
+					<img :src="swiperside.banner" alt=""/>
 				</div>
 			</div>
-			</swiper-slide>			
+			</swiper-slide>
 			<div class="swiper-button-prev" slot="button-prev"></div>
 			<div class="swiper-button-next" slot="button-next"></div>
 		</swiper>
@@ -162,7 +162,7 @@
       </v-sheet>
     </v-carousel-item>
   </v-carousel>
-					
+
 </div>
 </div>
 </section>
@@ -264,6 +264,7 @@ import topBar from "./shared/topBar.vue";
 
 
 export default {
+  props:['filename'],
     name: 'carousel',
     data() {
       return {
@@ -276,11 +277,11 @@ export default {
 			'red',
 			'orange',
         ],
-      
+
 	    offsetTop: 0,
 
 	    topbarStyle: 'background: rgb(230, 245, 255); padding: 30px 75px; border-color: rgb(255, 255, 255); position: static; top: 0px; left: 0px; right: 0px; z-index: 100;',
-        
+
       	showBehindWhatsNew: false,
       	showMainMenu: true,
         clickClass: 0,
@@ -332,7 +333,7 @@ export default {
         }
       }
     },
-    components: { 
+    components: {
 		swiper,
         swiperSlide,
         topSwiper,
@@ -347,10 +348,10 @@ export default {
     //   this.swiper.slideTo(3, 1000, false)
     // },
     methods:{
-		
-    	toSlide(i) {      
+
+    	toSlide(i) {
 			this.$refs.mySwiper.swiper.slideTo(i, 900)
-		}, 
+		},
 		bgli(num){
 			if(this.clickClass !== num){
 				this.clickClass = num
@@ -363,15 +364,15 @@ export default {
     },
         onScroll (){
             let top = this.$refs.whatsNew.offsetTop
-            
+
             this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
             if(top){
                 if(this.offsetTop<(top-550) || this.offsetTop > (top+ 800)){
-                
+
                 this.showBehindWhatsNew = false;
             }
             }
-            
+
 	      if (this.offsetTop >= 780 ) {
 	        this.topbarStyle = "background: rgb(230, 245, 255); padding: 30px 75px; border-color: rgb(255, 255, 255); position: fixed; top: 0px; left: 0px; right: 0px; z-index: 100;"
 	      }else{
@@ -380,7 +381,7 @@ export default {
 	    }
 	},
 	created() {
-    axios.get('json/innerblank2.json')
+    axios.get('../json/innerblank2/'+this.filename+'.json')
     .then(response => {
       this.init_data = response.data;
     })
@@ -421,7 +422,7 @@ export default {
 		}
 	   }
 		}
-        
+
     }
     .stepRow label{
         font-size: 0.875rem !important;

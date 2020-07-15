@@ -19,26 +19,26 @@ Route::get('/', 'IndexController@index');
 
 Route::get('/admin', 'IndexController@gotoAdmin');
 
-Route::get('/admin/formA','LandingPages@gotoFormA');
-Route::post('/admin/formA','LandingPages@formPost');
+Route::get('/admin/formA/{fileName}','LandingPages@gotoFormA');
+Route::post('/admin/formA/{fileName}','LandingPages@formPost');
 
-Route::get('/admin/innerForm','LandingPages@innerForm');
-Route::post('/admin/innerForm','LandingPages@innerPost');
+Route::get('/admin/innerForm/{fileName}','LandingPages@innerForm');
+Route::post('/admin/innerForm/{fileName}','LandingPages@innerPost');
 
-Route::get('/admin/innerForm2','LandingPages@innerForm2');
-Route::post('/admin/innerForm2','LandingPages@innerPost2');
+Route::get('/admin/innerForm2/{fileName}','LandingPages@innerForm2');
+Route::post('/admin/innerForm2/{fileName}','LandingPages@innerPost2');
 
-Route::get('/admin/innerForm3','LandingPages@innerForm3');
-Route::post('/admin/innerForm3','LandingPages@innerPost3');
+Route::get('/admin/innerForm3/{fileName}','LandingPages@innerForm3');
+Route::post('/admin/innerForm3/{fileName}','LandingPages@innerPost3');
 
-Route::get('/admin/innerForm4','LandingPages@innerForm4');
-Route::post('/admin/innerForm4','LandingPages@innerPost4');
+Route::get('/admin/innerForm4/{fileName}','LandingPages@innerForm4');
+Route::post('/admin/innerForm4/{fileName}','LandingPages@innerPost4');
 
-Route::get('/admin/innerFormBlank','LandingPages@innerFormBlank');
-Route::post('/admin/innerFormBlank','LandingPages@innerPostBlank');
+Route::get('/admin/innerFormBlank/{fileName}','LandingPages@innerFormBlank');
+Route::post('/admin/innerFormBlank/{fileName}','LandingPages@innerPostBlank');
 
-Route::get('/admin/innerFormBlank1','LandingPages@innerFormBlank1');
-Route::post('/admin/innerFormBlank1','LandingPages@innerPostBlank1');
+Route::get('/admin/innerFormBlank1/{fileName}','LandingPages@innerFormBlank1');
+Route::post('/admin/innerFormBlank1/{fileName}','LandingPages@innerPostBlank1');
 
 Route::get('/admin/{any}', 'IndexController@gotoAdmin')->where('any', '.*');
 
@@ -57,14 +57,14 @@ Route::post('/validateemail', 'MailController@validateEmail');
 Route::get('/employeeproject', 'IndexController@gotoLoginFour');
 Route::post('/employeeproject', 'IndexController@postLoginFour');
 
-Route::get('/client_main', 'IndexController@gotoMain');
-Route::get('/client_inner', 'IndexController@gotoInner');
-Route::get('/client_inner2', 'IndexController@gotoInner2');
-Route::get('/client_inner3', 'IndexController@gotoInner3');
-Route::get('/client_inner4', 'IndexController@gotoInner4');
+Route::get('/client_main/{fileName}', 'IndexController@gotoMain');
+Route::get('/client_inner/{fileName}', 'IndexController@gotoInner');
+Route::get('/client_inner2/{fileName}', 'IndexController@gotoInner2');
+Route::get('/client_inner3/{fileName}', 'IndexController@gotoInner3');
+Route::get('/client_inner4/{fileName}', 'IndexController@gotoInner4');
 
-Route::get('/client_innerblank', 'IndexController@gotoInnerblank');
-Route::get('/client_innerblank2', 'IndexController@gotoInnerblank2');
+Route::get('/client_innerblank/{fileName}', 'IndexController@gotoInnerblank');
+Route::get('/client_innerblank2/{fileName}', 'IndexController@gotoInnerblank2');
 
 
 

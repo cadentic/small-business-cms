@@ -1,0 +1,155 @@
+{
+    "header": {
+        "id": 1,
+        "search_box": "What are you looking for",
+        "img": "../assets/images/logo.png",
+        "bg_color": "#fffff"
+    },
+    "banner": {
+        "id": 3,
+        "banner1": {
+            "id": 1,
+            "bg_img": "../assets/images/banner1.jpg",
+            "title": "Zero-downtime migration using golden gate",
+            "link": [
+                {
+                    "id": 2,
+                    "text": "Link One",
+                    "url": "#"
+                },
+                {
+                    "id": 1,
+                    "text": "Link Two",
+                    "url": "#"
+                },
+                {
+                    "id": 3,
+                    "text": "Link",
+                    "url": "#"
+                },
+                {
+                    "id": 4,
+                    "text": "Link",
+                    "url": "#"
+                },
+                {
+                    "id": 5,
+                    "text": "Link",
+                    "url": "#"
+                }
+            ]
+        },
+        "banner2": {
+            "id": 2,
+            "bg_img": "../assets/images/banner2.jpg",
+            "title": "On-premise to cloud migration",
+            "link": [
+                {
+                    "id": 1,
+                    "text": "More Info",
+                    "url": "#"
+                },
+                {
+                    "id": 2,
+                    "text": "See More",
+                    "url": "#"
+                }
+            ]
+        },
+        "banner3": {
+            "id": 3,
+            "bg_img": [
+                "url(../assets/images/banner3.jpg)",
+                "url(../assets/images/banner4.jpg)",
+                "url(../assets/images/banner5.jpg)",
+                "url(../assets/images/5042_banner_2.jpg)"
+            ],
+            "title": "Hello world!",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            "link": [
+                {
+                    "id": 1,
+                    "text": "Read More",
+                    "url": "#"
+                },
+                {
+                    "id": 2,
+                    "text": "Get Quote",
+                    "url": "#"
+                }
+            ]
+        }
+    },
+    "crt": {
+        "id": 2,
+        "bg_color": "#4d41b3",
+        "class_name": [
+            "imgcrts",
+            "imgcrts1",
+            "imgcrts2",
+            "imgcrts3",
+            "imgcrts4",
+            "imgcrts5",
+            "imgcrts6",
+            "imgcrts7",
+            "imgcrts8",
+            "imgcrts9"
+        ]
+    },
+    "video": {
+        "id": 4,
+        "bg_color": "",
+        "detail": {
+            "title": "ERP, EPM Cloud Lay Foundation for 'Zero-Touch'",
+            "content": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip dolor",
+            "opendlg_btn": "See Video"
+        },
+        "player": {
+            "src": "../assets/images/video.mp4",
+            "type": "video/mp4"
+        }
+    },
+    "social_link": {
+        "id": 5,
+        "bg_color": "white",
+        "link": [
+            {
+                "id": 1,
+                "bg_color": "#26a6d1",
+                "icon_name": "fa fa-twitter",
+                "duration": "2.5s",
+                "delay": ".2s",
+                "url": "#"
+            },
+            {
+                "id": 2,
+                "bg_color": "#3b5998",
+                "icon_name": "fa fa-facebook",
+                "duration": "2s",
+                "delay": ".2s",
+                "url": "#"
+            },
+            {
+                "id": 3,
+                "bg_color": "#007ab9",
+                "icon_name": "fa fa-linkedin",
+                "duration": "1.5s",
+                "delay": ".2s",
+                "url": "#"
+            },
+            {
+                "id": 4,
+                "bg_color": "#b81a7e",
+                "icon_name": "fa fa-instagram",
+                "duration": "1s",
+                "delay": ".2s",
+                "url": "#"
+            }
+        ]
+    },
+    "footer": {
+        "id": 6,
+        "bg_color": "#4d41b3",
+        "text": "2019 Copyright"
+    }
+}

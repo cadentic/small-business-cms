@@ -108,7 +108,7 @@ export default {
     init_data: Object
   },
   created() {
-    axios.get('json/menu_new.json')
+    axios.get('../json/menu_new.json')
     .then(response => {
       this.menudata = response.data;
     })
@@ -125,7 +125,7 @@ export default {
     if(this.rightSide !== clicked && clicked <= this.innerTabHeaders) { //
       this.rightSide = clicked
     }
-    
+
     for(let i = 1; i <= this.leftSideTabs; i++){ // loop through the tabs
       let tabHeader = this.$el.querySelector('.tab__header-'+i);
       if(tabHeader.classList.contains('tab__header--active')){ // if tab__header has tab__header--active class, remove it

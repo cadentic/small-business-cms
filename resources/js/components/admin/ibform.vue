@@ -89,7 +89,7 @@
       <div></div>
       <div class="ma">
         <center><h1>Inner Form Blank</h1></center>
-        <form method="post" action="innerFormBlank" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
           <center><h2>Navigation Bar</h2></center>
           <div class="myDiv1" v-for="(input,k) in nav_pages" :key="k">
@@ -420,7 +420,8 @@
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
-        source: String
+        source: String,
+        filename: String
     },
     mounted: function(){
       console.log('Contacts Component Loaded...');
@@ -428,7 +429,7 @@
     methods: {
         Edit: function(e){
           alert('Previous Draft');
-          let data = axios.get('../json/draft_blank/draft_blank.json').then(res=>{
+          let data = axios.get('../json/draft_blank/'+this.filename+'.json').then(res=>{
             var _this = this;
             this.topic = res.data.topic;
             this.subtitle1=res.data.subtitle1;

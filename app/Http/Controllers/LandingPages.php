@@ -8,18 +8,23 @@ class LandingPages extends Controller
 {
   public function gotoFormA(Request $request){
     if($request->session()->get('role')=='admin'){
-      return view('adminForms/mainForm');
+      $path1 = 'json/client_main/'.$request->fileName.'.json';
+      if(!file_exists($path1)){
+        $myFile = fopen($path1,"w");
+        copy('json/client_main/client_main_content.json',$path1);
+      }
+      return view('adminForms/mainForm')->with('fileName',$request->fileName);
     }
     return back();
   }
-  public function sendData(){
-    $path1 = 'client_main_content.json';
-    $path2 = 'json/FormData/client_main1.json';
+  public function sendData($fileName){
+    $path1 = 'json/client_main/'.$fileName.'.json';
+    $path2 = 'json/FormData/template_main/'.$fileName.'.json';
     $datae = file_get_contents($path1);
     $data = json_decode($datae);
     $modi = file_get_contents($path2);
     $mod = json_decode($modi);
-    $data->banner->banner1->bg_img = $mod->image1 ==null ? $data->banner->banner1->bg_img : 'banners/main/'.$mod->image1;
+    $data->banner->banner1->bg_img = $mod->image1 ==null ? $data->banner->banner1->bg_img : '../banners/main/'.$mod->image1;
     $data->banner->banner1->title = $mod->b1_t == null ? $data->banner->banner1->title : $mod->b1_t;
     if($mod->b1_l[0]!=null){
       $data->banner->banner1->link = array();
@@ -31,7 +36,7 @@ class LandingPages extends Controller
         $data->banner->banner1->link[] = $object;
       }
     }
-    $data->banner->banner2->bg_img = $mod->image2==null? $data->banner->banner2->bg_img: 'banners/main/'.$mod->image2;
+    $data->banner->banner2->bg_img = $mod->image2==null? $data->banner->banner2->bg_img: '../banners/main/'.$mod->image2;
     $data->banner->banner2->title = $mod->b2_t == null ? $data->banner->banner2->title:$mod->b2_t;
     if($mod->b2_l[0]!=null){
       $data->banner->banner2->link = array();
@@ -46,7 +51,7 @@ class LandingPages extends Controller
     if($mod->images!=null){
       $data->banner->banner3->bg_img=array();
       for($i=0;$i<count($mod->images);$i++){
-        $string = 'url(banners/main/'.$mod->images[$i].')';
+        $string = 'url(../banners/main/'.$mod->images[$i].')';
         $data->banner->banner3->bg_img[] = $string;
       }
     }
@@ -54,7 +59,7 @@ class LandingPages extends Controller
     $data->banner->banner3->content = $mod->b3_c == null? $data->banner->banner3->content : $mod->b3_c;
     $data->banner->banner3->link[0]->text = $mod->b3_l1 == null ? $data->banner->banner3->link[0]->text : $mod->b3_l1;
     $data->banner->banner3->link[1]->text = $mod->b3_l2 == null ? $data->banner->banner3->link[1]->text : $mod->b3_l2;
-    $data->video->player->src = $mod->video == null ? $data->video->player->src : 'banners/main/'.$mod->video;
+    $data->video->player->src = $mod->video == null ? $data->video->player->src : '../banners/main/'.$mod->video;
     $data->video->detail->title = $mod->b4_t == null ? $data->video->detail->title : $mod->b4_t;
     $data->video->detail->content = $mod->b4_c==null ? $data->video->detail->content : $mod->b4_c;
     file_put_contents($path1,json_encode($data));
@@ -64,7 +69,10 @@ class LandingPages extends Controller
       return back();
     }
     if($request->Submit == 'Submit'){
-      $path = 'json/FormData/client_main1.json';
+      $path = 'json/FormData/template_main/'.$request->fileName.'.json';
+      if(!file_exists($path)){
+        $myFile = fopen($path,"w");
+      }
       $imagename1=null;$imagename2=null;$videoname=null;
       $images = array();
       if($request->hasFile('image1')){
@@ -96,11 +104,11 @@ class LandingPages extends Controller
                 'b3_l1'=>$request->b3_l1,'b3_l2'=>$request->b3_l2,'b4_c'=>$request->b4_c,'b4_t'=>$request->b4_t,'image1'=>$imagename1,
                 'image2'=>$imagename2,'images'=>$images,'video'=>$videoname,'b5_l'=>$request->b5_l);
       file_put_contents($path,json_encode($data));
-      $this->sendData();
+      $this->sendData($request->fileName);
       return 'Form Submitted Successfully';
     }
     else if($request->Submit == 'Save as Draft'){
-      $path = 'json/draft_main/draft_main.json';
+      $path = 'json/draft_main/'.$request->fileName.'.json';
       $path1 = 'json/draft_main';
       $imagename1=null;$imagename2=null;$videoname=null;
       $images = array();
@@ -136,19 +144,24 @@ class LandingPages extends Controller
 
   public function innerForm(Request $request){
     if($request->session()->get('role')=='admin'){
-      return view('adminForms/innerForm');
+      $path1 = 'json/inner/'.$request->fileName.'.json';
+      if(!file_exists($path1)){
+        $myFile = fopen($path1,"w");
+        copy('json/inner/inner.json',$path1);
+      }
+      return view('adminForms/innerForm')->with('filename',$request->fileName);
     }
     return back();
   }
-  public function sendDataInner(){
-    $path1 = 'json/FormData/inner_f1.json';
-    $path2 = 'json/inner.json';
+  public function sendDataInner($fileName){
+    $path1 = 'json/FormData/template_inner/'.$fileName.'.json';
+    $path2 = 'json/inner/'.$fileName.'.json';
     $file = file_get_contents($path2);
     $data = json_decode($file);
     $file1= file_get_contents($path1);
     $mod = json_decode($file1);
     $data->section1->title = $mod->b1_t==null? $data->section1->title: $mod->b1_t;
-    $data->section1->image = $mod->image1==null? $data->section1->image : 'banners/inner/'.$mod->image1;
+    $data->section1->image = $mod->image1==null? $data->section1->image : '../banners/inner/'.$mod->image1;
     $data->section1->image_wrap = $data->section1->image;
     $data->section1->sub_title->text = $mod->b1_s==null?$data->section1->sub_title->text: $mod->b1_s;
     $data->section1->description->text1 = $mod->b1_d == null?$data->section1->description->text1: $mod->b1_d;
@@ -161,19 +174,19 @@ class LandingPages extends Controller
         $num = $num % 4;
         $data->section6->container2[$num]->link = $mod->b2_l;
         $data->section6->container2[$num]->description = $mod->b2_d;
-        $data->section6->container2[$num]->image = 'banners/inner/'.$mod->image2;
+        $data->section6->container2[$num]->image = '../banners/inner/'.$mod->image2;
       }
       else{
         $data->section6->container1[$num]->link = $mod->b2_l;
         $data->section6->container1[$num]->description = $mod->b2_d;
-        $data->section6->container1[$num]->image = 'banners/inner/'.$mod->image2;
+        $data->section6->container1[$num]->image = '../banners/inner/'.$mod->image2;
       }
     }
     if(($mod->b3_n!=null)){
       $num = $mod->b3_n;
       $num = $num % 3;
-      $data->section8->container[$num]->background = 'banners/inner/'.$mod->image3;
-      $data->section8->container[$num]->image = 'banners/inner/'.$mod->image3;
+      $data->section8->container[$num]->background = '../banners/inner/'.$mod->image3;
+      $data->section8->container[$num]->image = '../banners/inner/'.$mod->image3;
       $data->section8->container[$num]->title = $mod->b3_t;
       $data->section8->container[$num]->name = $mod->b3_c;
       $data->section8->container[$num]->description = $mod->b3_d;
@@ -186,7 +199,7 @@ class LandingPages extends Controller
       return back();
     }
     if($request->Submit == 'Submit'){
-      $path = 'json/FormData/inner_f1.json';
+      $path = 'json/FormData/template_inner/'.$request->fileName.'.json';
       $path1 = 'banners/inner';
       $imagename1=null;$imagename2=null;$imagename3=null;
       if($request->hasFile('image1')){
@@ -209,12 +222,12 @@ class LandingPages extends Controller
               'b3_n'=>$request->b3_n,'b3_c'=>$request->b3_c,'b3_d'=>$request->b3_d,'b3_t'=>$request->b3_t,
               'image1'=>$imagename1,'image2'=>$imagename2,'image3'=>$imagename3);
       file_put_contents($path,json_encode($data));
-      $this->sendDataInner();
+      $this->sendDataInner($request->fileName);
       return 'Form Submitted Successfully';
 
     }
     else if($request->Submit=='Save as Draft'){
-      $path = 'json/draft_inner/draft_inner.json';
+      $path = 'json/draft_inner/'.$request->fileName.'.json';
       $path1 = 'json/draft_inner';
       $imagename1=null;$imagename2=null;$imagename3=null;
       if($request->hasFile('image1')){
@@ -243,30 +256,35 @@ class LandingPages extends Controller
 
   public function innerForm2(Request $request){
     if($request->session()->get('role')=='admin'){
-      return view('adminForms/innerForm2');
+      $path = 'json/inner2/'.$request->fileName.'.json';
+      if(!file_exists($path)){
+        $myFile = fopen($path,"w");
+        copy('json/inner2/inner2.json',$path);
+      }
+      return view('adminForms/innerForm2')->with('fileName',$request->fileName);
     }
     return back();
   }
-  public function sendDataInner2(){
-    $path1 = 'json/inner2.json';
-    $path2 = 'json/FormData/inner_f2.json';
+  public function sendDataInner2($fileName){
+    $path1 = 'json/inner2/'.$fileName.'.json';
+    $path2 = 'json/FormData/template_inner2/'.$fileName.'.json';
     $data1 = file_get_contents($path1);
     $mod1 = file_get_contents($path2);
     $data = json_decode($data1);
     $mod = json_decode($mod1);
     $data->section1->title = $mod->b1_t==null?$data->section1->title:$mod->b1_t;
-    $data->section1->image = $mod->image==null?$data->section1->image:'banners/inner2/'.$mod->image;
+    $data->section1->image = $mod->image==null?$data->section1->image:'../banners/inner2/'.$mod->image;
     $data->section1->title_sub = $mod->b1_s==null?$data->section1->title_sub:$mod->b1_s;
     $data->section1->description1 = $mod->b1_d==null?$data->section1->description1:$mod->b1_d;
     $data->section1->description2 = $mod->b1_d==null?$data->section1->description2:null;
     $data->section1->description3 = $mod->b1_d==null?$data->section1->description3:null;
-    $data->section1->video->src = $mod->video1==null?$data->section1->video->src:'banners/inner2/'.$mod->video1;
+    $data->section1->video->src = $mod->video1==null?$data->section1->video->src:'../banners/inner2/'.$mod->video1;
     $data->section1->button2->link = $mod->b1_l==null?$data->section1->button2->link:$mod->b1_l;
     $data->section3->title = $mod->b2_t==null?$data->section3->title:$mod->b2_t;
     if($mod->b2_n!=null){
       $num = $mod->b2_n;
       $num = $num%4;
-      $data->section3->content[$num]->image = 'banners/inner2/'.$mod->image1;
+      $data->section3->content[$num]->image = '../banners/inner2/'.$mod->image1;
       $data->section3->content[$num]->title=$mod->b2_s;
       $data->section3->content[$num]->description=$mod->b2_d;
     }
@@ -287,15 +305,15 @@ class LandingPages extends Controller
     $data->section5->section5_sub1->button_wrap->buttons[1]->link = $mod->b5_l2==null?$data->section5->section5_sub1->button_wrap->buttons[1]->link:$mod->b5_l2;
     if($mod->b6_n!=null){
       $num = $mod->b6_n%2;
-      $data->section6->contents[$num]->image = 'banners/inner2/'.$mod->image2;
-      $data->section6->contents[$num]->button->link = 'banners/inner2/'.$mod->video2;
+      $data->section6->contents[$num]->image = '../banners/inner2/'.$mod->image2;
+      $data->section6->contents[$num]->button->link = '../banners/inner2/'.$mod->video2;
       $data->section6->contents[$num]->title = $mod->b6_t;
       $data->section6->contents[$num]->description = $mod->b6_d;
     }
     if($mod->b7_n!=null){
       $num = $mod->b7_n%3;
-      $data->section7->contents[$num]->image = 'banners/inner2/'.$mod->image3;
-      $data->section7->contents[$num]->button->link = 'banners/inner2/'.$mod->video3;
+      $data->section7->contents[$num]->image = '../banners/inner2/'.$mod->image3;
+      $data->section7->contents[$num]->button->link = '../banners/inner2/'.$mod->video3;
       $data->section7->contents[$num]->title = $mod->b7_t;
       $data->section7->contents[$num]->description = $mod->b7_d;
     }
@@ -307,7 +325,7 @@ class LandingPages extends Controller
       return back();
     }
     if($request->Submit == 'Submit'){
-      $path = 'json/FormData/inner_f2.json';
+      $path = 'json/FormData/template_inner2/'.$request->fileName.'.json';
       $path1 = 'banners/inner2';
       $imagename=null;$imagename1 = null;$imagename2= null;$imagename3 = null;$videoname1 = null;$videoname2 = null;$videoname3=null;
       if($request->hasFile('image')){
@@ -353,11 +371,11 @@ class LandingPages extends Controller
             'b7_n'=>$request->b7_n,'b7_d'=>$request->b7_d,'image1'=>$imagename1,'image2'=>$imagename2,'image3'=>$imagename3,
             'video1'=>$videoname1,'video2'=>$videoname2,'video3'=>$videoname3,'image'=>$imagename);
       file_put_contents($path,json_encode($data));
-      $this->sendDataInner2();
+      $this->sendDataInner2($request->fileName);
       return 'Form Saved Successfully';
     }
     else if($request->Submit=='Save as Draft'){
-      $path = 'json/draft_inner2/draft_inner2.json';
+      $path = 'json/draft_inner2/'.$request->fileName.'.json';
       $path1 = 'json/draft_inner2';
       $imagename=null;$imagename1 = null;$imagename2= null;$imagename3 = null;$videoname1 = null;$videoname2 = null;$videoname3=null;
       if($request->hasFile('image')){
@@ -409,21 +427,26 @@ class LandingPages extends Controller
 
   public function innerForm3(Request $request){
     if($request->session()->get('role')=='admin'){
-      return view('adminForms/innerForm3');
+      $path = 'json/inner3/'.$request->fileName.'.json';
+      if(!file_exists($path)){
+        $myFile = fopen($path,"w");
+        copy('json/inner3/inner3.json',$path);
+      }
+      return view('adminForms/innerForm3')->with('fileName',$request->fileName);
     }
     return back();
   }
-  public function sendDataInner3(){
-    $path1 = 'json/inner3.json';
-    $path2 = 'json/FormData/inner_f3.json';
+  public function sendDataInner3($fileName){
+    $path1 = 'json/inner3/'.$fileName.'.json';
+    $path2 = 'json/FormData/template_inner3/'.$fileName.'.json';
     $data1 = file_get_contents($path1);
     $mod1 = file_get_contents($path2);
     $data = json_decode($data1);
     $mod = json_decode($mod1);
     $data->section1->title = $mod->b1_t==null? $data->section1->title: $mod->b1_t;
-    $data->section1->image = $mod->image1==null? $data->section1->image : 'banners/inner3/'.$mod->image1;
+    $data->section1->image = $mod->image1==null? $data->section1->image : '../banners/inner3/'.$mod->image1;
     $data->section1->image_wrap = $data->section1->image;
-    $data->section1->video->src = $mod->video1==null?$data->section1->video->src:'banners/inner3/'.$mod->video1;
+    $data->section1->video->src = $mod->video1==null?$data->section1->video->src:'../banners/inner3/'.$mod->video1;
     $data->section1->button2->link=$mod->b1_l==null?$data->section1->button2->link:$mod->b1_l;
     $data->section1->title_sub = $mod->b1_s==null?$data->section1->title_sub: $mod->b1_s;
     $data->section1->description1 = $mod->b1_d == null?$data->section1->description1: $mod->b1_d;
@@ -436,19 +459,19 @@ class LandingPages extends Controller
         $num = $num % 4;
         $data->section6->container2[$num]->link = $mod->b2_l;
         $data->section6->container2[$num]->description = $mod->b2_d;
-        $data->section6->container2[$num]->image = 'banners/inner3/'.$mod->image2;
+        $data->section6->container2[$num]->image = '../banners/inner3/'.$mod->image2;
       }
       else{
         $data->section6->container1[$num]->link = $mod->b2_l;
         $data->section6->container1[$num]->description = $mod->b2_d;
-        $data->section6->container1[$num]->image = 'banners/inner3/'.$mod->image2;
+        $data->section6->container1[$num]->image = '../banners/inner3/'.$mod->image2;
       }
     }
     if(($mod->b3_n!=null)){
       $num = $mod->b3_n;
       $num = $num % 3;
-      $data->section8->container[$num]->background = 'banners/inner3/'.$mod->image3;
-      $data->section8->container[$num]->image = 'banners/inner3/'.$mod->image3;
+      $data->section8->container[$num]->background = '../banners/inner3/'.$mod->image3;
+      $data->section8->container[$num]->image = '../banners/inner3/'.$mod->image3;
       $data->section8->container[$num]->title = $mod->b3_t;
       $data->section8->container[$num]->name = $mod->b3_c;
       $data->section8->container[$num]->description = $mod->b3_d;
@@ -457,19 +480,19 @@ class LandingPages extends Controller
       $num = $mod->b4_n % 11;
       if($num < 4){
         $data->section9->container1[$num]->link = $mod->b4_l;
-        $data->section9->container1[$num]->image = 'banners/inner3/'.$mod->image4;
+        $data->section9->container1[$num]->image = '../banners/inner3/'.$mod->image4;
         $data->section9->container1[$num]->title = $mod->b4_t;
       }
       else if($num<7){
         $num = $num - 4;
         $data->section9->container2[$num]->link = $mod->b4_l;
-        $data->section9->container2[$num]->image = 'banners/inner3/'.$mod->image4;
+        $data->section9->container2[$num]->image = '../banners/inner3/'.$mod->image4;
         $data->section9->container2[$num]->title = $mod->b4_t;
       }
       else{
         $num = $num - 7;
         $data->section9->container3[$num]->link = $mod->b4_l;
-        $data->section9->container3[$num]->image = 'banners/inner3/'.$mod->image4;
+        $data->section9->container3[$num]->image = '../banners/inner3/'.$mod->image4;
         $data->section9->container3[$num]->title = $mod->b4_t;
       }
     }
@@ -480,7 +503,7 @@ class LandingPages extends Controller
       return back();
     }
     if($request->Submit == 'Submit'){
-        $path = 'json/FormData/inner_f3.json';
+        $path = 'json/FormData/template_inner3/'.$request->fileName.'.json';
         $path1 = 'banners/inner3';
         $imagename1=null;$imagename2=null;$imagename3=null;$videoname1=null;$imagename4=null;
         if($request->hasFile('video1')){
@@ -514,11 +537,11 @@ class LandingPages extends Controller
                 'b4_t'=>$request->b4_t,'b4_n'=>$request->b4_n,'b4_l'=>$request->b4_l,
                 'image1'=>$imagename1,'image2'=>$imagename2,'image3'=>$imagename3,'video1'=>$videoname1,'image4'=>$imagename4);
         file_put_contents($path,json_encode($data));
-        $this->sendDataInner3();
+        $this->sendDataInner3($request->fileName);
         return 'Form Submitted Successfully';
     }
     else if($request->Submit=='Save as Draft'){
-      $path = 'json/draft_inner3/draft_inner3.json';
+      $path = 'json/draft_inner3/'.$request->fileName.'.json';
       $path1 = 'json/draft_inner3';
       $imagename1=null;$imagename2=null;$imagename3=null;$videoname1=null;$imagename4=null;
       if($request->hasFile('video1')){
@@ -558,16 +581,21 @@ class LandingPages extends Controller
 
   public function innerForm4(Request $request){
     if($request->session()->get('role')=='admin'){
-      return view('adminForms/innerForm4');
+      $path1 = 'json/inner4/'.$request->fileName.'.json';
+      if(!file_exists($path1)){
+        $myFile = fopen($path1,"w");
+        copy('json/inner4/inner4.json',$path1);
+      }
+      return view('adminForms/innerForm4')->with('filename',$request->fileName);
     }
     return back();
   }
-  public function sendDataInner4(){
-    $path1 = 'json/inner4.json';
-    $path2 = 'json/FormData/inner_f4.json';
+  public function sendDataInner4($fileName){
+    $path1 = 'json/inner4/'.$fileName.'.json';
+    $path2 = 'json/FormData/template_inner4/'.$fileName.'.json';
     $data = json_decode(file_get_contents($path1));
     $mod = json_decode(file_get_contents($path2));
-    $data->video_banner->src = $mod->video1==null?$data->video_banner->src: 'banners/inner4/'.$mod->video1;
+    $data->video_banner->src = $mod->video1==null?$data->video_banner->src: '../banners/inner4/'.$mod->video1;
     $data->video_banner->text->p = $mod->b1_t==null?$data->video_banner->text->p: $mod->b1_t;
     $data->innovation->sub_title = $mod->b2_t==null?$data->innovation->sub_title:$mod->b2_t;
     $data->innovation->descriptions = $mod->b2_d==null?$data->innovation->descriptions:$mod->b2_d;
@@ -576,7 +604,7 @@ class LandingPages extends Controller
       $data->carousel->items = array();
       for($i=0;$i<count($mod->b3_t);$i++){
         $object = new \stdClass();
-        $object->image='banners/inner4/'.$mod->videos[$i];
+        $object->image='../banners/inner4/'.$mod->videos[$i];
         $object->title=$mod->b3_t[$i];
         $object->iframe=$mod->b3_l[$i];
         $data->carousel->items[] = $object;
@@ -586,7 +614,7 @@ class LandingPages extends Controller
       $data->testimonial->carousel = array();
       for($i=0;$i<count($mod->b4_t);$i++){
         $object = new \stdClass();
-        $object->image = 'banners/inner4/'.$mod->images[$i];
+        $object->image = '../banners/inner4/'.$mod->images[$i];
         $object->title = $mod->b4_t[$i];
         $object->description=$mod->b4_d[$i];
         $object->buttons = [];
@@ -627,7 +655,7 @@ class LandingPages extends Controller
       for($i=0;$i<count($mod->b6_t);$i++){
         $object = new \stdClass();
         $object->title=$mod->b6_t[$i];
-        $name = 'banners/inner4/'.$mod->b6_i[$i];
+        $name = '../banners/inner4/'.$mod->b6_i[$i];
         $object->image =$name;
         $object->description = $mod->b6_d[$i];
         $data->offerings->contents[] = $object;
@@ -638,7 +666,7 @@ class LandingPages extends Controller
       for($i=0;$i<count($mod->b7_t);$i++){
         $object = new \stdClass();
         $object->title=$mod->b7_t[$i];
-        $object->image ='banners/inner4/'.$mod->b7_i[$i];
+        $object->image ='../banners/inner4/'.$mod->b7_i[$i];
         $object->description = $mod->b7_d[$i];
         $data->partners->contents[] = $object;
       }
@@ -660,7 +688,10 @@ class LandingPages extends Controller
       return back();
     }
     if($request->Submit == 'Submit'){
-      $path = 'json/FormData/inner_f4.json';
+      $path = 'json/FormData/template_inner4/'.$request->fileName.'.json';
+      if(!file_exists($path)){
+        $myFile = fopen($path,"w");
+      }
       $path1 = 'banners/inner4';
       $videoname1 = null;$videoname2=null;
       $images[]=null;$videos = array();$images2 = array();$b7_i=array();
@@ -702,11 +733,14 @@ class LandingPages extends Controller
               'b7_t'=>$request->b7_t,'b7_d'=>$request->b7_d,'b7_i'=>$b7_i,'b8_t'=>$request->b8_t,
               'b8_d'=>$request->b8_d);
       file_put_contents($path,json_encode($array));
-      $this->sendDataInner4();
+      $this->sendDataInner4($request->fileName);
       return 'Form Saved Successfully';
     }
     else if($request->Submit=='Save as Draft'){
-      $path = 'json/draft_inner4/draft_inner4.json';
+      $path = 'json/draft_inner4/'.$request->fileName.'.json';
+      if(!file_exists($path)){
+        $myFile = fopen($path,"w");
+      }
       $path1 = 'json/draft_inner4';
       $videoname1 = null;$videoname2=null;
       $images[]=null;$videos = array();$images2 = array();$b7_i=array();
@@ -754,14 +788,19 @@ class LandingPages extends Controller
 
   public function innerFormBlank(Request $request){
     if($request->session()->get('role')=='admin'){
-      return view('adminForms/innerFormBlank');
+      $path = 'json/innerblank/'.$request->fileName.'.json';
+      if(!file_exists($path)){
+        $myFile = fopen($path,"w");
+        copy('json/innerblank/innerblank.json',$path);
+      }
+      return view('adminForms/innerFormBlank')->with('fileName',$request->fileName);
     }
     return back();
   }
-  public function sendDataInnerBlank(){
-    $path1 = 'json/innerblank.json';
+  public function sendDataInnerBlank($fileName){
+    $path1 = 'json/innerblank/'.$fileName.'.json';
     $data = json_decode(file_get_contents($path1));
-    $mod = json_decode(file_get_contents('json/FormData/inner_blank1.json'));
+    $mod = json_decode(file_get_contents('json/FormData/template_blank/'.$fileName.'.json'));
     if($mod->b1_l[0]!=null){
       $data->section1->nav=array();
       for($i=0;$i<count($mod->b1_l);$i++){
@@ -794,16 +833,16 @@ class LandingPages extends Controller
       return back();
     }
     if($request->Submit == 'Submit'){
-      $path = 'json/FormData/inner_blank1.json';
+      $path = 'json/FormData/template_blank/'.$request->fileName.'.json';
       $data = array('b1_l'=>$request->b1_l,'b1_t'=>$request->b1_t,'topic'=>$request->topic,
             'subtitle1'=>$request->subtitle1,'points1'=>$request->points1,'subtitle2'=>$request->subtitle2,
           'subtitle3'=>$request->subtitle3,'points2'=>$request->points2);
       file_put_contents($path,json_encode($data));
-      $this->sendDataInnerBlank();
+      $this->sendDataInnerBlank($request->fileName);
       return 'Form Submitted Successfully';
     }
     else if($request->Submit=='Save as Draft'){
-      $path = 'json/draft_blank/draft_blank.json';
+      $path = 'json/draft_blank/'.$request->fileName.'.json';
       $data = array('b1_l'=>$request->b1_l,'b1_t'=>$request->b1_t,'topic'=>$request->topic,
             'subtitle1'=>$request->subtitle1,'points1'=>$request->points1);
       file_put_contents($path,json_encode($data));
@@ -813,13 +852,18 @@ class LandingPages extends Controller
 
   public function innerFormBlank1(Request $request){
     if($request->session()->get('role')=='admin'){
-      return view('adminForms/innerFormBlank1');
+      $path = 'json/innerblank2/'.$request->fileName.'.json';
+      if(!file_exists($path)){
+        $myFile = fopen($path,"w");
+        copy('json/innerblank2/innerblank2.json',$path);
+      }
+      return view('adminForms/innerFormBlank1')->with('fileName',$request->fileName);
     }
     return back();
   }
-  public function sendDataInnerBlank2(){
-    $path1 = 'json/innerblank2.json';
-    $path2 = 'json/FormData/inner_blank2.json';
+  public function sendDataInnerBlank2($fileName){
+    $path1 = 'json/innerblank2/'.$fileName.'.json';
+    $path2 = 'json/FormData/template_blank2/'.$fileName.'.json';
     $mod = json_decode(file_get_contents($path2));
     $data = json_decode(file_get_contents($path1));
     if($mod->b1l_t[0]!=null){
@@ -847,7 +891,7 @@ class LandingPages extends Controller
         }
       }
       $data->section2->title = $mod->b2_t==null?$data->section2->title:$mod->b2_t;
-      $data->section2->image = $mod->image1==null?$data->section2->image:'banners/blank2/'.$mod->image1;
+      $data->section2->image = $mod->image1==null?$data->section2->image:'../banners/blank2/'.$mod->image1;
       if($mod->b2t_t[0]!=null){
         $data->section2->content1=array();
         for($i=0;$i<count($mod->b2t_t);$i++){
@@ -879,7 +923,7 @@ class LandingPages extends Controller
       return back();
     }
     if($request->Submit == 'Submit'){
-      $path = 'json/FormData/inner_blank2.json';
+      $path = 'json/FormData/template_blank2/'.$request->fileName.'.json';
       $image1=null;
       if($request->image1!=null){
         $image1 = $request->image1->getClientOriginalName();
@@ -890,12 +934,12 @@ class LandingPages extends Controller
               'b2_t'=>$request->b2_t,'image1'=>$image1,'b2t_t'=>$request->b2t_t,'b2t_d'=>$request->b2t_d,
               'b2t_l'=>$request->b2t_l,'b2b_t'=>$request->b2b_t,'b2b_d'=>$request->b2b_d,'b2b_l'=>$request->b2b_l);
       file_put_contents($path,json_encode($data));
-      $this->sendDataInnerBlank2();
+      $this->sendDataInnerBlank2($request->fileName);
       return 'Form Submitted Successfully';
 
     }
     else if($request->Submit=='Save as Draft'){
-      $path = 'json/draft_blank2/draft_blank2.json';
+      $path = 'json/draft_blank2/'.$request->fileName.'.json';
       $data = array('b1l_t'=>$request->b1l_t,'b1l_d'=>$request->b1l_d,'b1l_l'=>$request->b1l_l,
                 'b1r_t'=>$request->b1r_t,'b1r_d'=>$request->b1r_d,'b1r_l'=>$request->b1r_l);
       file_put_contents($path,json_encode($data));

@@ -62,7 +62,7 @@
 
             <ul type="disc" v-for="item1 in init_data.section1.ul_2" :key="item1.id" style="list-style-type: disc;">
               <li>{{item1}}</li>
-      
+
             </ul>
           </v-col>
         </v-row>
@@ -119,6 +119,7 @@ import topBar from "./shared/topBar.vue";
 import topSwiper from "./shared/swiperCarousel.vue";
 
 export default {
+  props:['filename'],
   components: { topBar, topSwiper },
   data: () => ({
     offsetTop: 0,
@@ -126,7 +127,7 @@ export default {
     init_data: {}
   }),
   created() {
-    axios.get('json/innerblank.json')
+    axios.get('../json/innerblank/'+this.filename+'.json')
     .then(response => {
       this.init_data = response.data;
     })

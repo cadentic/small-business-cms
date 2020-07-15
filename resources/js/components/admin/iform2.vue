@@ -89,7 +89,7 @@
       <div></div>
       <div class="ma">
         <center><h1>Inner Form 2</h1></center>
-        <form method="post" action="innerForm2" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
           <center><h2>Banner 1</h2></center>
           <label for="title">Title</label>
@@ -453,7 +453,8 @@
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
-        source: String
+        source: String,
+        filename: String
     },
     mounted: function(){
       console.log('Contacts Component Loaded...');
@@ -461,7 +462,7 @@
     methods: {
         Edit: function(e){
           alert('Previous Draft');
-          let data = axios.get('../json/draft_inner2/draft_inner2.json').then(res=>{console.log(res);
+          let data = axios.get('../json/draft_inner2/'+this.filename+'.json').then(res=>{console.log(res);
             this.b1_t = res.data.b1_t;this.b1_s=res.data.b1_s;this.b1_d=res.data.b1_d;this.b1_l=res.data.b1_l;
             this.b2_t=res.data.b2_t;this.b2_n=res.data.b2_n;this.b2_s=res.data.b2_s;this.b2_d=res.data.b2_d;
             this.b3_t=res.data.b3_t;this.b3_d=res.data.b3_d;this.b3_l=res.data.b3_l;

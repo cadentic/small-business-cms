@@ -1,6 +1,6 @@
 <template>
   <div class="flexibility">
-    
+
     <mainPageTopBar :style="'order:' + init_data.header.order" :init_data="init_data.header"></mainPageTopBar>
 
     <!-- Tab panes -->
@@ -41,7 +41,7 @@
       </swiper>
     </section>
 
-    <topSwiper :style="'order:' + pagedata.banner.id"></topSwiper>
+    <topSwiper :filename="filename" :style="'order:' + pagedata.banner.id"></topSwiper>
 
     <div id="topsolusec" :style="'height:120px; order:' + pagedata.crt.id">
       <swiper :options="swiperOption" :style="pagedata.crt.bg_color">
@@ -123,14 +123,15 @@ import 'vuetify-media-player/src/style.styl';
 import axios from 'axios'
 
 export default {
+  props:['filename'],
   name: "maincomponent",
   created() {
     const app = document.createElement('div');
     app.setAttribute('data-app', true);
     document.body.append(app);
-    axios.get(`http://localhost:8000/import_client_main`)
+    axios.get('../json/client_main/'+this.filename+'.json')
     .then(response => {
-      this.pagedata = response.data;
+      this.pagedata = response.data; console.log(response.data)
     })
     .catch(e => {
       this.errors.push(e)
@@ -224,7 +225,7 @@ export default {
   },
   methods: {
     data_loading() {
-        axios.get('json/client_main.json')
+        axios.get('../json/client_main.json')
             .then(res => {
                 this.init_data = res.data;
             }).catch(err => {

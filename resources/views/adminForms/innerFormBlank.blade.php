@@ -28,7 +28,7 @@
     </head>
     <body>
         <div id="app">
-          <ibform></ibform>
+          <ibform filename={{$fileName}}></ibform>
         </div>
 
         <script src="{{ mix('js/app.js') }}"></script>

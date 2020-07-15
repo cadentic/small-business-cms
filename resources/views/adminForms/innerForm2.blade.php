@@ -17,18 +17,18 @@
         <link href="https://vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">
         <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.2.95/css/materialdesignicons.css" rel="stylesheet">
-        <link href="assets/css/jquery-multitabs.css" rel="stylesheet" media="all" />
-        <link href="assets/css/animate.css" rel="stylesheet" media="all" />
-        <link href="assets/css/main.css" rel="stylesheet" media="all" />
-        <link href="assets/css/style.css" rel="stylesheet" media="all" />
-        <link href="assets/css/responsive.css" rel="stylesheet" media="all" />
-        <link href="assets/css/crafted.css" rel="stylesheet" media="all" />
+        <link href="../assets/css/jquery-multitabs.css" rel="stylesheet" media="all" />
+        <link href="../assets/css/animate.css" rel="stylesheet" media="all" />
+        <link href="../assets/css/main.css" rel="stylesheet" media="all" />
+        <link href="../assets/css/style.css" rel="stylesheet" media="all" />
+        <link href="../assets/css/responsive.css" rel="stylesheet" media="all" />
+        <link href="../assets/css/crafted.css" rel="stylesheet" media="all" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="all" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     </head>
     <body>
         <div id="app">
-          <iform2></iform2>
+          <iform2 filename = {{$fileName}}></iform2>
         </div>
 
         <script src="{{ mix('js/app.js') }}"></script>

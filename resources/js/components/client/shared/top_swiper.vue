@@ -59,9 +59,10 @@
 import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
+  props:['filename'],
   name: 'topSwiper',
   created() {
-    axios.get(`http://localhost:8000/import_client_main`)
+    axios.get('../json/client_main/'+this.filename+'.json')
     .then(response => {
       this.pagedata = response.data;
     })
@@ -92,7 +93,7 @@ export default {
       },
       images: [
         {
-          url: "url(/assets/images/banner3.jpg)",
+          url: "url(assets/images/banner3.jpg)",
           content:
             "<h4>Hello world</h4>" +
             "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>" +
