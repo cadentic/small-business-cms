@@ -23,6 +23,8 @@ import forgotpasswordcomponent from './components/client/ForgotPasswordComponent
 import downloadresourcescomponent from './components/client/DownloadResourcesComponent.vue';
 import invoicecreate from './components/client/InvoiceCreate.vue';
 import invoiceall from './components/client/InvoiceAll.vue';
+import login from './components/client/Login.vue';
+import navb from './components/client/Nav.vue';
 
 
 //added by classic
@@ -123,6 +125,8 @@ const app = new Vue({
         'downloadresourcescomponent' : downloadresourcescomponent,
         'invoicecreate': invoicecreate,
         'invoiceall': invoiceall,
+        'login': login,
+        'navb': navb,
         //added by classic
         'invoice' : invoice,
         'enquiry' : enquiry,

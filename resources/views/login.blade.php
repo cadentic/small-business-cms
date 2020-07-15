@@ -1,46 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Login</title>
-    <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <!-- JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <div class="jumbotron" style="text-align: center">
-      <h1>Login</h1>
-    </div>
-    <div class="container">
-      @if ($message = Session::get('error'))
-       <div class="alert alert-danger alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-       </div>
-      @endif
-      @if (count($errors) > 0)
-        <div class="alert alert-danger">
-         <ul>
-         @foreach($errors->all() as $error)
-          <li>{{ $error }}</li>
-         @endforeach
-         </ul>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>
+        <title>Laravel</title>
+
+        <!-- Fonts -->
+
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Josefin+Sans:100i,300,400,700|Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.x/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">
+        <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.2.95/css/materialdesignicons.css" rel="stylesheet">
+        <link href="assets/css/jquery-multitabs.css" rel="stylesheet" media="all" />
+        <link href="assets/css/animate.css" rel="stylesheet" media="all" />
+        <link href="assets/css/main.css" rel="stylesheet" media="all" />
+        <link href="assets/css/style.css" rel="stylesheet" media="all" />
+        <link href="assets/css/responsive.css" rel="stylesheet" media="all" />
+        <link href="assets/css/crafted.css" rel="stylesheet" media="all" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="all" />
+    </head>
+    <body>
+        <div id="app">
+            <login/>
+
         </div>
-      @endif
-      <form action="{{action('IndexController@login')}}" method="post" class="form-group" enctyp="multipart/form-data">
-        <input type="hidden" name="csrfToken" value="{{csrf_token()}}"
-        <label for="email">Email id:</label>
-        <input type="email" name="email" class="form-control" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" class="form-control" required>
-        <br>
-        <input type="submit" value="Login" name="login" class="btn btn-primary">
-      </form>
-    </div>
-  </body>
+        <script src="{{ mix('js/app.js') }}"></script>
+    </body>
+
 </html>

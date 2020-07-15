@@ -425,7 +425,7 @@ class IndexController extends Controller
           {
             $req->session()->regenerate();
             $req->session()->put(['role'=>$admin->{'role'}, 'name'=>$admin->{'name'}, 'email'=>$admin->{'email'}]);
-            return redirect('/admin');
+            return 'admin';
           }
         }
       }
@@ -442,7 +442,7 @@ class IndexController extends Controller
             {
               $req->session()->regenerate();
               $req->session()->put(['role'=>$employee->{'role'}, 'name'=>$employee->{'name'}, 'email'=>$employee->{'email'}, 'mobile'=>$employee->{'mobile'}]);
-              return redirect('/employee');
+              return 'employee';
             }
             else
             {
@@ -464,7 +464,7 @@ class IndexController extends Controller
             {
               $req->session()->regenerate();
               $req->session()->put(['role'=>$business->{'role'}, 'name'=>$business->{'name'}, 'email'=>$business->{'email'}, 'mobile'=>$business->{'mobile'}]);
-              return redirect('/client_main');
+              return 'client';
             }
             else
             {
