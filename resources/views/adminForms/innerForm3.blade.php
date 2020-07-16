@@ -28,7 +28,7 @@
     </head>
     <body>
         <div id="app">
-          <iform3></iform3>
+          <iform3 filename="{{$fileName}}"></iform3>
         </div>
 
         <script src="{{ mix('js/app.js') }}"></script>

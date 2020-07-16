@@ -300,7 +300,7 @@ export default {
     init_data: Object
   },
   created() {
-    axios.get('json/menu.json')
+    axios.get('../json/menu.json')
     .then(response => {
       this.menudata = response.data;
       this.select_menu = this.get_submenu(0);

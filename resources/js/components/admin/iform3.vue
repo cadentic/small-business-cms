@@ -89,7 +89,7 @@
       <div></div>
       <div class="ma">
         <center><h1>Inner Form 3</h1></center>
-        <form method="post" action="innerForm3" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
           <center><h2>Banner 1</h2></center>
           <label for="title">Title</label>
@@ -102,7 +102,7 @@
           <input type="file" id="video1" name="video1" placeholder="Enter Video..."><br/>
 
           <label for="text">Link</label>
-          <input type="text" id="b1_l" name="b1_l" placeholder="Enter link..."><br/>
+          <input type="text" id="b1_l" name="b1_l" placeholder="Enter link..." v-model="b1_l"><br/>
 
           <label for="subtitle">Subtitle</label>
           <input type="text" id="b1_s" name="b1_s" placeholder="Enter Subtitle..." v-model="b1_s"><br/>
@@ -420,7 +420,8 @@
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
-        source: String
+        source: String,
+        filename: String
     },
     mounted: function(){
       console.log('Contacts Component Loaded...');
@@ -428,7 +429,7 @@
     methods: {
         Edit: function(e){
           alert('Previous Draft');
-          let data = axios.get('../json/draft_inner3/draft_inner3.json').then(res=>{console.log(res);
+          let data = axios.get('../../json/draft_inner3/'+this.filename+'.json').then(res=>{console.log(res);
             this.b1_t = res.data.b1_t;
             this.b1_s = res.data.b1_s;
             this.b1_d = res.data.b1_d;

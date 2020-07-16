@@ -71,5 +71,5 @@
         "Sub Tab Content 4 4"
     ],
     "search_label": "What are you looking for?",
-    "logo": "assets/images/logo.png"
+    "logo": "../assets/images/logo.png"
 }

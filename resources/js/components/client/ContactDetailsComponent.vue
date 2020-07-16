@@ -6,7 +6,7 @@
             <v-container>
                 <h2 class=" mt-5">Ticket communication history <span class="overline">Ticket {{ ticket }}</span></h2>
                 <v-row class="nowrap-overflow">
-                    <v-col cols=12> 
+                    <v-col cols=12>
                         <v-expansion-panels model="panel" focusable multiple hover>
                             <v-expansion-panel v-for="(contact, index) in contact_history_list" :key="index">
                                 <v-expansion-panel-header><b>{{contact.author + ' via channel \'' + contact.channel + '\' ' + contact.date}}</b></v-expansion-panel-header>
@@ -17,8 +17,15 @@
                         </v-expansion-panels>
                     </v-col>
                 </v-row>
-            </v-container> 
-
+            </v-container>
+            <v-container>
+              <strong>Subject:</strong> {{this.subject}}
+            </v-container>
+            <v-container>
+              <v-row>
+                <strong>Admin replied:</strong> <div v-html="this.reply"></div>
+              </v-row>
+            </v-container>
             <v-container>
                 <h1 class="ticket-subject mb-5">Which track is enabled now ?</h1>
                 <v-row>
@@ -99,7 +106,7 @@
                         </v-card>
                     </v-col>
                 </v-row>
-            </v-container>   
+            </v-container>
 
             <footer :class="init_data.footer.class" :style="'background:' + init_data.footer.style.bgcolor" >
                 <div class="secpage">
@@ -152,7 +159,6 @@
 <script>
 import toolbar from './shared/toolbar.vue';
 import ChatComponent from './components/ChatComponent.vue';
-
 export default {
   components: {toolbar, ChatComponent},
   props: {
@@ -173,8 +179,11 @@ export default {
         assistance: "",
         documents: "",
         contacts: ""
-    }
+    },
+    reply: '',
+    subject: ''
   }),
+  props: ['ticket'],
   created() {
     axios.get('/json/innerblank.json')
     .then(response => {
@@ -183,7 +192,6 @@ export default {
     .catch(e => {
       this.errors.push(e)
     });
-
     // Get popular answers
     axios.get('/json/contact_history.json')
     .then(response => {
@@ -192,15 +200,24 @@ export default {
     .catch(e => {
       this.errors.push(e)
     });
-
+    let id = window.location.href.substring(window.location.href.lastIndexOf('/')+1);
+    axios.get('/json/tickets/'+this.ticket+'.json')
+    .then(response => {
+      this.reply = response.data[response.data.length-1].reply;
+      this.subject = response.data[0].subject;
+    })
+    .catch(e => {
+      this.errors.push(e)
+    });
     // Fiil default informations into the form
     this.ticket_update_form_data.contacts = "example1@example.com; example2@example.com; example3@example.com"
   },
   methods: {
     submitTicketForm() {
-
         // Send the form with axios
         // axios.post('', this.ticket_form_data);
+        let id = window.location.href.substring(window.location.href.lastIndexOf('/')+1);
+        axios.post('/contact/'+id, this.ticket_update_form_data).then((res)=>{console.log(res);}).catch((e)=>{console.log(e);});
     },
     handleOnChangeEvent(value) {
         // this.ticket_form_data is dynamically updated so you can use it for whatever you wamnt

@@ -1,0 +1,439 @@
+{
+    "sidebar": [
+        {
+            "link": "#",
+            "icon_class": "fa fa-users",
+            "text": "Service"
+        },
+        {
+            "link": "#",
+            "icon_class": "fa fa-line-chart",
+            "text": "ROI Calculator"
+        },
+        {
+            "link": "#",
+            "icon_class": "fa fa-cogs",
+            "text": "Upgrade Guide"
+        },
+        {
+            "link": "#",
+            "icon_class": "fa fa-desktop",
+            "text": "Software Demo"
+        }
+    ],
+    "section1": {
+        "id": "home",
+        "title": "Software-Defined Access",
+        "image": "../assets/images/soft-define/soft-dif-1.jpg",
+        "title_sub": "Get network speed, security, and peace of mind",
+        "description1": "Ease your network management worries. Cisco Software-Defined Access (SD-Access) gives you a single network fabric. You can set policy-based automation for users, devices, and things.",
+        "description2": "Provide access to any application, without compromising on security. All while gaining awareness of what is hitting your network.",
+        "description3": "And with automatic segmentation of users, devices, and applications, you can deploy and secure services faster.",
+        "alt": "Softwar Define Access",
+        "type": "video/mp4",
+        "button1": {
+            "text": "Watch video",
+            "link": "#",
+            "style": {
+                "color": "white"
+            }
+        },
+        "button2": {
+            "text": "Read news",
+            "link": "#"
+        },
+        "video": {
+            "src": "../assets/images/video.mp4"
+        },
+        "dialog": {
+            "max_width": "50%"
+        }
+    },
+    "section2": {
+        "nav": [
+            {
+                "link": "#pg1",
+                "text": "Banifites"
+            },
+            {
+                "link": "#pg2",
+                "text": "InsideCase"
+            },
+            {
+                "link": "#pg3",
+                "text": "Studies"
+            },
+            {
+                "link": "#pg4",
+                "text": "Partners"
+            }
+        ],
+        "contact": {
+            "label": "Contact",
+            "option": [
+                "Call Now",
+                "Page 1-2",
+                "Page 1-3"
+            ]
+        }
+    },
+    "section3": {
+        "id": "pg1",
+        "title": "What you can do with SD-Access",
+        "content": [
+            {
+                "image": "../assets/images/sd-access/sd-access-1.png",
+                "title": "Enhance security and compliance",
+                "description": "Use end-to-end segmentation to keep user, device, and application traffic separate without redesigning the network."
+            },
+            {
+                "image": "../assets/images/sd-access/sd-access-2.png",
+                "title": "Enhance security and compliance",
+                "description": "Use end-to-end segmentation to keep user, device, and application traffic separate without redesigning the network."
+            },
+            {
+                "image": "../assets/images/sd-access/sd-access-3.png",
+                "title": "Enhance security and compliance",
+                "description": "Use end-to-end segmentation to keep user, device, and application traffic separate without redesigning the network."
+            },
+            {
+                "image": "../assets/images/sd-access/sd-access-4.png",
+                "title": "Enhance security and compliance",
+                "description": "Use end-to-end segmentation to keep user, device, and application traffic separate without redesigning the network."
+            }
+        ],
+        "button_wrap": {
+            "class": "pg1-btn",
+            "style": {
+                "text_align": "center",
+                "width": "100%"
+            },
+            "buttons": [
+                {
+                    "link": "#",
+                    "class": "default-btn",
+                    "style": {
+                        "color": "white",
+                        "margin_right": "20px;"
+                    },
+                    "text": "Read More"
+                },
+                {
+                    "link": "#",
+                    "class": "second-btn",
+                    "style": {
+                        "color": " ",
+                        "margin_right": " "
+                    },
+                    "text": "Read More"
+                }
+            ]
+        }
+    },
+    "section4": {
+        "class": "cta-area",
+        "title": "SD-Access: A to Z",
+        "description": "Get a deep dive on SD-Access, and learn how it powers intent-based networking.",
+        "button": {
+            "link": "#",
+            "class": "read-btn",
+            "text": "Read E-Book"
+        }
+    },
+    "section5": {
+        "id": "pg2",
+        "section5_sub": {
+            "title": "Components of SD-Access",
+            "contents": [
+                {
+                    "link": "#",
+                    "text": "Wireless",
+                    "description": "Optimize, personalize, and secure your wireless network",
+                    "description_link": "",
+                    "description_label": ""
+                },
+                {
+                    "link": "#",
+                    "text": "Switches",
+                    "description": "Get a single fabric to help simplify and secure your digital-ready network.",
+                    "description_link": "",
+                    "description_label": ""
+                },
+                {
+                    "link": "#",
+                    "text": "Routers",
+                    "description": "Provide access to applications, services, and integrated technologies.",
+                    "description_link": "",
+                    "description_label": ""
+                },
+                {
+                    "link": "#",
+                    "text": "Cisco DNA Center",
+                    "description": "Manage SD-Access with a central dashboard across the entire network.",
+                    "description_link": "",
+                    "description_label": ""
+                },
+                {
+                    "link": "#",
+                    "text": "Identity Services Engine (ISE)",
+                    "description": "Simplify delivery of identify-based policy for users and devices​.",
+                    "description_link": "",
+                    "description_label": ""
+                },
+                {
+                    "link": "#",
+                    "text": "Cisco DNA subscriptions",
+                    "description": "Help to easily buy, manage, and upgrade your network and infrastructure software.",
+                    "description_link": "",
+                    "description_label": ""
+                },
+                {
+                    "link": "#",
+                    "text": "Services",
+                    "description": "Explore the services we offer for",
+                    "description_link": "#",
+                    "description_label": "switches, routers, and wireless."
+                },
+                {
+                    "link": "#",
+                    "text": "DevNet",
+                    "description": "Extend automation across the enterprise with open APIs",
+                    "description_link": "",
+                    "description_label": ""
+                }
+            ],
+            "button_wrap": {
+                "class": "csd-access-btn",
+                "style": {
+                    "text_align": "center",
+                    "width": "100%"
+                },
+                "buttons": [
+                    {
+                        "link": "#",
+                        "class": "default-btn",
+                        "text": "Read More",
+                        "style": {
+                            "color": "white",
+                            "margin_right": "20px"
+                        }
+                    },
+                    {
+                        "link": "#",
+                        "class": "second-btn",
+                        "text": "Read More",
+                        "style": {
+                            "color": "",
+                            "margin_right": ""
+                        }
+                    }
+                ]
+            }
+        },
+        "section5_sub1": {
+            "title": "Increase flexibility with Cisco DNA software subscriptions",
+            "description1": "Choose from three subscription tiers—Cisco DNA Essentials, Cisco DNA Advantage, and Cisco DNA Premier. Our flexible software suites are designed to address your automation and segmentation requirements with rich security.",
+            "description2": "Subscriptions are available in 3-, 5-, and 7-year terms. All include Cisco Software Support Service (SWSS).",
+            "button_wrap": {
+                "class": "csd-flexibility-btn",
+                "style": {
+                    "text_align": "center",
+                    "width": "100%"
+                },
+                "buttons": [
+                    {
+                        "link": "#",
+                        "class": "default-btn",
+                        "text": "Read More",
+                        "style": {
+                            "color": "white",
+                            "margin_right": "20px"
+                        }
+                    },
+                    {
+                        "link": "#",
+                        "class": "second-btn",
+                        "text": "Read More",
+                        "style": {
+                            "color": "",
+                            "margin_right": ""
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "section6": {
+        "class": "get-start-area",
+        "contents": [
+            {
+                "image": "../assets/images/get-start/start-img-1.jpg",
+                "title": "Children’s Hospital",
+                "description": "The hospital delivers excellent patient care by securely connecting and managing thousands of network devices.",
+                "button": {
+                    "link": "#",
+                    "class": "success-link",
+                    "text": "Watch Video",
+                    "icon": "fa fa-angle-right"
+                }
+            },
+            {
+                "image": "../assets/images/get-start/start-img-2.jpg",
+                "title": "Children’s Hospital",
+                "description": "The hospital delivers excellent patient care by securely connecting and managing thousands of network devices.",
+                "button": {
+                    "link": "#",
+                    "class": "success-link",
+                    "text": "Watch Video",
+                    "icon": "fa fa-angle-right"
+                }
+            }
+        ]
+    },
+    "section7": {
+        "class": "success-area",
+        "id": "pg3",
+        "title": "SD-Access success stories",
+        "contents": [
+            {
+                "image": "../assets/images/success/success-img-1.jpg",
+                "title": "Children’s Hospital",
+                "description": "The hospital delivers excellent patient care by securely connecting and managing thousands of network devices.",
+                "button": {
+                    "link": "#",
+                    "class": "success-link",
+                    "text": "Watch Video",
+                    "icon": "fa fa-angle-right"
+                }
+            },
+            {
+                "image": "../assets/images/success/success-img-2.jpg",
+                "title": "Children’s Hospital",
+                "description": "The hospital delivers excellent patient care by securely connecting and managing thousands of network devices.",
+                "button": {
+                    "link": "#",
+                    "class": "success-link",
+                    "text": "Watch Video",
+                    "icon": "fa fa-angle-right"
+                }
+            },
+            {
+                "image": "../assets/images/success/success-img-3.jpg",
+                "title": "Children’s Hospital",
+                "description": "The hospital delivers excellent patient care by securely connecting and managing thousands of network devices.",
+                "button": {
+                    "link": "#",
+                    "class": "success-link",
+                    "text": "Watch Video",
+                    "icon": "fa fa-angle-right"
+                }
+            }
+        ],
+        "button": {
+            "link": "#",
+            "text": "See all"
+        }
+    },
+    "section8": {
+        "class": "cadentic-about-area",
+        "title": "About Cisco Software-Defined Access​(SD-Access)",
+        "contents": [
+            "Cisco SD-Access helps organizations enable policy-based automation from the edge to the cloud.",
+            "SD-Access gives network architects and administrators the tools to orchestrate key business functions, such as: user mobility, secure segmentation, user onboarding, Internet of Things (IoT) integration, guest access, context-based troubleshooting, and data center and cloud integration.",
+            "Administrators can also now execute full network lifecycle tasks, including design, provisioning, operations, and assurance with Cisco DNA Center.",
+            "You can set network access in minutes for any user or device, to any application, without compromising on security"
+        ]
+    },
+    "section9": {
+        "class": "partnar-area",
+        "id": "pg4",
+        "title": "For partners",
+        "descriptions": [
+            {
+                "description_left": "Are you a Cisco partner?",
+                "button": {
+                    "link": "#",
+                    "text": "Log in"
+                },
+                "description_right": "to see additional resources."
+            },
+            {
+                "description_left": "Looking for a solution from a Cisco partner? Connect with our",
+                "button": {
+                    "link": "#",
+                    "text": "partner recosystem."
+                },
+                "description_right": ""
+            }
+        ]
+    },
+    "footer": {
+        "class": "secfooter",
+        "style": {
+            "bgcolor": "#E6F5FF"
+        },
+        "container1": [
+            {
+                "link": "#",
+                "text": "TERMS & CONDITION"
+            },
+            {
+                "link": "#",
+                "text": "ABOUT US"
+            }
+        ],
+        "container2": [
+            {
+                "link": "#",
+                "text": "CONTACT US"
+            },
+            {
+                "link": "#",
+                "text": "DIRECTORS"
+            }
+        ],
+        "container3": [
+            {
+                "link": "#",
+                "text": "DEVELOPERS"
+            },
+            {
+                "link": "#",
+                "text": "OUR CLIENTS"
+            }
+        ],
+        "container4": [
+            {
+                "link": "#",
+                "text": "CORPORATE ACTION"
+            },
+            {
+                "link": "#",
+                "text": "NATURE & MODE OF WORK"
+            }
+        ],
+        "socialicon": [
+            {
+                "class": "fa fa-twitter",
+                "bgcolor": "#26a6d1",
+                "link": "#"
+            },
+            {
+                "class": "fa fa-facebook",
+                "bgcolor": "#3b5998",
+                "link": "#"
+            },
+            {
+                "class": "fa fa-linkedin",
+                "bgcolor": "#007ab9",
+                "link": "#"
+            },
+            {
+                "class": "fa fa-instagram",
+                "bgcolor": "#b81a7e",
+                "link": "#"
+            }
+        ],
+        "copyright": "2019 Copyright"
+    }
+}

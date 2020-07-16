@@ -1,9 +1,9 @@
 <template>
 	<div>
     <topBar></topBar>
-    
+
 	<div>
-		
+
 			<!-- sidebar -->
 	<div class="sidebar-menu">
 		<ul>
@@ -56,13 +56,13 @@
           v-on="on"
         >
 		<span class="white-link">
-          <span class="fa fa-envelope"></span> 
+          <span class="fa fa-envelope"></span>
           <span>{{ init_data.appbar.contact.label }}</span>
           <span class="caret"></span>
       </span>
         </v-btn>
       </template>
-      <v-list>          
+      <v-list>
           <v-list-item-title v-for="(item, id) in init_data.appbar.option" :key="id">{{ item }}</v-list-item-title>
       </v-list>
     </v-menu>
@@ -143,7 +143,7 @@
 							<img :src="item.image" alt="">
 						</div>
 		          </v-col>
-		          <v-col cols="sm">		          	
+		          <v-col cols="sm">
 						<div class="testimonial-title">
 							<h2>{{ item.title }}</h2>
 							<p>{{ item.description }}</p>
@@ -182,7 +182,7 @@
 					<p>{{ init_data.about.current_tabcontent.description1 }}</p>
 					<p>{{ init_data.about.current_tabcontent.description2 }}</p>
 					<p>{{ init_data.about.current_tabcontent.description3 }}</p>
-					
+
 					<a :href="init_data.about.current_tabcontent.button.link" class="tabcontent-btn">{{ init_data.about.current_tabcontent.button.text }}</a>
 				</div>
 
@@ -191,7 +191,7 @@
 					<p>{{ content.description1 }}</p>
 					<p>{{ content.description2 }}</p>
 					<p>{{ content.description3 }}</p>
-					
+
 					<a :href="content.button.link" class="tabcontent-btn">{{ content.button.text }}</a>
 				</div>
 
@@ -405,6 +405,7 @@
 	import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 	export default {
+		props:['filename'],
       components: {  topBar, swiper, swiperSlide },
 	  data: () => ({
 	    offsetTop: 0,
@@ -505,7 +506,8 @@
 			this.swiper.slideTo(3, 1000, false);
 		},
 		created() {
-        axios.get('json/inner4.json')
+			console.log(this.filename);
+        axios.get('../json/inner4/'+this.filename+'.json')
         .then(response => {
           this.init_data = response.data;
         })

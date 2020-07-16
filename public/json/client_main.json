@@ -3,7 +3,7 @@
         "order": 1,
         "id": "vertmenu-sec",
         "search_box": "What are you looking for",
-        "img": "assets/images/logo.png",
+        "img": "../assets/images/logo.png",
         "img_link": "#",
         "bg_color": "#fffff"
     },
@@ -11,7 +11,7 @@
         "order": 3,
         "banner1": {
             "id": 1,
-            "bg_img": "assets/images/banner1.jpg",
+            "bg_img": "../assets/images/banner1.jpg",
             "title": "Zero-downtime migration using golden gate",
             "link": [
                 {
@@ -43,7 +43,7 @@
         },
         "banner2": {
             "id": 2,
-            "bg_img": "assets/images/banner2.jpg",
+            "bg_img": "../assets/images/banner2.jpg",
             "title": "On-premise to cloud migration",
             "link": [
                 {
@@ -61,10 +61,10 @@
         "banner3": {
             "id": 3,
             "bg_img": [
-                "url(/assets/images/banner3.jpg)",
-                "url(/assets/images/banner4.jpg)",
-                "url(/assets/images/banner5.jpg)",
-                "url(/assets/images/5042_banner_2.jpg)"
+                "url(../assets/images/banner3.jpg)",
+                "url(../assets/images/banner4.jpg)",
+                "url(../assets/images/banner5.jpg)",
+                "url(../assets/images/5042_banner_2.jpg)"
             ],
             "title": "Hello world!",
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",

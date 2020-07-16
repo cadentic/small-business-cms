@@ -1,0 +1,157 @@
+{
+    "section1": {
+        "nav": [
+            {
+                "link": "#pg1",
+                "text": "Page 1"
+            },
+            {
+                "link": "#pg2",
+                "text": "Page 2"
+            },
+            {
+                "link": "#pg3",
+                "text": "Page 3"
+            },
+            {
+                "link": "#pg4",
+                "text": "Page 4"
+            }
+        ],
+        "contact": {
+            "title": "Contact",
+            "option": [
+                "Call Now",
+                "Page 1-2",
+                "Page 1-3"
+            ]
+        },
+        "h3_1": "NDEDGE INFORMATICS PRIVATE LIMITED COMPANY PROFILE",
+        "h3_2": "Ndedge Informatics Private Limited offers",
+        "li": "INTRODUCTION",
+        "p": "Ndedge Informatics Private Limited is a leading global multi-skilled IT solution company with competent workforce and strong presence in India. With several years of expertise, quality delivery of service and quality integrated methodologies; Ndedge Informatics Private Limited have been able to carve out a niche for themselves as one of the most notable trailblazers in the IT Industry in India.  <br />Ndedge Informatics Private Limited uses an extremely competent global delivery method in providing quality-based solutions and professional services to its esteemed clients.<br />Our strongest advantage is our excellent pool of our skilled workforce; our skilled resource is recruited from the finest the industry can boast of in India. We can boast of a vibrant skilled resource that provides a vibrant combination of technological skills and strategic IT consultancy services.",
+        "style_1": "list-style-type: disc;",
+        "ul": [
+            "a full range of Oracle database administration configuration and support including or excluding real application cluster and dataguard.",
+            "Oracle cloud infrastructure configuration and support.",
+            "Virtual environment to cloud migration by Ravello.",
+            "BP for XaaS, DB2,laaS,Paas, and SaaS-enabled business environments ,",
+            "Setting up or implementing on-premise environments with Oracle data appliances,",
+            "Zero downtime migration for Oracle databases,",
+            "licensing for different OS, like Oracle Solaris and Oracle Linux ,Easy to use architecture for Oracle E-business suite,",
+            "On-premise to cloud migration,",
+            "Providing server hardware and network components from different vendors, Oracle Partners Network.",
+            "Support and configuration oracle sign-on."
+        ],
+        "h4_1": "Ndedge Informatics Private Limited has a solid client base that spans across several industries; in our focus market segment we have accumulated an enviable list of clients because of our customer centric approach.",
+        "h4_2":  "Ndedge Informatics Private Limited competitive advantage and source of value to our esteemed client stems not only from our expertise in rendering IT professional services, but from several aspect of our business model which consist of",
+        "ul_2": [
+            "technology and business competency centers,",
+            "rigorous programme and project management,",
+            "state of the art computing and communication infrastructure, client-centric approach account management,",
+            "Innovative offshore development approach and business continuity preparedness.We remain focus on our prime objective which is delivering high quality solutions to our clients"
+        ]
+    },
+    "section2": {
+        "style": "background:#E6F5FF;",
+        "row1": {
+            "title": "NDEDGE INFORMATICS PRIVATE LIMITED COMPANY PROFILE",
+            "sub_title": "INTRODUCTION",
+            "description": "Ndedge Informatics Private Limited is a leading global multi-skilled IT solution company with competent workforce and strong presence in India. With everal years of expertise, quality delivery of service and quality integrated methodologies; Ndedge Informatics Private Limited have been able to carve out a niche for themselves as one of the most notable trailblazers in the IT Industry in India. \n Ndedge Informatics Private Limited uses an extremely competent global delivery method in providing quality-based solutions and professional services to its esteemed clients. \n Our strongest advantage is our excellent pool of our skilled workforce; our skilled resource is recruited from the finest the industry can boast of in India. We can boast of a vibrant skilled resource that provides a vibrant combination of technological skills and strategic IT consultancy services."
+        },
+        "row2": {
+            "title": "Ndedge Informatics Private Limited offers",
+            "option": [
+                "a full range of Oracle database administration configuration and support including or excluding real application cluster and dataguard.",
+                "Oracle cloud infrastructure configuration and support.",
+                "Virtual environment to cloud migration by Ravello.",
+                "BP for XaaS, DB2,laaS,Paas, and SaaS-enabled business environments ,",
+                "Setting up or implementing on-premise environments with Oracle data appliances,",
+                "zero downtime migration for Oracle databases,",
+                "licensing for different OS, like Oracle Solaris and Oracle Linux ,Easy to use architecture for Oracle E-business suite,",
+                "On-premise to cloud migration,",
+                "Providing server hardware and network components from different vendors, Oracle Partners Network.",
+                "Support and configuration oracle sign-on."
+            ],
+            "sub_title": "Ndedge Informatics Private Limited has a solid client base that spans across several industries; in our focus market segment we have accumulated an enviable list of clients because of our customer centric approach."
+        },
+        "row3": {
+            "title": "Ndedge Informatics Private Limited competitive advantage and source of value to our esteemed client stems not only from our expertise in rendering IT professional services, but from several aspect of our business model which consist of",
+            "option": [
+                "technology and business competency centers,",
+                "rigorous programme and project management,",
+                "state of the art computing and communication infrastructure, client-centric approach account management,",
+                "Innovative offshore development approach and business continuity preparedness.We remain focus on our prime objective which is delivering high quality solutions to our clients"
+            ]
+        }
+    },
+    "footer": {
+        "class": "secfooter",
+        "style": {
+            "bgcolor": "#E6F5FF"
+        },
+        "container1": [
+            {
+                "link": "#",
+                "text": "TERMS & CONDITION"
+            },
+            {
+                "link": "#",
+                "text": "ABOUT US"
+            }
+        ],
+        "container2": [
+            {
+                "link": "#",
+                "text": "CONTACT US"
+            },
+            {
+                "link": "#",
+                "text": "DIRECTORS"
+            }
+        ],
+        "container3": [
+            {
+                "link": "#",
+                "text": "DEVELOPERS"
+            },
+            {
+                "link": "#",
+                "text": "OUR CLIENTS"
+            }
+        ],
+        "container4": [
+            {
+                "link": "#",
+                "text": "CORPORATE ACTION"
+            },
+            {
+                "link": "#",
+                "text": "NATURE & MODE OF WORK"
+            }
+        ],
+        "socialicon": [
+            {
+                "class": "fa fa-twitter",
+                "bgcolor": "#26a6d1",
+                "link": "#"
+            },
+            {
+                "class": "fa fa-facebook",
+                "bgcolor": "#3b5998",
+                "link": "#"
+            },
+            {
+                "class": "fa fa-linkedin",
+                "bgcolor": "#007ab9",
+                "link": "#"
+            },
+            {
+                "class": "fa fa-instagram",
+                "bgcolor": "#b81a7e",
+                "link": "#"
+            }
+        ],
+        "copyright": "2019 Copyright"
+    }
+}

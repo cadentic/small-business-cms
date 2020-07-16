@@ -1,6 +1,6 @@
 <template>
 	<div>
-		
+
     <topBar></topBar>
 			<!-- sidebar -->
 	<div class="sidebar-menu">
@@ -44,11 +44,11 @@
 		>
 		<template v-slot:activator="{ on }">
 			<a v-on="on" class="default-btn" :style="'color:' + init_data.section1.button1.style.color">{{ init_data.section1.button1.text }}</a>
-			
+
 			<a :href="init_data.section1.button2.link" class="second-btn">{{ init_data.section1.button2.text }}</a>
-		
+
 		</template>
-	  
+
 		<template lang="pug">
 			<video-player>
 			<source :src="init_data.section1.video.src" type="video/mp4"/>
@@ -56,7 +56,7 @@
 		</template>
 
     </v-dialog>
-            
+
           </div>
 				</div>
 			</div>
@@ -82,7 +82,7 @@
               <span class="caret"></span>
             </v-btn>
           </template>
-          <v-list>          
+          <v-list>
               <v-list-item-title v-for="(item, id) in init_data.section2.contact.option" :key="id">{{ item }}</v-list-item-title>
           </v-list>
         </v-menu>
@@ -303,6 +303,7 @@
 	import 'vuetify-media-player/src/style.styl';
 
 	export default {
+		props:['filename'],
       components: { topBar, videoPlayer },
 	  data: () => ({
 	    offsetTop: 0,
@@ -330,7 +331,7 @@
 	    }
 	  },
 	  created() {
-        axios.get('json/inner2.json')
+        axios.get('../json/inner2/'+this.filename+'.json')
         .then(response => {
 		  this.init_data = response.data;
 		  console.log(this.init_data)

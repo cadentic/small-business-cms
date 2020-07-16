@@ -180,7 +180,7 @@ export default {
     };
   },
   created() {
-    axios.get('json/swipercarousel.json')
+    axios.get('../json/swipercarousel.json')
     .then(response => {
       this.init_data = response.data;
     })

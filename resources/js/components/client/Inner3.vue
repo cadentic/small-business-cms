@@ -10,7 +10,7 @@
                 </li>
             </ul>
         </div>
-        
+
         <section id="topextsec">
           <div class="leftext col-lg-4 col-md-4 col-sm-4">
             <div class="imgext1">
@@ -110,7 +110,7 @@
                                 <span class="caret"></span>
                             </v-btn>
                         </template>
-                        <v-list>          
+                        <v-list>
                             <v-list-item-title v-for="(item, id) in init_data.section2.contact.option" :key="id">{{ item }}</v-list-item-title>
                         </v-list>
                     </v-menu>
@@ -125,19 +125,19 @@
             </ul>
             <h4 :style="'font-size:' + init_data.section3.title_sub.style.font_size + '; color:' + init_data.section3.title_sub.style.color + '; margin-bottom:' + init_data.section3.title_sub.style.margin_bottom + '; padding-bottom:' + init_data.section3.title_sub.style.padding_bottom">{{ init_data.section3.title_sub.text }}</h4>
         </div>
-        
+
         <div :class="init_data.section4.class" :id="init_data.section4.id" :style="'height:' + init_data.section4.style.height + '; transition:' + init_data.section4.style.transition + '; background:' + init_data.section4.style.background + '; padding-top:' + init_data.section4.style.padding_top + '; font-size:' + init_data.section4.style.font_size">
             <h3 :style="'font-size:' + init_data.section4.title.style.font_size + '; color:' + init_data.section4.title.style.color + '; padding-top:' + init_data.section4.title.style.padding_top">{{ init_data.section4.title.text }}</h3>
             <ul type="disc" :style= init_data.section3.style2  >
                 <li v-for="(item, id) in init_data.section4.contents" :key="id">{{ item }}</li>
             </ul>
         </div>
-        
+
         <section :id="init_data.section6.id">
           <v-container>
               <v-row>
                   <v-col cols="sm" v-for="(item, id) in init_data.section6.container1" :key="id">
-                      <div class="cardWrap"> 
+                      <div class="cardWrap">
                           <a class="card" :href="item.link">
                               <div class="front blue-p-blue">
                                   <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
@@ -155,11 +155,11 @@
                   </v-col>
               </v-row>
           </v-container>
-          
+
           <v-container>
               <v-row>
                   <v-col cols="sm" v-for="(item, id) in init_data.section6.container2" :key="id">
-                      <div class="cardWrap"> 
+                      <div class="cardWrap">
                           <a class="card" :href="item.link">
                               <div class="front blue-p-blue">
                                   <img class="img-responsive" :src="item.image" :alt= init_data.section6.alt :title= init_data.section6.title>
@@ -196,7 +196,7 @@
           <div class="">
               <v-container>
                   <v-row no-gutters>
-                      <v-col cols="sm" v-for="(item, id) in init_data.section8.container" :key="id">        
+                      <v-col cols="sm" v-for="(item, id) in init_data.section8.container" :key="id">
                           <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
                               <div class="flipper property-items">
                                   <div class="front center-block text-center itemS" :style="'min-height:' + item.background_minheight + '; background: url(' + item.background + ') center top / cover no-repeat;'">
@@ -313,7 +313,7 @@
       <div class="copyright">
           <p>{{ init_data.footer.copyright }}</p>
       </div>
-    
+
   </div>
 </template>
 
@@ -321,8 +321,9 @@
     import topBar from './shared/topBar.vue'
     import videoPlayer from 'vuetify-media-player/src/components/video-player.vue';
     import 'vuetify-media-player/src/style.styl';
-  
+
     export default {
+			props:['filename'],
     components: {  topBar, videoPlayer },
     data: () => ({
       offsetTop: 0,
@@ -350,7 +351,7 @@
       }
     },
     created() {
-        axios.get('json/inner3.json')
+        axios.get('../../json/inner3/'+this.filename+'.json')
         .then(response => {
           this.init_data = response.data;
         })

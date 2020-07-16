@@ -89,7 +89,7 @@
       <div></div>
       <div class="ma">
         <center><h1>Inner Form Blank 1</h1></center>
-        <form method="post" action="innerFormBlank1" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
           <input type="hidden" name="_token" :value="csrf">
           <center><h2>Left Sliding Banner</h2></center>
           <div class="myDiv1" v-for="(input,k) in b1l" :key="k">
@@ -471,7 +471,8 @@
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     }),
     props: {
-        source: String
+        source: String,
+        filename: String
     },
     mounted: function(){
       console.log('Contacts Component Loaded...');
@@ -479,7 +480,7 @@
     methods: {
         Edit: function(e){
           alert('Previous Draft');
-          let data = axios.get('../json/draft_blank2/draft_blank2.json').then(res=>{console.log(res);this.title=res.data.title;this.subtitle=res.data.subtitle;this.description=res.data.description});
+          let data = axios.get('../json/draft_blank2/'+this.filename+'.json').then(res=>{console.log(res);this.title=res.data.title;this.subtitle=res.data.subtitle;this.description=res.data.description});
           e.preventDefault();
         },
         add(index){
