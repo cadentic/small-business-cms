@@ -84,7 +84,6 @@
 <script>
 import toolbar from './shared/toolbar.vue';
 import ChatComponent from './components/ChatComponent.vue';
-
 export default {
   components: {toolbar,  ChatComponent},
   data: () => ({
@@ -111,13 +110,10 @@ export default {
     .catch(e => {
       this.errors.push(e)
     });
-
     // Get current path
     this.current_path = location.pathname + '/';
-
   },
   methods: {
-
   }
 };
 </script>

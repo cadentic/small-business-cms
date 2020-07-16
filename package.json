@@ -80,6 +80,7 @@
         "vue-split-panel": "^1.0.4",
         "vue-template-compiler": "^2.6.10",
         "vue-video": "^0.1.7",
+        "vue2-editor": "^2.10.2",
         "vueditor": "^0.3.1",
         "vuescroll": "^4.14.4",
         "vuetify-media-player": "^0.8.1",

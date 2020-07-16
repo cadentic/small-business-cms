@@ -88,9 +88,12 @@ Route::get('/invoices/all','AdminController@getInvoices');
 Route::get('searchfaq', 'SearchQuestionsController@index');
 Route::get('contact', 'ContactUsController@index');
 Route::get('contact/{ticket_id}', 'ContactUsController@show');
+Route::post('contact/{ticket_id}', 'ContactUsController@update');
 Route::get('forgot-password', 'PasswordController@renew');
 Route::get('download', 'DownloadResourcesController@index');
 Route::get('contact-us', 'ContactUsController@create');
+Route::post('contact-us', 'ContactUsController@createPost');
+Route::post('save-to-json', 'ContactUsController@save_to_json');
 
 
 Route::get('transaction-history','TransactionHistoryController@getHistory');
@@ -105,3 +108,5 @@ Route::post('/login', 'IndexController@login');
 //Route::get('pdfview', 'IndexController@pdf');
 Route::get('/logout', 'IndexController@logout');
 Route::get('/employee', 'IndexController@gotoEmployee');
+Route::get('/createinvoice', 'InvoiceController@create');
+Route::get('/allinvoices', 'InvoiceController@showAll');

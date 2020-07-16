@@ -15,14 +15,15 @@
                                         <span class="subtitle-1" v-html="item.label"></span>
                                     </v-col>
                                     <v-col cols=6>
-                                        <v-text-field v-if="item.type === 'textfield'" :value="ticket_form_data[item.model]" :required="item.required" :readonly="item.readonly" dense outlined @change="onChangeHandlers[item.onChangeHandler]" />
+                                        <v-text-field v-if="item.type === 'textfield'" v-model="ticket_form_data[item.model]" :value="ticket_form_data[item.model]" :required="item.required" :readonly="item.readonly" dense outlined @change="onChangeHandlers[item.onChangeHandler]" />
                                         <v-textarea
                                             v-else-if="item.type === 'textarea'"
                                             outlined
                                             dense
                                             :required="item.required"
                                             v-model="ticket_form_data[item.model]"
-                                            @change="onChangeHandlers[item.onChangeHandler]"></v-textarea>
+                                            @change="onChangeHandlers[item.onChangeHandler]"
+                                            ></v-textarea>
                                         <v-select
                                             v-else-if="item.type === 'select'"
                                             outlined
@@ -42,7 +43,8 @@
                                             :placeholder="item.placeholder"
                                             prepend-icon=""
                                             outlined
-                                            :show-size="item.showSize">
+                                            :show-size="item.showSize"
+                                            name="files">
 
                                             <template v-slot:append>
                                                 <v-icon>{{ item.icon }}</v-icon>
@@ -131,7 +133,6 @@
 <script>
 import toolbar from './shared/toolbar.vue';
 import ChatComponent from './components/ChatComponent.vue';
-
 export default {
   components: {toolbar, ChatComponent },
   data: () => ({
@@ -148,7 +149,7 @@ export default {
         details: "",
         category: "",
         country: "",
-        files: [],
+        files: []
     },
     categories_list: [],
     countries_list: [],
@@ -171,13 +172,11 @@ export default {
     .catch(e => {
       this.errors.push(e)
     });
-
     // Set user prefilled informations
     this.ticket_form_data.firstname = "Sayantan";
-    this.ticket_form_data.lastname = "Chakraborty";
+    this.ticket_form_data.lastname = "Chakrobarty";
     this.ticket_form_data.mail = "example@example.com";
     this.ticket_form_data.company = "Ndegde Informatics Private Limited";
-
     this.onChangeHandlers.subject = this.handleOnChangeEvent;
     this.onChangeHandlers.additional = this.handleOnChangeEvent;
     this.onChangeHandlers.details = this.handleOnChangeEvent;
@@ -186,9 +185,14 @@ export default {
   },
   methods: {
     submitTicketForm() {
-
         // Send the form with axios
         // axios.post('', this.ticket_form_data);
+        for(let i=0; i<this.ticket_form_data.files.length; ++i)
+        {
+            this.ticket_form_data.files[i] = this.ticket_form_data.files[i].toDataUrl();
+        }
+        axios.post('/contact-us', this.ticket_form_data).then((res)=>{console.log(res);});
+        console.log(this.ticket_form_data);
     },
     handleOnChangeEvent(value) {
         // this.ticket_form_data is dynamically updated so you can use it for whatever you wamnt

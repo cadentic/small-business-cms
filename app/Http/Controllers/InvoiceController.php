@@ -16,4 +16,12 @@ class InvoiceController extends Controller
         file_put_contents($path,json_encode($json));
         return response()->json($data);
     }
+    public function create()
+    {
+      return view('invoice.create');
+    }
+    public function showAll()
+    {
+      return view('invoice.all');
+    }
 }
