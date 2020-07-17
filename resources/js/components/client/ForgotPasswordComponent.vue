@@ -16,7 +16,7 @@
           >
             <v-card class="elevation-12 pa-5">
               <v-card-text>
-                <v-form @submit="handleFormSubmission">
+                <v-form>
                   <h1 style="text-align: center;" class="mt-5 mb-10">{{ form_title }}</h1>
                   <p style="text-align: center;" class="mb-5">{{ message }}</p>
 
@@ -25,8 +25,18 @@
                     prepend-icon="person"
                     type="text"
                     placeholder="Email or username"
+                    v-model="email"
+                    v-show="!showpassword"
                   />
-
+                  <v-btn color="success large" v-show="!showpassword" block="true" tile @click="sendotp">Send</v-btn>
+                  <v-text-field
+                    name="OTP"
+                    prepend-icon="lock"
+                    type="text"
+                    placeholder="OTP"
+                    v-model="OTP"
+                    v-show="showpassword"
+                  />
                   <v-text-field
                     id="password"
                     label="Password"
@@ -38,7 +48,7 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="success large" block="true" tile>Send</v-btn>
+                <v-btn color="success large" block="true" tile v-show="showpassword" @click="handleFormSubmission">Send</v-btn>
               </v-card-actions>
               <div class="pa-3 help-link-group">
                   <a v-for="(link, i) in footer_links" :href="link.url" target="_blank" rel="" :key="i">{{ link.title }} | </a>
@@ -62,18 +72,19 @@
 </style>
 <script>
   import ChatComponent from './components/ChatComponent.vue';
-
+  import axios from 'axios';
   export default {
     components: { ChatComponent },
-    data() {
-      return {
-        form_title: "",
-        message: "",
-        footer_links: {},
-        showpassword: false,
-        errors: {}
-      }
-    },
+    data: () => ({
+      form_title: "",
+      message: "",
+      footer_links: {},
+      showpassword: false,
+      errors: {},
+      email: '',
+      password: '',
+      OTP: ''
+    }),
     mounted() {
       axios.get('/json/forgot-password.json')
       .then(response => {
@@ -87,7 +98,30 @@
     },
     methods: {
       handleFormSubmission() {
-        
+        let data = {
+          'emailotp': this.OTP
+        }
+        axios.post('/validateemail', data).then((res) => {
+          if(res.data.validated){
+            let passdata = {
+              'email': this.email,
+              'password': this.password
+            };
+            axios.post('/forgot-password', passdata).then((res)=>{
+              if(res.data==='password changed'){
+                window.location.href = '/login';
+              }
+            }).catch((e)=>{console.log(e);});
+          }
+        });
+      },
+      sendotp() {
+        let data = {
+          'email': this.email
+        };
+        axios.post('/sendemail', data).then((res)=>{
+          this.showpassword = true;
+        })
       }
     }
   }

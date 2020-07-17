@@ -3,7 +3,7 @@
         <v-container fluid fill-height class="loginOverlay">
           <v-layout flex align-center justify-center>
             <div class="container">
-              <v-flex xs12 sm4 justify-center align-center center>
+
                   <v-card>
                       <v-card-title>
                           <h4>Cadentic account sign in</h4>
@@ -27,7 +27,7 @@
                       </v-card-text>
                       <v-card-actions>
                           <v-btn @click="submit" class="green white--text">Sign in</v-btn>
-                          <a class="link-color" href="">Need help?</a>
+                          <a class="link-color" href="/forgot-password">Forgot Password?</a>
                       </v-card-actions>
                   </v-card>
                   <v-card>
@@ -43,7 +43,6 @@
                           </v-row>
                       </v-card-actions>
                   </v-card>
-              </v-flex>
             </div>
           </v-layout>
        </v-container>
@@ -82,7 +81,7 @@ export default {
           }).catch((e)=>{console.log(e);});
         },
         create () {
-
+          window.location.href = '/businessregistration';
         }
     }
 }
@@ -120,6 +119,7 @@ h4 {
 
 .v-card {
     padding: 1em;
+    width: 100%;
 }
 
 .v-card__actions {
@@ -148,8 +148,10 @@ h4 {
     border-right: 1px solid black;
 }
 .container {
-  width: 100%;
+  width: 70%;
   align-content: center;
   align-items: center;
+  padding-left: 60px;
+  padding-top: 80px;
 }
 </style>

@@ -90,6 +90,7 @@ Route::get('contact', 'ContactUsController@index');
 Route::get('contact/{ticket_id}', 'ContactUsController@show');
 Route::post('contact/{ticket_id}', 'ContactUsController@update');
 Route::get('forgot-password', 'PasswordController@renew');
+Route::post('forgot-password', 'PasswordController@RenewPost');
 Route::get('download', 'DownloadResourcesController@index');
 Route::get('contact-us', 'ContactUsController@create');
 Route::post('contact-us', 'ContactUsController@createPost');
