@@ -26,6 +26,37 @@
                         </v-list-item>
                     </v-list>
                 </v-menu>
+                <v-menu offset-y open-on-hover>
+                    <template v-slot:activator="{ on }">
+                        <v-btn text small v-on="on">
+                            Admin Forms
+                            <v-icon right>fa-chevron-down</v-icon>
+                        </v-btn>
+                    </template>
+                    <v-list>
+                        <v-list-item>
+                            <v-btn text href="/admin/formA/client_main_content">client_main Form</v-btn>
+                        </v-list-item>
+                        <v-list-item>
+                            <v-btn text href="/admin/innerForm/inner">client_inner Form</v-btn>
+                        </v-list-item>
+                        <v-list-item>
+                            <v-btn text href="/admin/innerForm2/inner2">client_inner2 Form</v-btn>
+                        </v-list-item>
+                        <v-list-item>
+                            <v-btn text href="/admin/innerForm3/inner3">client_inner3 Form</v-btn>
+                        </v-list-item>
+                        <v-list-item>
+                            <v-btn text href="/admin/innerForm4/inner4">client_inner4 Form</v-btn>
+                        </v-list-item>
+                        <v-list-item>
+                            <v-btn text href="/admin/innerFormBlank/innerblank">client_innerblank Form</v-btn>
+                        </v-list-item>
+                        <v-list-item>
+                            <v-btn text href="/admin/innerFormBlank1/innerblank2">client_innerblank2 Form</v-btn>
+                        </v-list-item>
+                    </v-list>
+                </v-menu>
                 <v-btn text small>Training</v-btn>
                 <v-btn text small>Community</v-btn>
                 <v-btn text small>Store</v-btn>
