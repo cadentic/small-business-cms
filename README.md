@@ -1,74 +1,217 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+## APPLICATION DEPLOYMENT STEPS ON LOCAL DEVELOPMENT SERVER
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+### 1. COMPOSER INSTALLATION
 
-## About Laravel
+*Source:*
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* https://getcomposer.org/doc/00-intro.md
+* https://getcomposer.org/doc/01-basic-usage.md
+* https://github.com/composer/composer
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> Composer is a popular dependency management tool for PHP, created mainly to facilitate installation and updates for project dependencies. 
+> It allows you to declare the libraries your project depends on and it will manage(install/update) them for you in a directory (e.g. 'vendor' 
+> inside your project).
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Re-synchronize the package index files from their sources.
+      
+      `sudo apt-get update`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. Run the following commands on current/appropriate directory.
 
-## Laravel Sponsors
+    a. Install composer.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+      `sudo apt-get install composer`
+     
+    b. **NOTE:** The following command did not work. 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+    `curl -sS https://getcomposer.org/installer -o composer-setup.php`
+    
+     See [Github Issue](https://github.com/composer/composer/issues/9047)
+       
+    c. Check installation
+    
+    `composer --version` should give something similar as `Composer 1.10.1 2020-03-13 20:34:27`
+    
+    d. Checking the location of Composer's global packages.
+    
+    `php /usr/bin/composer config --list --global` should display something similar as
 
-## Contributing
+        [repositories.packagist.org.type] composer
+        [repositories.packagist.org.url] https?://repo.packagist.org
+        [repositories.packagist.org.allow_ssl_downgrade] true
+        [process-timeout] 300
+        [use-include-path] false
+        [preferred-install] auto
+        [notify-on-install] true
+        [github-protocols] [https, ssh]
+        [vendor-dir] vendor (/home/sandeep/vendor)
+        [bin-dir] {$vendor-dir}/bin (/home/sandeep/vendor/bin)
+        [cache-dir] /home/sandeep/.cache/composer
+        [data-dir] /home/sandeep/.local/share/composer
+        [cache-files-dir] {$cache-dir}/files (/home/sandeep/.cache/composer/files)
+        [cache-repo-dir] {$cache-dir}/repo (/home/sandeep/.cache/composer/repo)
+        [cache-vcs-dir] {$cache-dir}/vcs (/home/sandeep/.cache/composer/vcs)
+        [cache-ttl] 15552000
+        [cache-files-ttl] 15552000
+        [cache-files-maxsize] 300MiB (314572800)
+        [bin-compat] auto
+        [discard-changes] false
+        [autoloader-suffix]
+        [sort-packages] false
+        [optimize-autoloader] false
+        [classmap-authoritative] false
+        [apcu-autoloader] false
+        [prepend-autoloader] true
+        [github-domains] [github.com]
+        [bitbucket-expose-hostname] true
+        [disable-tls] false
+        [secure-http] true
+        [cafile]
+        [capath]
+        [github-expose-hostname] true
+        [gitlab-domains] [gitlab.com]
+        [store-auths] prompt
+        [archive-format] tar
+        [archive-dir] .
+        [htaccess-protect] true
+        [use-github-api] true
+        [lock] true
+        [home] /home/sandeep/.config/composer     
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Security Vulnerabilities
+      The `[home]` line refers to the default value of `$COMPOSER_HOME`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+### 2. LARAVEL INSTALLATION   
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+*Source:*
 
-## many people are running behind  it from now on making it public 
+* https://laravel.com/docs/7.x#server-requirements
+* https://github.com/laravel/laravel
+
+
+> Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the 
+> model–view–controller architectural pattern and based on Symfony. Laravel utilizes Composer to manage its dependencies. So, before using Laravel, 
+> make sure you have Composer installed on your machine.
+
+**NOTE:** An account creation at [Packagist](https://packagist.org/register/) may be required.
+
+ 1. Download the Laravel installer using Composer.
+
+    `composer global require laravel/installer`
+
+   **NOTE:** 
+   
+   - The `global` parameter allows running commands in the global composer dir `($COMPOSER_HOME)`.
+   
+   - The following error message may come up on executing `composer global require laravel/installer`
+
+    "https://repo.packagist.org/packages.json" file could not be downloaded: failed to open stream: Connection refused
+
+   **FIX:** 
+   `sudo vim /etc/resolv.conf` and add the following lines:
+    
+    nameserver 8.8.8.8
+    nameserver 8.8.4.4`
+   
+   Save the file and restart the network.
+   
+   
+   
+   ### 3. Node.js® INSTALLATION  
+     
+   *Source:*
+
+   * https://nodejs.org/en/
+   * https://github.com/nodejs
+   
+   > Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. As an asynchronous
+   > event-driven JavaScript runtime, Node.js is designed to build scalable network applications.
+    
+    
+   1. Install Node.js
+   
+      `sudo apt-get install nodejs`
+   
+   2. Check installation.
+   
+      `nodejs -v` should display something similar to `v10.19.0`
+      
+
+
+### 4. npm INSTALLATION
+     
+*Source:*
+
+   * https://docs.npmjs.com/cli/npm
+   * https://github.com/npm/npm     
+     
+ > npm is the package manager for the Node JavaScript platform. It puts modules in place so that
+ > node can find them, and manages dependency conflicts intelligently.    
+    
+
+  1. Install npm
+  
+    sudo apt-get install npm
+    
+  2. Check installation
+  
+   `npm -v` should display something similar to `6.14.4`
+
+  3. See `npm-config` for much much more information.
+
+
+### 5. PROJECT DEPLOYMENT AND APPLICATION RUN ON SERVER
+
+**COMMANNDS TO RUN:** 
+
+ 1. `git clone https://github.com/cadentic/business_landing_v1.git`
+
+ > Clone this repository locally on an appropriate path. 
+  
+
+
+ 2. `composer install`
+  
+  > Installs the project dependencies from the `composer.lock` file if present, or falls back on the `composer.json`.
+
+  
+  
+ 3. `npm install`
+  
+  > npm install downloads a package and it's dependencies. When run without arguments,npm install  downloads dependencies 
+  > defined in a package(a folder containing a program described by a `package.json` file)
+
+  
+  
+ 4. `php artisan route:clear`
+  
+  > To clear route cache of the Laravel application. This will display : `Route cache cleared!`
+  
+  
+  
+ 5. `php artisan config:clear`
+  
+  > To clear config cache of the Laravel application. This will display : `Configuration cache cleared!`
+  
+  
+  
+ 6. `php artisan cache:clear`
+  
+  > To clear application cache of Laravel application. This will display : `Application cache cleared!`
+  
+  
+  
+ 7. `npm run watch`
+  
+ > Combines all Vue components and other JavaScript files into a browser-friendly combined file.
+ > Then it stays active and "watches" for updates to all .vue and .js files. If it detects a
+ > change, it'll re-build the browser-friendly file so you can just refresh the page.
+
+
+ 8. `php artisan serve`
+ 
+ To run this application on the development server.
+ 
