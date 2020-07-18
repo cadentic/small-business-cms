@@ -19,7 +19,7 @@ use Illuminate\Http\RedirectResponse;
 class IndexController extends Controller
 {
     public function index() {
-        return redirect('/client_main/client_main_content');
+        return redirect('/client_main');
     }
     public function gotoAdmin(Request $req) {
       if($req->session()->get('role')=='admin')
@@ -48,28 +48,28 @@ class IndexController extends Controller
     public function gotoLoginThree() {
         return view('loginthree');
     }
-    public function gotoMain(Request $request) {
-        return view('main')->with('fileName',$request->fileName);
+    public function gotoMain() {
+        return view('main');
     }
-    public function gotoInner(Request $request) {
-        return view('inner')->with('fileName',$request->fileName);
+    public function gotoInner() {
+        return view('inner');
     }
-    public function gotoInner2(Request $request) {
-        return view('inner2')->with('fileName',$request->fileName);
+    public function gotoInner2() {
+        return view('inner2');
     }
-    public function gotoInner3(Request $request) {
-        return view('inner3')->with('fileName',$request->fileName);
+    public function gotoInner3() {
+        return view('inner3');
     }
-    public function gotoInner4(Request $request) {
-        return view('inner4')->with('fileName',$request->fileName);
-    }
-
-    public function gotoInnerblank(Request $request) {
-        return view('innerblank')->with('fileName',$request->fileName);
+    public function gotoInner4() {
+        return view('inner4');
     }
 
-    public function gotoInnerblank2(Request $request) {
-        return view('innerblank2')->with('fileName',$request->fileName);
+    public function gotoInnerblank() {
+        return view('innerblank');
+    }
+
+    public function gotoInnerblank2() {
+        return view('innerblank2');
     }
 
     public function import_menu() {
@@ -191,7 +191,7 @@ class IndexController extends Controller
       $user = array('id'=>$id, 'name'=>$name, 'description'=>$description, 'currency'=>$currency, 'minimumBudget'=>$minimumBudget, 'maximumBudget'=>$maximumBudget, 'pricePerHour'=>$pricePerHour, 'date'=>date('Y-m-d H:i:s'));
       $json[] = $user;
       file_put_contents($file_path,json_encode($json));
-      $mail = 'kanrar.pratim@gmail.com';
+      $mail = 'support@ndedges.com';
       Mail::to($mail)->send(new DemoEmail('View: localhost:8000/businessregistration/show/'.$id.'<br>'.'Approve: localhost:8000/businessregistration/validate/'.$id));
       $file_path = 'json/agreement.json';
       $file = file_get_contents($file_path);
@@ -478,6 +478,6 @@ class IndexController extends Controller
     public function logout(Request $req)
     {
       $req->session()->forget('role');
-      return redirect('/client_main/client_main_content');
+      return redirect('/client_main');
     }
 }
