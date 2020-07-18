@@ -3,7 +3,7 @@
         <v-container fluid fill-height class="loginOverlay">
           <v-layout flex align-center justify-center>
             <div class="container">
-              <v-flex xs12 sm4 justify-center align-center center>
+
                   <v-card>
                       <v-card-title>
                           <h4>Cadentic account sign in</h4>
@@ -27,7 +27,7 @@
                       </v-card-text>
                       <v-card-actions>
                           <v-btn @click="submit" class="green white--text">Sign in</v-btn>
-                          <a class="link-color" href="">Need help?</a>
+                          <a class="link-color" href="/forgot-password">Forgot Password?</a>
                       </v-card-actions>
                   </v-card>
                   <v-card>
@@ -43,7 +43,6 @@
                           </v-row>
                       </v-card-actions>
                   </v-card>
-              </v-flex>
             </div>
           </v-layout>
        </v-container>
@@ -68,11 +67,11 @@ export default {
             {
               window.location.href = '/admin';
             }
-            else if(res.data==='employee')
+            if(res.data==='employee')
             {
               window.location.href = '/employee';
             }
-            else if(res.data==='client')
+            if(res.data==='client')
             {
               window.location.href = '/whatsapp';
             }
@@ -82,6 +81,7 @@ export default {
           }).catch((e)=>{console.log(e);});
         },
         create () {
+          window.location.href = '/businessregistration';
         }
     }
 }
@@ -92,51 +92,66 @@ export default {
     height: 100vh;
     background-image: url('assets/background-image.jpg');
 }
+
 h4 {
     font-size: 1em !important;
     padding: 1em;
     color: black;
 }
+
 .v-card {
     text-align: center;
     margin: 1em;
 }
+
 .v-card__title {
     justify-content: center;
 }
+
 .v-btn {
     width: 100%;
 }
+
 .link-color {
     color: #d38841;
     text-decoration: none;
 }
+
 .v-card {
     padding: 1em;
+    width: 100%;
 }
+
 .v-card__actions {
     display: block;
 }
+
 .green {
     margin-bottom: 1em;
 }
+
 .create {
     text-transform: capitalize;
     margin-bottom: 1em;
 }
+
 .row {
     font-size: 0.7em;
     justify-content: center;
 }
+
 .row-item {
     padding: 0 0.7em;
 }
+
 .border {
     border-right: 1px solid black;
 }
 .container {
-  width: 100%;
+  width: 70%;
   align-content: center;
   align-items: center;
+  padding-left: 60px;
+  padding-top: 80px;
 }
 </style>
