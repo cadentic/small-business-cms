@@ -12,7 +12,7 @@
         "barryvdh/laravel-dompdf": "^0.8.6",
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.5",
-        "laravel/framework": "5.8.*",
+        "laravel/framework": "6.18.*",
         "laravel/tinker": "^1.0",
         "php-parallel-lint/php-console-color": "^0.3.0",
         "robincsamuel/laravel-msg91": "dev-master"
