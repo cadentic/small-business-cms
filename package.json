@@ -96,7 +96,7 @@
         "@vue/cli-plugin-babel": "^3.11.0",
         "@vue/cli-plugin-eslint": "^4.4.6",
         "@vue/cli-service": "^4.4.6",
-        "axios": "^0.19.2",
+        "axios": "^0.21.2",
         "babel-eslint": "^10.1.0",
         "cross-env": "^5.2.1",
         "eslint": "^5.16.0",
